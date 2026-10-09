@@ -21,7 +21,7 @@ const QBY = Object.fromEntries(QUESTIONS.map(q => [q.id, q]));
 const READY = CHAPTERS.filter(c => c.ready);
 const CH = n => CHAPTERS.find(c => c.n === n) || { n, t: 'Chapter ' + n, part: 0, partTitle: '' };
 const chTitle = n => CH(n).t;
-const shortT = c => c.t.split(':')[0];
+const shortT = c => { const [a, b] = c.t.split(':'); return b && CHAPTERS.some(d => d !== c && (d.t.split(':')[0] === a || d.t.startsWith(a + ' '))) ? b.trim().replace(/^the /, '').replace(/^./, x => x.toUpperCase()) : a; };   // when two chapters share the part before the colon, show the part after it
 const fmtDate = t => new Date(t).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 const mmss = s => { s = Math.max(0, Math.round(s)); const m = Math.floor(s / 60); return `${m}:${String(s % 60).padStart(2, '0')}`; };
 const letter = k => '(' + 'abcde'[k] + ')';
