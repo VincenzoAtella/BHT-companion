@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 4 (Socioeconomic disparities in health).
+# Original questions written for the course. Numbers checked in Python on 2026-10-09.
+
+TF: In the Grossman-model reading of the allostatic load hypothesis, a person under repeated stress chooses less health than a relaxed person because her MEC curve lies below his.
+ANSWER: False
+WHY: BHT Section 4.6 represents stress as a higher depreciation rate of health capital: the horizontal line $r+\delta$ rises from $r+\delta_L$ to $r+\delta_H$, while both people face the same MEC curve (Figure 4.10). Optimal health falls because holding health becomes more costly, not because each unit of health yields less. A lower MEC curve is how the efficient producer, direct income and Fuchs hypotheses work.
+
+TF: In the example of BHT Figure 4.2, about 85 of 100 future college graduates and about 60 of 100 future high-school dropouts survive to age 68, so graduates are roughly 42 percent more likely than dropouts to reach that age.
+ANSWER: True
+WHY: The ratio of survival probabilities is $0.85/0.60\approx1.42$. The difference of 25 percentage points that BHT Section 4.1 reports is an absolute gap; relative to the dropouts' survival rate of 60 percent it is an advantage of about 42 percent. Mixing the two measures is a common error when reading disparities.
+
+TF: Farrell and Fuchs found that students who later go to college already smoke less at age 17; this pattern fits the Fuchs hypothesis better than the view that lessons learned in college cause healthier behavior.
+ANSWER: True
+WHY: If college itself taught people to avoid smoking, future graduates and non-graduates should smoke at the same rate before college starts (BHT Section 4.8). A gap that exists before the education is received points to a preexisting trait, such as patience, that drives both schooling and health behavior.
+
+TF: Cutler and Lleras-Muney found that adding proxies for time preference to their regressions weakens the link between education and risky health behaviors, which supports the Fuchs hypothesis.
+ANSWER: False
+WHY: According to BHT Section 4.8, including the time-preference proxies made the education–risk-taking relationship stronger, not weaker. If patience were the common cause of both, controlling for it should have shrunk the education coefficient. Their result therefore suggests that differences in discounting are not a main driver of health disparities.
+
+TF: In BHT Figure 4.12, a given gain in health adds more productive time for a person at the healthier point B than for a person at point A.
+ANSWER: False
+WHY: The productive-time function is concave: it is steep at low health (point A) and nearly flat near its ceiling $\Theta$ (point B). The same health gain therefore adds much more productive time to the less healthy person, which is why BHT Section 4.7 expects the productive time hypothesis to matter most in poor countries.
+
+TF: Under the income inequality hypothesis, a country whose income growth goes entirely to its richest households could see its average health get worse.
+ANSWER: True
+WHY: The hypothesis holds that inequality itself harms health, as a source of allostatic load for the poor (BHT Section 4.6, Definition 4.6). Gains concentrated at the top raise mean income but also widen the distribution, and under this hypothesis the added stress on those left behind can lower average health. This is why the hypothesis would point policy toward reducing inequality, not only raising average income.
+
+TF: Among Dutch adults exposed to the famine in early gestation, the rate of type 2 diabetes was significantly higher than among those conceived after the famine.
+ANSWER: False
+WHY: In BHT Table 4.3 the diabetes rate is 16 percent after early-gestation exposure and 15 percent for those conceived after the famine, a difference not marked as significant. The significant differences for early gestation are in HDL cholesterol and poor general health. The highest diabetes rate, 21 percent, is for late-gestation exposure, and it is not marked as significant either.
+
+TF: The Whitehall studies show that differences in smoking, obesity, blood pressure and cholesterol account for essentially all of the mortality gradient across civil-service grades.
+ANSWER: False
+WHY: BHT Section 4.6 reports that these behavioral and physical differences explain only part of the disparity. The remaining gradient, in a group with similar backgrounds and the same access to the National Health Service, is what Marmot and coauthors attribute to job stress and low control, consistent with the allostatic load hypothesis.
+
+TF: The finding that richer older children are more often diagnosed with hay fever may reflect how often they see a doctor rather than a true difference in how often they have the condition.
+ANSWER: True
+WHY: BHT Section 4.1 points out that richer families take their children to the doctor more often, so a condition they have is more likely to be detected. A gradient in diagnosed prevalence mixes true prevalence with access to diagnosis, so it can even run in the opposite direction from the usual gradient in health.
+
+TF: Studies of lottery winners, such as Lindahl's Swedish study, help isolate the direct income hypothesis because a prize raises resources without raising the winner's wage or productivity.
+ANSWER: True
+WHY: In BHT Section 4.5 a higher wage raises both resources and the value of healthy time, while a lottery prize raises only resources. Because the prize is random, it is also unrelated to prior health or patience, so the health response cannot come from reverse causality or from a third variable.
+
+MC: Smith reports that HRS respondents newly diagnosed with a severe chronic disease lost on average \$17,000 in wealth over two years, while their out-of-pocket medical spending was about \$2,300 and their earnings fell by about \$2,600. What share of the wealth loss do these two items explain together?
+(a) About 14 percent
+(b) About 15 percent
+(c) About 29 percent
+(d) All of it
+ANSWER: c
+WHY: $(2{,}300+2{,}600)/17{,}000\approx0.29$. Option (a) counts only medical spending and (b) only lost earnings. As BHT Section 4.7 notes, neither medical bills nor the reduction in work is enough to explain the total fall in wealth, even together.
+
+MC: In Lindahl's Swedish data, a lottery win that raised income by 10 percent lowered the five-year mortality rate from 6 percent to 4 percent. The implied elasticity of mortality with respect to income is about
+(a) $-3.3$
+(b) $-0.2$
+(c) $-5$
+(d) $-0.33$
+ANSWER: a
+WHY: Mortality falls by $2/6\approx33$ percent for a 10 percent rise in income, an elasticity of $-0.33/0.10\approx-3.3$ (BHT Section 4.5). Option (b) divides a fall of 2 percentage points by a 10 percent change, mixing points with percent. Option (c) measures the fall relative to the new rate of 4 percent instead of the initial 6 percent, and (d) forgets to divide by the 10 percent change in income.
+
+MC: Which comparison best fits BHT's definition of a natural experiment for the effect of early-life deprivation?
+(a) Low-birth-weight and normal-weight children in the 1946 British birth cohort
+(b) Babies in gestation during the Dutch famine and babies conceived just after it
+(c) Children of mothers who chose to diet during pregnancy and children of mothers who did not
+(d) Countries with high and low income inequality
+ANSWER: b
+WHY: A natural experiment uses an outside shock that creates treatment and control groups that are otherwise alike (BHT Section 4.4, Definition 4.3); the famine struck one cohort and not the next, independently of family characteristics. In (a) and (c) exposure is linked to family circumstances or choices, so selection bias remains. Option (d) compares aggregates that differ in many omitted variables.
+
+MC: Using BHT Table 4.3, how many more cases of type 2 diabetes would you expect among 1,000 adults exposed to the Dutch famine in late gestation than among 1,000 adults conceived after the famine?
+(a) 6
+(b) 50
+(c) 210
+(d) 60
+ANSWER: d
+WHY: The rates are 21 percent and 15 percent, a difference of 6 percentage points, or $0.06\times1{,}000=60$ cases (BHT Section 4.4). Option (a) reads percentage points as cases per thousand, (b) uses the early-gestation rate of 16 percent, and (c) counts all cases among the exposed, not the excess.
+
+MC: Barreca finds that babies born in US states and years that favored malaria transmission were more likely to be poor in 1960 and left school earlier. BHT reads this as evidence for
+(a) the productive time hypothesis
+(b) the direct income hypothesis
+(c) the Fuchs hypothesis
+(d) the income inequality hypothesis
+ANSWER: a
+WHY: The causal arrow runs from early-life health to later socioeconomic status: children exposed to malaria were likely in poorer health and so could invest less in their own schooling and skills (BHT Section 4.7). The direct income and income inequality hypotheses run from SES to health. The Fuchs hypothesis would need a third variable, but exposure to malaria was set by climate, not by patience.
+
+MC: Suppose a person's MEC curve is $MEC(H)=A/H^2$, with $r=0.03$. Stress raises her depreciation rate from 0.05 to 0.07. Her optimal stock of health falls by about
+(a) 20 percent
+(b) 11 percent
+(c) 29 percent
+(d) 4 percent
+ANSWER: b
+WHY: Setting $A/H^2=r+\delta$ gives $H^*=\sqrt{A/(r+\delta)}$, so the new stock is $\sqrt{0.08/0.10}\approx0.894$ times the old one, a fall of about 11 percent (BHT Section 4.6, Figure 4.10). Option (a) is the answer for $MEC=A/H$. Option (c) both drops the interest rate and drops the square root, using $0.05/0.07$.
+
+MC: Bart and Lisa can each give up 1 unit of utility today for 1.5 units of utility in 10 years. Bart's annual discount factor is $\delta=0.9$ and Lisa's is $\delta=0.97$, as in equation (4.1). Who makes the investment?
+(a) Both
+(b) Neither
+(c) Only Lisa
+(d) Only Bart
+ANSWER: c
+WHY: The discounted payoff is $1.5\times0.9^{10}\approx0.52$ for Bart and $1.5\times0.97^{10}\approx1.11$ for Lisa; only Lisa's exceeds the cost of 1. In equation (4.1) a higher $\delta$ means more patience, so Lisa's MEC curve lies above Bart's (BHT Section 4.8, Figure 4.13). Option (d) treats $\delta$ as a discount rate, where a higher value would mean less patience.
+
+MC: Suppose that in a Whitehall-type study the lowest grade has a mortality rate 3.0 times that of the highest grade, and after adjusting for smoking, blood pressure, cholesterol and obesity the ratio falls to 2.3. What share of the excess mortality do these risk factors explain?
+(a) 23 percent
+(b) 77 percent
+(c) 65 percent
+(d) 35 percent
+ANSWER: d
+WHY: The excess relative risk falls from $3.0-1=2.0$ to $2.3-1=1.3$, so the risk factors explain $0.7/2.0=35$ percent of it (the numbers are illustrative). Option (a) divides by the whole ratio of 3.0 instead of the excess, and (c) is the share left unexplained. A large unexplained share is the pattern BHT Section 4.6 reports for the Whitehall studies.
+
+MC: Smith's data, summarized in BHT Table 4.1, show that people in excellent and in poor health in 1984 had median wealth of 68.3 and 39.2 thousand dollars, and ten years later 127.9 and 34.7 thousand dollars. The wealth ratio between the two groups
+(a) stayed at about 1.7
+(b) fell from about 1.9 to about 0.9
+(c) rose from about 1.7 to about 3.7
+(d) rose from about 1.7 to about 1.9
+ANSWER: c
+WHY: $68.3/39.2\approx1.74$ in 1984 and $127.9/34.7\approx3.69$ in 1994. Option (b) compares each group with itself over time instead of the two groups, and (d) uses only the growth of the healthy group. The widening gap is consistent with the productive time hypothesis (BHT Section 4.7).
+
+MC: Goldman and Smith find that better adherence fully explains the education gap in outcomes among HIV patients. Which further finding would most weaken the efficient producer reading of this evidence?
+(a) Less educated patients report missing more doses
+(b) Among patients with the same perfect adherence, the more educated still have much better outcomes
+(c) Adherence requires keeping track of several drugs each day
+(d) Patients with more education are also richer
+ANSWER: b
+WHY: The efficient producer hypothesis says the more educated get more health from the same treatment by managing it better (BHT Section 4.3). If outcomes still differed among patients with identical adherence, adherence could not be the channel. Options (a) and (c) are part of the supporting evidence. Option (d) suggests a rival channel but does not contradict the finding that adherence accounts for the gap.
+
+MC: Lleras-Muney uses changes in compulsory schooling laws to estimate the effect of education on health. At her largest estimate, a law that raised schooling by 2 years for one cohort would raise that cohort's life expectancy by up to
+(a) 3.4 years
+(b) 1.7 years
+(c) 0.85 years
+(d) 5.1 years
+ANSWER: a
+WHY: Lleras-Muney estimates that an extra year of schooling caused as much as a 1.7-year increase in life expectancy for the 1925 birth cohort (BHT Section 4.3), so 2 years give up to $2\times1.7=3.4$ years if the effect is linear. Option (b) ignores the second year and (c) divides instead of multiplying. The estimate is causal because the law changed schooling for reasons unrelated to individual traits.
+
+MC: The thrifty phenotype hypothesis predicts that the adult harm from deprivation in utero is largest for people who
+(a) remain in conditions of scarcity throughout life
+(b) were born after the famine ended
+(c) receive universal health insurance
+(d) grow up in an environment of abundant food
+ANSWER: d
+WHY: Early scarcity switches on traits that help the body store energy; these pay off if food stays scarce but raise the risk of obesity and diabetes once food is plentiful (BHT Section 4.4, Definition 4.2). Option (a) describes the environment the thrifty genes are adapted to. The Dutch famine was a good test because exposed babies grew up in postwar abundance.
+
+MC: Currie and Walker report that E-ZPass lowered the probability of low birth weight within two kilometers of a toll plaza by 11.8 percent. If the low-birth-weight rate there had been 8 percent before E-ZPass, it would become about
+(a) 7.14 percent
+(b) 7.06 percent
+(c) 8.94 percent
+(d) 0 percent
+ANSWER: b
+WHY: A relative fall of 11.8 percent gives $8\times(1-0.118)\approx7.06$ percent (BHT Section 4.4; the 8 percent baseline is illustrative). Option (a) uses the 10.8 percent fall in prematurity, (c) adds instead of subtracting, and (d) treats 11.8 percent as percentage points.
+
+MC: Which piece of evidence in the chapter speaks most directly against the claim that unequal access to care explains health disparities?
+(a) Low self-reported access predicts preventable hospitalizations
+(b) In the Oregon study, Medicaid raised diagnosis and treatment of diabetes
+(c) Sharp health gradients among British civil servants who all use the National Health Service
+(d) Richer children are more often diagnosed with hay fever
+ANSWER: c
+WHY: In the Whitehall studies access to care is the same across grades, yet morbidity and mortality still fall with grade (BHT Section 4.6). Options (a) and (b) show that access affects health, which supports the access hypothesis as a partial explanation. Option (d) concerns diagnosis, not the source of the gradient.
+
+MC: In BHT Table 4.3, what is the relative risk of obstructive airway disease for those exposed to the famine in early gestation compared with those conceived after it?
+(a) 1.53
+(b) 5.7
+(c) 0.87
+(d) 1.33
+ANSWER: d
+WHY: The rates are 23.0 and 17.3 percent, so the relative risk is $23.0/17.3\approx1.33$ (BHT Section 4.4). Option (b) is the difference in percentage points, (a) divides by the late-gestation rate of 15.0 percent, and (c) is the ratio of late-gestation exposure to the unexposed. Late-gestation exposure even shows a lower rate than no exposure: not all results in the table point the same way, and not all are significant.
+
+MC: Twin and sibling studies of birth weight, such as those of Black and coauthors, remove which source of bias in the comparison of heavier and lighter babies?
+(a) Family background shared by the siblings, such as parental income and home environment
+(b) Differences in birth weight within the pair
+(c) Differences in health insurance across countries
+(d) Measurement error in birth weight
+ANSWER: a
+WHY: Siblings have the same parents and usually the same home, so comparing them differences out family-level confounders (BHT Section 4.7). Variation in birth weight within the pair is what the method uses to estimate the effect, not a bias it removes. The studies are not designed to solve measurement error or cross-country differences.
+
+MC: Why does BHT discuss disparities among British ducal families since 1750 and among baboons in East Africa?
+(a) To show that disparities are smaller in historical and non-human settings
+(b) To show that a theory specific to modern health systems, such as discrimination by doctors, cannot explain every disparity
+(c) To estimate the causal effect of income on health
+(d) To show that disparities arise only from differences in access to care
+ANSWER: b
+WHY: BHT Section 4.1 uses these cases to argue that a mechanism tied to modern medicine, such as discrimination by doctors, cannot account for gaps among nobles before 1900 or among animals, which calls for explanations that work across settings. The stress mechanism of BHT Section 4.6 is a candidate that works in both settings. The comparisons are descriptive, so they do not identify a causal effect.
+
+MC: In BHT's Grossman-model account of the direct income hypothesis (Figure 4.9), why does the higher-wage person R have an MEC curve that lies above the lower-wage person's?
+(a) A higher wage lowers R's depreciation rate
+(b) A higher wage makes R more patient
+(c) A higher wage makes R a more efficient producer of health
+(d) R's time is more valuable, so each healthy day is worth more to her
+ANSWER: d
+WHY: In BHT Section 4.5 a higher wage both widens R's production possibilities and makes each day of good health worth more in earnings, so her return to health capital is higher at every level of $H$. Options (a), (b) and (c) describe the allostatic load, Fuchs and efficient producer hypotheses, in which the wage plays no role.
+
+MC: Let productive time be $TP(H)=365-100/H$ days a year. One more unit of health raises productive time for person A from $H=1$ to $H=2$, and for person B from $H=4$ to $H=5$, by
+(a) 50 and 50 days
+(b) 5 and 50 days
+(c) 50 and 5 days
+(d) 25 and 20 days
+ANSWER: c
+WHY: $TP(2)-TP(1)=315-265=50$ and $TP(5)-TP(4)=345-340=5$. As in BHT Figure 4.12, the function is concave, so health improvements matter much more for productive time at low health. Option (b) reverses the two people.
+
+MC: Suppose 17-year-olds who will go to college smoke at 20 percent and those who will not smoke at 35 percent; at age 24 the rates are 18 and 38 percent. What share of the age-24 smoking gap was already present at 17?
+(a) 75 percent
+(b) 25 percent
+(c) 100 percent
+(d) 133 percent
+ANSWER: a
+WHY: The gap is $35-20=15$ points at 17 and $38-18=20$ points at 24, so $15/20=75$ percent was present before anyone went to college (the numbers are illustrative). Option (b) is the share that opened up later, and (d) inverts the ratio. A large gap before college favors the Fuchs explanation tested by Farrell and Fuchs (BHT Section 4.8).

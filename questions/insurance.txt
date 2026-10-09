@@ -1,0 +1,201 @@
+# BHT Chapter 7: Demand for insurance. App-only questions, original material.
+
+TF: A person with utility $U(I)=\sqrt{I}$ prefers a sure \$200 to a lottery that pays \$500 or \$0 with equal probability, even though the sure amount is \$50 below the lottery's expected value.
+ANSWER: True
+WHY: The lottery's expected utility is $0.5\sqrt{500}+0.5\sqrt{0}\approx 11.18$, while $\sqrt{200}\approx 14.14$. The sure amount that gives the same utility as the lottery is only \$125, so any sure sum above \$125 is preferred (BHT Section 7.3). Comparing expected values alone would give the wrong answer, because a concave utility function penalizes the spread of outcomes.
+
+TF: If two actuarially fair contracts both give full insurance to the same individual, they must charge the same premium.
+ANSWER: True
+WHY: Full insurance pins down the payout, $q=I_H-I_S$, and fairness pins down the premium given the payout, $r=pq$. For a given individual with fixed $p$, $I_H$ and $I_S$ there is therefore only one fair and full contract, the ideal contract of BHT Section 7.5.
+
+TF: Of two contracts offered to the same person, the one with the higher premium is necessarily the less actuarially fair.
+ANSWER: False
+WHY: Fairness depends on the gap $r-pq$, not on $r$ alone (BHT Section 7.4). A contract with a higher premium can be fairer if it also pays a proportionally larger amount $q$; for example, with $p=0.1$, a contract with $r=\$2{,}000$ and $q=\$20{,}000$ is fair, while one with $r=\$1{,}500$ and $q=\$10{,}000$ is unfair.
+
+TF: An actuarially fair contract leaves the insured person's expected income unchanged, whether it is full or partial.
+ANSWER: True
+WHY: Expected income with insurance is $p(I_S-r+q)+(1-p)(I_H-r)=E[I]-(r-pq)$. With $r=pq$ the last term is zero for any payout $q$ (BHT Section 7.4). Fullness changes how income is spread across the two states, not its expected value.
+
+TF: Without insurance, expected utility falls at an increasing rate as the probability of sickness $p$ rises from 0 to 1.
+ANSWER: False
+WHY: Expected utility $pU(I_S)+(1-p)U(I_H)$ is linear in $p$, because $U(I_S)$ and $U(I_H)$ do not depend on $p$; it falls at the constant rate $U(I_H)-U(I_S)$ (BHT Section 7.3, Figure 7.2). The curvature of $U$ affects the comparison with $U(E[I])$, not the shape of expected utility as a function of $p$.
+
+TF: A contract that pays $q>I_H-I_S$ when sick leaves the individual with a higher income when sick than when healthy.
+ANSWER: True
+WHY: With the contract, $I_S'-I_H'=(I_S-r+q)-(I_H-r)=q-(I_H-I_S)$, which is positive when $q$ exceeds the income loss. The premium is paid in both states and cancels out (BHT Section 7.4). Such a contract over-insures and, like partial insurance, fails to achieve state independence.
+
+TF: The insurer's expected profit on a contract depends on the buyer's incomes $I_H$ and $I_S$.
+ANSWER: False
+WHY: Expected profit is $(1-p)r+p(r-q)=r-pq$ (BHT Eq. 7.11): it depends only on the probability of sickness, the premium and the payout. Incomes matter for whether a contract is full, through $q=I_H-I_S$, but not for whether it is fair.
+
+TF: Suppose an insurer charges $r=1.2\,pq$ on every full contract. Two people have the same incomes $I_H$ and $I_S$ but different probabilities of sickness. Both pay the same markup over the fair premium, in dollars.
+ANSWER: False
+WHY: The markup is $r-pq=0.2\,pq$, and with the same $q=I_H-I_S$ it grows with $p$. The person more likely to be sick pays a larger dollar markup and loses more expected income, although the markup is the same proportion of the fair premium for both (BHT Section 7.4).
+
+TF: Risk aversion in BHT's model requires that utility increase with income at an increasing rate.
+ANSWER: False
+WHY: Risk aversion follows from a declining marginal utility of income, $U''(I)<0$ (BHT Sections 7.1 and 7.3): utility rises with income but at a decreasing rate. A utility function rising at an increasing rate is convex and describes a risk-loving person, for whom the chord between the two outcomes lies above the curve.
+
+TF: For a risk-averse person, of two actuarially fair partial contracts, the one with the larger payout $q$ (still no larger than $I_H-I_S$) gives higher expected utility.
+ANSWER: True
+WHY: Both contracts leave expected income at $E[I]$, and the one with the larger payout leaves a smaller gap between income when healthy and income when sick. With the price held at zero, more coverage only narrows the spread between the two states, and a concave utility function rewards a smaller spread around the same mean (BHT Sections 7.4 and 7.5, Figure 7.4).
+
+MC: An individual earns \$60,000 if healthy and \$20,000 if sick, and the probability of sickness is $p=0.2$. What is her expected income?
+(a) \$28,000
+(b) \$40,000
+(c) \$52,000
+(d) \$48,000
+ANSWER: c
+WHY: $E[I]=pI_S+(1-p)I_H=0.2(20{,}000)+0.8(60{,}000)=\$52{,}000$ (BHT Eq. 7.4). Option (a) swaps the weights, putting 0.8 on the sick income; option (b) is the simple average, which is correct only when $p=0.5$.
+
+MC: For the same individual (\$60,000 if healthy, \$20,000 if sick, $p=0.2$), what premium does the ideal contract charge?
+(a) \$8,000
+(b) \$12,000
+(c) \$32,000
+(d) \$10,400
+ANSWER: a
+WHY: The ideal contract is full, $q=I_H-I_S=\$40{,}000$, and fair, $r=pq=0.2\times 40{,}000=\$8{,}000$ (BHT Section 7.5, Table 7.1). She then has \$52,000 in both states, her expected income. Option (c) weights the payout by $1-p$ instead of $p$.
+
+MC: A person with $U(I)=\sqrt{I}$ earns \$10,000 if healthy and \$2,500 if sick, each with probability 0.5. What is the highest premium she would pay for a contract that pays \$7,500 if she is sick?
+(a) \$3,750
+(b) \$4,375
+(c) \$625
+(d) \$5,625
+ANSWER: b
+WHY: Uninsured, $E[U]=0.5(100)+0.5(50)=75$, so a sure income of $75^2=\$5{,}625$ is as good as her risky prospect. The contract is full, so she ends with $10{,}000-r$ in both states, and she buys as long as $10{,}000-r\ge 5{,}625$, that is, $r\le\$4{,}375$. Option (a) is the fair premium $pq$, and (c) is only the markup over it that she accepts, not the premium.
+
+MC: In the income-utility diagram, $U(I_S)=40$ and $U(I_H)=100$. If the probability of sickness is 0.25, what is the individual's expected utility without insurance?
+(a) 55
+(b) 70
+(c) 25
+(d) 85
+ANSWER: d
+WHY: $E[U]=0.25(40)+0.75(100)=85$ (BHT Eq. 7.8): the point lies on the chord one quarter of the way from H toward S. Option (a) puts the weight 0.75 on the sick state, and (b) is the midpoint of the chord, which corresponds to $p=0.5$.
+
+MC: A person with $p=0.1$, $I_H=\$50{,}000$ and $I_S=\$20{,}000$ buys a contract with premium \$3,000 and payout \$20,000. What are the insurer's expected profit and the type of contract?
+(a) \$1,000; unfair and partial
+(b) \$3,000; unfair and partial
+(c) \$1,000; unfair and full
+(d) \$0; fair and partial
+ANSWER: a
+WHY: Expected profit is $r-pq=3{,}000-0.1(20{,}000)=\$1{,}000$ (BHT Eq. 7.11), so the contract is unfair. The payout is below the income loss of \$30,000, so it is partial (BHT Table 7.1). Option (b) forgets that the insurer expects to pay out $pq$, and (c) compares the payout with the sick income instead of with the income loss.
+
+MC: With the same contract (premium \$3,000, payout \$20,000; $I_H=\$50{,}000$, $I_S=\$20{,}000$), what is the individual's income if she falls sick?
+(a) \$40,000
+(b) \$17,000
+(c) \$37,000
+(d) \$47,000
+ANSWER: c
+WHY: $I_S'=I_S-r+q=20{,}000-3{,}000+20{,}000=\$37{,}000$ (BHT Eq. 7.9). The premium is paid in both states, so (a) is wrong for leaving it out and (b) for leaving out the payout. Option (d) is her income if healthy, \$10,000 above the sick income because the contract is partial.
+
+MC: A person with $U(I)=\sqrt{I}$ earns \$9,700 if healthy and \$3,300 if sick, each with probability 0.5. Contract P is fair and pays half of the income loss. What is the largest markup over the fair premium she would accept on a full contract instead of P?
+(a) \$421
+(b) \$1,600
+(c) \$321
+(d) \$100
+ANSWER: d
+WHY: P pays $q=3{,}200$ for $r=1{,}600$, leaving \$8,100 or \$4,900, so $E[U]^P=0.5(90)+0.5(70)=80$, equal to the utility of a sure \$6,400. Expected income is \$6,500, so a full contract is preferred as long as its markup is below $6{,}500-6{,}400=\$100$, the gap $E[I]^P-E[I]^{F'}$ of BHT Section 7.5. Option (a) is the most she would pay to remove all risk if the alternative were no insurance, not contract P.
+
+MC: An insurer sells a contract with premium \$900 and payout \$6,000 to a person whose probability of sickness is 0.12. What is its expected profit on this contract?
+(a) \$108
+(b) \$180
+(c) \$900
+(d) −\$5,100
+ANSWER: b
+WHY: Expected profit is $r-pq=900-0.12(6{,}000)=\$180$ (BHT Eq. 7.11). Option (c) ignores the expected payout, and (d) is the insurer's profit only in the sick state, which occurs with probability 0.12.
+
+MC: A person earns \$45,000 if healthy and \$30,000 if sick, with $p=0.08$. Which contract $(q, r)$ is the ideal contract for her?
+(a) $q=\$15{,}000$, $r=\$1{,}200$
+(b) $q=\$30{,}000$, $r=\$2{,}400$
+(c) $q=\$15{,}000$, $r=\$13{,}800$
+(d) $q=\$45{,}000$, $r=\$3{,}600$
+ANSWER: a
+WHY: The ideal contract is full, $q=I_H-I_S=\$15{,}000$, and fair, $r=pq=0.08\times15{,}000=\$1{,}200$ (BHT Table 7.1). Option (b) sets the payout equal to the sick income, which over-insures her; option (c) uses $(1-p)q$ as the premium.
+
+MC: A person with $U(I)=\sqrt{I}$ earns \$14,400 if healthy and \$3,600 if sick, with probability of sickness 0.25. Which sure income gives her the same expected utility as being uninsured?
+(a) \$11,700
+(b) \$11,025
+(c) \$9,000
+(d) \$10,800
+ANSWER: b
+WHY: $E[U]=0.25(60)+0.75(120)=105$, and the sure income with utility 105 is $105^2=\$11{,}025$. This is below expected income, $0.25(3{,}600)+0.75(14{,}400)=\$11{,}700$, option (a), because the person is risk-averse (BHT Section 7.3, Definition 7.3); the gap of \$675 is what she would give up to remove the risk.
+
+MC: Which property of the utility function makes an individual risk-averse in BHT's model?
+(a) $U'(I)>0$
+(b) $U(E[I])<E[U(I)]$
+(c) $U''(I)<0$
+(d) $U(I_H)>U(I_S)$
+ANSWER: c
+WHY: A declining marginal utility of income, $U''<0$, makes the utility curve concave, so it lies above the chord between any two outcomes and $U(E[I])>E[U(I)]$ (BHT Sections 7.1 and 7.3). Option (b) reverses that inequality and describes a risk-loving person; (a) and (d) only say that more income is better.
+
+MC: Why can a risk-averse person not reach point A′ of BHT Figure 7.3, the utility of her expected income, without buying insurance?
+(a) Because insurers always charge more than the fair premium
+(b) Because her concave utility puts A′ below the chord SH
+(c) Because her expected income falls when she becomes risk-averse
+(d) Because she is either healthy or sick, and on her own she cannot move income from the healthy state to the sick state
+ANSWER: d
+WHY: A′ requires receiving $E[I]$ in both states, which means taking income from the healthy outcome and adding it to the sick one; an insurance contract does exactly that transfer (BHT Section 7.4). Option (b) has the geometry backward: with a concave utility A′ lies above the chord, which is why she wants to reach it.
+
+MC: Which condition holds for every contract sold in a perfectly competitive insurance market, with free entry and exit, in BHT's model?
+(a) $r=pq$
+(b) $r=q$
+(c) $r=(1-p)q$
+(d) $q=I_H-I_S$
+ANSWER: a
+WHY: Entry competes away positive expected profits and losses drive insurers out, so $E[\Pi]=r-pq=0$, which is actuarial fairness (BHT Section 7.4, Definition 7.4). Competition determines the price, not the quantity: option (d), full coverage, is a separate property that competition alone does not impose.
+
+MC: Which pair of contracts can be ranked for every risk-averse consumer, without knowing more about her utility function?
+(a) A fair partial contract and an unfair full contract
+(b) A full contract with a markup of \$100 and a full contract with a markup of \$200
+(c) A fair contract paying \$5,000 and an unfair contract paying \$8,000, both partial
+(d) An unfair partial contract and no insurance
+ANSWER: b
+WHY: The two full contracts in (b) give the same certainty, and the one with the lower markup gives \$100 more in every state, so it is preferred by anyone who likes income (BHT Section 7.5). In (a) and (c) one contract is better on price and the other on quantity, so the ranking depends on the degree of risk aversion; in (d) it depends on whether the reduction in risk is worth the markup.
+
+MC: In BHT Figure 7.2, where is point B, the expected utility when the probability of sickness is 0.75?
+(a) On the utility curve above $E[I]_{0.75}$
+(b) On the chord SH, one quarter of the way from H toward S
+(c) On the chord SH, three quarters of the way from H toward S
+(d) At point S, since sickness is the more likely outcome
+ANSWER: c
+WHY: Expected utility $0.75\,U(I_S)+0.25\,U(I_H)$ is a weighted average of the endpoints, so it lies on the chord, three quarters of the way from H to S (BHT Section 7.3). Option (a) is the utility of expected income, which the person cannot obtain without insurance; option (b) corresponds to $p=0.25$, point A.
+
+MC: A risk-neutral individual (linear utility) is offered a full contract with a markup of \$50 over the fair premium. What does she do?
+(a) She buys it, because it removes all income risk
+(b) She is indifferent, because it is full
+(c) She buys it only if her probability of sickness exceeds 0.5
+(d) She does not buy it, because it lowers her expected income and she values only expected income
+ANSWER: d
+WHY: With linear utility, expected utility is a linear function of expected income, so removing risk is worth nothing to her (BHT Section 7.3). The markup lowers her expected income by \$50, so she is better off uninsured. Option (a) is the reasoning of a risk-averse person.
+
+MC: An insurer raises the premium $r$ of a contract, keeping the payout $q$ and the buyer's probability $p$ unchanged. In BHT's terms of price and quantity, what happens?
+(a) The price rises and the quantity of insurance is unchanged
+(b) The quantity falls and the price is unchanged
+(c) Both price and quantity rise
+(d) Neither changes, since the contract still pays $q$
+ANSWER: a
+WHY: The price of a contract is the markup $r-pq$, which rises with $r$, while the quantity is its fullness, set by how close $q$ is to $I_H-I_S$, which does not change (BHT Section 7.4). Option (d) confuses the payout with the price; the premium matters because it is paid in both states.
+
+MC: The same contract, with premium $r$ and payout $q$, is offered to two people who differ only in their probability of sickness. For whom is it more actuarially unfair?
+(a) For the person with the higher probability of sickness
+(b) For the person with the lower probability of sickness
+(c) For neither, since $r$ and $q$ are the same
+(d) It depends on their incomes when healthy and sick
+ANSWER: b
+WHY: The markup $r-pq$ is larger when $p$ is smaller, because the lower-risk person expects to collect less (BHT Section 7.4). Option (c) treats fairness as a property of the contract alone, but it depends on who buys it; option (d) confuses fairness with fullness, which is the property that depends on incomes.
+
+MC: A person earns \$70,000 if healthy and \$40,000 if sick. Which contracts give her full insurance?
+(a) Only the contract with $q=\$30{,}000$ and $r=pq$
+(b) Any contract with $q=\$40{,}000$
+(c) Any contract with $r=\$30{,}000$
+(d) Any contract with $q=\$30{,}000$, whatever its premium
+ANSWER: d
+WHY: Full insurance means $I_S'=I_H'$, and since the premium is paid in both states this requires only $q=I_H-I_S=\$30{,}000$ (BHT Section 7.4, Definition 7.5). The premium determines whether the contract is fair, not whether it is full, so (a) describes only the ideal contract; (b) pays the sick income rather than the income loss.
+
+MC: In BHT Figure 7.6, contract P is fair but partial and contract F′ is full but unfair, with $E[U]^{F'}=E[U]^P$. What does $E[I]^P-E[I]^{F'}$ measure?
+(a) The insurer's expected profit on contract P
+(b) The premium of contract F′
+(c) The most expected income she would give up to remove the risk that P leaves
+(d) The risk premium of being uninsured
+ANSWER: c
+WHY: F′ removes all risk and leaves her exactly as well off as P, so any full contract costing her more expected income than F′ would lose to P; the gap is her ceiling on what the extra certainty of full coverage is worth once P is on offer (BHT Section 7.5). Option (a) is wrong because P is fair and earns zero expected profit; (d) would compare F′ with no insurance, which carries more risk than P and so gives a larger amount.

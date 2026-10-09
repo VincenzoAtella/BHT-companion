@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 8 (Adverse selection: Akerlof's market for lemons). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: With the utility functions of equation (8.1) and car quality uniform on $[0,100]$, if buyers could observe the quality of each car, every car of positive quality could be sold at a price that makes both its seller and its buyer better off.
+ANSWER: True
+WHY: A buyer values a car of quality $X$ at $\tfrac32X$ and its seller at $X$, so any price between $X$ and $1.5X$ is a Pareto improvement for every car with $X>0$ (BHT Section 8.2). When quality is observable, cars of different quality are priced separately, so no mutually beneficial sale is blocked. The market fails only because buyers cannot tell cars apart.
+
+TF: With the utility functions of equation (8.1), the sale of a car at a price exactly equal to its seller's valuation cannot be a Pareto improvement, because the seller gains nothing from it.
+ANSWER: False
+WHY: By equation (8.2) the seller's change in utility is $P-X=0$, so he is no worse off, while the buyer gains $\tfrac32X-X=\tfrac12X>0$ for any car of positive quality. Definition 8.3 requires only that one party gain and nobody lose (BHT Section 8.2). This is also why sellers offer every car with $X\le P$, weak inequality included.
+
+TF: With the utility functions of equation (8.1), a buyer likes a car of quality 40 for sure exactly as much as an even chance of getting a car of quality 20 or one of quality 60.
+ANSWER: True
+WHY: Utility is linear in quality: $\tfrac32\cdot40=60$ and $0.5\cdot\tfrac32\cdot20+0.5\cdot\tfrac32\cdot60=60$. A buyer cares only about the expected quality of the car she gets, which is why condition (8.5) uses $E[X]$ (BHT Section 8.2). The market fails without any risk aversion: the problem is the information gap, not a dislike of risk.
+
+TF: Because of adverse selection, the cars offered at a price $P$ below 100 are on average of higher quality than the cars owned by all sellers, since only cars worth selling are put on the market.
+ANSWER: False
+WHY: The owners who stay out are those whose cars are worth more than $P$, so the cars on offer are the worst ones, with average quality $P/2$, below the population average of 50 (BHT Section 8.2, equation (8.3)). The withdrawal removes the top of the distribution, not the bottom.
+
+TF: In the insurance market of BHT Section 8.3, customers are assumed to be risk-averse, and that is why the sickest customers are the most eager to buy.
+ANSWER: False
+WHY: BHT assume risk-neutral customers who buy if and only if the premium is below their own expected health costs $X_i$ (Section 8.3). The sickest buy because the policy is a good deal for them in expected value, not because they dislike risk. BHT leave risk aversion to Chapter 9.
+
+TF: In BHT's death spiral example, moving the premium from \$10,000 to \$15,000 halves the insurer's loss per enrollee and also halves the share of the population that buys insurance.
+ANSWER: True
+WHY: At \$10,000 half of the population buys and costs \$15,000 on average, a loss of \$5,000; at \$15,000 a quarter buys and costs \$17,500 on average, a loss of \$2,500 (BHT Section 8.3). The higher premium cuts the loss per enrollee but drives out half of the enrollees again.
+
+TF: If buyers value cars at $\tfrac52$ times what sellers do, as in equation (8.8), they gain in expectation from buying a car at any price, however high.
+ANSWER: False
+WHY: For prices up to 100 the expected gain is $\tfrac52\cdot\tfrac P2-P=\tfrac P4>0$, but once every car is offered the average quality stops rising at 50, while the price keeps rising (BHT Section 8.4). Above a certain price the buyers' expected value of a car falls short of the price, so trade stops there.
+
+TF: With the minimum quality of 10 and the utility functions of equation (8.1), a price above 30 would bring better cars to the market and make buyers willing to buy.
+ANSWER: False
+WHY: A higher price does bring better cars, but the average quality on offer rises by only half of the price increase, and buyers value it at $\tfrac32$ of that, so their expected gain $\tfrac{15}2-\tfrac P4$ falls as $P$ rises (BHT Section 8.4, equations (8.13)–(8.14)). It is negative for every price above 30.
+
+TF: When buyers value cars at $\tfrac52$ times what sellers do, a binding price ceiling keeps the best cars off the market while leaving the buyers who still find a car no better off.
+ANSWER: True
+WHY: Under the ceiling, owners of cars worth more than the ceiling will not sell, so trades that would have benefited both sides do not happen (BHT Section 8.4). The buyers of the remaining cars face the same logic as before and gain nothing from the cap. A rule meant to protect buyers thus costs efficiency without helping them.
+
+TF: With the minimum quality of 10 and the utility functions of equation (8.1), buyers are exactly indifferent about buying a car at a price of 30.
+ANSWER: True
+WHY: At $P=30$ the cars on offer are uniform on $[10,30]$ with average quality 20, which buyers value at $1.5\times20=30$, equal to the price (BHT Section 8.4, equation (8.14)). This is the upper end of the range of prices at which the market works; below 30 buyers gain strictly.
+
+MC: In the opening example of BHT Chapter 8, a seemingly healthy man asks for a large life insurance policy that covers only the next day. What should make the insurance agent most cautious?
+(a) The request itself suggests that he knows something about his risk of dying that the agent cannot observe
+(b) A one-day policy is too short to spread risk across many customers
+(c) A risk-neutral customer would never buy insurance at a fair price
+(d) The agent cannot price a policy whose payout is so large
+ANSWER: a
+WHY: Asking for a large payout that matters only if he dies within a day is evidence of private information about a high risk of dying, and a customer willing to accept a high price reveals even more (BHT chapter introduction). The issue is the information gap between the parties. Option (b) is wrong because pooling across customers works fine when risks are known to both sides.
+
+MC: Which statement matches BHT's definition of adverse selection?
+(a) The change in behavior of people once they are insured
+(b) Buyers and sellers knowing different things about the quality of what they trade
+(c) A market tilted toward low-quality goods or contracts because, with hidden quality, the better ones are withheld
+(d) A cycle of rising premiums and shrinking enrollment that ends with no insurance market
+ANSWER: c
+WHY: Adverse selection is the result of asymmetric information that leaves mostly low-quality goods on the market, because the best are withheld (BHT Definition 8.2, Section 8.1). Option (b) is the definition of information asymmetry (Definition 8.1), which is its cause. Option (d) is the death spiral, one consequence of it.
+
+MC: In the baseline Akerlof market (quality uniform on $[0,100]$, utilities of equation (8.1)), which describes the cars on offer at a candidate price of 70?
+(a) Uniform on $[70,100]$, with average quality 85
+(b) Uniform on $[0,70]$, with average quality 35
+(c) Uniform on $[0,100]$, with average quality 50
+(d) Uniform on $[0,70]$, with average quality 52.5
+ANSWER: b
+WHY: A seller offers his car only if $X\le70$, by equation (8.2), so the set of cars on offer is $\{i\mid X_i\le70\}$ as in (8.3); it is still uniform, with mean $(0+70)/2=35$ by equation (8.6) (BHT Section 8.2). Option (a) reverses the selection, keeping the cars that are withheld, and (c) ignores the withdrawal. Option (d) reports $\tfrac32\cdot35$, the buyers' valuation of the average car, not its quality.
+
+MC: With the utility functions of equation (8.1) and full information about quality, a car of quality 40 changes hands at a price that must lie between
+(a) 0 and 40
+(b) 20 and 40
+(c) 40 and 100
+(d) 40 and 60
+ANSWER: d
+WHY: The seller gains if $P\ge40$, by equation (8.2), and the buyer gains if $\tfrac32\cdot40=60\ge P$, so both gain for any price in $[40,60]$ (BHT Section 8.2). Option (c) ignores that the buyer's valuation of this car is only 60. Under asymmetric information this range is irrelevant, because buyers do not know they are getting quality 40.
+
+MC: Both parties know that a car has quality 60, and it sells for 70. With the utility functions of equation (8.1), the changes in utility are
+(a) seller $-10$, buyer $+20$
+(b) seller $+10$, buyer $+20$
+(c) seller $+10$, buyer $-10$
+(d) seller $+10$, buyer $+30$
+ANSWER: b
+WHY: The seller gains $P-X=70-60=10$ by equation (8.2), and the buyer gains $\tfrac32\cdot60-70=90-70=20$, so the sale is a Pareto improvement (BHT Section 8.2, Definition 8.3). Option (c) compares the price with the seller's valuation for the buyer. Option (d) uses $\tfrac32\cdot 60-60$, forgetting that the buyer pays 70.
+
+MC: In the baseline Akerlof market (quality uniform on $[0,100]$, utilities of equation (8.1)), what is a buyer's expected change in utility from buying a car at a candidate price of 80?
+(a) $-20$
+(b) $-5$
+(c) $-40$
+(d) $+20$
+ANSWER: a
+WHY: At $P=80$ only cars with $X\le80$ are offered, with average quality 40, which buyers value at $1.5\times40=60$, so the expected gain is $60-80=-20$, which equals $-P/4$ (BHT Section 8.2). Option (b) uses the average of all cars, 50, and forgets that sellers withhold the cars worth more than 80. Option (c) values the car at the seller's valuation instead of the buyer's.
+
+MC: In the same baseline market, consider a candidate price of 120. A buyer's expected change in utility from buying a car is
+(a) $-30$
+(b) $0$
+(c) $-15$
+(d) $-45$
+ANSWER: d
+WHY: At any price above 100 every car is offered, so the average quality is 50 and buyers value a car at 75; the expected gain is $75-120=-45$ (BHT Section 8.2). Option (a) applies $-P/4$, which holds only for prices up to 100, where the average quality on offer is $P/2$. Raising the price above 100 brings no better cars.
+
+MC: In the baseline market at $P=50$, a buyer buys anyway and happens to get a car of quality 35. Her realized change in utility is
+(a) $-12.5$
+(b) $-15$
+(c) $+2.5$
+(d) $+17.5$
+ANSWER: c
+WHY: Her realized gain is $\tfrac32\cdot35-50=52.5-50=2.5$ (BHT Section 8.2, equation (8.4) with a known $X_{n+1}$). Option (a) is the expected gain over all cars on offer, which is what she compares before buying; some cars on offer would leave her better off and others worse off. Option (b) uses the seller's valuation of the car.
+
+MC: In BHT's insurance market, expected yearly costs $X_i$ are uniform on \$0–\$20,000 and customers buy if the premium is below $X_i$. If the insurer charges \$12,000, its expected result per enrollee is
+(a) a loss of \$4,000
+(b) a profit of \$2,000
+(c) a loss of \$6,000
+(d) a loss of \$8,000
+ANSWER: a
+WHY: Only customers with costs between \$12,000 and \$20,000 buy, and their average cost is \$16,000, so the insurer loses \$4,000 on each (BHT Section 8.3). Option (b) compares the premium with the average cost of the whole population, \$10,000, ignoring that the healthier customers do not buy. Option (d) compares it with the cost of the sickest customer.
+
+MC: In the same market, the insurer starts at a premium of \$8,000 and each year sets the premium equal to the previous year's average cost per enrollee. What is the premium in the third year?
+(a) \$14,000
+(b) \$17,000
+(c) \$18,500
+(d) \$20,000
+ANSWER: b
+WHY: The enrollees at \$8,000 cost $(8{,}000+20{,}000)/2=14{,}000$ on average, which becomes the second-year premium; at \$14,000 they cost $(14{,}000+20{,}000)/2=17{,}000$ (BHT Section 8.3). Option (a) is the second year and (c) the fourth. The premium approaches \$20,000 but never reaches it in a finite number of years.
+
+MC: Change BHT's insurance example so that expected costs are uniform on \$4,000–\$20,000, with everything else the same. At a premium of \$12,000, what share of the population buys, and what is the insurer's result per enrollee?
+(a) 40 percent; a loss of \$4,000
+(b) 50 percent; it breaks even, since \$12,000 is the average cost
+(c) 50 percent; a loss of \$8,000
+(d) 50 percent; a loss of \$4,000
+ANSWER: d
+WHY: Buyers are those with costs between \$12,000 and \$20,000, which is half of the range from \$4,000 to \$20,000, and they cost \$16,000 on average, so the insurer loses \$4,000 per enrollee (BHT Section 8.3). Option (b) would hold only if everyone bought; the healthier half does not. Option (a) uses the share from BHT's original range of \$0–\$20,000.
+
+MC: In BHT's death spiral example, what is the insurer's expected loss per member of the whole population (insured or not) in the second year, at a premium of \$15,000?
+(a) \$2,500
+(b) \$1,250
+(c) \$625
+(d) \$5,000
+ANSWER: c
+WHY: A quarter of the population buys at \$15,000 and the insurer loses \$2,500 on each, so the loss per member of the population is $0.25\times2{,}500=625$ dollars, against $0.5\times5{,}000=2{,}500$ in the first year (BHT Section 8.3). Option (a) is the loss per enrollee. The total loss falls quickly, but only because the market is shrinking.
+
+MC: In BHT's death spiral, with costs uniform on \$0–\$20,000 and each year's premium set at the previous year's average cost, what happens to the gap between the average cost of enrollees and the premium from one year to the next?
+(a) It stays constant at \$5,000
+(b) It doubles
+(c) It halves
+(d) It falls to zero after one adjustment
+ANSWER: c
+WHY: At premium $P$ the gap is $\tfrac{P+20{,}000}2-P=\tfrac{20{,}000-P}2$, and the next premium is halfway to \$20,000, so the gap halves each year: \$5,000, \$2,500, \$1,250 (BHT Section 8.3). Option (d) is the consultants' mistake: it assumes the pool of enrollees stays the same after the premium rises.
+
+MC: In the insurance version of the Akerlof model, which assumption plays the role of the car buyers' inability to observe quality?
+(a) The insurer cannot tell healthy from sick customers and must sell one policy at one premium to anyone who wants it
+(b) Customers are risk-neutral
+(c) Expected costs are uniformly distributed
+(d) The policy covers all health care costs during the year
+ANSWER: a
+WHY: The spiral starts because the insurer cannot price each customer at his own expected cost and must accept anyone willing to pay the single premium, as car buyers face one price for cars they cannot tell apart (BHT Section 8.3). Option (b) only fixes how customers decide; the selection happens because each one compares the single premium with his own costs. Option (c) makes the numbers easy but is not needed for the unraveling.
+
+MC: Buyers value cars at $\tfrac52$ times what sellers do, as in equation (8.8), with quality uniform on $[0,100]$. At a price of 60, a buyer's expected change in utility is
+(a) $-15$
+(b) $+15$
+(c) $+90$
+(d) $+65$
+ANSWER: b
+WHY: At $P=60$ the cars on offer have average quality 30, which buyers value at $2.5\times30=75$, so the expected gain is $75-60=15=P/4$ (BHT Section 8.4, equation (8.11)). Option (a) uses the valuation $\tfrac32$ of equation (8.1). Option (c) is $2.5\times60-60$, as if every car on offer had quality equal to the price, and (d) uses the average of all cars, forgetting the withdrawal.
+
+MC: Starting from the baseline market of equation (8.1), which of the following would leave the market completely unraveled?
+(a) Buyers come to value cars at $\tfrac52$ times what sellers do
+(b) A law bans the sale of cars with quality below 10
+(c) A free inspection reveals the quality of every car to buyers
+(d) A price ceiling of 50
+ANSWER: d
+WHY: A ceiling changes only which cars sellers bring: at any price below it the cars on offer are still worth $P/2$ on average, which buyers value at $\tfrac34P<P$, so no car sells (BHT Section 8.4). Options (a) and (b) both create a range of prices at which trade occurs. Option (c) removes the information asymmetry, so each quality trades at its own price.
+
+MC: Why does a ban on cars of quality below $B$ allow trade at some prices in the baseline market?
+(a) It raises the price that sellers ask for every car
+(b) It removes the worst cars, so at low prices the average quality on offer, $(B+P)/2$, is high enough that buyers value it above the price
+(c) It makes buyers value each car more relative to sellers
+(d) It lets buyers distinguish good cars from lemons
+ANSWER: b
+WHY: With the floor, the average quality on offer is $(B+P)/2$ instead of $P/2$; at prices close to $B$ buyers value it at about $\tfrac32B>B$, so they gain (BHT Section 8.4, equation (8.12)). Option (c) describes a change in the buyers' utility function, as in equation (8.8), not the floor. Option (d) is wrong: the cars on offer still look identical; only their range of quality changes.
+
+MC: With the quality floor of 10 and the utility functions of equation (8.1), a buyer's expected change in utility from buying a car at a price of 20 is
+(a) $-5$
+(b) $+10$
+(c) $+2.5$
+(d) $0$
+ANSWER: c
+WHY: The cars on offer are uniform on $[10,20]$ with average quality 15, worth $1.5\times15=22.5$ to buyers, so the gain is $22.5-20=2.5$, as in $\tfrac{15}2-\tfrac P4$ of equation (8.13) (BHT Section 8.4). Option (a) is $-P/4$, the result without the floor. Option (d) holds only at the top of the range, $P=30$.
+
+MC: With the quality floor of 10, the utility functions of equation (8.1), and a price of 30, what is the average quality of the cars that buyers purchase?
+(a) 15
+(b) 30
+(c) 25
+(d) 20
+ANSWER: d
+WHY: At $P=30$ the cars on offer are uniform on $[10,30]$, so their average quality is $(10+30)/2=20$ by equation (8.6) (BHT Section 8.4). Option (a) ignores the floor and uses $P/2$. Option (b) confuses the price with the quality of a typical car; only the best car on offer has quality 30.
+
+MC: BHT conclude the chapter by noting that the Akerlof model abstracts from risk aversion. How might risk aversion change the result for insurance markets?
+(a) Risk-averse customers value coverage above their expected costs, so some may buy at a premium that is a bad deal in expected value, and the market need not unravel
+(b) Risk aversion makes the healthiest customers leave even faster, so the spiral always accelerates
+(c) Risk aversion removes the information asymmetry, since customers then reveal their risk
+(d) Risk aversion matters for car buyers but not for insurance customers
+ANSWER: a
+WHY: If customers are willing to pay more than their expected costs to avoid uncertainty, the premium can exceed the expected costs of some buyers and still attract them, which can stop the unraveling (BHT Section 8.5). This is the subject of BHT Chapter 9. Option (c) is wrong: risk aversion changes what people are willing to pay, not what the insurer can observe.

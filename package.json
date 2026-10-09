@@ -1,0 +1,11 @@
+{
+  "name": "he-book-study-companion",
+  "private": true,
+  "description": "Offline study app for the HE Book. Build with: python3 companion/build.py",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@fontsource/source-serif-4": "5.3.0",
+    "mathjax": "3.2.2"
+  }
+}
