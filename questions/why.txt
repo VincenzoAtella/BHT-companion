@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 1 (Why health economics?). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: Using BHT's figures for the US in 2008, health care paid for by the government amounted to roughly one twelfth of GDP.
+ANSWER: True
+WHY: About one dollar in six of US spending went to health care, and about one in two of those dollars was spent by the government, so public health spending was about $\tfrac16\times\tfrac12=\tfrac1{12}\approx8.3\%$ of GDP (BHT Sections 1.1 and 1.3). The tempting mistake is to read "half" as half of GDP rather than half of health spending.
+
+TF: Between 1960 and 2008, the share of US GDP spent on health care roughly doubled.
+ANSWER: False
+WHY: The share went from about one dollar in twenty (5%) to about one dollar in six (16.7%), so it rose by a factor of about 3.3 (BHT Section 1.1, Figure 1.1). Doubling would have brought it only to about 10% of GDP.
+
+TF: BHT point out that the US, having the highest health spending in the world, also has the longest-living and healthiest population.
+ANSWER: False
+WHY: BHT stress the opposite: despite their spending, Americans are not the longest-lived or healthiest people (BHT Section 1.1). Whether the extra spending buys enough health is one of the open questions the book takes up later, in Chapter 14.
+
+TF: In Arrow's argument, it is the unpredictability of an individual's need for medical care, together with risk aversion, that creates a demand for health insurance.
+ANSWER: True
+WHY: A person can plan her routine purchases, but not the date of an accident or a sudden illness, and a risk-averse person dislikes facing such a large uncertain cost, so she is willing to pay to shift it to an insurer (BHT Section 1.2). Uncertainty is the root; insurance, with its information problems, is what follows from it.
+
+TF: The information problem in health insurance markets arises mainly because insurers know more about a customer's health risks than the customer does.
+ANSWER: False
+WHY: The asymmetry runs the other way: customers usually know more about their own health than the insurer, and the sick have a reason to pass themselves off as healthy (BHT Section 1.2). If the insurer were the better informed side, customers would have no private information to hide.
+
+TF: Whether access to adequate health care is a human right is a question that economic analysis alone cannot settle.
+ANSWER: True
+WHY: This is a normative question, about how the world ought to be, and depends on values rather than facts (BHT Section 1.4). Economics can measure the costs and consequences of guaranteeing access, but not decide whether it is a right.
+
+TF: The question "How much will it cost a public insurer to cover a new type of surgery?" is a normative question in BHT's sense.
+ANSWER: False
+WHY: It asks how the world is, or will be: the answer is a number that evidence and careful reasoning can pin down, so it is a positive question (BHT Section 1.4). Whether the public insurer should pay that cost would be the normative question.
+
+TF: According to BHT, even someone in good health, unlikely to fall ill and fully covered by insurance has a direct stake in health economics.
+ANSWER: True
+WHY: Governments finance a large share of health care, so health policy decisions shape everyone's tax bill, including that of the healthy and well insured (BHT Section 1.3). Risk and illness are not the only channels through which health care affects a person's well-being.
+
+TF: The welfare economics framework used throughout BHT judges policies by what experts consider good for people, rather than by people's own choices.
+ANSWER: False
+WHY: Welfare economics starts from the opposite premise: individuals know what is best for themselves, and the preferences revealed by their choices under constraints are the guide for evaluating policy (BHT Section 1.4). It is behavioral economics, in the last chapters of the book, that questions this premise.
+
+TF: A worker who skips a flu shot can impose a cost on co-workers that the worker does not take into account, and such spillovers can make the market outcome inefficient.
+ANSWER: True
+WHY: Because illness is contagious, one person's health decisions change the health of others, which is an externality (BHT Section 1.2). The worker weighs only private costs and benefits, so too few vaccinations may result. This is the second reason, besides asymmetric information, why competitive health markets may fail.
+
+MC: US GDP in 2008 was about \$14 trillion, and about one dollar in six was spent on health care. US health spending in 2008 was closest to
+(a) \$1.4 trillion
+(b) \$2.3 trillion
+(c) \$1.2 trillion
+(d) \$0.7 trillion
+ANSWER: b
+WHY: One sixth of \$14 trillion is about \$2.33 trillion (BHT Section 1.1). Option (c) is the government's part, half of that amount, and (d) is one twentieth of GDP, the 1960 share applied to 2008 GDP.
+
+MC: In BHT's figures for 2008, which share of US health spending was paid for by the government, and what does that imply for public health spending as a share of GDP?
+(a) About a sixth, so about 3% of GDP
+(b) About nine tenths, so about 15% of GDP
+(c) About a quarter, so about 4% of GDP
+(d) About a half, so about 8% of GDP
+ANSWER: d
+WHY: About one in two health care dollars was spent by the government, and health care was about one sixth of GDP, so public health spending was about $\tfrac1{12}\approx8.3\%$ of GDP (BHT Section 1.3). Shares around nine tenths describe countries like the UK, Sweden or Canada, where government pays for the vast majority, not the relatively private US system.
+
+MC: The health share of US GDP rose from about 5% in 1960 to about 16.7% in 2008. If this reflects a constant gap between the growth rates of health spending and GDP, that gap was about
+(a) 2.5 percentage points a year
+(b) 0.24 percentage points a year
+(c) 7 percentage points a year
+(d) 11.7 percentage points a year
+ANSWER: a
+WHY: The share grew by a factor of $16.7/5\approx3.33$ over 48 years, so the gap is $\ln(3.33)/48\approx0.025$, or about 2.5 points a year (BHT Section 1.1). Option (b) divides the 11.7-point rise in the share by 48 years, which confuses growth of the share in points of GDP with the growth rate of spending, and (d) is the total rise in the share.
+
+MC: Suppose health spending grows at 7% a year and GDP at 4% a year (continuous rates). About how long does it take for the health share of GDP to double?
+(a) 10 years
+(b) 17 years
+(c) 23 years
+(d) 35 years
+ANSWER: c
+WHY: The share grows at the difference of the two rates, 3% a year, so it doubles in $\ln2/0.03\approx23$ years. Option (a) uses the 7% growth of health spending itself, and (d) uses a gap of 2 rather than 3 points. Even a small gap between the two growth rates moves the share fast, which is the pattern in BHT Figure 1.1 (Section 1.1).
+
+MC: An insurer cannot tell its customers apart. One fifth of them are high-risk with expected health costs of \$10,000 a year, the rest are low-risk with expected costs of \$2,500. At a single premium equal to the average expected cost, how much more than her own expected cost does a low-risk customer pay?
+(a) \$7,500
+(b) \$4,000
+(c) \$1,500
+(d) \$3,750
+ANSWER: c
+WHY: The pooled premium is $0.2\times10{,}000+0.8\times2{,}500=4{,}000$ dollars, \$1,500 above a low-risk customer's expected cost (BHT Section 1.2). Option (b) is the premium itself, and (d) uses a simple average of the two costs, ignoring that four fifths of customers are low-risk. This overpayment is why low-risk customers would like to be recognized and the high-risk ones would not.
+
+MC: A person faces a 10% chance of an illness that would cost \$50,000, and nothing otherwise. What are the expected value and the standard deviation of her health spending?
+(a) \$5,000 and \$15,000
+(b) \$5,000 and \$4,500
+(c) \$45,000 and \$15,000
+(d) \$5,000 and \$5,000
+ANSWER: a
+WHY: The mean is $0.1\times50{,}000=5{,}000$ and the standard deviation is $50{,}000\sqrt{0.1\times0.9}=15{,}000$ dollars. Option (b) confuses the standard deviation with the variance formula $p(1-p)L$. A spread three times the mean is the kind of uncertainty in demand for care that Arrow saw as the special feature of health (BHT Section 1.2).
+
+MC: The illness costs of the members of an insurance pool are independent and alike. To halve the standard deviation of the average cost per member, the insurer must
+(a) double the number of members
+(b) halve the premium
+(c) add half as many members again
+(d) multiply the number of members by four
+ANSWER: d
+WHY: The standard deviation of an average of $N$ independent costs is proportional to $1/\sqrt N$, so halving it requires $N$ to grow by a factor of 4. Option (a) treats the risk per member as proportional to $1/N$. This is why insurance makes uncertain individual costs predictable for the pool, the starting point of BHT Section 1.2.
+
+MC: With risk-rated premiums, an insurer would charge a high-risk customer \$9,000 and a low-risk customer \$3,000, but it can only go by what customers report. How much does a high-risk customer gain by claiming to be low-risk?
+(a) \$3,000
+(b) \$6,000
+(c) \$9,000
+(d) \$12,000
+ANSWER: b
+WHY: She pays \$3,000 instead of \$9,000, a saving of \$6,000, while her expected claims stay the same. BHT Section 1.2 calls this the incentive to masquerade as healthy, which is at the root of adverse selection. Option (c) counts the whole premium she would have paid, forgetting that she still pays the low-risk premium.
+
+MC: Without the shot, a worker's flu risk costs him \$30 in expected terms; the shot costs him \$45 in time and money, and protecting him also saves his co-workers \$20 in expected costs. Compared with what is efficient, the worker
+(a) skips the shot, which is efficient because his own cost exceeds his own benefit
+(b) gets the shot, which is efficient
+(c) skips the shot, although getting it is efficient
+(d) gets the shot, although it is inefficient
+ANSWER: c
+WHY: His private benefit (\$30) is below his cost (\$45), so he skips it, but the social benefit, $30+20=50$ dollars, exceeds the cost, so vaccination is efficient. Option (a) ignores the external benefit to co-workers. This is the contagion externality of BHT Section 1.2.
+
+MC: A country has GDP of \$2 trillion, spends 10% of GDP on health care, and the government pays 80% of it. If the health share rises to 12% of GDP with the same public share and GDP unchanged, public health spending rises by
+(a) \$16 billion
+(b) \$40 billion
+(c) \$4 billion
+(d) \$32 billion
+ANSWER: d
+WHY: Public spending goes from $0.8\times0.10\times2{,}000=160$ to $0.8\times0.12\times2{,}000=192$ billion dollars, an increase of \$32 billion, which must come from taxes or other public spending. Option (b) forgets that the government pays only 80%. The example shows why a rising health share puts pressure on public budgets (BHT Section 1.3).
+
+MC: According to BHT, what made Kenneth Arrow's 1963 paper a founding text of health economics?
+(a) It measured the share of GDP spent on health care for the first time
+(b) It argued that the uncertainty surrounding health and medical care makes health economically different from other goods
+(c) It showed that government-run health systems are more efficient than private markets
+(d) It introduced the welfare analysis of contagious disease
+ANSWER: b
+WHY: Arrow's point was that the demand for medical care is unpredictable for each person, and this uncertainty lies behind the special economic problems of health (BHT Section 1.2). Before him, economists treated health like any other market. Option (d) refers to externalities, which BHT add as a second feature but do not attribute to Arrow's paper.
+
+MC: Which of these questions is a positive question in BHT's sense?
+(a) Should governments be allowed to require people to buy health insurance?
+(b) Is it fair that the sick pay higher premiums than the healthy?
+(c) Would a tax on fatty foods lower health spending?
+(d) Should health care be distributed according to need rather than income?
+ANSWER: c
+WHY: A positive question concerns how the world is and can be settled, at least in principle, by evidence and economic reasoning; the effect of a food tax on spending is such a question (BHT Section 1.4). The other three ask what ought to be done or what is fair, so they are normative, and different values lead to different answers.
+
+MC: Which of these statements is normative in BHT's sense?
+(a) Stronger patent protection raises the number of new drugs developed
+(b) Allowing nurses to provide some services now restricted to doctors lowers prices
+(c) A larger share of elderly people raises public health spending
+(d) Every citizen ought to have access to basic health care regardless of income
+ANSWER: d
+WHY: Statement (d) expresses a value judgment about how the world should be, which no amount of data can prove or disprove (BHT Section 1.4). Statements (a)–(c) are claims about cause and effect that could be tested with evidence, so they are positive, whether true or false.
+
+MC: What is the central contention of welfare economics, the framework BHT use to evaluate health policies?
+(a) Individuals are the best judges of their own interests, so the choices they make within their constraints show what they value
+(b) Policies should maximize the population's health, whatever people choose
+(c) Governments know better than individuals what is good for their health
+(d) People's choices are often inconsistent, so policy should correct them
+ANSWER: a
+WHY: Welfare economics takes individuals' revealed preferences as the best guide to good policy (BHT Section 1.4). Option (d) describes the behavioral critique of prospect theory and time inconsistency, covered at the end of the book, which challenges this framework. Option (b) would override preferences whenever people trade health for other goods.
+
+MC: In a health insurance market where customers know more about their health than insurers, why do sick customers not simply reveal their condition?
+(a) Because revealing it is illegal in most countries
+(b) Because they do not know they are sick
+(c) Because the insurer would then charge them a higher premium
+(d) Because the insurer would refuse to pay their claims
+ANSWER: c
+WHY: An insurer that learns a customer is sick prices the coverage to match the higher expected cost, so the sick gain by appearing healthy (BHT Section 1.2). This incentive to misrepresent one's health underlies the problems of adverse selection studied later in the book. Option (b) contradicts the premise that customers are the better informed side.
+
+MC: According to BHT, why did Otto von Bismarck set up a national health care system in Germany in the 1880s?
+(a) To control the spread of contagious diseases in growing cities
+(b) To reduce the cost of health care for employers
+(c) To respond to an adverse selection crisis among private insurers
+(d) To undercut the political appeal of the Socialist Party
+ANSWER: d
+WHY: BHT present Bismarck's system as a political move against the socialists, and as the start of a long history of government involvement in health care that expanded after World War II (BHT Section 1.3). The other options describe economic rationales for intervention, but they are not the motive BHT give for this historical case.
+
+MC: Basic economic theory says a competitive market produces an efficient outcome under certain conditions. Which two departures from those conditions does BHT Chapter 1 single out in health care markets?
+(a) Asymmetric information and externalities
+(b) Monopoly power of doctors and high prices
+(c) Government taxes and subsidies
+(d) Rapid technological change and population aging
+ANSWER: a
+WHY: The efficiency result holds without externalities and asymmetric information, and health markets have both: customers know more about their health than insurers, and contagious illness creates spillovers (BHT Section 1.2). Option (d) lists trends that raise public spending, discussed in Section 1.3, not failures of the efficiency conditions.
+
+MC: Which pair of trends do BHT expect to put growing pressure on public health insurance budgets in the coming decades?
+(a) Falling birth rates and rising out-of-pocket payments
+(b) Longer life expectancy with aging populations, and costly new medical technologies
+(c) Rising uninsurance and falling hospital prices
+(d) The decline of private insurance and the spread of contagious diseases
+ANSWER: b
+WHY: Older populations use more care paid for by public insurers, and governments must decide whether to cover expensive new treatments (BHT Section 1.3). Both raise the share of health care in public budgets. The other options mix in trends that BHT do not name or that would lower spending.
+
+MC: BHT focus largely on private markets for insurance and care, although much of the world's health care is publicly financed. What reason do they give?
+(a) Private markets are more efficient than public systems
+(b) Private markets are the best setting to understand adverse selection and moral hazard, and why other countries organize their systems differently
+(c) Most of the world's population buys private health insurance
+(d) Public systems have no economic problems worth studying
+ANSWER: b
+WHY: Studying private markets lays bare the two central information problems, adverse selection and moral hazard, and the tradeoffs that lead other countries to choose public provision (BHT Section 1.5). The US supplies the richest data on such markets. Option (a) is a conclusion BHT do not draw.
+
+MC: Which of these features of US health care do BHT expect to look unfamiliar to readers who live in Canada or the UK?
+(a) Patients sometimes pay out of pocket for routine care such as doctor visits and flu shots
+(b) Patients pay directly for dental care and some prescription drugs
+(c) Government finances part of health care spending
+(d) Hospitals and doctors are paid for the services they provide
+ANSWER: a
+WHY: In Canada and the UK patients rarely pay out of pocket for basic care, so paying directly for a doctor visit, and going uninsured, are features mainly of the US system (BHT Section 1.5). Option (b) is wrong because dentistry and prescription drugs are exactly the peripheral services for which patients in those countries also pay. Government financing, option (c), is common to all three countries.

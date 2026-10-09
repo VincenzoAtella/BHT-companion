@@ -1,0 +1,202 @@
+# BHT Chapter 17: The Bismarck model: social health insurance. App-only questions, original material. 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: Two workers in the same sickness fund earn the same salary, but one has diabetes and the other is healthy. Under payroll financing they pay the same contribution, while a colleague with twice their salary pays twice as much.
+ANSWER: True
+WHY: A payroll tax is a fixed share of income, so contributions vary with income and with nothing else, health included (BHT Section 17.2). This is how the Bismarck model makes the healthy subsidize the sick and the rich subsidize the poor at the same time. A risk-rated premium would instead charge the diabetic more.
+
+TF: Risk selection and adverse selection are two names for the same behavior: people with high expected costs seeking out the most generous insurance plans.
+ANSWER: False
+WHY: Adverse selection is driven by the insured, who choose plans using what they know about their own risk; risk selection, or cream skimming, is driven by insurers, who try to attract low risks and discourage high risks (BHT Section 17.2). The two call for different remedies: risk adjustment changes insurers' incentives but does not stop customers from sorting.
+
+TF: In a community-rated market with compulsory coverage, a separating equilibrium can leave healthy people with less coverage than they would buy at a premium that reflected their own risk.
+ANSWER: True
+WHY: When the sick gather in generous plans, the premium of those plans reflects the sick, and healthy people choose lean plans even though they would value more coverage at a price matching their own risk (BHT Section 17.2). The mandate keeps everyone insured but does not stop this sorting across plans. BHT list this welfare loss for robust patients as the first cost of separation.
+
+TF: Because risk adjustment is based on predicted rather than actual costs, a fund that receives perfect risk-adjusted payments has no reason to care about how much it spends on its enrollees.
+ANSWER: False
+WHY: The payment for each enrollee is fixed in advance by the risk class, so every euro the fund saves below the class average is its own (BHT Section 17.2). It is ex-post compensation of actual costs that weakens the incentive to economize. Prediction-based payments are designed precisely to neutralize selection while keeping that incentive.
+
+TF: In a system with a universal mandate and open enrollment, successful risk selection by one sickness fund lowers its own costs but does not lower total health spending.
+ANSWER: True
+WHY: The high-risk people a fund manages to avoid must be covered by another fund, so their care is paid for somewhere in the system (BHT Section 17.2). Risk selection only moves costs between funds, and the effort spent on it is a social waste. This is why BHT treat it as a problem to be neutralized rather than a source of savings.
+
+TF: A German who earns above the income threshold and moves to private health insurance can return to statutory insurance whenever private premiums become too high.
+ANSWER: False
+WHY: Germans above the threshold may choose private insurance instead of statutory insurance, but once they leave the statutory system they cannot come back (BHT Section 17.1). The rule stops people from using statutory insurance as a fallback when they are older or sicker, which would be a form of adverse selection against it.
+
+TF: In Japan each insurance pool is community rated, and members of the Kenpo plans of large firms pay extra to help fund the Roken and Kokuho pools.
+ANSWER: True
+WHY: Within every Japanese pool contributions do not depend on individual health, so the healthy subsidize the sick inside the pool; on top of that, an explicit scheme moves money from the younger, richer Kenpo pools to the pools for the elderly, the self-employed and the unemployed (BHT Section 17.1). Cross-subsidies thus run both within and across pools.
+
+TF: Japan's high pharmaceutical spending in the early 1990s is traced by BHT to official drug prices set below the price doctors paid to manufacturers, which forced doctors to prescribe more drugs to cover their losses.
+ANSWER: False
+WHY: The official prices were set above the purchase price, and Japanese doctors could sell the drugs they prescribed, so each prescription carried a margin, the yakka saeki (BHT Section 17.3). A margin that grows with the drug's price pushed doctors toward more and dearer drugs. Prices set too high, not too low, caused the distortion.
+
+TF: A fee schedule that pays every procedure exactly 20% above its marginal cost gives a doctor no financial reason to prefer one of two clinically defensible treatments that have the same cost.
+ANSWER: True
+WHY: With equal costs and the same percentage markup, both treatments carry the same margin, so the choice between them can rest on clinical grounds alone (BHT Section 17.3). Clinical distortions come from relative prices that depart from relative costs. A uniform markup may still raise spending or volume, but it does not tilt the choice between the two treatments.
+
+TF: According to BHT Table 17.2, in 2010 every Bismarck nation listed spent a larger share of its GDP on health care than every Beveridge nation listed.
+ANSWER: False
+WHY: Israel spent 7.9% of GDP and Japan 9.5%, both below Canada at 11.4% and below Sweden and the UK at 9.6% (BHT Section 17.4, Table 17.2). The Bismarck systems of Europe spend more than the European Beveridge systems, but the worldwide pattern is mixed, which is why broad comparisons between the two models need care.
+
+MC: Under the German risk-adjustment scheme described in BHT, the average person costs €5,000 a year and the risk class (age, sex and disease) of one enrollee, a woman, costs €8,300 on average. Her fund spends €7,500 on her care this year. What is the fund's net result on this enrollee, counting her community-rated contribution of €5,000 and the transfer?
+(a) A gain of €800
+(b) A loss of €2,500
+(c) A gain of €3,300
+(d) Zero, since the transfer covers her costs exactly
+ANSWER: a
+WHY: The central fund pays the class average minus the national average, $8{,}300-5{,}000=3{,}300$, so the fund receives $5{,}000+3{,}300=8{,}300$ in total and keeps $8{,}300-7{,}500=800$ (BHT Section 17.2). Option (b) ignores the transfer, and (c) reports the transfer as if it were profit. Option (d) confuses ex-ante risk adjustment with ex-post reimbursement of actual costs.
+
+MC: A healthy 25-year-old belongs to a risk class whose average yearly cost is €1,800, while the national average is €5,000. Under risk adjustment of the kind BHT describe for Germany, what happens to the transfer for this enrollee?
+(a) The fund receives €1,800 from the central fund
+(b) The fund pays €3,200 to the central fund
+(c) The fund receives €3,200 from the central fund
+(d) No transfer is made, because only high-risk enrollees are compensated
+ANSWER: b
+WHY: Transfers equal the predicted cost of the class minus the national average, here $1{,}800-5{,}000=-3{,}200$, so the fund that enrolls this low risk pays into the pool (BHT Section 17.2, Definition 17.2). Compensation runs from funds with low-risk enrollees to funds with high-risk ones, as option (d) forgets. Without this payment the young enrollee would be worth €3,200 a year to the fund, an incentive to cream skim.
+
+MC: Three workers in the same pool each earn €40,000 a year. Their expected health costs are €1,500, €6,000 and €10,500. The pool sets a payroll tax rate that exactly covers their total expected costs. By how much does the healthiest worker's contribution exceed his own expected cost?
+(a) €1,500
+(b) €6,000
+(c) €4,500
+(d) €3,000
+ANSWER: c
+WHY: Total costs are €18,000 and total income €120,000, so the rate is 15% and each worker pays €6,000; the healthiest worker pays $6{,}000-1{,}500=4{,}500$ more than his expected cost, exactly the subsidy received by the sickest worker (BHT Section 17.2). Option (b) is his whole contribution, not the subsidy. Because all three earn the same, the transfer here is purely from healthy to sick.
+
+MC: A payroll tax of 8% finances a sickness fund. Two members have the same expected health cost of €4,000; one earns €25,000 and the other €75,000. What net subsidy does the lower earner receive?
+(a) Zero, since both have the same expected cost
+(b) €4,000
+(c) €1,000
+(d) €2,000
+ANSWER: d
+WHY: The lower earner pays $0.08\times25{,}000=2{,}000$ for coverage worth €4,000, a net subsidy of €2,000, while the higher earner pays €6,000 and contributes €2,000 net (BHT Section 17.2). Option (a) forgets that payroll financing redistributes by income even between people of equal health. Option (b) treats the coverage as free.
+
+MC: In the Netherlands, low-income households get a subsidy if they would otherwise spend more than 6.5% of their income on insurance. Which household qualifies?
+(a) Income €40,000, premium €2,500
+(b) Income €30,000, premium €1,920
+(c) Income €25,000, premium €1,700
+(d) Income €60,000, premium €3,850
+ANSWER: c
+WHY: The shares of income are 6.25%, 6.4%, 6.8% and about 6.42%, so only (c) exceeds 6.5% (BHT Section 17.1). The test compares the premium with income, not the premium's size, which is why the household with the largest premium in (d) does not qualify. Subsidies of this kind keep a premium-financed system affordable for low earners.
+
+MC: A risk-adjustment formula uses only age, sex and region, as in Switzerland before 2012. Among 70-year-old women in one region, a quarter have high blood pressure and cost €9,000 a year, and the rest cost €5,000. If the fund's spending equals these averages, what is its result on a 70-year-old woman with high blood pressure?
+(a) A loss of €3,000
+(b) A loss of €4,000
+(c) Zero, because the formula compensates for her age
+(d) A loss of €1,000
+ANSWER: a
+WHY: The formula pays the average of the age-sex-region class, $0.25\times9{,}000+0.75\times5{,}000=6{,}000$, for every 70-year-old woman, so the fund loses $9{,}000-6{,}000=3{,}000$ on her and gains €1,000 on a healthy woman of the same age (BHT Section 17.2). Option (c) forgets that the formula ignores her condition, which is why incomplete risk adjustment leaves room for risk selection. Option (b) is the cost gap between the two kinds of women, not the loss on one of them.
+
+MC: Suppose a central fund reimburses each sickness fund for 60% of the gap between its spending per enrollee and the national average of €5,000, in both directions. A fund that spends €5,600 per enrollee cuts its spending to €5,400. By how much does its net cost per enrollee fall?
+(a) €200
+(b) €80
+(c) €120
+(d) €0
+ANSWER: b
+WHY: The net cost is $5{,}000+0.4\times(\text{spending}-5{,}000)$, which falls from €5,240 to €5,160, so the fund keeps only 40% of the €200 it saves (BHT Section 17.2). Option (c) is the share the central fund absorbs, and (d) would hold only under full ex-post compensation. The more of the cost gap is reimbursed, the weaker the fund's reason to economize, which is BHT's objection to ex-post schemes.
+
+MC: Dialysis and a kidney transplant have the same lifetime cost of \$300,000. The fee schedule pays \$380,000 for dialysis and \$320,000 for a transplant, which gives the patient 2 more QALYs. A doctor weighs her own margin against the patient's QALYs. What is the lowest value per QALY she must place on her patient's health to recommend the transplant?
+(a) \$10,000
+(b) \$60,000
+(c) \$20,000
+(d) \$30,000
+ANSWER: d
+WHY: The margins are \$80,000 and \$20,000, a gap of \$60,000, which must be outweighed by 2 QALYs, so the doctor needs to value a QALY at $60{,}000/2=30{,}000$ or more (BHT Section 17.3). Option (b) forgets to divide by the 2 QALYs, and (c) uses only the transplant margin. Only the gap between the two fees matters when costs are equal.
+
+MC: Using BHT Table 17.2, by how many percentage points does the simple average health spending share of GDP of the five Bismarck nations exceed that of the five Beveridge nations in 2010?
+(a) About 0.7
+(b) About 2.0
+(c) About 2.9
+(d) About 2.2
+ANSWER: a
+WHY: The Bismarck average is $52.6/5=10.52\%$ and the Beveridge average is $49.1/5=9.82\%$, a gap of 0.7 points (BHT Section 17.4, Table 17.2). Option (b) compares the medians, (c) the highest Bismarck value with the lowest Beveridge one, and (d) only the European nations of each group. The small average gap hides large differences within each group, such as Israel's 7.9%.
+
+MC: Under a pricing rule like Japan's yakka saeki, the official price of every drug is 25% above what the doctor pays for it. A doctor can prescribe a drug bought for ¥800 or a substitute bought for ¥2,400. How does her margin on the dearer drug compare with her margin on the cheaper one?
+(a) It is the same, since the markup rate is the same
+(b) It is 1.25 times as large
+(c) It is three times as large
+(d) It is smaller, since patients pay more
+ANSWER: c
+WHY: The margins are $0.25\times800=200$ and $0.25\times2{,}400=600$ yen, so the dearer drug pays three times as much (BHT Section 17.3). Option (a) confuses the markup rate with the yen margin that the doctor actually earns. A margin proportional to the price rewards doctors for choosing more expensive drugs, which fits the high share of drugs in Japanese spending that BHT report.
+
+MC: Which of the following is \emph{not} one of the rules that constrain the managed-competition insurance markets of most Bismarck countries?
+(a) Every plan must cover a minimum standard set of services
+(b) Insurers must accept every eligible applicant
+(c) Everyone must hold insurance at all times
+(d) Premiums must reflect each customer's expected health costs
+ANSWER: d
+WHY: Managed competition requires community rating, which forbids charging customers by their individual risk, so (d) describes the opposite of the rule (BHT Section 17.2, Definition 17.1). Options (a), (b) and (c) are the minimum-standards, open-enrollment and compulsory-participation rules. Together the four rules let funds compete on service and efficiency, not on the risk of their enrollees.
+
+MC: A sickness fund wants fewer chronically ill enrollees. Which of the following tactics is already illegal in a Bismarck system with open enrollment, rather than merely questionable?
+(a) Advertising mainly in places frequented by young, healthy people
+(b) Not answering inquiries from applicants it expects to be costly
+(c) Switching to a managed care plan that sick people find less attractive
+(d) Reminding unprofitable members that they may change funds at any time
+ANSWER: b
+WHY: Open enrollment obliges a fund to take every eligible applicant, so ignoring inquiries from some of them is a covert refusal and breaks the law (BHT Section 17.2). Targeted advertising and plan design are legal ways of shaping who applies, and selective reminders are controversial but not unlawful. All of these tactics aim at the same thing: making sure costly people never ask for coverage.
+
+MC: Why does risk adjustment preserve a sickness fund's incentive to control costs better than ex-post cost-based compensation does?
+(a) Because risk adjustment pays funds only for their healthy enrollees
+(b) Because risk adjustment transfers are smaller on average
+(c) Because the transfer depends on the expected cost of the enrollee's risk class, not on what the fund actually spends
+(d) Because risk adjustment is administered by the government rather than by the funds
+ANSWER: c
+WHY: Under risk adjustment the fund's revenue for an enrollee is fixed by the class average, so any saving below it stays with the fund (BHT Section 17.2, Definition 17.2). Under ex-post compensation the central pool covers whatever a fund spends above the average, so savings mostly benefit others. Option (b) is irrelevant: the incentive depends on whether revenue moves with the fund's own spending, not on the size of transfers.
+
+MC: How does Japan keep adverse selection across insurance funds from arising?
+(a) Most people cannot choose their insurer: they are assigned to a fund by employment, age and location
+(b) Every Japanese insurance fund charges risk-rated premiums
+(c) All Japanese citizens belong to a single national fund
+(d) The government reimburses every fund for its actual costs
+ANSWER: a
+WHY: With closed funds there is no choice of insurer to exploit, so people cannot sort by risk across plans (BHT Section 17.2). Japan still has many pools, which rules out (c), and they are community rated, which rules out (b). Germany followed the same approach until it opened its funds in 1996.
+
+MC: In a managed-competition market, the government sharply narrows how much sickness funds may differ in benefits and cost sharing. What is the main effect on adverse selection?
+(a) It eliminates adverse selection by making enrollment compulsory
+(b) It removes the need for risk adjustment, since funds can no longer cream skim
+(c) It turns adverse selection into a death spiral, since the sick can no longer find generous plans
+(d) It weakens customers' reasons to sort by risk and shrinks the gap between plans if sorting still occurs
+ANSWER: d
+WHY: If plans are nearly alike, sick and healthy customers gain little by choosing different plans, and any separating equilibrium involves smaller differences in coverage and premiums (BHT Section 17.2). Germany uses this policy together with a generous minimum standard. Option (b) is wrong because funds can still try to attract low risks by other means, so risk adjustment remains needed.
+
+MC: In a system where sickness funds may not change their premiums at all, as BHT describe for Israel, and where risk adjustment misses part of the risk, what is the predicted behavior of funds?
+(a) They compete to be known as the best place for chronic patients
+(b) They avoid a reputation for treating the sick well, since it would attract costly patients they cannot charge more
+(c) They raise deductibles for sick patients to restore balance
+(d) They behave efficiently, because fixed premiums rule out adverse selection
+ANSWER: b
+WHY: A fund known for good care of the sick would draw the costliest patients, could not raise its premium and would not be fully compensated, so it could go bankrupt (BHT Section 17.2). Fixed premiums therefore punish quality for the sick, the reverse of (a). Option (d) is wrong because fixed premiums do not stop sick customers from choosing where to enroll.
+
+MC: Cochlear implants spread faster in Japan than in the United States in the years after the technology appeared. Which explanation fits BHT's account?
+(a) Japan used formal health technology assessment to approve the implant earlier
+(b) Japanese patients were more often deaf from damaged hair cells
+(c) US public programs at first paid surgeons less than the cost of the device, while Japan's fee schedule paid more
+(d) US doctors were barred from performing the surgery on children
+ANSWER: c
+WHY: When Medicare and Medicaid set the payment for the procedure below the price of the implant itself, few US surgeons performed it, while Japan's fee schedule made it worthwhile (BHT Section 17.3). Administered prices can slow useful technology when set too low, just as they encourage overuse when set too high. Option (a) is wrong because Japan performs no formal government HTA.
+
+MC: Which statement about price setting in Germany is consistent with BHT's description?
+(a) The Federal Joint Committee sets the price of each service by decree
+(b) Each hospital sets its own prices, which sickness funds may accept or reject
+(c) Only patients with statutory insurance are covered by the negotiated fees, while private insurers pay market prices
+(d) Sickness funds and provider associations negotiate a national fee schedule, which applies even to privately insured patients
+ANSWER: d
+WHY: German prices come out of negotiations between the sickness funds and the providers, with the Federal Joint Committee facilitating but not setting prices, and the same schedule pays for privately insured patients (BHT Section 17.3). Option (a) describes a role the committee does not have. Option (c) is wrong because the common schedule covers private patients too.
+
+MC: Which pattern did Swiss community-rated insurance markets show, according to the evidence BHT cite?
+(a) Sicker people enrolled in high-deductible plans with low premiums to save money
+(b) Sicker people gathered in generous plans with high premiums, and healthier people in high-deductible plans with lower premiums
+(c) All customers chose the same plan, so no separation occurred
+(d) Healthy people left the market altogether, since coverage was voluntary
+ANSWER: b
+WHY: Swiss data show sorting by risk across plans: the generous plans attracted the sick and charged high premiums, while the healthy chose high deductibles (BHT Section 17.2). This is the separating equilibrium of the Rothschild–Stiglitz model, appearing even with community rating and a mandate. Option (d) is impossible because Swiss coverage is compulsory.
+
+MC: A German sickness fund considers refusing to cover a new, costly treatment on the basis of IQWiG's findings. Under the rules BHT describe, when may it do so on grounds of cost?
+(a) Only if an existing treatment is at least as effective as the new one
+(b) Whenever IQWiG's own cost-effectiveness analysis finds a high cost per QALY
+(c) Never, since IQWiG's recommendations bind all funds to cover new technologies
+(d) Whenever the Federal Joint Committee has set the treatment's price above its marginal cost
+ANSWER: a
+WHY: IQWiG advises but cannot deny coverage, and a fund may refuse a new technology on cost grounds only when an alternative of at least equal effectiveness already exists (BHT Section 17.3). Option (b) is wrong twice: IQWiG does not run its own cost-effectiveness studies, relying on assessments made elsewhere, and its findings do not by themselves allow refusal. Option (c) overstates IQWiG's authority in the opposite direction.

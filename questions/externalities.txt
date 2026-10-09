@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 20 (The economics of health externalities). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: In the Samuelson diagram for flu shots with a flat supply curve, the social demand curve lies above the private demand curve, so at the competitive price the market buys fewer shots than a planner who counts herd immunity would choose.
+ANSWER: True
+WHY: Each shot protects the buyer and also lowers the chance that others are infected, so the social benefit of a shot exceeds the private one and $D_{soc}$ lies above $D_{priv}$ (BHT Section 20.1, Figure 20.2). With the same supply curve, $D_{soc}$ crosses it further to the right, so $Q^*_{soc}>Q^*_{priv}$. The gap is made of people whose own benefit is below the price but whose shot is worth more than it costs to society.
+
+TF: In the market for flu shots, the social loss from ignoring herd immunity is the area between the social demand curve and the supply curve from zero up to $Q^*_{priv}$.
+ANSWER: False
+WHY: That area is surplus the market does realize (region A in BHT Figure 20.3). The social loss is region B, between $D_{soc}$ and the supply curve from $Q^*_{priv}$ to $Q^*_{soc}$: the shots that would be worth more than they cost but are never bought (BHT Section 20.1). Confusing the two would make the loss larger the more shots the market buys, which has the logic backward.
+
+TF: When a Pigouvian tax on antibiotics is levied on suppliers and the private supply curve is flat at the production cost, the demand curve does not shift and the price paid by patients rises by the full amount of the tax.
+ANSWER: True
+WHY: A per-unit tax on suppliers raises the supply curve by $\tau$ and leaves demand where it was (BHT Section 20.2, Figure 20.7). With a flat supply curve, suppliers still receive their cost $p_s$, so patients pay $p_c=p_s+\tau$. The quantity then falls to where demand meets the taxed supply curve, $Q^*_{soc}$ when $\tau$ equals the external cost.
+
+TF: Because the total outlay of a Pigouvian subsidy for flu shots exceeds the social loss it removes, BHT conclude that such a subsidy lowers social welfare unless it is financed by a Pigouvian tax.
+ANSWER: False
+WHY: BHT argue the opposite: the outlay is paid to vaccine buyers, so it reallocates welfare without reducing it, and the subsidy is welfare-enhancing even though it is larger than region B (BHT Section 20.2). The caveat about financing is narrower: if the money comes from a highly distortionary tax, the harm of that tax could exceed the gain, which is one reason to fund subsidies with Pigouvian taxes.
+
+TF: The "double dividend" of a Pigouvian tax refers to two gains: it curbs the overconsumption of a good with a negative externality, and its revenue can be used to cut other taxes that distort behavior.
+ANSWER: True
+WHY: This is BHT's definition (Section 20.2). The first dividend comes from moving the quantity from $Q^*_{priv}$ to $Q^*_{soc}$; the second from replacing distortionary taxes such as income taxes with a tax that improves incentives. A Pigouvian subsidy has no second dividend, since it needs revenue instead of raising it.
+
+TF: If every person in the world held a veto over each patient's use of antibiotics, antibiotics would be overused, because each person would free ride on the others to enforce the veto.
+ANSWER: False
+WHY: Under that assignment of rights a patient would need everyone's consent, and the last holdout could demand a very high price for it; this hold-up problem means no one would ever obtain the right to take an antibiotic, even when doing so is efficient (BHT Section 20.3). The result is underuse, not overuse. Free riding is the problem of the opposite assignment, where the many people harmed by resistance would have to coordinate to pay the patient.
+
+TF: BHT describe the usual rule, under which a patient may take antibiotics once a doctor prescribes them, as avoiding both the hold-up problem and the coordination problem, with the doctor ideally weighing the harm to others from resistance.
+ANSWER: True
+WHY: Giving the right to the patient avoids hold-up, and requiring a prescription lets the doctor act as a proxy for the people who bear the cost of resistance, so no world-wide bargain is needed (BHT Section 20.3). BHT add that doctors are not always perfect proxies; the claim is about which problems the rule avoids, not that it reaches the optimum.
+
+TF: BHT's reasoning implies that treatments for chronic back pain deserve the same public subsidy as flu shots, since both improve the health of the people who use them.
+ANSWER: False
+WHY: The case for a subsidy rests on the externality, not on how much a treatment helps its user (BHT chapter introduction and Section 20.1). People already weigh the private benefits of back-pain treatment and buy enough of it, while the flu shot also protects others, which buyers ignore. The point is not that back pain is unimportant, but that the market already handles it.
+
+TF: Spain's system, in which the state decides on organ removal unless a person has opted out, makes the Coase theorem apply to organs, because property rights are assigned clearly to the state.
+ANSWER: False
+WHY: The Spanish state can decide to take organs but cannot sell them, just as American families can donate but not sell (BHT Section 20.4). With only a limited, non-transferable right, there is no market in which the right can move to the party that values it most, so the theorem's condition of well-defined, tradable property rights fails in both countries. Spain's higher donation rate comes from the default, not from Coasian bargaining.
+
+TF: Among health externalities, BHT list the taxes paid to the government to care for sick people: through public financing, one person's illness can impose costs on others even when no disease is transmitted.
+ANSWER: True
+WHY: BHT's list of health externalities in Section 20.1 includes this fiscal channel next to contagion and secondhand smoke. When care is paid from public funds, part of the cost of one person's ill health falls on taxpayers, so it is a third-party effect of that person's choices. This is an externality even though no one is infected.
+
+MC: An unvaccinated man values a flu shot at \$8 for his own protection. The shot costs \$12, and his vaccination would give his family and colleagues herd-immunity benefits worth \$6 in total. Which statement is correct?
+(a) The shot creates a net social gain of \$2, but he does not buy it
+(b) The shot creates a net social loss of \$4, so it is efficient that he does not buy it
+(c) The shot creates a net social gain of \$14, and he buys it
+(d) The shot creates a net social gain of \$2, and he buys it
+ANSWER: a
+WHY: The social benefit is $8+6=14$ dollars against a cost of \$12, a gain of \$2, but his private benefit of \$8 is below the price, so he does not buy (BHT Section 20.1). Option (b) compares only his private benefit with the cost, which is exactly the mistake the market makes. Option (c) forgets to subtract the cost of the shot.
+
+MC: The private demand for flu shots is $P=40-0.5Q$, with $Q$ in thousands of shots and $P$ in dollars. Shots are supplied at a constant cost of \$16, and each shot gives others a herd-immunity benefit of \$6. What is the social loss of the market outcome?
+(a) \$18 thousand
+(b) \$36 thousand
+(c) \$72 thousand
+(d) \$288 thousand
+ANSWER: b
+WHY: The market buys $Q^*_{priv}=(40-16)/0.5=48$ thousand shots and the planner $Q^*_{soc}=(46-16)/0.5=60$ thousand, so region B is a triangle of height \$6 and base 12 thousand: $0.5\times6\times12=36$ (BHT Section 20.1, Figure 20.3). Option (c) forgets the factor $\tfrac12$ of a triangle. Option (d) is \$6 times the 48 thousand shots already bought, which are not part of the loss.
+
+MC: In the same market (private demand $P=40-0.5Q$, constant cost \$16, external benefit \$6 per shot), the government sets the optimal Pigouvian subsidy per shot. What are the subsidy per shot and the total outlay?
+(a) \$6 per shot, \$288 thousand
+(b) \$16 per shot, \$960 thousand
+(c) \$6 per shot, \$360 thousand
+(d) \$6 per shot, \$36 thousand
+ANSWER: c
+WHY: With a constant external benefit, the gap $X=p_s-p_c$ at $Q^*_{soc}$ equals \$6, and the subsidy is paid on all $Q^*_{soc}=60$ thousand shots, so the outlay is $6\times60=360$ thousand (BHT Section 20.2, Figure 20.6). Option (a) multiplies by the pre-subsidy quantity of 48 thousand; option (b) makes the shot free, which overshoots. Option (d) is the social loss the subsidy removes, which is much smaller than the outlay.
+
+MC: Demand for antibiotic courses is $P=120-Q$, with $Q$ in millions. The private cost is a constant \$20 per course and each course adds resistance costing others \$30. If the government levies the optimal Pigouvian tax on suppliers, how much revenue does it collect?
+(a) \$450 million
+(b) \$3,000 million
+(c) \$1,500 million
+(d) \$2,100 million
+ANSWER: d
+WHY: The tax is $\tau=30$ and patients then pay \$50, so they buy $120-50=70$ million courses, $Q^*_{soc}$; revenue is $30\times70=2{,}100$ million (BHT Section 20.2, Figure 20.7). Option (b) applies the tax to the 100 million courses bought before the tax, ignoring that the tax reduces use. Option (a) is the social loss the tax eliminates, the area of triangle B.
+
+MC: In the same antibiotics market (demand $P=120-Q$, private cost \$20, resistance cost \$30 per course), which courses are bought without the tax but not with the optimal Pigouvian tax?
+(a) Those worth between \$20 and \$50 to the patient
+(b) Those worth less than \$20 to the patient
+(c) Those worth between \$30 and \$50 to the patient
+(d) Those worth more than \$50 to the patient
+ANSWER: a
+WHY: Without the tax a patient buys if the course is worth at least its private price of \$20; with the tax the price is \$50 (BHT Sections 20.1-20.2). The courses dropped are those worth between \$20 and \$50: each benefits its user more than it costs to make but less than its full social cost. Option (c) compares the benefit with the external cost alone, forgetting the production cost.
+
+MC: Jay's flu shot would give 20 neighbors herd-immunity benefits of \$5 each, and he would get vaccinated for a payment of \$50. Organizing the pool, checking that he really gets the shot and trusting each other costs each neighbor \$3. What happens?
+(a) The neighbors pay him \$50, since their total benefit of \$100 exceeds the payment
+(b) The neighbors pay him \$100, the full value of the herd immunity
+(c) No deal is struck, since the total transaction cost exceeds the net gain from the deal
+(d) No deal is struck, since each neighbor's \$5 benefit is smaller than Jay's \$50 price
+ANSWER: c
+WHY: The deal would create a net gain of $100-50=50$ dollars, but transaction costs total $20\times3=60$ dollars, so it is not worth striking (BHT Section 20.3). Option (a) ignores transaction costs, which is the condition of the Coase theorem that fails here. Option (d) forgets that the neighbors pool their payments, which is why a deal would succeed if bargaining were costless.
+
+MC: A patient's course of antibiotics imposes a resistance cost of \$100, shared equally by the 7 billion other people in the world, and she would forgo it for \$30. If everyone else chipped in equally to pay her, about how much would each person gain, net of the contribution?
+(a) About 70 cents
+(b) About a thousandth of a cent
+(c) About a billionth of a cent
+(d) About a millionth of a cent
+ANSWER: d
+WHY: The net gain of \$70 spread over 7 billion people is $70/7\times10^{9}=10^{-8}$ dollars, or $10^{-6}$ cents (BHT Section 20.3). Any cost of joining the bargain, even a second of attention, dwarfs this, so the bargain fails. Option (a) divides by 100 people instead of 7 billion.
+
+MC: In January and February 2012 there were 4,494 organ transplants in the US and 114,339 patients on organ waiting lists. About how many waiting patients were there per transplant performed in those two months?
+(a) About 4
+(b) About 25
+(c) About 39
+(d) About 11
+ANSWER: b
+WHY: $114{,}339/4{,}494\approx25.4$, so transplants in those two months equaled about 4 percent of the waiting list (BHT Section 20.4). Option (a) confuses the percentage with the ratio. The gap is one sign that, with sales banned, the quantity of organs is far below what patients need.
+
+MC: In Mellström and Johannesson's field experiment, a payment of about \$7 lowered the blood donation rate of women from 52\% to 30\%. By what percentage did the donation rate fall?
+(a) About 58\%
+(b) About 22\%
+(c) About 30\%
+(d) About 42\%
+ANSWER: d
+WHY: The rate fell by 22 percentage points, which is $22/52\approx42$ percent of its initial level (BHT Section 20.4). Option (b) reports the change in percentage points, not in percent. Option (a) is the share of the initial rate that remains, $30/52$.
+
+MC: A Pigouvian subsidy for flu shots removes a social loss of \$36 thousand and costs the government \$360 thousand. The money is raised with an income tax that creates \$0.15 of deadweight loss per dollar raised. What is the net effect on social welfare?
+(a) A gain of \$36 thousand
+(b) A loss of \$18 thousand
+(c) A loss of \$324 thousand
+(d) A gain of \$18 thousand
+ANSWER: b
+WHY: The outlay itself is a transfer, but raising \$360 thousand costs $0.15\times360=54$ thousand in distortions, more than the \$36 thousand gained, a net loss of \$18 thousand (BHT Section 20.2). Option (a) ignores how the subsidy is funded. Option (c) counts the whole outlay as a loss, the error BHT warn against.
+
+MC: Why do governments subsidize flu shots but not most treatments for non-contagious conditions such as chronic back pain?
+(a) People already buy enough back-pain treatment on their own, while flu shots also benefit others who are not party to the purchase
+(b) Treatments for back pain are less effective than flu shots
+(c) Back pain costs patients less than the flu
+(d) A subsidy for flu shots is cheaper, because fewer people need them
+ANSWER: a
+WHY: Without an externality, private choices already weigh all the costs and benefits, so a subsidy would only distort them; the flu shot's herd-immunity benefit is what the buyer ignores (BHT chapter introduction, Section 20.1). Options (b) and (c) compare the value of the two treatments, which is not the reason: a valuable treatment with only private benefits needs no subsidy.
+
+MC: In BHT Figure 20.6, the optimal Pigouvian subsidy per flu shot $X$ is equal to
+(a) the price $p_s$ that suppliers need, so that shots are free to consumers
+(b) the social loss, region B, divided by $Q^*_{priv}$
+(c) the gap between the price suppliers need, $p_s$, and the private benefit of the $Q^*_{soc}$-th shot, $p_c$
+(d) the gap between $D_{soc}$ and $D_{priv}$ at $Q=0$, divided by $Q^*_{soc}$
+ANSWER: c
+WHY: The subsidy must make the consumer of the last socially worthwhile shot willing to buy it: she values it at $p_c$ (point $\gamma$) while suppliers need $p_s$ (point $\beta$), so $X=p_s-p_c$ (BHT Section 20.2). Option (a) would push vaccination beyond $Q^*_{soc}$ whenever $p_c>0$. Options (b) and (d) mix up a total area with a per-shot gap.
+
+MC: Why does BHT not count the subsidy rectangle in Figure 20.6 as a social loss, even though it is larger than the region B that the subsidy recovers?
+(a) It is money transferred from the government to vaccine buyers, which changes who gains but not total welfare
+(b) The government recovers it from vaccine makers through lower prices
+(c) It is smaller than the social surplus in region A
+(d) Herd immunity makes vaccines cheaper to produce, so the subsidy pays for itself
+ANSWER: a
+WHY: Social loss is surplus that nobody gets; the subsidy is surplus that moves from taxpayers to buyers (BHT Section 20.2). Option (b) is wrong: with a flat supply curve suppliers still receive $p_s$. Option (c) compares the subsidy with the wrong area and is not the reason the rectangle is excluded.
+
+MC: Neighbors want to pay Jay to get a flu shot because of the herd immunity he would provide. Which problem is a transaction cost of the kind that can block this Coasian deal?
+(a) Jay's private benefit from the shot is lower than its price
+(b) The total benefit to the neighbors exceeds the payment Jay asks for
+(c) The flu shot has a positive externality
+(d) The neighbors cannot verify that Jay actually gets vaccinated after they pay him
+ANSWER: d
+WHY: Enforcement and trust are transaction costs: if the neighbors fear paying for a shot that never happens, they may not pay at all (BHT Section 20.3). Options (a) and (c) describe why there is something to bargain over, not obstacles to the bargain. Option (b) is the condition that makes the deal worthwhile.
+
+MC: Suppose the law requires a patient to obtain permission from everyone in the world before taking antibiotics. Why would almost no one ever take them, even when it is efficient?
+(a) Each person would underestimate the harm from resistance
+(b) Any single holder of a veto could demand a very large payment, so the right is never obtained
+(c) Doctors would refuse to prescribe without unanimous consent
+(d) Antibiotics would become too expensive to produce
+ANSWER: b
+WHY: This is the hold-up problem: once almost everyone has agreed, the last holdout can ask for a very high price for her consent, and with billions of veto holders the patient would never assemble them all (BHT Section 20.3). Option (a) would make vetoes rarer, not more common. BHT compare it with a developer trying to buy many adjacent lots.
+
+MC: BHT interpret the ban on organ sales as an infinite Pigouvian tax. Under which condition is such a ban the optimal Pigouvian policy?
+(a) If repugnance is felt by a majority of citizens
+(b) If donations are sufficient to meet the demand for organs
+(c) If every possible organ sale causes more repugnance loss than it creates gains for the buyer and seller
+(d) If organ buyers are on average richer than sellers
+ANSWER: c
+WHY: A tax high enough to stop all sales is optimal only if no sale would raise social welfare once repugnance is counted; a single welfare-improving sale makes the infinite tax too high (BHT Section 20.4). Option (a) counts heads, not the size of losses and gains. Option (d) is an equity concern that may add to repugnance but does not by itself justify a ban.
+
+MC: The US lets families block the use of a deceased person's organs, and Spain lets the state take organs unless the person opted out. What do the two systems have in common that matters for the Coase theorem?
+(a) In both systems the deceased's wishes always prevail
+(b) Both systems have long waiting lists of similar length
+(c) In neither system can the holder of the right sell the organs, so the right cannot be traded to the party that values it most
+(d) Both systems allow organ sales between living donors
+ANSWER: c
+WHY: The family in the US and the state in Spain can donate or refuse, but no one can sell, so the property right is limited and not transferable, and the Coase theorem does not apply (BHT Section 20.4). Option (b) is false: Spain has shorter waiting lists. Option (a) is contradicted by the survey in which 16\% of US families overrode the deceased's wishes.
+
+MC: Israel and Singapore give priority on organ waiting lists to registered donors. According to BHT, how is this meant to raise the supply of organs?
+(a) By giving people who expect they may one day need an organ a reason to register as donors themselves
+(b) By paying registered donors a cash reward
+(c) By letting families sell organs of deceased relatives to the state
+(d) By making donation the default unless a person opts out
+ANSWER: a
+WHY: The reward is a better place in the queue, a non-financial incentive that matters most to those who expect to need an organ, and it avoids the repugnance of payment (BHT Section 20.4). Option (b) describes a financial incentive, which BHT note can backfire by crowding out altruism. Option (d) describes the Spanish presumed-consent system.
+
+MC: BHT's conclusion asks which external effects should count in the social welfare function. Which example do they offer as one most people would accept as a valid externality?
+(a) The distress of a person who objects to neighbors of a different race
+(b) Asthma in children caused by neighborhood smog
+(c) Repugnance at organ sales
+(d) The discomfort of seeing others eat foie gras
+ANSWER: b
+WHY: BHT contrast harm from smog, a grievance most would accept, with a bigot's claim of harm, which few would include (BHT Section 20.5). Option (c) is the case BHT leave open: whether organ-sale repugnance counts is contested, and the answer shapes that market. Option (d) is another repugnance example from Section 20.4, not one BHT present as clearly valid.
+
+MC: Taking into account the external cost of antibiotic resistance, which prescription is most likely to be socially efficient?
+(a) Antibiotics for a patient with a cold who insists on a prescription
+(b) Antibiotics for a viral infection, to reassure an anxious patient
+(c) Antibiotics for a mild bacterial infection that would clear up on its own in a few days
+(d) Antibiotics for a patient with a life-threatening bacterial infection
+ANSWER: d
+WHY: The large private benefit of saving a life outweighs the small increase in resistance from one course (BHT Section 20.1). In options (a) and (b) the infection is viral, so the health benefit is zero while the resistance cost remains. In option (c) the benefit is small and may fall short of the external cost, so it is a closer call.

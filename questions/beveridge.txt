@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 16 (The Beveridge model: nationalized health care). 10 TF, 20 MC.
+# Original questions written for the course. Numbers checked in Python on 2026-10-09.
+
+TF: In Sweden, the national government raises most of the public money spent on health care, while the county councils mainly run hospitals and clinics with it.
+ANSWER: False
+WHY: The Swedish county councils can levy income taxes and pay for about 70 percent of government health spending; the national government covers the remaining 30 percent (BHT Section 16.1). The councils are therefore both the main financers and the main administrators of regional care. It is a decentralized Beveridge system, not one run on national transfers.
+
+TF: The studies of hip fracture surgery in England and Canada that BHT cite show that long waiting times in Beveridge systems do not shorten patients' life expectancy.
+ANSWER: False
+WHY: Those studies found that longer waits did not raise mortality related to the surgery, but they did not look at longer-run outcomes such as life expectancy or quality of life (BHT Section 16.3). Absence of an effect on one short-run outcome says nothing about the outcomes that were not measured. BHT call the evidence on the health effects of waiting scarce.
+
+TF: In the survey of people on a British orthopedic waiting list that BHT describes, fewer than half of those on the list still wanted the operation when they were contacted.
+ANSWER: True
+WHY: Only 48 percent still wanted treatment: 17 percent no longer wanted surgery, and others had moved away, had died or had already been treated (BHT Section 16.3). A list can thus overstate the demand it represents. Whether the drop-outs were patients with little to gain or patients whose condition had become untreatable decides whether this is a benefit or a cost of the queue.
+
+TF: Studies of hospital choice by Norwegian hip replacement patients and English cataract patients find that patients will travel much farther to avoid a few extra weeks on a waiting list.
+ANSWER: False
+WHY: Both studies find that travel distance weighs more than waiting time in the choice of hospital: patients accept longer waits for a shorter journey (BHT Section 16.3). One explanation is opportunity cost: an extra hour on the road takes time from work and leisure, while an extra week on a list does not.
+
+TF: Within the English NHS, better-educated patients wait less for elective surgery mainly because they choose hospitals with shorter waiting lists.
+ANSWER: False
+WHY: Laudicella and coauthors find shorter waits for better-educated patients, about 9 to 14 percent, but the gap is not explained by the choice of hospital: it arises among patients already at the same hospital (BHT Section 16.3). The mechanism lies in how patients move through a given hospital's list, which makes it harder to remove by giving everyone the same choice of hospitals.
+
+TF: In Norway, a reform that sorted elective patients by priority reduced waiting times for low-priority patients but lengthened them for high-priority patients.
+ANSWER: True
+WHY: Januleviciute and coauthors find exactly this pattern (BHT Section 16.3). Their explanation is that classifying a patient as high priority requires the referring doctor to send detailed information to the hospital, and this extra cost slows the referral of the patients the reform meant to help most.
+
+TF: If a government gives extra funds to the hospitals with the longest waiting lists, a hospital that shortens its list can end up with less money than one that lets its list grow.
+ANSWER: True
+WHY: Reading long waits as a sign of distress and rewarding them penalizes the hospitals that treat patients quickly, the perverse incentive Iversen describes (BHT Section 16.3). The opposite rule, bonuses for short waits, has its own problem: hospitals may cut lists by removing patients for illegitimate reasons rather than by treating them.
+
+TF: Under England's HRG payments, what a hospital receives for a patient can depend on the procedure performed during the stay, whereas a DRG payment is set mainly by the diagnosis at admission.
+ANSWER: True
+WHY: HRGs group services by diagnosis and by the procedure actually performed, so more complex procedures bring larger payments; DRGs are prospective, fixed once the admitting diagnosis is made (BHT Section 16.6). Under a DRG the hospital bears the cost of whatever it does after admission, while under an HRG part of that cost is covered by a higher payment.
+
+TF: Propper and coauthors found that under the 1991–1997 internal market, the value of shorter waits in areas with more competing hospitals exceeded the cost of the higher heart attack mortality there.
+ANSWER: False
+WHY: Valuing a life-year at £30,000 and a month of waiting at £95, they find the mortality cost three times as large as the waiting-time benefit (BHT Section 16.6). Purchasers could see prices and waiting times but not clinical quality, so hospitals competed on what was observed and let quality slip.
+
+TF: Australia's share of the population with private health insurance fell by more than half between 1970 and 1998, a decline BHT read as possible evidence of an adverse selection death spiral.
+ANSWER: True
+WHY: The share fell from 80 percent in 1970 to 30 percent in 1998, a fall of 62.5 percent (BHT Section 16.5). As healthier people leave a voluntary pool that sits beside free public care, premiums rise for those who stay; the government responded around 1999 with more subsidies and regulation.
+
+MC: Lindsay and Feigenbaum argue that the benefit a patient expects from treatment can fall while she waits. Which conclusion follows from this hypothesis?
+(a) Long queues show that GPs refer too many patients
+(b) A fee at the point of service would be needed to remove W-patients from the queue
+(c) Queues will contain low-benefit patients even with perfect gatekeeping and little moral hazard
+(d) Waiting lists should be ordered by the date each patient joined
+ANSWER: c
+WHY: If benefits decay, patients who were correctly referred as U-patients can become W-patients during the wait, so W-patients appear in the queue without any screening error (BHT Section 16.3). Option (a) blames the gatekeepers, which this hypothesis does not need. A fee, option (b), is not implied either: the change in benefit happens after referral.
+
+MC: A waiting list has 3,000 patients. Each month 500 new patients join and the hospital treats 500. The hospital raises capacity to 600 operations a month, and the inflow stays at 500. How long does it take to clear the list?
+(a) 30 months
+(b) 5 months
+(c) 6 months
+(d) 60 months
+ANSWER: a
+WHY: The list shrinks only by the excess of capacity over inflow, $600-500=100$ patients a month, so clearing 3,000 takes $3{,}000/100=30$ months. Option (b), $3{,}000/600$, forgets that new patients keep joining. Expanding supply is one of the queue-reduction policies in BHT Section 16.3; the arithmetic shows why England needed a large and sustained rise in funding to cut waits.
+
+MC: Between 1993 and 2010, median Canadian waits rose from 3.7 to 8.9 weeks for a specialist after GP referral, from 4.5 to 11.7 weeks for an ophthalmologist and from 8.1 to 17.1 weeks for an orthopedic surgeon. Which wait rose most in proportion?
+(a) The wait for a specialist after GP referral
+(b) The wait for an orthopedic surgeon
+(c) The three rose by about the same proportion
+(d) The wait for an ophthalmologist
+ANSWER: d
+WHY: The proportional increases are $11.7/4.5-1=160$ percent for ophthalmology, $8.9/3.7-1\approx141$ percent for all specialists and $17.1/8.1-1\approx111$ percent for orthopedics (BHT Section 16.3). Orthopedics had the largest increase in weeks, 9 weeks, which makes option (b) tempting, but proportionally it rose least.
+
+MC: In England, the median inpatient waiting time fell from 19.2 weeks in 1990 to 4.3 weeks in 2010. By about what percentage did it fall?
+(a) 22 percent
+(b) 78 percent
+(c) 45 percent
+(d) 347 percent
+ANSWER: b
+WHY: The fall is $1-4.3/19.2\approx0.78$, or 78 percent (BHT Section 16.3). Option (a) is the 2010 wait as a share of the 1990 wait, and option (d) divides the change by the final value instead of the initial one; a fall can never exceed 100 percent. BHT attribute the decline to more funding, tough targets, patient choice and rewards for efficient providers.
+
+MC: The queue of Figure 16.1 has eight patients: four U-patients, two Up-patients and two W-patients. A fee θ removes all W-patients and all Up-patients, as in Figure 16.2. What share of the patients who would benefit substantially from surgery lose their place?
+(a) One quarter
+(b) One third
+(c) One half
+(d) Two thirds
+ANSWER: b
+WHY: Six patients would gain substantially, the four U and the two Up; the fee removes the two Up, so $2/6=1/3$ lose access (BHT Section 16.3, Figures 16.1–16.2). Option (c) divides all removed patients, W included, by the queue of eight. The fee does improve the queue's composition, but it rations partly by income.
+
+MC: Sweden's government finances about 97 percent of all health spending, and the county councils finance about 70 percent of government health spending. About what share of total health spending does the national government finance?
+(a) 3 percent
+(b) 68 percent
+(c) 70 percent
+(d) 29 percent
+ANSWER: d
+WHY: The national government pays the remaining 30 percent of public spending, which is $0.30\times0.97\approx0.29$ of the total (BHT Section 16.1). Option (b), 68 percent, is the councils' share of the total, and option (a) is the private share. The councils are the larger financer by far.
+
+MC: Propper and coauthors value a month of shorter waiting at £95 and a life-year at £30,000. How many patients would each need to wait 0.7 months less for the waiting gain to equal one life-year lost?
+(a) About 450
+(b) About 320
+(c) About 105
+(d) About 45
+ANSWER: a
+WHY: Each patient gains $0.7\times95\approx66.5$ pounds, so $30{,}000/66.5\approx451$ patients offset one life-year (BHT Section 16.6). Option (b) assumes each patient gains a full month. The calculation shows how a few extra deaths can outweigh small waiting-time gains spread over many patients, which drives their 3-to-1 result.
+
+MC: A course of Avastin costs £20,800. How many extra weeks of life would a course have to give, on average, for its cost per life-year to reach £30,000?
+(a) 6 weeks
+(b) 26 weeks
+(c) About 36 weeks
+(d) 52 weeks
+ANSWER: c
+WHY: At £30,000 per life-year, £20,800 buys $20{,}800/30{,}000\approx0.69$ life-years, or about 36 weeks (BHT Section 16.4). With the six weeks reported, option (a), the cost is about £180,000 per life-year, six times NICE's upper bound. Even counting each week of life at full quality, the drug falls far short.
+
+MC: NICE discounts future health at 3.5 percent a year. In present-value terms, a QALY gained ten years from now counts as about how many QALYs today?
+(a) 0.35
+(b) 0.84
+(c) 0.97
+(d) 0.71
+ANSWER: d
+WHY: The weight is $1/1.035^{10}\approx0.71$ (BHT Section 16.4 reports the 3.5 percent rate). Option (b) is the weight for five years, and option (a) is ten times 3.5 percent, the size of the discount under simple interest, not the weight. Discounting lowers the value of preventive technologies whose health gains come late.
+
+MC: Siciliani and Verzulli find that highly educated patients wait 48 percent less in Sweden for non-emergency surgery. If a patient with little education waits 10 weeks, how long does a comparable highly educated patient wait?
+(a) About 5.2 weeks
+(b) About 4.8 weeks
+(c) About 6.8 weeks
+(d) About 14.8 weeks
+ANSWER: a
+WHY: Waiting 48 percent less means $10\times(1-0.48)=5.2$ weeks (BHT Section 16.3). Option (b) mistakes 48 percent less for 48 percent of the wait. The gap shows that equal entitlement in a Beveridge system does not guarantee equal timing of care.
+
+MC: Why might doctors who work in both NHS hospitals and private practice lengthen public waiting lists?
+(a) Private hospitals pay the NHS for every patient they take from its list
+(b) Longer public waits push patients toward their more lucrative private practice
+(c) NICE forbids them to treat public patients with technologies it rejects
+(d) Global budgets require them to work fewer hours in public hospitals
+ANSWER: b
+WHY: A doctor who earns more per private patient gains when public waits grow, so she may work slowly on public lists or let public patients stay longer in beds (BHT Section 16.3). This conflict of interest is why some countries restrict dual practice or send patients abroad. Options (a), (c) and (d) describe rules that do not create this incentive.
+
+MC: Under the NHS internal market of 1991–1997, hospitals had to set prices equal to average cost, and purchasers could see prices and waiting times but not mortality. What did this design predict for hospital quality?
+(a) Quality would rise, since purchasers rewarded the best hospitals
+(b) Quality would be unaffected, since prices could not fall below average cost
+(c) Quality could fall, since hospitals competed only on what purchasers observed
+(d) Quality would rise only in areas with a single hospital
+ANSWER: c
+WHY: When one dimension of output is invisible to buyers, competition on the visible dimensions rewards cutting costs and waits at the expense of quality (BHT Section 16.6). Propper and coauthors find higher heart attack mortality where hospitals were more concentrated nearby. Option (a) assumes purchasers could see quality, which they could not.
+
+MC: What feature of the 2002–2008 English reforms was meant to avoid the problem of the internal market?
+(a) Hospitals could set their own prices to attract purchasers
+(b) Purchasers received bonuses for lower mortality in their region
+(c) Patients had to stay with the hospital nearest their home
+(d) Prices were uniform across hospitals, so hospitals could compete only on quality
+ANSWER: d
+WHY: Under payment by results every hospital, public or private, received the same tariff for a given service, so cutting price was no longer a way to win patients (BHT Section 16.6). Uniform prices also made public and private work equally lucrative, reducing the pull of private practice. Option (a) is the internal-market feature that the reforms removed.
+
+MC: Why does BHT argue that payment by results alone gives hospitals only a limited incentive to improve when patients are assigned to hospitals by address?
+(a) Because the number of patients a hospital can attract is fixed, so payment per case works much like a global budget
+(b) Because HRG prices are set below average cost
+(c) Because hospitals are not allowed to keep any surplus
+(d) Because the patients assigned by address are sicker than average
+ANSWER: a
+WHY: Payment per case rewards a hospital for treating more patients, but if its patients are fixed by postcode it cannot gain patients by being better (BHT Section 16.6). This is why England combined payment by results with free choice of provider from 2006. Option (b) is not a general feature of HRGs, which are priced at average cost.
+
+MC: Which lesson does BHT draw from the Mid Staffordshire scandal?
+(a) Payment by results always lowers quality
+(b) Foundation Trust status should be granted only to hospitals with high costs
+(c) Even with patient choice, a race to the bottom on quality can occur if quality is not monitored
+(d) Patient choice is the cause of understaffing in NHS hospitals
+ANSWER: c
+WHY: The trust won Foundation Trust status mainly for its low costs, while its high emergency mortality was not scrutinized (BHT Section 16.6). The lesson is about monitoring: incentives to cut costs need checks on outcomes, which is why mortality data were later published. Option (a) overgeneralizes: Farrar and coauthors find no significant fall in measured quality after payment by results.
+
+MC: Tuohy and coauthors warn about letting patients buy privately the care that a public HTA agency has rejected as cost-ineffective. What is their concern about innovation?
+(a) Research would move toward cheap, cost-effective treatments for the public system
+(b) Firms would stop developing drugs altogether
+(c) Public agencies would have to approve every new drug
+(d) Research would move toward expensive, low-value treatments sold to richer patients
+ANSWER: d
+WHY: If cost-ineffective care is profitable in the private market, firms aim their research at that market, and new treatments for public patients develop more slowly (BHT Section 16.5). The result harms equity twice: the rich get new technologies first, and the technologies developed are poor value. Option (a) states the opposite of their argument.
+
+MC: A hospital's raw mortality rate is higher than that of its neighbors. Why is this weak evidence of poor quality?
+(a) Mortality rates are not published in England
+(b) Mortality also reflects how sick the hospital's patients are, and the rates are noisy
+(c) Patients do not care about mortality when choosing a hospital
+(d) Mortality depends only on the patient's GP, not on the hospital
+ANSWER: b
+WHY: A hospital that takes riskier cases can have high mortality while preventing more deaths than others, and in small samples rates vary by chance (BHT Section 16.6). This is why NHS Choices also reports staff surveys alongside outcomes. Option (a) is wrong: NHS Choices publishes mortality data.
+
+MC: Patients seem to weigh travel time to a hospital more heavily than the same amount of extra time on a waiting list. What explanation does BHT offer?
+(a) An hour of travel uses time that would go to work or leisure, while a week on a list does not
+(b) Patients do not believe the published waiting times
+(c) Hospitals far away are of lower quality
+(d) Travel costs are paid out of pocket while waiting is free
+ANSWER: a
+WHY: Time spent traveling has a direct opportunity cost, while waiting on a list runs in the background of daily life (BHT Section 16.3, citing Culyer and Cullis). Waiting still has costs, such as prolonged pain, but patients may count them less. Option (d) is tempting but is not the explanation BHT gives, which is about how time is used.
+
+MC: Besley and coauthors find that areas of England with more private insurance have longer NHS waiting times. Which reading is consistent with BHT's discussion?
+(a) Private insurance shortens public waits by drawing patients away
+(b) Waiting times have no link with private insurance once demographics are controlled
+(c) The private sector may draw resources or doctors' effort away from public patients
+(d) Private insurers pay the NHS to lengthen waits
+ANSWER: c
+WHY: BHT read the evidence as consistent with the private sector siphoning resources from the public system, or with dual-practice doctors favoring their private work (BHT Section 16.5). The finding contradicts option (a), the hope that a parallel private system relieves public queues. The correlation could also reflect reverse causation, since long waits make private cover more attractive.
+
+MC: In BHT's queue model, when is a persistent waiting list a clear sign that the government should add surgeons?
+(a) When GPs refer many patients with low benefit
+(b) When GPs screen perfectly, so everyone on the list would gain substantially from surgery
+(c) When patients' benefit from surgery decays while they wait
+(d) When a copayment has been introduced
+ANSWER: b
+WHY: With perfect gatekeeping the list contains only U-patients, so waiting only delays valuable care and more capacity is worth providing (BHT Section 16.3, Figure 16.3). When screening is imperfect, options (a) and (c), shorter queues also bring in more low-value care, so the best queue length balances that waste against delay.

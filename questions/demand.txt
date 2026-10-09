@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 2 (Demand for health care). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: A consultant who asks only a surgeon's current patients how they would react to a price increase is likely to understate how strongly demand for her services responds to price.
+ANSWER: True
+WHY: Current patients picked this surgeon in the first place and tend to be loyal to her, unlike people outside her practice, so they are less willing to switch when her price rises (BHT Section 2.1). The people who would react most are left out of the sample. The bias runs toward too little price sensitivity, not too much.
+
+TF: In a survey where people choose their own insurance plans, the measured demand curve tends to overstate the quantity of care demanded at the high out-of-pocket price.
+ANSWER: False
+WHY: People who expect to need care pick generous plans, so the low-price group is sicker and the high-price group healthier than the population (BHT Section 2.1, Figure 2.2). The survey therefore overstates use at the low price and understates it at the high price, which makes the measured curve flatter than the true one.
+
+TF: When BHT estimate the demand for care of insured patients, the price they use is the premium paid to join the plan, since that is the largest payment the patient makes.
+ANSWER: False
+WHY: The premium is paid before any care is used and does not change with the amount of care consumed. What matters for the choice of how much care to use is the marginal cost to the patient of one more unit, which the copayment rate is proportional to (BHT Section 2.2).
+
+TF: In the RAND experiment, the proportional fall in outpatient episodes between the free plan and the 95% plan was similar for chronic and for acute conditions.
+ANSWER: True
+WHY: Chronic episodes fell from 0.70 to 0.46, about 34%, and acute episodes from 2.29 to 1.44, about 37% (BHT Section 2.2, Table 2.1). The result is surprising because one might expect people with diabetes or high blood pressure to keep up their care whatever it costs.
+
+TF: When Californians reach 65 and gain Medicare, planned hospital admissions rise by a much larger percentage than unplanned admissions that begin in the emergency room.
+ANSWER: True
+WHY: Card and coauthors find a jump of about 15% in planned admissions against about 2.5% for unplanned admissions through the ER (BHT Section 2.2, Figure 2.3). Care that can be scheduled responds to the fall in price; care needed when life is at stake responds very little.
+
+TF: In the RAND experiment, cost sharing lowered antibiotic use for bacterial conditions, where it is useful, but left antibiotic use for viral conditions, where it is useless, unchanged.
+ANSWER: False
+WHY: Cost sharing roughly halved antibiotic use in both cases: from 0.47 to 0.24 per person for bacterial conditions and from 0.17 to 0.08 for viral ones (BHT Section 2.2, Table 2.8). Patients facing a price cut back on useful and useless care alike, which is the double-edged effect of a higher price.
+
+TF: In the RAND experiment, children aged 0–6 in families with copayments were less likely to be immunized than those on the free plan, but no such difference appeared for children aged 7–16.
+ANSWER: True
+WHY: Immunization rates over three years were 58.9% on the free plan and 48.7% with copayments for the younger group, a significant gap, while for the older group they were 21.2% and 21.7% (BHT Section 2.2, Table 2.5). Even parents' demand for care for their small children slopes downward.
+
+TF: If a patient's demand for outpatient care falls from 2.32 to 1.9 episodes a year when her copayment rate rises from 25% to 95%, her out-of-pocket spending on outpatient care rises.
+ANSWER: True
+WHY: With a full price $p$ per episode, she spends $0.25\times2.32\,p=0.58\,p$ before and $0.95\times1.9\,p\approx1.81\,p$ after. Her demand is inelastic (BHT Section 2.3), so the 18% fall in quantity is far smaller than the rise in price and spending goes up. Only with elastic demand would spending fall.
+
+TF: In the RAND experiment, participants on the free plan were about 10% less likely to die during the experiment than those on the cost-sharing plans.
+ANSWER: False
+WHY: For all participants the relative mortality rate was 0.99 on the free plan against 1 on the cost-sharing plans, a difference of about 1% (BHT Section 2.4, Table 2.9). The 10% difference, 1.90 against 2.10, applies only to the high-risk participants selected by blood pressure, cholesterol and smoking.
+
+TF: Kowalski's study of a large US employer finds that the 5% of people who spend most on medical care are more sensitive to its price than the typical employee.
+ANSWER: False
+WHY: She finds the opposite: the heaviest spenders are far less price-sensitive than the rest of the population, whose demand is fairly elastic (BHT Section 2.3). The point is that an average elasticity such as the RAND arc elasticity can hide large differences between groups of patients.
+
+MC: Suppose the demand curve for health care were vertical at a quantity $Q_I$, like $D_I$ in Figure 2.1. Which conclusion would follow?
+(a) Raising copayments would be the cheapest way to cut health spending
+(b) The right amount of care would be a medical question, and patients' incentives would not matter for how much care is used
+(c) People with lower incomes would use less care than people with higher incomes
+(d) Insurance would raise the amount of care people use
+ANSWER: b
+WHY: With a vertical demand curve, people want $Q_I$ whatever the price, so prices, copayments and incomes do not change how much care is used (BHT chapter introduction). Choosing $Q_I$ becomes a task for doctors and researchers. Options (a), (c) and (d) all assume that use responds to the price or to the budget, which a vertical curve rules out.
+
+MC: A researcher worries that the measured demand curve in her survey is distorted as in Figure 2.2. Which of the following would \emph{not} remove the distortion?
+(a) Assigning insurance plans to participants at random
+(b) Using a lottery to decide who gets the chance to join a public insurance program
+(c) Comparing the same people before and after a policy changes their copayment for reasons unrelated to their health
+(d) Repeating the same survey on a sample ten times larger
+ANSWER: d
+WHY: The distortion comes from who chooses which plan, not from sampling noise: a larger sample measures the same biased comparison more precisely (BHT Section 2.1). Random assignment and lotteries make the groups facing different prices similar in health (Definition 2.1), and a price change unrelated to health compares the same people at two prices.
+
+MC: Why did the design of the RAND plans make them well suited to estimating the effect of price on the use of care?
+(a) The main plans differed only in the copayment rate, so differences in use reflect the price patients faced
+(b) Participants were all low-income, so their budgets were tight enough to make price matter
+(c) The plans offered free care to everyone, so use could be measured without price effects
+(d) Participants could switch plans each year, which revealed their preferences
+ANSWER: a
+WHY: The four main plans had copayment rates of 0%, 25%, 50% and 95% and were otherwise alike, so with random assignment any difference in use is due to price (BHT Section 2.1). Participants did not choose or switch plans, and the sample was broadly representative rather than low-income, which was a feature of the Oregon study.
+
+MC: In the Oregon Medicaid Experiment, 63.6% of lottery winners and 57.4% of lottery losers had an outpatient visit, and winning raised the probability of having insurance by 25 percentage points. If winning affected visits only through insurance, by about how much did having insurance raise the probability of a visit?
+(a) 6 percentage points
+(b) 11 percentage points
+(c) 25 percentage points
+(d) 62 percentage points
+ANSWER: c
+WHY: The lottery raised the share with a visit by $63.6-57.4=6.2$ points, but only one winner in four gained coverage because of it, so the effect of coverage itself is about $6.2/0.25\approx25$ points, close to the 24 points BHT report (BHT Sections 2.1–2.2). Option (a) is the raw difference between winners and losers, which mixes the insured with winners who never enrolled.
+
+MC: Why do researchers estimate separate demand curves for doctor visits and for hospital stays, rather than one demand curve for "health care"?
+(a) Because hospital stays are always paid in full by insurers
+(b) Because doctor visits are not affected by insurance
+(c) Because there is no natural unit that converts an overnight stay into a number of visits, so the two cannot be added into one quantity
+(d) Because the RAND experiment measured only one of the two
+ANSWER: c
+WHY: Defining quantity requires a common unit, and an overnight stay is not obviously worth five visits or a hundred (BHT Section 2.2). Separate curves avoid an arbitrary conversion. Both kinds of care were covered by the RAND plans and measured by the experiment, so (a), (b) and (d) are false.
+
+MC: A full outpatient episode costs \$80. A patient uses 2.32 episodes a year on a plan with a 25% copayment and 1.9 episodes on a plan with a 95% copayment. By how much does the insurer's yearly payment for this patient fall when she moves to the 95% plan?
+(a) \$131.60
+(b) \$33.60
+(c) \$98.00
+(d) \$7.60
+ANSWER: a
+WHY: The insurer pays the share $1-c$ of each episode: $0.75\times80\times2.32=\$139.20$ on the 25% plan and $0.05\times80\times1.9=\$7.60$ on the 95% plan, a fall of \$131.60. Most of it comes from shifting the cost of each episode to the patient, and a smaller part from the 18% fall in use (BHT Sections 2.2–2.3). Option (b) values only the fall in episodes at the full price, $0.42\times80$; option (c) is the rise in the patient's own spending, from \$46.40 to \$144.40; and option (d) is the new payment, not its fall.
+
+MC: In the RAND experiment, 22% of people on the free plan and 15% of people on the 95% plan used the emergency room in a year. By what percentage was the probability of ER use lower on the 95% plan?
+(a) 7%
+(b) 15%
+(c) 47%
+(d) 32%
+ANSWER: d
+WHY: The difference is 7 percentage points, which is $7/22\approx32\%$ of the free-plan rate (BHT Section 2.2, Table 2.3). Option (a) confuses percentage points with a percentage change, and (c) divides by the 95% plan's rate, $7/15$, instead of the starting rate.
+
+MC: The RAND experiment found that higher copayments reduced the use of the emergency room. Which explanation is the most consistent with the evidence BHT present?
+(a) ER visits are mostly for life-threatening conditions, and patients value their lives less than expected
+(b) Many ER visits are not urgent, for example by people without a regular doctor, and these are the visits a higher price deters
+(c) Patients with copayments went to the ER more often but spent less per visit
+(d) Hospitals refused to treat patients on cost-sharing plans
+ANSWER: b
+WHY: Many ER visits concern problems that could wait, made by patients who lack another source of care or overrate their symptoms, and it is these visits that respond to price (BHT Section 2.2). Option (a) misreads the result: the response comes from the nonurgent visits, while unplanned admissions at 65 barely react to coverage.
+
+MC: Card and coauthors find a jump in planned hospital admissions at age 65, when most people gain Medicare. Some of it may be "pent-up demand": people near 65 delay procedures until they are covered. Why does this still show that demand is sensitive to price?
+(a) Delaying a procedure until it becomes cheaper is itself a response to price
+(b) Pent-up demand only arises when demand is vertical
+(c) It does not: pent-up demand reflects health needs, not price
+(d) Because Medicare also lowers the full price that hospitals charge
+ANSWER: a
+WHY: Choosing when to have a procedure according to what one will pay out of pocket is a price response; people who ignored price would not wait for coverage (BHT Section 2.2). Option (c) misses that the timing, not the need, is what changes at 65. A vertical demand curve would produce no reaction at all to the arrival of insurance, so (b) is backward.
+
+MC: In 2000, France gave free complementary insurance to the poorest 10% of residents, and researchers found that those who had lacked such coverage used more care afterwards. What kind of evidence is this?
+(a) A randomized controlled experiment like the RAND HIE
+(b) A survey of current patients of a single provider
+(c) A non-experimental study of a policy that extended insurance to a well-defined group
+(d) A lottery that randomly offered insurance, like the Oregon study
+ANSWER: c
+WHY: Eligibility was set by the policy, by income, not by a random draw, so the study is non-experimental, like the Medicare-at-65 study (BHT Section 2.2). Its value is that the change in coverage did not come from people's own choice of plan, which limits the selection problem of Figure 2.2, but it is not a randomized design.
+
+MC: Which RAND finding shows the \emph{harmful} side of raising the price of care?
+(a) People on cost-sharing plans received fewer antibiotics for viral infections
+(b) People on cost-sharing plans had fewer outpatient episodes for colds
+(c) Mental health spending was lower on cost-sharing plans
+(d) People on cost-sharing plans received fewer antibiotics for bacterial infections
+ANSWER: d
+WHY: Antibiotics treat bacterial infections, so the fall from 0.47 to 0.24 prescriptions per person means some patients probably went without useful treatment (BHT Section 2.2, Table 2.8). The fall for viral infections in (a) is a gain, since antibiotics do nothing for viruses and their overuse breeds resistant bacteria. Options (b) and (c) show lower use but say nothing about whether that care was useful.
+
+MC: Low-income RAND participants spent \$317 a year on dental care on the free plan and \$216 on the 95% plan. By what percentage was spending on the 95% plan lower than on the free plan?
+(a) 47%
+(b) 32%
+(c) 18%
+(d) 68%
+ANSWER: b
+WHY: The gap is \$101, which is $101/317\approx32\%$ of free-plan spending (BHT Section 2.2, Table 2.7). Option (a) is the same gap measured from the 95% plan, $101/216\approx47\%$, which BHT use to say that the free plan spent about 47% more. Option (d) is the ratio $216/317$, not the fall.
+
+MC: In a population, sick people use 4 doctor visits a year and healthy people 1, whatever the price. In a survey, 80% of the members of a generous plan are sick, against 20% in a lean plan. What difference in average visits between the two plans does the survey find?
+(a) 0 visits, since price has no effect
+(b) 1.8 visits
+(c) 3 visits
+(d) 0.6 visits
+ANSWER: b
+WHY: The generous plan averages $0.8\times4+0.2\times1=3.4$ visits and the lean plan $0.2\times4+0.8\times1=1.6$, a gap of 1.8 visits entirely due to who chose which plan (BHT Section 2.1, Figure 2.2). Option (a) is the true price effect, which the survey cannot see; (c) is the gap between a sick and a healthy person, which would require complete sorting.
+
+MC: In the China Rural Health Insurance Experiment, mean outpatient spending was 13.49 yuan at a 20% copayment and 6.54 yuan at 80%. What is the arc elasticity of outpatient spending between these two plans?
+(a) $-0.58$
+(b) $-0.17$
+(c) $-0.35$
+(d) $-1.73$
+ANSWER: a
+WHY: By equation (2.2), $\frac{(6.54-13.49)/(13.49+6.54)}{(80-20)/(80+20)}=\frac{-0.347}{0.6}\approx-0.58$ (BHT Section 2.3, Table 2.4). Option (b) is the simple elasticity starting from the 20% plan, $-0.515/3$, which uses the low starting price as base; (d) inverts the ratio. Even at $-0.58$, outpatient demand in rural China is inelastic.
+
+MC: In the same Chinese experiment, mean inpatient spending was 4.51 yuan at a 20% copayment and 2.95 yuan at 80%. What is the simple elasticity of equation (2.1), taking the 20% plan as the starting point?
+(a) $-0.35$
+(b) $-0.71$
+(c) $-0.58$
+(d) $-0.12$
+ANSWER: d
+WHY: Spending falls by $(2.95-4.51)/4.51\approx-34.6\%$ while the price rises by $(80-20)/20=300\%$, so $\epsilon\approx-0.346/3=-0.12$ (BHT Section 2.3, equation (2.1)). Option (a) forgets to divide by the percentage change in price, and (b) takes the 80% plan as the starting point, $0.529/(-0.75)$.
+
+MC: Suppose the arc elasticity of demand for all care is $-0.22$, as in BHT Figure 2.5. Approximately how much does use fall if the price patients pay rises by 10%?
+(a) 22%
+(b) 0.22%
+(c) 2.2%
+(d) 10%
+ANSWER: c
+WHY: An elasticity of $-0.22$ means a 1% price increase lowers quantity by about 0.22%, so a 10% increase lowers it by about 2.2% (BHT Section 2.3, Definition 2.5). Option (d) would require unit elasticity, and (a) multiplies by 100 instead of by 10.
+
+MC: Which of the following goods, with the elasticities reported in BHT Figure 2.5, has an \emph{elastic} demand?
+(a) Movies, $-0.9$
+(b) Coffee, $-0.25$
+(c) Restaurant meals, $-2.3$
+(d) All medical care in the RAND experiment, $-0.22$
+ANSWER: c
+WHY: Demand is elastic when $\epsilon<-1$, so that quantity falls by a larger percentage than price rises; only restaurant meals (and fresh tomatoes, not listed) qualify (BHT Section 2.3). Movies are the tempting choice, but $-0.9$ lies between $-1$ and 0, so their demand is still inelastic, like coffee and medical care.
+
+MC: Of the 23 health measures compared in the RAND experiment, which difference between the free plan and the cost-sharing plans was medically important?
+(a) Blood pressure, with the gain concentrated among low-income and high-risk participants
+(b) Cholesterol, which was much lower on the free plan
+(c) Overall mortality, which was 10% lower on the free plan
+(d) Near and far vision, which improved by several lines on the Snellen chart
+ANSWER: a
+WHY: Only blood pressure and two vision measures differed significantly, and only the blood pressure difference mattered medically, mostly for poor and high-risk people (BHT Section 2.4, Table 2.10). Vision differed by about 0.1 Snellen lines, not several, cholesterol barely differed, and the 10% mortality gap applies only to high-risk participants.
+
+MC: Meyer and Wherry exploit a birth-date cutoff in the Medicaid expansion to poor children: black children born after the cutoff became eligible, those born before it did not. Why is this comparison informative about the effect of coverage on survival?
+(a) Because the children who were eligible chose to enroll, which reveals their need for care
+(b) Because children born just before and just after the cutoff are similar, and eligibility depends on the birth date rather than on health or choices
+(c) Because the cutoff selected the sickest children for coverage
+(d) Because all of the eligible children were randomly assigned to plans with different copayments
+ANSWER: b
+WHY: The cutoff date is unrelated to a child's health, so children on either side of it differ in eligibility but not in other ways, which mimics random assignment (BHT Section 2.4). Option (a) reintroduces the self-selection that Figure 2.2 warns about, and option (c) would bias the comparison. There was no random assignment of plans as in the RAND experiment.
+
+MC: Which statement best summarizes the policy tradeoff that BHT draw from the chapter's evidence?
+(a) Free care improves health for everyone, so cost sharing only saves money
+(b) Cost sharing does not change how much care people use, so it only shifts costs to patients
+(c) Prices do not affect use of serious care, so the tradeoff only concerns minor care
+(d) Free care encourages use of care that adds little to health, while charging for care can hurt at-risk groups, such as low-income and chronically ill patients
+ANSWER: d
+WHY: Because demand slopes downward, free care raises use, yet the RAND free plan produced no better average health or mortality; cost sharing reduces that use but may hurt high-risk and poor patients (BHT Sections 2.4–2.5). This is the tension between efficiency and equity. Options (a) and (b) contradict the evidence on health and on use, and (c) ignores that even ER and inpatient use responded to price in the RAND experiment.

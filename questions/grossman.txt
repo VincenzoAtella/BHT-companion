@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 3 (Demand for health: the Grossman model). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: In the Grossman model a doctor's visit raises utility only to the extent that it raises the stock of health.
+ANSWER: True
+WHY: The period utility is $U(H_t,Z_t)$, and medical care does not appear in it; it is a market input $M$ into the health production function (BHT Section 3.1, equations (3.1) and (3.3)). People demand medical care because they demand health, so the demand for care is a derived demand.
+
+TF: In the Grossman model, time spent sick is a fourth activity that the individual chooses directly, trading it off against work, play and health improvement.
+ANSWER: False
+WHY: Sick time $T^S$ is pinned down by the health stock through the illness-avoidance function; nobody chooses to be sick as such (BHT Section 3.1). The individual influences $T^S$ only indirectly, by investing in $H$. Only $T^W$, $T^Z$ and $T^H$ are allocated by choice, out of productive time $T^P=\Theta-T^S$.
+
+TF: The home good $Z$ and health $H$ are both stocks: what is produced today adds to the amount available tomorrow.
+ANSWER: False
+WHY: $Z$ is a flow that starts from zero in each period and is used up within it, while $H$ carries over from one period to the next (BHT Section 3.1). This asymmetry is what makes health a capital good and gives it an investment motive that the home good lacks.
+
+TF: Once an individual's health falls to $H_{min}$, the model implies that she can never raise her health again.
+ANSWER: True
+WHY: At $H_{min}$ sick time takes all $\Theta$ units of time, so there is no time to work, to earn income for medical inputs, or to spend on health improvement (BHT Section 3.1, Figure 3.1). With no inputs she produces no health in later periods either, which is how the model defines death.
+
+TF: With a discount factor $\delta=0.9$, a unit of utility received two periods from now adds $0.81$ units to lifetime utility measured today.
+ANSWER: True
+WHY: In equation (3.6) the utility flow of period $t$ is weighted by $\delta^t$, and $0.9^2=0.81$ (BHT Section 3.3). Discounting makes future health benefits worth less today, which lowers the value of investments whose payoff comes late.
+
+TF: As in the standard two-good case, the Grossman production possibility frontier reaches its highest level of $Z$ at the lowest possible level of health.
+ANSWER: False
+WHY: At $H_{min}$ there is no productive time and therefore no $Z$ at all, so the frontier starts at $Z=0$ (BHT Section 3.2, Figure 3.2(b)). The maximum $Z$ is reached at an interior level of health, where an extra hour of health effort returns exactly one hour of productive time.
+
+TF: Holding time spent improving health fixed, entering a period with better health shifts the work-play time constraint outward and can raise both work and play.
+ANSWER: True
+WHY: Better inherited health means less sick time and more productive time, so the line $T^W+T^Z=T^P-T^H$ moves out (BHT Section 3.2, Figure 3.9). With normal preferences the individual uses the extra time partly for work and partly for play, reaching a higher indifference curve.
+
+TF: In the MEC diagram, a rise in the market interest rate $r$ lowers the optimal health stock, even though it does not change how fast the body wears out.
+ANSWER: True
+WHY: The price of health capital is $r+\gamma$, and $r$ measures the return given up by holding health rather than a market asset (BHT Section 3.3). A higher $r$ moves the horizontal line up along a downward-sloping MEC curve, so $H^*$ falls.
+
+TF: In BHT's account of the education gradient, college graduates are healthier because they face a lower price of health capital $r+\gamma$ than high-school dropouts.
+ANSWER: False
+WHY: BHT keep $r$ and $\gamma$ the same for both people and let education raise the efficiency of producing health, which shifts the MEC curve up (BHT Section 3.4, Figure 3.12). The higher optimal stock comes from higher returns at every $H$, not from a lower cost line.
+
+TF: In the combined diagram of the aging individual, the fall in health shrinks the production possibility frontier but leaves the time constraint for work and play where it was.
+ANSWER: False
+WHY: Lower health means more sick time and less productive time, so the old person's work-play constraint lies inside the young person's (BHT Section 3.5, Figure 3.14(b)-(c)). The smaller frontier in part (d) follows from that loss of time and money for producing $H$ and $Z$.
+
+MC: In one period of $\Theta=24$ hours, a person is sick for 3 hours, works 9 hours and plays 8 hours. How much time does she spend improving her health, and how much productive time does she have?
+(a) 3 hours improving health; 24 hours of productive time
+(b) 4 hours improving health; 21 hours of productive time
+(c) 4 hours improving health; 17 hours of productive time
+(d) 7 hours improving health; 21 hours of productive time
+ANSWER: b
+WHY: From equation (3.2), $T^H=24-3-9-8=4$, and productive time is $T^P=\Theta-T^S=21$, the sum of work, play and health time (BHT Section 3.1, equation (3.5)). Option (c) wrongly subtracts health time from productive time; health improvement is one of the three productive uses of time.
+
+MC: A worker earns \$20 per hour and works 8 hours. She buys 6 units of medical inputs at $p_M=\$10$ and spends the rest of her income on home-good inputs at $p_J=\$5$, saving nothing. How many units of $J$ does she buy?
+(a) 12
+(b) 16
+(c) 32
+(d) 20
+ANSWER: d
+WHY: Income is $wT^W=\$160$; medical inputs cost \$60, leaving \$100, which buys $100/5=20$ units of $J$ (BHT Section 3.1, equation (3.4) with equality). Option (c) forgets to subtract spending on $M$. With no saving the budget holds with equality.
+
+MC: Lifetime utility is given by equation (3.6) with $\delta=0.95$. A person lives three periods ($t=0,1,2$) and gets a utility flow of 10 in each. What is her lifetime utility?
+(a) $28.525$
+(b) $30$
+(c) $27.1$
+(d) $29$
+ANSWER: a
+WHY: $10(1+0.95+0.95^2)=10(1+0.95+0.9025)=28.525$ (BHT Section 3.3). Option (b) ignores discounting, and option (d), $10(1+0.95+0.95)$, discounts the second and third periods by the same factor instead of raising $\delta$ to the power $t$.
+
+MC: A person's MEC schedule gives a return of $0.20$ at $H=40$, $0.14$ at $H=50$, $0.10$ at $H=60$ and $0.06$ at $H=70$. The interest rate is $r=0.04$. If her depreciation rate rises from $\gamma=0.06$ to $\gamma=0.10$, her optimal health stock moves
+(a) from 70 to 60
+(b) from 60 to 70
+(c) from 60 to 50
+(d) from 50 to 40
+ANSWER: c
+WHY: The optimum sets the MEC equal to $r+\gamma$: first $0.04+0.06=0.10$, at $H=60$, then $0.04+0.10=0.14$, at $H=50$ (BHT Sections 3.3-3.4). Option (a) compares the MEC with $\gamma$ alone ($0.06$, then $0.10$) and forgets the forgone interest $r$; option (b) gets the direction wrong, since a higher price of health capital moves the optimum down a downward-sloping MEC.
+
+MC: Suppose health evolves as $H_t=(1-\gamma)H_{t-1}+I_t$, where $I_t$ is gross investment. With $H_{t-1}=100$, $\gamma=0.08$ and $I_t=5$, what is $H_t$?
+(a) $105$
+(b) $92$
+(c) $97$
+(d) $87$
+ANSWER: c
+WHY: Depreciation removes $0.08\times100=8$ units and investment adds 5, so $H_t=92+5=97$ (BHT Section 3.3, equation (3.7) in additive form). Option (a) ignores depreciation, and option (b) ignores investment. Holding the stock at 100 would require $I_t=8$.
+
+MC: Raising health from 20 to 30 cuts sick time from 12 to 6 hours a day, and raising it from 30 to 40 cuts sick time from 6 to 4 hours. Each step of 10 units takes 4 hours of health-improvement time. What is the net change in time left for work and play when health rises from 20 to 30, and from 30 to 40?
+(a) $+2$ hours, then $-2$ hours
+(b) $+6$ hours, then $+2$ hours
+(c) $-4$ hours, then $-4$ hours
+(d) $+2$ hours, then $+2$ hours
+ANSWER: a
+WHY: The first step frees 6 hours of sick time for 4 hours of effort, a net gain of 2: a free lunch. The second frees only 2 hours for 4 hours of effort, a net loss of 2, so it is in the tradeoff zone (BHT Section 3.2, Figure 3.2(b)). Option (b) forgets the time spent producing health; the end of the free lunch lies between $H=30$ and $H=40$.
+
+MC: A high-school dropout has $MEC_H(H)=0.5-0.004H$ and a college graduate has $MEC_C(H)=0.6-0.004H$. Both face $r+\gamma=0.10$. How much higher is the graduate's optimal health stock?
+(a) 20 percent higher
+(b) 100 units
+(c) 125 units
+(d) 25 units
+ANSWER: d
+WHY: Setting each MEC equal to $0.10$ gives $H_H^*=0.4/0.004=100$ and $H_C^*=0.5/0.004=125$, a gap of 25 units, or 25 percent (BHT Section 3.4, Figure 3.12). Options (b) and (c) are the two levels, not the gap. The gap arises entirely from the higher MEC curve, since the cost line is the same.
+
+MC: A person's MEC is $0.5-0.004H$ and $H_{min}=20$. The interest rate is $r=0.02$ and his depreciation rate rises with age. At what depreciation rate does his optimal health stock fall to $H_{min}$?
+(a) $\gamma=0.42$
+(b) $\gamma=0.40$
+(c) $\gamma=0.48$
+(d) $\gamma=0.50$
+ANSWER: b
+WHY: The highest return available is $MEC(H_{min})=0.5-0.08=0.42$, and investment stops paying once $r+\gamma$ reaches it, at $\gamma=0.42-0.02=0.40$ (BHT Section 3.4, Figure 3.13). Option (a) forgets the interest rate; option (c) uses the MEC at $H=0$, $0.50$, instead of at $H_{min}$, and option (d) makes both mistakes.
+
+MC: A frontier passes through the points $(H,Z)$ = (20, 0), (30, 8), (40, 12), (60, 9) and (80, 0). Which point maximizes the utility function $U=H\cdot Z$ among these?
+(a) (30, 8)
+(b) (40, 12)
+(c) (80, 0)
+(d) (60, 9)
+ANSWER: d
+WHY: Utility is 0, 240, 480, 540 and 0 at the five points, so (60, 9) is best (BHT Section 3.2, Figure 3.4). Point (40, 12), where $Z$ peaks, would be chosen only by someone who values $Z$ alone; (30, 8) is in the free-lunch zone, dominated by (40, 12) in both goods.
+
+MC: A worker earning \$15 per hour cures a chronic condition, and her sick time falls from 6 to 4 hours a day. If she spends all the freed time working, how much does her daily income rise?
+(a) \$30
+(b) \$60
+(c) \$90
+(d) \$15
+ANSWER: a
+WHY: Productive time rises by 2 hours, and at \$15 an hour that adds \$30 of income (BHT Section 3.1, equation (3.5)). Option (c) values the whole 6 hours of initial sick time; option (b) values the remaining 4. This is the second role of health: it produces time that can be sold on the labor market.
+
+MC: Which of the following is \emph{not} one of the three roles of health in the Grossman model?
+(a) A consumption good that enters utility directly
+(b) An input that produces productive time
+(c) A good bought directly on the market, like apples
+(d) A capital stock that carries over between periods
+ANSWER: c
+WHY: Health cannot be bought in a store: it is produced by the individual from her own time $T^H$ and market inputs $M$ (BHT Section 3.1, equation (3.3)). The other three are the consumption, production and investment roles listed in BHT's summary box.
+
+MC: Why is a frontier that reaches its highest $Z$ at zero health, as in the textbook apples-and-bananas case, wrong for the Grossman model?
+(a) Because health and the home good are complements in utility
+(b) Because with very low health nearly all time is lost to sickness, so little or no $Z$ can be produced
+(c) Because the individual cannot borrow against future health
+(d) Because the price of medical care is higher than the price of home-good inputs
+ANSWER: b
+WHY: Producing $Z$ requires time and income, and both come from productive time, which vanishes as $H$ approaches $H_{min}$ (BHT Section 3.2, Figure 3.2). The shape of the frontier comes from the constraints, not from preferences, so option (a) is beside the point.
+
+MC: A runner pays a \$12 entry fee and spends two hours on a race that improves her fitness. In the Grossman model these two inputs are
+(a) $M$ and $T^H$
+(b) $J$ and $T^Z$
+(c) $M$ and $T^W$
+(d) $J$ and $T^H$
+ANSWER: a
+WHY: Market goods bought to produce health are $M$, and own time devoted to producing health is $T^H$ (BHT Section 3.1, Table 3.1). If she raced only for fun and the race did nothing for her health, the inputs would be $J$ and $T^Z$, as in option (b).
+
+MC: Why does the forgone market interest rate $r$ belong in the price of health capital?
+(a) Because medical care is usually paid for with borrowed money
+(b) Because a higher $r$ speeds up the depreciation of health
+(c) Because a higher $r$ raises the wage and hence the value of healthy time
+(d) Because resources put into health could instead earn $r$ in a market investment
+ANSWER: d
+WHY: Holding a unit of health ties up resources that could earn the market return $r$; this is an opportunity cost (BHT Section 3.3). To match the market investment, health must also make up for its depreciation, so it must return at least $r+\gamma$. The model does not link $r$ to biological wear, as option (b) suggests.
+
+MC: In what sense does a higher depreciation rate make health more expensive?
+(a) It raises the prices $p_M$ of medical inputs
+(b) More of each period's investment is needed just to replace the health that wears out
+(c) It lowers the MEC curve at every level of health
+(d) It reduces the discount factor $\delta$
+ANSWER: b
+WHY: With a higher $\gamma$ a larger part of the stock disappears each period, so keeping a given level of health takes more investment; depreciation works like a continuing tax on the stock (BHT Section 3.3). It acts through the cost line $r+\gamma$, not through the MEC curve, which is why option (c) is wrong.
+
+MC: A person's MEC is $0.5-0.004H$ and the interest rate is $r=0.03$. With age, his depreciation rate rises from $\gamma=0.07$ to $\gamma=0.15$. What happens to his optimal health stock?
+(a) It rises by 20 units
+(b) It falls by 80 units
+(c) It falls by 20 units
+(d) It does not change, since aging leaves the MEC curve where it is
+ANSWER: c
+WHY: The cost line moves from $r+\gamma=0.10$ to $0.18$ along an unchanged MEC, so $H^*$ goes from $(0.5-0.10)/0.004=100$ to $(0.5-0.18)/0.004=80$, a fall of 20 units (BHT Section 3.4, Figure 3.13). Option (b) is the new level, not the change. Option (d) is right that the MEC curve stays put but forgets that aging acts through the rising price of health capital.
+
+MC: According to BHT's education hypothesis, what distinguishes a college graduate from a high-school dropout who is otherwise identical?
+(a) She obtains more health from each hour of $T^H$ and each unit of $M$
+(b) She has a lower depreciation rate of health at every age
+(c) She can earn a higher return $r$ on market investments
+(d) She places a higher weight on health in her utility function
+ANSWER: a
+WHY: The hypothesis is that education makes people more efficient producers of health, for example by following medical advice better, which raises the MEC at every $H$ (BHT Section 3.4). BHT give the two people the same preferences, $r$ and $\gamma$, so options (b)-(d) would change something the comparison holds fixed.
+
+MC: Which sequence matches BHT's combined account of aging?
+(a) Lower utility, then less productive time, then a lower depreciation rate, then lower $H^*$
+(b) Lower $H^*$, then a higher depreciation rate, then a larger frontier, then lower utility
+(c) A higher depreciation rate, then more productive time, then a smaller frontier, then lower $H^*$
+(d) A higher depreciation rate, then lower $H^*$, then more sick time and less productive time, then a smaller frontier and lower utility
+ANSWER: d
+WHY: Aging raises $\gamma$, the optimal stock falls, lower health means more sick time, and the loss of productive time shrinks the work-play constraint and the frontier, so utility falls (BHT Section 3.5, Figure 3.14). The other sequences reverse cause and effect or get a direction wrong.
+
+MC: In the free-lunch zone, one more hour of health-improvement time cuts sick time by 1.5 hours. If the individual moves one hour from play to improving health, how does the time left for work and play change?
+(a) It falls by 1 hour
+(b) It rises by 0.5 hours, and health rises as well
+(c) It rises by 1.5 hours
+(d) It does not change
+ANSWER: b
+WHY: $T^H$ rises by 1 and $T^S$ falls by 1.5, so productive time rises by 1.5 and $T^W+T^Z=T^P-T^H$ rises by 0.5 (BHT Section 3.2, equation (3.5)). Since health is also higher, both $H$ and $Z$ can increase, which is why no one who values both goods stays in the free-lunch zone (Figure 3.3). Option (c) forgets the hour moved into health, and (a) ignores the fall in sick time.
+
+MC: In period $t$, which of the following does the individual \emph{not} choose?
+(a) Time spent improving health $T^H_t$
+(b) Purchases of home-good inputs $J_t$
+(c) The health stock inherited from the previous period $H_{t-1}$
+(d) Purchases of medical inputs $M_t$
+ANSWER: c
+WHY: $H_{t-1}$ reflects all past health decisions and is fixed when period $t$ begins (BHT Section 3.1). The individual chooses $T^H_t$, $M_t$ and $J_t$ now, and through them $H_t$, which in turn becomes the inherited stock of the next period.

@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 10 (Adverse selection in real markets). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: In the Rothschild–Stiglitz separating equilibrium, frail customers buy more coverage than robust customers and pay a higher price per dollar of coverage, so data from such a market would show coverage rising with risk.
+ANSWER: True
+WHY: Frail types take full insurance priced at their own odds, robust types take partial insurance priced at their lower odds, so coverage and risk move together and the per-unit premium rises with the amount bought (BHT Section 10.1, Figure 10.1). These are the positive correlation and the bulk markup, two of the three predictions BHT list for asymmetric information models.
+
+TF: Since researchers usually observe claims rather than risk before purchase, a positive correlation between claims and coverage can appear even in a market where customers know nothing about their own risk that insurers do not know.
+ANSWER: True
+WHY: Claims measure ex post risk, which includes any extra spending that coverage itself induces (BHT Section 10.1, Definition 10.1). If coverage makes people use more care, the insured claim more even when they were no riskier when they bought. A positive correlation is therefore consistent with adverse selection, with moral hazard, or with both.
+
+TF: In the RAND Health Insurance Experiment, families' forecasts of their own health care costs added nothing to what age and other demographic traits already predicted, so an insurer that priced by demographics had no information disadvantage.
+ANSWER: False
+WHY: The participants' forecasts predicted part of their future spending that demographic factors such as age could not explain (BHT Section 10.2). This is what makes the finding worrying for insurers: customers would hold private information even against an insurer that prices by every demographic trait it observes.
+
+TF: Cardon and Hendel find that among US workers the link between health spending and coverage disappears once age, race and gender are controlled for; on their reading, the selection they observe stems from rules that keep insurers from pricing on those traits rather than from private information.
+ANSWER: True
+WHY: A correlation that vanishes once easily observed characteristics are held fixed means workers know nothing about their costs that those characteristics do not already reveal (BHT Section 10.2). Selection then arises only because premiums may not vary with those traits. The policy question changes from private information to the rules on what insurers may price.
+
+TF: At Harvard, the employees who left the PPO after the 1995 subsidy cut had higher age-adjusted medical spending than those who stayed, and their departure is what pushed the PPO premium up.
+ANSWER: False
+WHY: The opposite held: the employees who stayed were older and, even after adjusting for age, spent 6\% more than those who left in 1995 and 9\% more in 1996 (BHT Section 10.2, Figure 10.2). The departure of the cheaper enrollees raised the cost per remaining enrollee, which is why the premium rose.
+
+TF: In the Israeli car insurance market studied by Cohen, drivers who had filed a claim in the past year were the least likely to switch insurers, because a new insurer would see their record and charge them more.
+ANSWER: False
+WHY: A driver's claim record with one insurer could not be seen by other insurers, so drivers with recent claims could leave their history behind by switching, and they were the most likely to do so (BHT Section 10.3). The rule created an information gap between new applicants and their new insurer, an opening for adverse selection.
+
+TF: If viatical firms in the early 1990s had faced adverse selection, the HIV patients who sold their life insurance policies would on average have died sooner than the firms expected.
+ANSWER: False
+WHY: In this reverse market the seller gains when he lives long, since the price reflects the firm's view of his life expectancy, and the firm gains when he dies early (BHT Section 10.3). Adverse selection would bring to market the sellers who know they are healthier than the firm thinks, so they would die later than expected, not sooner.
+
+TF: Finkelstein and McGarry find that buyers of long-term care insurance have no private information about their chance of entering a nursing home, which explains why the insured enter nursing homes no more often than the uninsured.
+ANSWER: False
+WHY: They find private information: people's own reported probability of entering a nursing home predicts their actual use (BHT Section 10.3). The missing correlation comes from a second selection, by risk preferences, that offsets the adverse selection. Information asymmetry is therefore present even where the positive correlation test finds nothing.
+
+TF: Insurers that advertise with images of active seniors and hold enrollment seminars in buildings without wheelchair access can tilt their pool toward healthy customers even when they are not allowed to turn applicants away for health reasons.
+ANSWER: True
+WHY: Such marketing changes who applies rather than who is accepted, so it works around rules that forbid rejecting applicants on health grounds (BHT Section 10.4, Neuman and coauthors). BHT call this strategy risk selection and return to it in Section 17.2.
+
+TF: After New Jersey's individual market reform of the mid-1990s required insurers to offer the same contracts to everyone, enrollment fell, premiums rose and the average age of the insured rose faster than that of the state's workers, the pattern of a death spiral.
+ANSWER: True
+WHY: Falling enrollment, rising premiums and an older, riskier pool together are the signature of successive rounds of adverse selection (BHT Section 10.2, Monheit and coauthors). Once insurers could not vary contracts across people, the low risks had the least reason to stay, as at Harvard on a larger scale.
+
+MC: In a Rothschild–Stiglitz separating equilibrium, the robust type's contract pays \$400 if ill for a premium of \$40, and the frail type's contract pays \$2,000 for a premium of \$600. What are the premiums per dollar of coverage, and what pricing pattern do they show?
+(a) 10 cents for the robust and 30 cents for the frail: a bulk markup
+(b) 10 cents for the robust and 30 cents for the frail: a bulk discount
+(c) 30 cents for the robust and 10 cents for the frail: a bulk discount
+(d) 40 cents for the robust and 30 cents for the frail: a bulk discount
+ANSWER: a
+WHY: The per-unit premiums are $40/400=0.10$ and $600/2{,}000=0.30$, so the larger contract costs more per dollar of coverage (BHT Section 10.1, Definition 10.2). That is a bulk markup, the opposite of the bulk discounts common in other markets. Option (b) computes the right numbers but names the pattern wrongly, since a discount would mean a lower unit price for the bigger purchase.
+
+MC: The insured claim \$6,000 a year on average and the uninsured spend \$4,000. Suppose coverage raises every person's spending by 20\% and has no other effect. How much of the \$2,000 gap reflects differences in risk before purchase?
+(a) \$2,000
+(b) \$1,000
+(c) \$800
+(d) \$0
+ANSWER: b
+WHY: Without coverage the insured would have spent $6{,}000/1.2=5{,}000$, so their ex ante risk exceeds that of the uninsured by \$1,000; the other \$1,000 is moral hazard (BHT Section 10.1, Definition 10.1). Option (a) takes claims as a measure of ex ante risk. Option (c) wrongly deflates by subtracting 20\% of \$6,000 from \$6,000, which gives \$4,800.
+
+MC: In BHT's account, insurance pools that mix high and low risks do exist in practice. What do nearly all of them have in common?
+(a) A menu of contracts with bulk markups that separates the types
+(b) A medical examination of every applicant before enrollment
+(c) A mandate, a subsidy or another inducement that keeps the low risks from leaving
+(d) Premiums that differ by each customer's risk type
+ANSWER: c
+WHY: Theory says a pool of different risks cannot last in a free market, because the low risks drop out; real pools survive when something such as a legal mandate or a subsidy keeps them in (BHT Section 10.1). Options (a) and (d) describe separating or risk-rated markets, which are by definition not pools. Option (b) is a way to learn risk, not to keep low risks in.
+
+MC: Why are the RAND Health Insurance Experiment results on families' forecasts of their own health care costs worrying for insurers?
+(a) A correlation of 0.4 means that 40\% of families predicted their costs exactly
+(b) Families with high predicted costs were less likely to want supplemental coverage
+(c) The forecasts were accurate only for elderly participants, whom insurers cannot price by age
+(d) The forecasts predicted costs that demographic factors such as age could not explain
+ANSWER: d
+WHY: Families with high forecasts wanted extra coverage and did spend more, and their forecasts captured differences in costs not explained by demographics (BHT Section 10.2). An insurer that sees only basic demographic information is therefore at an information disadvantage. Option (a) misreads a correlation coefficient as a share of exact predictions, and option (b) reverses the finding.
+
+MC: Harvard employed about 10,000 people. Using BHT's figures, about how many fewer employees were in the PPO in 1996 than in 1994, and by what factor had the employee price of the PPO risen?
+(a) About 900 fewer, with a price about 3.9 times higher
+(b) About 900 fewer, with a price about 2 times higher
+(c) About 1,800 fewer, with a price about 3.9 times higher
+(d) About 400 fewer, with a price about 2 times higher
+ANSWER: a
+WHY: Enrollment fell from 18\% to 9\% of 10,000, from 1,800 to 900 people, and the price rose from \$361 to \$1,414, a factor of $1{,}414/361\approx3.9$ (BHT Section 10.2, Figure 10.2). Option (d) describes only the first year, 1994 to 1995. Option (c) confuses the initial enrollment with the number who left.
+
+MC: Why did the PPO's employee price at Harvard rise from \$731 in 1995 to \$1,414 in 1996?
+(a) Harvard cut its PPO subsidy a second time
+(b) The HMO plans became more expensive for employees
+(c) The 1995 PPO stayers were older and costlier than the leavers, so the plan cost more per enrollee
+(d) Staying in the PPO made enrollees use more care, by moral hazard
+ANSWER: c
+WHY: After the 1995 subsidy cut the healthier enrollees left, the remaining pool was sicker, and the insurer priced the next year from that pool (BHT Section 10.2). This is a second round of the death spiral, driven by selection rather than by new policy. Option (a) is wrong because the 1995 cut was the trigger; the 1996 rise followed from the pool's composition, and the HMO stayed free to employees, ruling out (b).
+
+MC: In 1995 Harvard's PPO stayers spent 6\% more than the leavers even after adjusting for age. Why does that adjustment matter for the adverse selection interpretation?
+(a) Age is the only factor that predicts medical spending
+(b) Older employees are more risk-averse, so the adjustment removes preference-based selection
+(c) Harvard could have charged older employees more, so age differences were irrelevant
+(d) It shows that stayers differed in costs beyond their observable age, the kind of difference that private information would produce
+ANSWER: d
+WHY: If stayers cost more only because they were older, a premium that varied by age could neutralize the selection; the age-adjusted gap shows that employees sorted on cost differences not captured by age (BHT Section 10.2). Option (a) is false, and (b) confuses an adjustment for age with one for risk preferences, which are not measured here.
+
+MC: Chiappori and Salanié control for everything the insurer knows about young French drivers, such as age, profession and driving record, before testing whether riskier drivers buy more coverage. Why?
+(a) To remove the effect of moral hazard on accident rates
+(b) Because a correlation explained by traits the insurer already prices is not evidence of private information
+(c) Because French law forbids insurers to price by these traits
+(d) To make sure that only experienced drivers enter the sample
+ANSWER: b
+WHY: Adverse selection requires that customers know something the insurer does not; risk differences that the insurer observes and prices create no information problem (BHT Section 10.3). Holding those traits fixed, Chiappori and Salanié find no correlation between risk and coverage. Option (a) is wrong because controls for observed traits do not separate moral hazard from selection, and (d) contradicts their sample of drivers with one to three years of experience.
+
+MC: Medicare beneficiaries who buy Medigap spend about \$4,000 a year less than those who do not. What explanation do Fang and coauthors give?
+(a) Higher cognitive ability makes people both healthier and more likely to buy Medigap
+(b) Medigap coverage leads beneficiaries to use less medical care
+(c) Medigap insurers turn away sick applicants
+(d) Sicker beneficiaries are more risk-averse and avoid Medigap's cost sharing
+ANSWER: a
+WHY: A trait that raises demand for coverage and lowers spending at the same time produces a negative risk-coverage correlation, and Fang and coauthors point to cognitive ability (BHT Sections 10.2 and 10.4). Option (b) would need coverage to reduce use, the opposite of moral hazard. Option (c) describes underwriting, which is not their explanation.
+
+MC: Four people buy life insurance at $t=0$: two die at $t=1$, one at $t=6$ and one is alive at $t=8$. Four people do not buy: one dies at $t=4$ and three are alive at $t=8$. A study observes the people alive at $t=2$ and records deaths up to $t=8$. Which mortality rates does it measure for the insured and the uninsured?
+(a) 75\% and 25\%
+(b) 50\% and 50\%
+(c) 25\% and 25\%
+(d) 50\% and 25\%
+ANSWER: d
+WHY: At $t=2$ only two insured are alive and one of them dies, giving 50\%; all four uninsured are alive and one dies, giving 25\% (BHT Section 10.3, Figure 10.3). Option (a) gives the true mortality from purchase, $3/4$ against $1/4$. Starting the study late hides two of the three insured deaths and shrinks the measured gap from 50 to 25 points.
+
+MC: Why does He (2009) follow potential new life insurance buyers from 1992 and 1994 over 12 years instead of comparing current policyholders over a short window?
+(a) To remove moral hazard from the comparison
+(b) So that the early deaths of high-risk buyers are not lost before observation starts
+(c) Because life insurance contracts typically run for 12 years
+(d) To measure the bulk discounts that life insurers offer
+ANSWER: b
+WHY: High-risk buyers die early, so a sample of living policyholders over-represents the low risks and understates the mortality of the insured (BHT Section 10.3). Starting at the moment of purchase avoids this left censoring, and with that design He finds that people who died had been 49\% more likely to hold life insurance. Option (d) is the separate evidence from Cawley and Philipson that He's result does not explain.
+
+MC: In the TIAA data, the price of life insurance for 55-year-olds is about 1.07 cents per dollar of coverage for smokers and 0.56 cents for nonsmokers. Applying these unit prices to a \$100,000 policy and ignoring the bulk discount, how much more does a smoker pay per year?
+(a) \$51
+(b) \$5,100
+(c) \$510
+(d) \$1,070
+ANSWER: c
+WHY: The premiums are $0.0107\times100{,}000=1{,}070$ and $0.0056\times100{,}000=560$ dollars, a difference of \$510 (BHT Section 10.3, Figure 10.4). Option (d) is the smoker's whole premium, and (a) and (b) are off by a factor of ten. Pricing on smoking and age is one way insurers observe risk directly.
+
+MC: A viatical firm pays \$5,000 for a \$10,000 life insurance policy and could otherwise earn 10\% a year, compounded. The purchase beats the alternative only if the seller dies within about
+(a) 7.3 years
+(b) 10 years
+(c) 5 years
+(d) 2 years
+ANSWER: a
+WHY: The firm breaks even when $5{,}000\times1.1^t=10{,}000$, that is $t=\ln2/\ln1.1\approx7.3$ years; an earlier death beats the alternative (BHT Section 10.3). Option (b) uses simple instead of compound interest. This is why the firm cares so much about the seller's life expectancy, and why a seller who knows he will live long is the customer it should fear.
+
+MC: Why do BHT find no adverse selection in the viatical settlements market of the early 1990s?
+(a) Sellers misjudged their own life expectancy
+(b) Regulation forced firms to pay the same price for every policy
+(c) HAART made the seller's life expectancy easy to predict
+(d) A simple blood test of CD4 cells let firms predict life expectancy about as well as the sellers could
+ANSWER: d
+WHY: Before effective treatment, CD4 counts declined predictably as the disease progressed, so firms and sellers had essentially the same information, and without asymmetry there is no adverse selection (BHT Section 10.3). Option (c) reverses the role of HAART, which made life expectancy harder to predict from CD4 counts and so opened an information gap later in the decade.
+
+MC: The number of US viatical transactions fell from 2,623 in 1995 to 226 in 2001. By about how much did it fall, and what explanation does BHT suggest?
+(a) About 9\%, because HAART created an information gap
+(b) About 91\%, because viatical settlements were outlawed
+(c) About 91\%, because HAART made life expectancy hard to predict from CD4 counts, opening an information gap
+(d) About 9\%, because patients on HAART no longer needed money for treatment
+ANSWER: c
+WHY: The fall is $1-226/2{,}623\approx0.91$, or about 91\% (BHT Section 10.3). BHT link it to HAART: once CD4 levels no longer pinned down life expectancy, sellers could know more than firms, a possible source of adverse selection. Options (a) and (d) report the remaining share, 226 out of 2,623, as if it were the fall.
+
+MC: Finkelstein and McGarry find that people who wear seat belts are more likely to buy long-term care insurance and less likely to enter a nursing home. What does this evidence show?
+(a) Moral hazard: insurance makes people take fewer precautions
+(b) A trait that raises demand for insurance while lowering risk, which offsets adverse selection
+(c) That buyers hold no private information about their nursing home risk
+(d) That insurers price long-term care policies by seat belt use
+ANSWER: b
+WHY: Seat belt use proxies for risk aversion, which pushes toward buying coverage and toward low risk at the same time, a negative contribution to the risk-coverage correlation (BHT Sections 10.3 and 10.4). Combined with adverse selection, the two effects cancel and no overall correlation appears. Option (c) is wrong because the same study does find private information.
+
+MC: In Hurd and coauthors' survey, men aged 85 to 89 give a 31\% chance of reaching age 100, while life tables give about 3.4\%. Which statement fits these and the survey's other findings?
+(a) The men understate their chance about ninefold, and women aged 70 to 74 overstate their chance of reaching 85
+(b) The men overstate their chance by 27.6 times, and women aged 70 to 74 also overstate theirs
+(c) The men overstate their chance about twofold, and women aged 70 to 74 are accurate
+(d) The men overstate their chance about ninefold, while women aged 70 to 74 understate their chance of reaching 85
+ANSWER: d
+WHY: The ratio is $31/3.4\approx9.1$, a large overstatement, while 51\% of women aged 70 to 74 expect to reach 85 against a life-table rate of 57\% (BHT Section 10.4). Misperceived risk, in either direction, weakens the link between true risk and demand for coverage. Option (b) turns the 27.6-point difference into a ratio.
+
+MC: In Svenson's survey, 88\% of American students believed they were safer drivers than the median driver. At least what share of the students must be wrong?
+(a) 38\%
+(b) 12\%
+(c) 50\%
+(d) None necessarily: they could all be right
+ANSWER: a
+WHY: By definition at most half of drivers are safer than the median, so at least $88-50=38$ percent of the students overrate themselves (BHT Section 10.4). Option (b) counts those who did not claim to be safer, which says nothing about errors. Customers who misjudge their own risk cannot select on it, one reason adverse selection is weaker than theory predicts.
+
+MC: Drivers know how many miles they will drive next year better than insurers do, and mileage predicts accidents, yet mileage does not predict how much coverage drivers buy. Which reason for the absence of adverse selection does this illustrate?
+(a) Customers misperceive their own risk
+(b) Insurers can observe customers' risk accurately
+(c) Customers do not act on private information they hold
+(d) Selection on risk aversion offsets selection on risk
+ANSWER: c
+WHY: The drivers hold relevant private information but do not use it when choosing coverage (BHT Section 10.4, Cohen and Siegelman). Option (b) is ruled out because insurers do not know mileage, and option (a) does not fit since drivers know their mileage well; the failure lies in acting on it.
+
+MC: A pooled plan enrolls equal numbers of high risks with expected costs of \$8,000 and very risk-averse low risks with expected costs of \$2,000, at a premium equal to the average cost. For the pool to be stable, each low risk must be willing to pay at least how much more than his expected cost for full coverage?
+(a) \$2,000
+(b) \$3,000
+(c) \$5,000
+(d) \$6,000
+ANSWER: b
+WHY: The premium is $(8{,}000+2{,}000)/2=5{,}000$, so each low risk pays $5{,}000-2{,}000=3{,}000$ above his expected cost; if his risk premium for full coverage is at least that much he stays, and the high risks gain from the pool anyway (BHT Section 10.4). Option (c) is the premium itself, and (d) is the cost difference between the types. This is how heterogeneous risk preferences can support pooling.

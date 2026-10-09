@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 11 (Moral hazard). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: A patient who chooses knee replacement surgery instead of painkillers because his insurer pays for the operation is an example of ex ante moral hazard.
+ANSWER: False
+WHY: The choice is made after the insured event, the knee problem, has occurred, and it makes recovery more expensive: that is ex post moral hazard (BHT Section 11.1, Definition 11.2). Ex ante moral hazard is a change in behavior before the event that makes the event more likely, such as skipping a flu shot.
+
+TF: In Ortmann's study of German private health insurance, deductibles cut outpatient spending, but premiums fell by less than the deductible, so customers' total payments rose.
+ANSWER: False
+WHY: Ortmann finds savings of up to 35 percent of outpatient spending, and introducing a deductible can lower premiums by more than the deductible itself, so total payments fall (BHT Section 11.4). Curbing ex post moral hazard reduces the care consumed, and the saving is passed back to all customers through lower premiums.
+
+TF: With a linear demand curve for care, cutting the price distortion created by insurance in half reduces the social loss from moral hazard by three quarters.
+ANSWER: True
+WHY: The social-loss triangle has the price distortion as its height and the induced extra care as its width, and with linear demand the width is proportional to the distortion (BHT Section 11.2, Figure 11.1). Halving both sides leaves $(1/2)^2=1/4$ of the area. The loss rises with the square of the distortion, not in proportion to it.
+
+TF: A deductible that is larger than what the patient would spend on care without insurance always eliminates moral hazard.
+ANSWER: False
+WHY: If the deductible is only moderately above uninsured spending, the patient may find it worth buying some care he values below its price in order to reach the cheap care beyond the deductible (BHT Section 11.3, Figure 11.5(b)). He crosses when the surplus gained after the deductible exceeds the surplus lost before it. Only a deductible high enough, as in Figure 11.5(a), removes moral hazard.
+
+TF: For ex post moral hazard, the insurer's information problem is usually not knowing which treatments were given but knowing whether they were medically necessary.
+ANSWER: True
+WHY: Insurers see every claim, so they know what care was delivered; what they cannot tell is whether a visit or an operation reflects real need or only its low out-of-pocket price (BHT Section 11.2). Ex ante moral hazard rests on a different asymmetry: the insurer cannot watch the person's everyday risky behavior.
+
+TF: In the Stanford study of 1967, a randomly chosen group of employees was moved to 25% coinsurance while a control group kept free outpatient care.
+ANSWER: False
+WHY: All employees were moved at once, so the study compared the same people before and after the change, a natural experiment rather than a randomized one (BHT Section 11.4). Visits fell by about 24 percent. Without a concurrent control group, any other change that happened in 1967 could also have moved visits.
+
+TF: In the Oregon Medicaid lottery, winners were significantly more likely to have an outpatient visit than losers, but not significantly more likely to have an inpatient stay or emergency care.
+ANSWER: True
+WHY: The outpatient share was 78.6 percent against 57.4 percent, a significant difference, while the inpatient and emergency shares differed by about one and two points without statistical significance (BHT Section 11.4, Table 11.4). This fits the RAND finding that demand for urgent care responds less to price than demand for routine care.
+
+TF: In BHT's Pauly analysis with identical customers and no adverse selection, competition between private insurers tends to push contracts toward the optimal contract A.
+ANSWER: True
+WHY: A contract less full than A loses customers to a slightly fuller one, and a contract fuller than A loses them to a slightly less full and cheaper one, since in each case the rival lies on a higher indifference curve (BHT Section 11.5, Figure 11.9). This is why BHT call moral hazard in voluntary private pools a private problem.
+
+TF: Nyman's income-effect argument implies that the optimal insurance contract is less full than the Pauly analysis suggests.
+ANSWER: False
+WHY: Nyman argues that part of the extra care induced by insurance is efficient, because insurance lets sick people afford valuable treatment they could not otherwise buy (BHT Section 11.6). Counting this benefit makes the optimal contract more full, not less. Other economists accept the effect but estimate it to be small.
+
+TF: The finding that Seguro Popular enrollees were less likely than non-enrollees to get flu shots and cancer screenings is consistent with ex ante moral hazard.
+ANSWER: True
+WHY: Insured people have less reason to protect themselves against illness, because illness is cheaper for them; skipping prevention is such a behavior (BHT Section 11.4). BHT add a caveat: the roll-out across cities may not have been fully random. More preventive care among the insured, as in the RAND and Oregon studies, would instead point to ex post moral hazard.
+
+MC: Demand for visits is $Q=40-0.2P$, a visit costs \$80 to provide, and a plan with 25% coinsurance raises visits from 24 to 36. The 12 extra visits use \$960 of resources. How much of this is social loss?
+(a) \$960
+(b) \$360
+(c) \$720
+(d) \$480
+ANSWER: b
+WHY: The patient values the extra visits at the area under his demand curve between 24 and 36, an average of $(80+20)/2=50$ dollars a visit, or \$600; the loss is $960-600=360$ dollars, the triangle $\tfrac12\times60\times12$ (BHT Section 11.2, Figure 11.1). Option (a) treats the extra visits as worthless, and (c) forgets the factor one half. Option (d) uses the full \$80 instead of the \$60 price distortion as the height.
+
+MC: A plan offers either 20% coinsurance or a \$25 copay per visit. For which list price of a visit do the two rules create the same price distortion?
+(a) \$25
+(b) \$100
+(c) \$20
+(d) \$125
+ANSWER: d
+WHY: The patient pays $0.2P$ under coinsurance and \$25 under the copay, which are equal when $P=125$ dollars (BHT Section 11.3, Definition 11.3). For more expensive services the copay leaves the larger distortion and induces more moral hazard; for cheaper ones coinsurance does. Option (b) is the price at which coinsurance charges \$20, not \$25.
+
+MC: A policy has a \$1,000 deductible, 33% coinsurance above it, and pays everything once total health spending exceeds \$10,000, as in BHT Figure 11.4. What does a patient with total spending of \$15,000 pay out of pocket?
+(a) \$4,950
+(b) \$5,620
+(c) \$3,970
+(d) \$2,970
+ANSWER: c
+WHY: She pays the first \$1,000 in full and 33% of the next \$9,000, or \$2,970, and nothing above \$10,000: $1{,}000+2{,}970=3{,}970$ dollars (BHT Section 11.3). Option (b) ignores the catastrophic cap and (a) applies 33% to the whole bill. Option (d) forgets the deductible.
+
+MC: Under the policy of the previous question, which patient faces the weakest financial incentive to avoid one more dollar of care at the margin?
+(a) One who has already spent \$12,000 this year
+(b) One who has spent \$600 this year
+(c) One who has spent \$4,000 this year
+(d) All three face the same marginal price, because they hold the same policy
+ANSWER: a
+WHY: The marginal price is \$1 per dollar of care inside the deductible, \$0.33 in the coinsurance region and zero above \$10,000 (BHT Section 11.3, Figure 11.4). The patient past the catastrophic threshold faces no price at all, so the price distortion, and the scope for ex post moral hazard, is largest for him. Option (d) confuses the policy with the price at the margin, which depends on spending so far.
+
+MC: In the RAND HIE (BHT Table 11.3), outpatient episodes per person were 2.99 in the free plan and 1.90 in the 95% coinsurance plan. By what percentage did use fall going from free care to the 95% plan?
+(a) About 57%
+(b) About 36%
+(c) About 24%
+(d) About 17%
+ANSWER: b
+WHY: The fall is $(2.99-1.90)/2.99\approx0.36$ (BHT Section 11.4). Option (a) divides by the 95% plan's level instead of the free plan's. Option (c) is the fall in visits in the Stanford study, and (d) is the size of RAND's elasticity estimate, which is a different measure.
+
+MC: In the Oregon lottery (BHT Table 11.4), 78.6% of winners and 57.4% of losers had an outpatient visit in six months. Which statement is correct?
+(a) Winning raised the share by about 21 percentage points, about 37% relative to losers
+(b) Winning raised the share by about 21 percentage points, about 27% relative to losers
+(c) Winning raised the share by about 37 percentage points
+(d) Winning raised the share by about 0.8 percentage points
+ANSWER: a
+WHY: The difference is $78.6-57.4=21.2$ points, and $21.2/57.4\approx0.37$ (BHT Section 11.4). Option (b) divides by the winners' share, and (c) confuses the relative change with a change in points. Option (d) is the gap in inpatient stays, which was not significant.
+
+MC: In the RAND HIE (BHT Table 11.1), there were 168 fracture or dislocation visits per 10,000 enrollees a year in the free plan and 134 in the cost-sharing plans. If a pool of 50,000 people moved from cost sharing to free care and these rates applied, about how many extra fracture visits a year would result?
+(a) 34
+(b) 840
+(c) 25
+(d) 170
+ANSWER: d
+WHY: The gap is $168-134=34$ visits per 10,000, so $34\times5=170$ for 50,000 people (BHT Section 11.4). Option (a) forgets to scale to the size of the pool, and (c) confuses the 25% ratio with a count. Option (b) is the total for the free plan's rate, not the extra visits.
+
+MC: A patient's marginal benefit from the $Q$-th visit is $200-20Q$ dollars. Visits cost \$100 until he has spent the deductible, then a \$20 copay. What is the largest deductible at which he still chooses to go past it rather than stop at his uninsured level of care?
+(a) \$500
+(b) \$900
+(c) \$700
+(d) \$800
+ANSWER: c
+WHY: Without insurance he buys 5 visits; at the copay he would buy 9. With linear demand he crosses when the loss on the overpriced visits before the deductible (triangle UXY) is smaller than the gain on the cheap visits after it (triangle YZB), which holds when the deductible runs out before visit $(5+9)/2=7$, that is below $7\times100=700$ dollars (BHT Section 11.3, Figure 11.5). At \$800, option (d), the loss of \$90 exceeds the gain of \$10, so he stops at 5 visits. Option (a) is his uninsured spending.
+
+MC: Without insurance the illness rate is 10%; with full coverage people take more risks and it rises to 15%. The loss from illness is \$20,000. An insurer offering full coverage at the premium of \$2,000 (contract F in BHT Figure 11.8) can expect, per enrollee,
+(a) a loss of \$1,000
+(b) zero profit
+(c) a loss of \$2,000
+(d) a profit of \$1,000
+ANSWER: a
+WHY: Fully insured enrollees fall ill 15% of the time, so expected claims are $0.15\times20{,}000=3{,}000$ dollars against a premium of \$2,000 (BHT Section 11.5). This is why F is not feasible and full coverage must be priced at \$3,000, contract F′. Option (b) prices the contract at the illness rate of the uninsured, ignoring the behavioral response.
+
+MC: In BHT's income-effect example (Section 11.6), chemotherapy costs \$300,000, gives the patient a benefit worth \$1,000,000, and costs him only \$3,000 out of pocket with insurance. What is the net social gain from the treatment?
+(a) \$997,000
+(b) \$1,000,000
+(c) a net loss of \$280,000
+(d) \$700,000
+ANSWER: d
+WHY: Society spends \$300,000 of resources for a benefit of \$1,000,000, a net gain of \$700,000, whoever pays (BHT Section 11.6). Option (a) is the patient's private gain, which leaves out the insurer's payment of \$297,000. The behavior change is induced by insurance, but unlike the cheeseburger case it moves care toward, not away from, the efficient level.
+
+MC: Insurance creates a \$40 price distortion for service A, whose demand rises by 0.10 units per dollar of price cut, and an \$80 distortion for service B, whose demand rises by 0.05 units per dollar. With linear demands, how do the social losses compare?
+(a) They are equal, since the distortion doubles while the sensitivity halves
+(b) The loss for B is twice the loss for A
+(c) The loss for B is four times the loss for A
+(d) The loss for A is twice the loss for B
+ANSWER: b
+WHY: The loss is $\tfrac12 s\,(P_U-P_I)^2$: $\tfrac12\times0.1\times40^2=80$ for A and $\tfrac12\times0.05\times80^2=160$ for B (BHT Section 11.2, Figure 11.2). Option (a) treats the two factors as if they entered symmetrically; the distortion enters squared, because it sets both the height of the triangle and, through the sensitivity, its width. Option (c) ignores the lower sensitivity of B.
+
+MC: Which of the following is \emph{not} required for moral hazard in BHT's framework?
+(a) Insurance lowers the cost to the individual of a risky or wasteful action
+(b) The individual changes his behavior in response to that lower cost
+(c) The individual is risk-averse
+(d) Asymmetric information prevents the insurer from pricing the action
+ANSWER: c
+WHY: BHT's three conditions are a price distortion, a behavioral response to it, and asymmetric information (BHT Section 11.2). Risk aversion explains why people want insurance in the first place, but a risk-neutral person given coverage would respond to the lower price in the same way. Removing any of (a), (b) or (d) removes moral hazard.
+
+MC: Why can't an insurer remove ex post moral hazard simply by charging patients the full price of their care, so that only those who really need treatment seek it?
+(a) Because that would leave patients bearing the cost of illness, which is what insurance is meant to protect them from
+(b) Because insurers cannot observe which treatments were provided
+(c) Because demand for care is perfectly inelastic, so charging the full price would not change behavior
+(d) Because regulators forbid any form of cost sharing in health insurance
+ANSWER: a
+WHY: Charging the full price would reveal which care is really needed, but it would also remove the financial protection that is the purpose of insurance (BHT Section 11.2). Option (b) is wrong because insurers do see the treatments; the hidden information is their necessity. Option (c) contradicts the evidence of downward-sloping demand for care.
+
+MC: Courbage and Coulon found that people with private insurance in the UK smoke less and exercise more than those relying on public insurance. Which reading does BHT treat as a serious alternative to "there is no ex ante moral hazard"?
+(a) Private insurance makes people healthier through better access to care
+(b) Private insurers monitor their customers' smoking
+(c) Public insurance in the UK has higher cost sharing than private insurance
+(d) People who choose private insurance may be more risk-averse, which leads them both to insure and to live more healthily
+ANSWER: d
+WHY: The comparison is observational, so the two groups may differ in ways that drive both coverage and behavior, such as risk aversion (BHT Section 11.4). That selection could hide an ex ante moral hazard effect. Options (a)–(c) are not claims BHT make about the study.
+
+MC: Yilma and colleagues found that insured households in Ghana had fewer members sleeping under treated mosquito nets than uninsured households. This is best read as
+(a) ex post moral hazard, since malaria treatment is cheaper for the insured
+(b) ex ante moral hazard, since cheaper treatment lowers the return to prevention
+(c) adverse selection, since sicker households buy insurance
+(d) evidence that malaria risk does not respond to behavior
+ANSWER: b
+WHY: Bed nets reduce the chance of getting malaria, and insurance makes the disease cheaper to treat, so the insured invest less in avoiding it, a change in behavior before the insured event (BHT Section 11.4). Option (a) would concern how much treatment is used after infection. The study is observational, so selection cannot be ruled out, but the pattern BHT discuss is the ex ante one.
+
+MC: Devlin and colleagues found that Canadians who gain prescription drug coverage start visiting their (already free) primary care physician more often. What does this show?
+(a) Free physician visits create ex ante moral hazard in drug use
+(b) Drug coverage reduces the price of visits
+(c) Insurance for one service can raise the use of another service, as patients see the doctor to get covered prescriptions
+(d) Patients with drug coverage are sicker, so the effect is adverse selection
+ANSWER: c
+WHY: Once drugs are covered, a prescription becomes cheaper than buying over-the-counter remedies, and getting one requires a visit, so visits rise even though their price has not changed (BHT Section 11.4). Option (b) is wrong because visits were already free. Option (d) is a possible confounder, but it is not the mechanism BHT report.
+
+MC: Australians with private insurance giving access to luxurious private hospitals did not stay in hospital longer than similar public patients. Which explanation is consistent with BHT's analysis?
+(a) The non-financial costs of a hospital stay dominate, so length of stay responds little to its price
+(b) Private insurers in Australia have no information asymmetry about length of stay
+(c) The price distortion is larger in private hospitals
+(d) Patients in private hospitals pay more out of pocket, which offsets the perks
+ANSWER: a
+WHY: Moral hazard needs price sensitivity; if a night in hospital is unpleasant even when free, patients want to leave as soon as they can and a lower price changes little (BHT Section 11.4, recalling Section 11.2). Option (c) would, if anything, predict longer stays. Options (b) and (d) are not part of BHT's account.
+
+MC: In BHT Figure 11.9, why can a contract β that is fuller than the optimal contract A not survive in a competitive market with identical customers?
+(a) Because the insurer offering β makes losses at every premium
+(b) Because full insurance is never feasible under moral hazard
+(c) Because regulation caps the fullness of private contracts
+(d) Because a rival offering slightly less coverage at a lower premium per unit attracts all of β's customers
+ANSWER: d
+WHY: Moving from β toward A lowers the premium per unit of coverage by more than the lost coverage is worth to customers, so the rival's contract lies on a higher indifference curve (BHT Section 11.5). Option (a) is wrong because β lies on the break-even locus. Option (b) is wrong as stated, since full coverage at its break-even price, F′, is feasible; it is just not optimal.
+
+MC: Why do BHT argue that choosing the right fullness matters more for public insurance than for private insurance?
+(a) Public insurance has no moral hazard, so it can be full
+(b) Public insurance attracts only high risks
+(c) Citizens cannot leave a compulsory public plan whose costs exceed its benefits to them, and they pay for its moral hazard through taxes
+(d) Public plans cannot use any cost sharing
+ANSWER: c
+WHY: In a voluntary private pool, members would leave if others' moral hazard cost them more than the coverage is worth, but a national plan is compulsory, so an overly generous plan imposes losses that people cannot escape (BHT Section 11.5). Option (a) is the opposite of the evidence from Chile cited by BHT. Option (b) confuses moral hazard with adverse selection, which compulsory coverage actually solves.
+
+MC: Which pairing of an insurer's tool with the type of moral hazard it mainly targets is correct?
+(a) A gatekeeper who decides on referrals to specialists: ex ante moral hazard
+(b) A cash reward for employees who complete a fitness test and see a nutritionist: ex ante moral hazard
+(c) A cash reward for healthy habits: ex post moral hazard
+(d) A deductible: neither, since it only lowers premiums
+ANSWER: b
+WHY: Rewards for healthy habits act before illness occurs and aim to make it less likely, which is ex ante moral hazard (BHT Section 11.3). A gatekeeper acts after the patient is ill, limiting the care used, which is ex post moral hazard, so (a) and (c) reverse the pairing. A deductible restores a positive price for care and can limit or remove moral hazard, so (d) is wrong.

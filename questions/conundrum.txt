@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 15 (The health policy conundrum). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: Keep the students' and workers' rankings of BHT Table 15.1, but suppose the retirees ranked the parties Soc Libs first, Fed Dems second and Enviro-Greens last. Pairwise majority voting would then give Pcoria a transitive ordering with the Fed Dems on top.
+ANSWER: True
+WHY: The Fed Dems now beat the Soc Libs (students and workers) and the Enviro-Greens (students and retirees), and the Soc Libs beat the Enviro-Greens (students and retirees), so the social ordering is Fed Dems, Soc Libs, Enviro-Greens with no cycle. Arrow's theorem says only that a cycle \emph{can} arise from transitive individual rankings, not that it always does (BHT Section 15.1). The cycle in Table 15.1 depends on how the three rankings interlock.
+
+TF: According to BHT, the fact that rich countries run very different health systems is by itself evidence that some governments have made poor choices.
+ANSWER: False
+WHY: BHT argue that countries weigh health, wealth and equity differently and face different constraints, so different systems can each reflect a sensible choice (BHT Section 15.2). Variation across countries is consistent with every government making the trade-off its citizens prefer. Judging a system requires knowing those preferences and constraints, not only that systems differ.
+
+TF: In BHT Figure 15.2, the single-payer contract $\alpha$ survives not because robust citizens prefer it to $\delta$, but because the government does not allow a contract like $\delta$ to be offered.
+ANSWER: True
+WHY: Robust citizens would rather take a contract like $\delta$, which separates them from the frail and costs them less, and in a private market it would undercut $\alpha$ (BHT Section 15.3). Under universal public insurance everyone is enrolled in $\alpha$ and the cream-skimming contract is banned, so the pool cannot unravel. The policy works by removing the choice, not by changing what the robust prefer.
+
+TF: A law that obliges everyone to hold health insurance but sets no minimum on what a plan must cover can still leave the market exposed to an adverse selection death spiral.
+ANSWER: True
+WHY: Insurers could sell cheap plans with almost no coverage that appeal to robust customers, who would then leave the comprehensive plans to the frail, pushing their premiums up (BHT Section 15.3). The mandate stops this only if it also defines what counts as adequate coverage. Writing that definition drags policymakers deep into the design of private contracts.
+
+TF: Risk selection, in BHT's sense, occurs when customers hide their poor health from insurers so as to buy coverage at a lower premium.
+ANSWER: False
+WHY: BHT describe risk selection as the mirror image of adverse selection: it is the insurer that acts, seeking out healthy enrollees and leaving the sick uninsured or on a public plan of last resort (BHT Section 15.3). Customers hiding their risk is the source of adverse selection itself. BHT note that an insurance mandate can itself induce risk selection by insurers.
+
+TF: Because US Medicare may not use cost-effectiveness analysis in deciding what to cover, it avoids politically painful coverage denials but gives up one of the main tools for restraining moral hazard.
+ANSWER: True
+WHY: BHT note that Medicare pays for any medically effective treatment however costly, since the law bars cost-effectiveness criteria in coverage decisions (BHT Section 15.4). This spares lawmakers the need to refuse expensive care to dying patients, but low-value treatments are covered too, so moral hazard goes unchecked on that margin. Medicare relies on cost-sharing instead.
+
+TF: Under a system of diagnosis-related groups, a hospital that orders an additional test for a heart attack patient receives a larger payment for that admission.
+ANSWER: False
+WHY: Under DRGs the payment is fixed by the patient's diagnosis at admission, regardless of the procedures performed (BHT Section 15.4). An extra test therefore adds to the hospital's cost but not to its revenue, which is exactly the incentive to economize that prospective payment is meant to create. Payment that rises with the services provided is the retrospective, fee-for-service model.
+
+TF: BHT argue that when hospitals are publicly owned and financed by taxes, the incentive for a medical arms race disappears, because public hospitals do not compete for patients to earn profits.
+ANSWER: True
+WHY: In a private market hospitals may buy costly equipment to attract patients and profits, even when it is socially wasteful; public hospitals do not claim profits and do not gain from luring patients from one another (BHT Section 15.5). The price of this solution is the agency problem of public provision: weak incentives to cut queues or adopt useful innovations.
+
+TF: Certificate of Need laws in US states aim to strengthen competition among hospitals by lowering the barriers that new hospitals face when entering a market.
+ANSWER: False
+WHY: CON laws do the opposite: they require hospitals to obtain approval from a state agency before entering a market or expanding, which raises barriers to entry (BHT Section 15.5). Their purpose is to curb inefficient quality competition and the medical arms race. BHT report that their empirical effects on spending and outcomes are ambiguous.
+
+TF: If two countries lie on the same health production frontier and one spends more and is healthier than the other, at most one of them can be allocatively efficient.
+ANSWER: False
+WHY: Allocative efficiency depends on how much a population values health relative to other goods. If one population cares a little more about health, its optimum on the shared frontier lies further to the right, and both points can be optimal, as BHT suggest for Switzerland and the UK in Figure 15.6 (BHT Section 15.6). Being on the frontier rules out productive inefficiency only, and different points on it can each be the right choice.
+
+MC: In a country, 40% of voters rank three parties A, B, C (best first), 35% rank them B, C, A, and 25% rank them C, A, B. What do pairwise majority votes produce?
+(a) A beats both B and C
+(b) A cycle: A beats B, B beats C, and C beats A
+(c) B beats both A and C
+(d) A cycle: A beats C, C beats B, and B beats A
+ANSWER: b
+WHY: A beats B with 65% (the first and third groups), B beats C with 75% (the first two groups), and C beats A with 60% (the second and third groups), so the social ranking is circular even though every voter's ranking is transitive (BHT Section 15.1). Option (a) is tempting because A has the largest single group, but a plurality of first choices does not win the head-to-head vote against C. Option (d) reverses every comparison.
+
+MC: What role does Arrow's impossibility theorem play in BHT's approach to health policy?
+(a) It shows that democracies always choose the health policy with the highest total health
+(b) It shows that the government should let private markets decide health policy
+(c) It implies that a society's "optimal" health policy may not be well defined, so BHT compare policies by their trade-offs instead of ranking them
+(d) It proves that the health policy trilemma can be solved by majority vote
+ANSWER: c
+WHY: If social preferences can be circular, there may be no social preference to maximize, so no policy can be declared optimal for a whole society (BHT Sections 15.1 and 15.2). BHT therefore describe how each policy moves a country along the health, wealth and equity dimensions instead. Option (d) has it backwards: majority voting is exactly the procedure that produced the cycle.
+
+MC: Which of the following is \emph{not} one of the four pathologies of health care markets listed in BHT Table 15.2?
+(a) Moral hazard
+(b) Monopolistic suppliers
+(c) Health disparities
+(d) Rising costs of medical technology
+ANSWER: d
+WHY: Table 15.2 lists adverse selection, moral hazard, monopolistic suppliers and health disparities (BHT Section 15.2). Costly new technologies matter, but in BHT's framework they show up through moral hazard and the medical arms race among hospitals rather than as a separate pathology. Health disparities are on the list because equity is one of the three goals of policy.
+
+MC: A community-rated plan covers 30% frail people with expected costs of \$12,000 and 70% robust people with expected costs of \$2,000, and the premium covers average costs. A loosely written mandate lets robust people satisfy it with a cheap plan of minimal coverage, and all of them switch. What premium must the comprehensive plan now charge?
+(a) \$12,000
+(b) \$5,000
+(c) \$7,000
+(d) \$8,600
+ANSWER: a
+WHY: Before the switch the pooled premium is $0.3\times12{,}000+0.7\times2{,}000=\$5{,}000$, but once every robust person leaves, only the frail remain and the premium must rise to their average cost, \$12,000 (BHT Section 15.3). Option (b) is the premium before the switch. This is the death spiral that an under-specified mandate can allow.
+
+MC: A firm has 30 healthy workers with expected health costs of \$1,000 and 10 workers with diabetes with expected costs of \$9,000. The firm's group plan charges every worker the average cost. A healthy worker could move to a job that pays \$1,500 less, where she could buy coverage at her own expected cost. Comparing only these money amounts, what should she do?
+(a) Stay, because the group premium of \$3,000 is below the cost of the diabetic workers
+(b) Leave, because she would gain \$500
+(c) Stay, because she would lose \$500 by leaving
+(d) Leave, because she would gain \$2,000
+ANSWER: b
+WHY: The group premium is $(30\times1{,}000+10\times9{,}000)/40=\$3{,}000$, so she pays \$2,000 more than her expected cost; leaving saves that \$2,000 but costs \$1,500 in wages, a net gain of \$500 (BHT Section 15.3). Option (d) forgets the wage loss. Employer pools hold together when job-specific human capital, here the wage premium, outweighs the cross-subsidy; with a larger wage premium she would stay.
+
+MC: What is the main purpose of means-tested insurance such as Medicaid in the US, and what are its main costs, according to BHT?
+(a) To provide care to people who could not otherwise afford it; its costs are higher taxes and more moral hazard
+(b) To end adverse selection in the private market; its cost is job lock
+(c) To end adverse selection in the private market; its costs are higher taxes and more moral hazard
+(d) To provide care to people who could not otherwise afford it; its cost is risk selection by private insurers
+ANSWER: a
+WHY: BHT present means-tested insurance as an equity tool rather than a remedy for adverse selection (BHT Section 15.3). Like any expansion of public coverage, it must be paid for with taxes, and the people it covers face little cost-sharing, so moral hazard rises. Option (c) gets the costs right but misstates the purpose.
+
+MC: A country is on its health production frontier, but its citizens would gain more utility from the last dollar spent on education than from the last dollar spent on health care. How do BHT classify this country?
+(a) Productively inefficient, because it could reach the same health at lower cost
+(b) Productively efficient and spending the right amount on health care
+(c) Allocatively inefficient, because it spends too much on health care relative to other uses
+(d) Allocatively inefficient, because it spends too little on health care
+ANSWER: c
+WHY: Being on the frontier means no waste in producing health, so the country is productively efficient; but if a dollar moved to education raises welfare, it devotes too much to health care, which BHT call allocative inefficiency (BHT Section 15.6). Moving that dollar lowers health but raises total welfare. Option (a) confuses the two concepts.
+
+MC: The standard treatment for a condition costs \$20,000 and yields 2.0 QALYs. A new treatment costs \$50,000 and yields 2.25 QALYs. A public insurer covers treatments whose ICER is at most \$50,000 per QALY. What is the new treatment's ICER, and is it covered?
+(a) About \$22,200 per QALY; covered
+(b) \$120,000 per QALY; covered
+(c) \$30,000 per QALY; covered
+(d) \$120,000 per QALY; not covered
+ANSWER: d
+WHY: The ICER compares the new treatment with the next best one: $(50{,}000-20{,}000)/(2.25-2.0)=\$120{,}000$ per extra QALY, well above the threshold, so the insurer declines to cover it (BHT Section 15.4). Option (a) divides total cost by total QALYs, an average rather than an incremental ratio. Option (c) reports the extra cost without dividing by the extra health.
+
+MC: Use the 2012 Medicare cost-sharing rules as BHT summarize them. A patient has one hospital stay of 70 days and \$600 of outpatient clinic expenses during the year. What does she pay out of pocket under these rules?
+(a) \$1,296
+(b) \$21,526
+(c) \$4,186
+(d) \$4,646
+ANSWER: c
+WHY: She pays the \$1,156 hospital deductible, \$289 a day for the 10 days beyond day 60 (\$2,890), and the first \$140 of outpatient expenses, a total of \$4,186 (BHT Section 15.4). Option (a) forgets the daily charge on a long stay, option (b) charges \$289 for all 70 days, and option (d) counts the whole \$600 of outpatient spending instead of the first \$140.
+
+MC: Elective surgery is free in a public system, but patients wait 5 months for it. A poorer patient values a month of waiting at \$200 and a richer patient at \$1,000. In money terms, the queue acts on each like a copay of
+(a) \$1,000 for the poorer patient and \$5,000 for the richer one
+(b) \$5,000 for both
+(c) \$3,000 for both, the average of the two
+(d) \$0 for both, since care is free
+ANSWER: a
+WHY: The non-financial price of care is the time cost of waiting: $5\times200=\$1{,}000$ for the poorer patient and $5\times1{,}000=\$5{,}000$ for the richer one (BHT Section 15.4). Queues thus deter patients whose time is valuable more than others, which is one reason they can be more equitable than copays. Option (d) ignores that waiting is a cost even though no money changes hands.
+
+MC: A country has a public plan that is free but makes patients wait 3 months for specialist care, and a private plan that offers immediate care for \$1,800 a year more. In the spirit of Sapelli and Vial's argument, and assuming each person needs one specialist episode a year, who chooses the private plan?
+(a) Everyone, since immediate care is always better
+(b) Those who value a month of waiting at less than \$600
+(c) Those who value a month of waiting at less than \$1,800
+(d) Those who value a month of waiting at more than \$600
+ANSWER: d
+WHY: The private plan is worth its extra \$1,800 when three months of waiting cost more than that, that is when a month is worth more than $1{,}800/3=\$600$ (BHT Section 15.4). Higher-income people, with a higher value of time, sort into private insurance and the poor into the queue, which is the self-selection Sapelli and Vial describe. Option (b) reverses the inequality.
+
+MC: A DRG system pays a hospital \$25,000 for each heart attack admission. An optional imaging test costs the hospital \$2,000. Under fee-for-service the hospital would instead be paid its costs plus 10%. How does performing the test change the hospital's profit on the patient under each system?
+(a) DRG: no change; fee-for-service: rises by \$200
+(b) DRG: falls by \$2,000; fee-for-service: rises by \$200
+(c) DRG: falls by \$2,000; fee-for-service: rises by \$2,200
+(d) DRG: rises by \$2,000; fee-for-service: falls by \$200
+ANSWER: b
+WHY: Under DRGs revenue is fixed at \$25,000, so the test's \$2,000 cost comes straight out of profit; under cost-plus fee-for-service the test earns its cost plus a 10% margin, adding \$200 to profit (BHT Section 15.4). Option (c) counts the whole payment for the test as profit. This difference in incentives is why prospective payment curbs physician-induced demand but can strain the doctor-patient relationship.
+
+MC: Why, according to BHT, can queues for specialist care last for years in a public system but not in a competitive private market?
+(a) Patients in public systems are sicker on average
+(b) Public systems use cost-effectiveness analysis, which creates waiting lists
+(c) In public systems doctors cannot freely enter or the public insurer holds fees low, so supply does not expand to meet demand
+(d) Private markets ration care by gatekeeping instead of prices
+ANSWER: c
+WHY: In a private market a persistent queue is a profit opportunity, and new doctors enter to serve patients willing to pay; when the government runs the hospitals or sets low fees, that entry does not happen (BHT Section 15.4). BHT add that with moral hazard a queue may signal inflated demand rather than a shortage of valuable care. Option (d) is wrong because private markets ration mainly by price; gatekeeping is a cost-control tool used widely in public systems.
+
+MC: A hospital provides \$4.5 million a year of unreimbursed emergency care required by a last resort law and recovers it by raising its charges on 30,000 visits by insured patients. By how much does the charge for each insured visit rise?
+(a) \$150
+(b) \$1,500
+(c) \$15
+(d) \$6,667
+ANSWER: a
+WHY: The shifted cost per visit is $4{,}500{,}000/30{,}000=\$150$ (BHT Section 15.5). Last resort laws promote equity, but since the hospital is not reimbursed, insured patients pay more, and some hospitals respond by closing their emergency wards. Option (d) divides the visits by the dollar amount in millions, a units slip.
+
+MC: A government sets a uniform national fee for every procedure that private hospitals perform, as Japan does. Which problem do BHT warn can result?
+(a) Hospitals compete on price, so fees fall below costs everywhere
+(b) Rich patients receive priority because hospitals can charge them more
+(c) New hospitals are barred from entering the market
+(d) Procedures whose fee is below marginal cost are offered too little and highly profitable ones too much
+ANSWER: d
+WHY: When the regulator gets prices wrong, providers steer toward the procedures that pay well and away from those that lose money, so the mix of care is distorted (BHT Section 15.5). Option (b) is wrong because the fee is the same whatever the patient's income, which is part of the equity appeal of the system. These distortions resemble those of government-run hospitals.
+
+MC: Which ranking of health spending as a share of GDP in 2007 matches the figures BHT report?
+(a) France and Germany below the UK and Sweden, the US highest
+(b) The UK and Sweden at 7–8%, France and Germany at 11%, the US above 15%
+(c) The UK and Sweden at 11%, France and Germany at 7–8%, the US above 15%
+(d) All five European countries near 11%, the US above 15%
+ANSWER: b
+WHY: BHT report that the UK and Sweden, with public insurance and public hospitals, spent 7–8% of GDP, France and Germany, with some private providers, 11%, and the US, with mostly private hospitals, more than 15% (BHT Section 15.5). They link the low spending of the first group to the government being both payer and provider. They warn that quality comparisons across these systems are inconclusive.
+
+MC: Why, according to BHT, are inefficient public hospitals less likely to be corrected than inefficient private ones?
+(a) Public hospitals are not subject to anti-trust law
+(b) Public hospitals cannot be audited
+(c) Public hospitals that waste money or displease patients may still receive their full budget, and elections give only infrequent and noisy feedback
+(d) Public hospitals are prohibited from adopting new technologies
+ANSWER: c
+WHY: A private hospital that wastes money loses patients and revenue, while a public one may keep its funding, so the punishment for poor performance is weak (BHT Section 15.5). Voters can in principle replace the government, but elections are rare, voters are poorly informed, and, as Arrow's theorem suggests, votes do not fully reveal preferences. Option (d) overstates BHT's point that public hospitals may be slower to innovate.
+
+MC: Everyone must buy insurance from competing, regulated non-profit funds; most hospitals are private; and fees follow a schedule negotiated with the government. Which of BHT's three model systems does this describe?
+(a) The Bismarck model
+(b) The Beveridge model
+(c) The American model
+(d) A single-payer system
+ANSWER: a
+WHY: The Bismarck model combines universal, mandated insurance with an important role for private insurers, private provision and heavy price regulation, as in Germany, Japan, France and Switzerland (BHT Section 15.6). The Beveridge model uses a single public payer and public provision with care free at the point of service. The American model neither provides nor mandates universal coverage.
+
+MC: BHT Figure 15.4 plots life expectancy against the natural log of health spending per capita. Two countries lie at 8.0 and 9.0 on the horizontal axis. The second spends about
+(a) 12.5% more per person than the first
+(b) 2.7 times as much per person as the first
+(c) 10 times as much per person as the first
+(d) \$1,000 more per person than the first
+ANSWER: b
+WHY: A difference of 1 in the natural log is a ratio of $e^1\approx2.72$; here about \$2,980 against \$8,100 per person (BHT Section 15.6). Option (a) treats the axis values as if they were spending, and (c) assumes a base-10 log. On a log scale equal horizontal distances mean equal percentage differences, so the US, at the right end, spends far more than the distance on the axis suggests.
+
+MC: A country's health production frontier is $H=10\sqrt{s}$, with $s$ in \$ thousand per person. Half of the population spends 4 and the other half 16, and each half is on the frontier. An analyst compares the national averages with the frontier. By how much does the country seem to overspend, per person?
+(a) \$0, because both halves are on the frontier
+(b) \$1,600
+(c) \$3,000
+(d) \$1,000
+ANSWER: d
+WHY: Average health is $(20+40)/2=30$ at average spending 10, while the frontier reaches 30 at $s=(30/10)^2=9$, so the averages suggest \$1,000 of waste per person (BHT Section 15.6, Figure 15.7). The waste is an illusion created by the concave frontier: the average point lies on the chord between the two groups. Option (a) is the truth about each group, but not what the aggregate comparison shows; option (b) reads the 1.6-unit health gap $10\sqrt{10}-30$ as dollars.

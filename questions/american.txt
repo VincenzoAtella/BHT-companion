@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 18 (The American model). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: Two workers are worth the same to their employers. One is paid partly in employer-sponsored insurance, the other entirely in cash, and he buys the same coverage himself at the same price. The first worker ends up with more money after paying for coverage, even though his wage is lower, because the part of his pay that goes to premiums is not taxed as income.
+ANSWER: True
+WHY: With wage pass-through the first worker gives up the premium in wages, but those dollars never become taxable income; the second worker pays income tax on the full wage and then buys coverage out of what is left (BHT Section 18.1). The difference is the income tax on the premium. Employer coverage is not free to the worker, but it is cheaper than the same coverage bought with taxed dollars.
+
+TF: The wartime wage freeze of 1943 encouraged American employers to offer health insurance, because insurance benefits did not count as wages under the emergency rules.
+ANSWER: True
+WHY: Employers who could not raise pay used health benefits to compete for workers, and the rules did not treat those benefits as wages (BHT Chapter 18 introduction). This accident of wartime regulation is the historical root of the employer-based system that still dominates private coverage in the US.
+
+TF: Under COBRA, a worker who leaves his job can keep his former employer's health plan for up to 18 months, with the former employer continuing to pay the premium as before.
+ANSWER: False
+WHY: COBRA requires the employer to offer continued membership in the plan, but the former employee pays the premium himself (BHT Section 18.1). What COBRA removes is the loss of access to the group plan, not its cost; it eases job lock by decoupling coverage from the job for a while.
+
+TF: The finding that managed care enrollees cost less than fee-for-service enrollees does not by itself show that managed care tactics such as gatekeeping lower costs, because healthier people may be more likely to choose managed care plans.
+ANSWER: True
+WHY: If people with unobservably low expected costs pick the cheaper, more restrictive plans, managed care plans would show lower spending even if their tactics had no effect (BHT Section 18.2). A raw comparison mixes the effect of the plan with the selection of who joins it.
+
+TF: A preferred provider organization differs from a health maintenance organization in that its enrollees can see specialists without first going through a primary care gatekeeper.
+ANSWER: False
+WHY: In BHT's description the PPO also uses gatekeepers and monitors providers' costs and outcomes; what it lacks is the vertical integration of insurer and providers that defines an HMO (BHT Section 18.2). The PPO disciplines providers by the threat of removing them from its preferred list rather than by employing them.
+
+TF: Because Medicaid copayments are nominal, callers posing as Medicaid patients in the 2002 audit study were more likely than callers posing as privately insured patients to obtain a follow-up appointment within a week.
+ANSWER: False
+WHY: The reverse held: 64\% of the callers claiming private insurance got an appointment within a week, against 34\% of those claiming Medicaid (BHT Section 18.4). Low cost sharing helps on the demand side, but low reimbursement rates make many doctors reluctant to take Medicaid patients, which limits access on the supply side.
+
+TF: Cutler's study of the 1984 switch to DRG payment found that inpatient mortality rose permanently at the hospitals whose payments fell the most.
+ANSWER: False
+WHY: Cutler found a temporary rise in mortality during the transition at the hospitals facing the steepest payment cuts, but no long-run change in inpatient mortality (BHT Section 18.3). The short-run effect is consistent with hospitals that had spent the most before DRGs needing time to adjust.
+
+TF: Supplemental Medigap plans lower the financial risk that Medicare enrollees bear, but by paying their deductibles and copayments they also weaken the incentive that Medicare's cost sharing is meant to create.
+ANSWER: True
+WHY: Cost sharing in Parts A and B is meant to make patients weigh part of the cost of care; a plan that reimburses that cost sharing restores near-full coverage at the margin (BHT Section 18.3). The gain in risk protection comes with a return of moral hazard, part of which is paid by Medicare.
+
+TF: McClellan and Skinner find that richer beneficiaries receive a higher net present value of Medicare spending, yet conclude that Medicare is progressive once the value of risk protection is taken into account.
+ANSWER: True
+WHY: Their first calculation, based on spending alone, makes Medicare look regressive, because people in richer neighborhoods use more care (BHT Section 18.3). Before 1965 the poor elderly were the least able to buy insurance, so completing the market gave them the largest gain in risk protection, which reverses the conclusion.
+
+TF: On the PPACA exchanges, insurers may not set premiums that vary in any way with the enrollee's age, as under pure community rating.
+ANSWER: False
+WHY: The law forbids charging more for pre-existing conditions but only limits how much premiums can vary with age, and it allows a surcharge for smokers (BHT Section 18.6). The exchanges therefore use a modified, not a pure, community rating, and younger enrollees still subsidize older ones within limits.
+
+MC: A firm has three young workers who each cost \$400 a month to insure and one older worker who costs \$2,000. If the firm splits the premium bill evenly through wages, how much does each young worker overpay each month relative to his own expected cost?
+(a) \$400
+(b) \$800
+(c) \$1,200
+(d) \$1,600
+ANSWER: a
+WHY: The bill is $3\times400+2{,}000=3{,}200$, so an even split costs each worker \$800 in wages, \$400 more than a young worker's own cost (BHT Section 18.1). Option (b) is the pooled charge itself, not the overpayment, and (c) is the total paid by the three young workers to the older one. A rival firm offering the young their own pool could pay them \$400 more.
+
+MC: A firm with 50 workers pays an annual premium of \$8,000 per worker, recovered through lower wages. All workers face a marginal income tax rate of 30\%. How much income tax revenue does the government forgo each year because these premiums are excluded from taxable income?
+(a) \$400,000
+(b) \$120,000
+(c) \$280,000
+(d) \$2,400
+ANSWER: b
+WHY: Each worker's taxable wage is \$8,000 lower, so the tax not collected is $0.30\times8{,}000=2{,}400$ per worker, or $50\times2{,}400=120{,}000$ in total (BHT Section 18.1). Option (a) is the total premium, (c) is the part of it borne by the workers in lost take-home pay, and (d) is the subsidy for a single worker.
+
+MC: Under Medicare's resource-based relative value scale, a procedure is valued at 3.5 relative value units. At the 2009 conversion rate of \$36.0666 per unit, what does Medicare pay the physician?
+(a) \$61.31
+(b) \$468.51
+(c) \$126.23
+(d) \$10.30
+ANSWER: c
+WHY: The fee is the number of units times the dollar value per unit: $3.5\times36.0666\approx126.23$ (BHT Section 18.3). Options (a) and (b) are the fees of BHT's routine office visit and hematoma procedure, and (d) divides instead of multiplying. Because fees follow units rather than actual costs, physicians gain from procedures with many units and low cost.
+
+MC: Under the Medicare payroll tax described in BHT, the combined rate is 2.9\% of earnings, rising in 2013 to 3.8\% on earnings above \$200,000 a year. What is the total Medicare payroll tax on a worker earning \$250,000 in 2013?
+(a) \$9,500
+(b) \$7,250
+(c) \$1,900
+(d) \$7,700
+ANSWER: d
+WHY: All \$250,000 is taxed at 2.9\%, giving \$7,250, and the \$50,000 above the threshold bears an extra 0.9 points, adding \$450, for \$7,700 (BHT Section 18.3). Option (a) applies 3.8\% to all earnings, (b) ignores the higher rate, and (c) counts only the top bracket. The higher rate is marginal, like an income tax bracket.
+
+MC: Suppose an employer can see an employee's age but not his migraines or his training for triathlons, and it passes premiums through to wages by age. Why can its insurance pools still unravel?
+(a) Because age rating is illegal under the Americans with Disabilities Act
+(b) Because within each age group the unobservably healthy workers still pay the same wage cut as the unobservably sick ones, and could leave
+(c) Because the old workers pay less than their expected cost under age rating
+(d) Because the insurer, unlike the employer, cannot observe age
+ANSWER: b
+WHY: Differential pass-through removes the subsidy across observable groups, but inside each group workers with hidden low risk still subsidize those with hidden high risk, the classic setting for adverse selection (BHT Section 18.1, Figure 18.2). Option (c) is wrong because age rating charges each group its own expected cost. What keeps the healthy from leaving, in BHT's account, is the value of their firm-specific human capital.
+
+MC: A worker earns \$12 an hour and qualifies for Medicaid, worth \$3,000 a year to him, as long as his earnings do not exceed \$18,000. Beyond the hours at which he loses eligibility, how many more hours must he work before his total assets are back to their level at the threshold?
+(a) 250 hours
+(b) 1,500 hours
+(c) 1,750 hours
+(d) 3,000 hours
+ANSWER: a
+WHY: He reaches the threshold at $18{,}000/12=1{,}500$ hours, where his assets are $18{,}000+3{,}000$. Without Medicaid he needs $3{,}000/12=250$ extra hours to earn the lost benefit back, so assets recover at 1,750 hours (BHT Section 18.4, Figure 18.5). Options (b) and (c) are the two hour levels themselves; every hour in between gives fewer assets than the threshold and less leisure.
+
+MC: Madrian estimated that job lock reduces voluntary job turnover by about 25\%, while Gruber and Madrian put its total cost at less than 0.1\% of GDP. Which explanation is consistent with both findings?
+(a) The turnover estimate must be wrong, since a large effect on mobility implies a large cost
+(b) Job lock affects only workers who are already uninsured
+(c) Job lock raises productivity, because workers stay where their firm-specific skills are used
+(d) Many deterred moves bring small productivity gains, and policies such as COBRA soften the lock-in
+ANSWER: d
+WHY: The welfare loss depends on the productivity gain forgone by each deterred move, not on the number of moves, and many marginal moves gain little (BHT Section 18.1). BHT also notes that COBRA temporarily decouples coverage from the job, which limits the loss. Option (c) confuses job lock, where the worker would be more productive elsewhere, with the efficient attachment due to firm-specific skills.
+
+MC: Gruber studied the 1976 law requiring employer plans to cover maternity care. Why are men and women past childbearing age useful in that study?
+(a) Their premiums rose the most, so their wages should fall the most
+(b) They are covered by Medicare, so their wages are not affected by employer insurance
+(c) Their wages are not exposed to the new cost, so they show how wages would have moved without the mandate
+(d) They are the workers most likely to change jobs in response to the law
+ANSWER: c
+WHY: The mandate raised expected insurance costs only for women of childbearing age, so pass-through predicts slower wage growth for them alone; other workers share the general wage trends and serve as a comparison group (BHT Section 18.1). The finding that young women's relative wages fell after 1976 supports wage pass-through. Option (a) reverses who bears the new cost.
+
+MC: A hospital's cost of an extra inpatient day for a heart-attack patient is \$1,200. Compare a per-diem payment of \$1,500 per day with a fixed DRG payment of \$10,000 per admission. If the hospital shortens the stay by one day, how does its profit change under each system (DRG, per diem)?
+(a) $0$ and $-1{,}500$
+(b) $+1{,}200$ and $+1{,}200$
+(c) $+1{,}200$ and $-300$
+(d) $-1{,}500$ and $+1{,}200$
+ANSWER: c
+WHY: Under the DRG payment revenue does not change, so the hospital keeps the \$1,200 it saves; under per-diem payment it loses \$1,500 of revenue and saves \$1,200, a net loss of \$300 (BHT Section 18.3). This is why DRGs transfer cost risk to hospitals and contributed to shorter stays (Figure 18.4). Option (b) forgets that per-diem revenue falls with the stay.
+
+MC: Which of the following is \emph{not} one of the managed care tactics in BHT's Definition 18.2?
+(a) Requiring approval from a primary care doctor before a specialist visit
+(b) Restricting coverage to a network of providers
+(c) Refusing to cover care that is not cost-effective
+(d) Paying providers a separate fee for every test and procedure they order
+ANSWER: d
+WHY: Paying a fee for each service is the indemnity model that managed care replaced; managed care uses salaries and fixed payments instead (BHT Section 18.2). Gatekeeping, networks and coverage denials are all on BHT's list, along with monitoring of costs and outcomes. Fee-for-service rewards providers for doing more, which is the incentive managed care tries to remove.
+
+MC: In 2011 Medicare spent \$549 billion, and premiums and cost sharing paid by enrollees covered 16\% of its costs. Roughly how much was financed from other sources, mainly taxes?
+(a) \$461 billion
+(b) \$88 billion
+(c) \$549 billion
+(d) \$533 billion
+ANSWER: a
+WHY: Enrollees paid about $0.16\times549\approx88$ billion, leaving about $0.84\times549\approx461$ billion to be financed mainly by payroll taxes for Part A and general revenues for the other parts (BHT Section 18.3). Option (b) is the enrollees' share, and (d) subtracts 16 billion instead of 16 percent. Premiums are set far below actuarially fair levels by design.
+
+MC: Which summary of the evidence on managed care reported in BHT is correct?
+(a) Managed care improves health outcomes across the board and has no clear effect on costs
+(b) Health outcomes show no systematic difference from fee-for-service, while costs appear lower; vulnerable groups may fare worse
+(c) Managed care worsens outcomes for every condition studied but cuts costs sharply
+(d) Neither costs nor outcomes differ, because all savings come from favorable selection
+ANSWER: b
+WHY: Reviews of 1990s studies find mixed outcome effects, better for some conditions and worse for others, with stronger signs of harm for the elderly, the poor and the very sick, while hospital use, expensive tests and the spread of costly technology are lower (BHT Section 18.2). Option (d) overstates the selection caveat: selection may explain part of the cost gap, but BHT does not claim it explains all of it.
+
+MC: In 2010 about 60 million Americans were uninsured for at least part of the year and about 36 million for the whole year. What share of those uninsured at some point were uninsured all year?
+(a) 12\%
+(b) 40\%
+(c) 20\%
+(d) 60\%
+ANSWER: d
+WHY: The share is $36/60=0.6$ (BHT Section 18.5, data from the National Health Interview Survey). Option (a) is the full-year uninsured as a share of the whole population, and (b) is the share who were uninsured only for part of the year. Counts of the uninsured depend on the definition, and the chronically uninsured may be very different from those between jobs.
+
+MC: Which part of traditional Medicare pays for a 70-year-old's routine visit to a physician's office?
+(a) Part A
+(b) Part C
+(c) Part B
+(d) Part D
+ANSWER: c
+WHY: Part B covers physician services and outpatient care, financed by general revenues and a monthly premium (BHT Section 18.3). Part A covers hospital and short skilled nursing stays, Part C is the private Medicare Advantage alternative, which replaces traditional Medicare rather than being part of it, and Part D covers prescription drugs.
+
+MC: A family plan on a PPACA exchange costs \$12,000 a year. A family of four earning \$94,800, at 400\% of the federal poverty line, receives a subsidy of about \$3,000. What share of its income does the family pay for the plan?
+(a) About 3\%
+(b) About 9.5\%
+(c) About 12.7\%
+(d) About 25\%
+ANSWER: b
+WHY: The family pays $12{,}000-3{,}000=9{,}000$, which is $9{,}000/94{,}800\approx9.5\%$ of income (BHT Section 18.6). Option (c) ignores the subsidy and (a) is the subsidy's share of income. Subsidies fall with income, so lower-income families pay a smaller share.
+
+MC: A healthy single adult earns \$60,000 a year, too much for an exchange subsidy. A plan costs \$5,000 a year, his expected medical spending is \$1,200, and the PPACA penalty for going uninsured is 2.5\% of income. Ignoring risk aversion, how much does he expect to save by paying the penalty instead of buying the plan?
+(a) \$2,300
+(b) \$3,500
+(c) \$3,800
+(d) \$5,000
+ANSWER: a
+WHY: Uninsured, he expects to pay the penalty of $0.025\times60{,}000=1{,}500$ plus \$1,200 of care, \$2,700 in all, against \$5,000 for the plan: a saving of \$2,300 (BHT Section 18.6). Option (b) forgets his own medical spending and (c) forgets the penalty. A penalty small relative to the premium limits how far the mandate can stop low-risk people from leaving the community-rated pools.
+
+MC: Medicare costs per enrollee have grown about 4.7\% a year after inflation. If that rate continues, about how long does it take for real spending per enrollee to double?
+(a) About 10 years
+(b) About 21 years
+(c) About 15 years
+(d) About 47 years
+ANSWER: c
+WHY: Doubling requires $1.047^n=2$, so $n=\ln2/\ln1.047\approx15$ years, close to the rule of thumb $70/4.7$ (BHT Section 18.7). Option (b) treats the growth as simple rather than compound ($100/4.7$), and (d) confuses the rate with the time. Combined with the growth in the number of elderly, this is why Medicare spending is projected to rise so fast.
+
+MC: Why did the federal government reject Oregon's 1992 Medicaid proposal based on a ranked list of procedures?
+(a) It was found to discriminate against people with disabilities by valuing their lives less through its quality-of-life component
+(b) Federal law forbids states from using cost-effectiveness in Medicaid
+(c) The list would have raised Medicaid spending above the federal match
+(d) Oregon proposed to drop poor families with dependent children from eligibility
+ANSWER: a
+WHY: The objection was to the quality-of-life weights, which ranked treatments for people with disabilities lower; a version without that component was approved and took effect in 1994 (BHT Section 18.4). Option (b) is wrong because, unlike Medicare, Medicaid programs may use cost-effectiveness analysis. The revised plan saved enough to expand eligibility.
+
+MC: Why do Medicare Advantage (Part C) plans tend to target their marketing at healthy enrollees?
+(a) Medicare pays them more for healthy enrollees than for sick ones
+(b) The law forbids them from enrolling people with chronic conditions
+(c) Healthy enrollees value managed care tactics such as gatekeeping more
+(d) Medicare's risk-adjusted payment is generous relative to the expected costs of healthy enrollees, so they are the most profitable to enroll
+ANSWER: d
+WHY: The fixed payment per enrollee is adjusted for risk only partly, so it tends to exceed what a healthy enrollee is expected to cost (BHT Section 18.3). Insurers profit from attracting such enrollees, which leaves traditional Medicare with a sicker pool and helps explain why Part C costs the government more, not less. Option (a) is wrong because risk adjustment pays more, not less, for sicker enrollees.
+
+MC: In Bhattacharya and Bundorf's data, which pattern most strongly suggests that the obesity wage gap reflects wage pass-through rather than discrimination?
+(a) Obese workers earn less in every type of job
+(b) The gap appears and widens only among workers whose employers provide health insurance
+(c) The gap is larger among workers without employer insurance
+(d) The gap disappears when education and age are controlled for
+ANSWER: b
+WHY: Pass-through predicts a wage gap only where the employer bears the higher insurance costs of obese workers, growing as the cohort ages and its medical costs rise; discrimination would lower wages in jobs with and without insurance alike (BHT Section 18.1, Figure 18.1). Option (a) is the pattern discrimination would produce, and (d) contradicts the finding that the gap is robust to such controls.

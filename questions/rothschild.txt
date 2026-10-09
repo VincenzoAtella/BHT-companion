@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 9 (Adverse selection: the Rothschild-Stiglitz model). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: If the probability of sickness rises from $p=0.2$ to $p=0.5$, the zero-profit line through the endowment point becomes flatter: the absolute value of its slope falls from 4 to 1.
+ANSWER: True
+WHY: By equation (9.2) the zero-profit line has slope $-(1-p)/p$, which is $-0.8/0.2=-4$ at $p=0.2$ and $-0.5/0.5=-1$ at $p=0.5$ (BHT Section 9.4). A sicker customer costs more per dollar of payout, so each dollar of extra sick-state income costs more healthy-state income. The full-insurance line, by contrast, does not depend on $p$.
+
+TF: A contract that lies northeast of a customer's zero-profit line earns the insurer a positive expected profit, because it moves the customer further away from her endowment.
+ANSWER: False
+WHY: Northeast of the zero-profit line the customer gets more income in at least one state than a fair contract would give her, so the insurer expects to pay out more than it collects (BHT Section 9.4, Figure 9.7). For a given premium, a point higher up means a larger payout. Profitable contracts lie southwest of the line, and distance from the endowment says nothing about profit.
+
+TF: For any risk-averse customer, at any contract on the full-insurance line her indifference curve has slope $-(1-p)/p$, whatever the exact shape of her utility function.
+ANSWER: True
+WHY: The slope of the indifference curve is $-(1-p)U'(I_H)/[pU'(I_S)]$; on the 45° line $I_H=I_S$, so the marginal utilities cancel and the slope is $-(1-p)/p$ for any $U$ (BHT Section 9.6). That is the slope of the zero-profit line, which is why the fair full contract is a tangency. Away from the 45° line the slope does depend on the curvature of $U$.
+
+TF: In a market with a single risk type and symmetric information, a fair but partial contract can be an equilibrium, because it earns the insurer exactly zero profit.
+ANSWER: False
+WHY: Zero profit satisfies the second condition of Definition 9.1 but not the third: at a fair partial contract the customer's indifference curve is flatter than the zero-profit line, so a rival can offer a contract with more coverage that she prefers and that still earns a positive profit (BHT Section 9.6). Only the fair full contract survives. Zero profit is necessary for an equilibrium here, not sufficient.
+
+TF: The third condition of BHT's Definition 9.1 adds nothing to the second: if no contract in the equilibrium set loses money, no rival can find a profitable contract to offer.
+ANSWER: False
+WHY: The second condition concerns the contracts already offered, the third concerns contracts that could be offered (BHT Section 9.6). A contract in the interior of the feasible wedge earns a positive profit, so it meets the second condition, yet a rival can lure its customers with a better contract and still profit. With asymmetric information this third condition is the one that destroys pooling.
+
+TF: For a risk-neutral customer, every indifference curve in the $I_H$–$I_S$ space is a straight line parallel to her zero-profit line.
+ANSWER: True
+WHY: With linear utility, expected utility is proportional to expected income $pI_S+(1-p)I_H$, so indifference curves are lines of slope $-(1-p)/p$, the slope of equation (9.2) (BHT Sections 9.2 and 9.4). Her indifference curve through the endowment is then the zero-profit line itself, and the feasible wedge collapses onto that line. Convexity of indifference curves comes from risk aversion.
+
+TF: When insurers can tell robust and frail customers apart and can exclude either type from a contract, both types end up buying the same full-insurance contract at the population average price.
+ANSWER: False
+WHY: With symmetric information each type buys full insurance at its own fair price, $\Omega_1$ for the frail and $\Omega_2$ for the robust (BHT Section 9.9, Figure 9.14). The two contracts give the same income in both states but at different levels: the frail pay a higher premium. A contract at the average price would lose money on the frail and be undercut for the robust.
+
+TF: At a candidate pooling contract on the population zero-profit line, the insurer expects a profit on each robust customer and a loss on each frail customer.
+ANSWER: True
+WHY: The population zero-profit line lies between the two types' lines, southwest of the robust line and northeast of the frail line (BHT Section 9.7, Figure 9.11). The average price is above the robust customers' expected cost and below the frail customers', so the robust subsidize the frail. This built-in subsidy is what a rival can exploit.
+
+TF: In the Rothschild–Stiglitz model the separating pair $(\Omega_1,\Omega_3)$ stops being an equilibrium when the share of frail types in the population becomes large enough.
+ANSWER: False
+WHY: It is the opposite: the pair fails when robust types are numerous, because the population zero-profit line then rotates toward the robust line and a pooled contract can beat $\Omega_3$ for the robust while breaking even (BHT Section 9.10, Figure 9.18). With many frail types a pooled contract is too expensive to tempt the robust. The positions of $\Omega_1$ and $\Omega_3$ do not depend on the shares at all.
+
+TF: In a guaranteed renewable contract, customers pay their highest premiums when they are young and their premiums fall as they age.
+ANSWER: True
+WHY: The contract front-loads premiums into the years when nobody knows yet who will become frail; later premiums are low, so neither the healthy nor the sick want to leave (BHT Section 9.11). The early payments, not a legal commitment, keep customers in the pool. Hendel and Lizzeri find such front-loading in US life insurance.
+
+MC: A customer's endowment is (\$60,000 if healthy, \$20,000 if sick). She buys a contract with premium \$4,000 that pays \$15,000 if she is sick. Where is the contract in the $I_H$–$I_S$ space?
+(a) $(56{,}000,\ 31{,}000)$
+(b) $(56{,}000,\ 35{,}000)$
+(c) $(45{,}000,\ 31{,}000)$
+(d) $(64{,}000,\ 16{,}000)$
+ANSWER: a
+WHY: The premium is paid in both states, so $I_H=60{,}000-4{,}000=56{,}000$ and $I_S=20{,}000-4{,}000+15{,}000=31{,}000$; the vertical move from the endowment is the payout net of premium, $q-r$ (BHT Section 9.1, Figure 9.2). Option (b) forgets that the premium is also paid when sick. Option (c) subtracts the payout from healthy income.
+
+MC: Same endowment, (\$60,000, \$20,000), and probability of sickness $p=0.2$. Which contract is fair and full?
+(a) $(28{,}000,\ 28{,}000)$
+(b) $(40{,}000,\ 40{,}000)$
+(c) $(52{,}000,\ 52{,}000)$
+(d) $(56{,}000,\ 56{,}000)$
+ANSWER: c
+WHY: Full insurance pays the whole loss of \$40,000 and a fair premium is $0.2\times40{,}000=\$8{,}000$, so she has \$52,000 in both states, her expected income (BHT Sections 9.3–9.4). It is where the zero-profit line crosses the 45° line. Option (a) uses $1-p$ instead of $p$; option (b) is the midpoint of the two incomes, which would be fair only at $p=0.5$.
+
+MC: With $p=0.2$, what is the insurer's expected profit on the contract of the first question (premium \$4,000, payout \$15,000), and where does the contract lie?
+(a) A loss of \$1,000; northeast of the zero-profit line
+(b) Zero; on the zero-profit line
+(c) A loss of \$11,000; northeast of the zero-profit line
+(d) A profit of \$1,000; southwest of the zero-profit line
+ANSWER: d
+WHY: Expected profit is the premium minus the expected payout, $4{,}000-0.2\times15{,}000=\$1{,}000$, which is positive, so the contract lies southwest of the zero-profit line (BHT Section 9.4, equation (9.1)). The fair premium for this payout would be \$3,000. Option (c) subtracts the whole payout from the premium without weighting it by the probability of sickness, and option (a) gets the sign wrong.
+
+MC: With endowment (\$60,000, \$20,000) and $p=0.2$, which contract lies exactly on the zero-profit line?
+(a) $(55{,}000,\ 21{,}250)$
+(b) $(50{,}000,\ 40{,}000)$
+(c) $(55{,}000,\ 40{,}000)$
+(d) $(55{,}000,\ 45{,}000)$
+ANSWER: c
+WHY: By equation (9.2), $I_S=20{,}000+\tfrac{0.8}{0.2}(60{,}000-I_H)$; at $I_H=55{,}000$ this gives $20{,}000+4\times5{,}000=40{,}000$ (BHT Section 9.4). Option (a) uses the inverted slope $p/(1-p)$. Option (b) lies southwest of the line (profitable), and (d) northeast (loss-making).
+
+MC: Robust customers fall sick with probability 0.1 and frail customers with probability 0.4; 30% of customers are frail. What is the slope of the population zero-profit line?
+(a) $-2.33$
+(b) $-4.26$
+(c) $-9$
+(d) $-1.5$
+ANSWER: b
+WHY: The population probability is $p_{avg}=0.7\times0.1+0.3\times0.4=0.19$, and the slope is $-(1-p_{avg})/p_{avg}=-0.81/0.19\approx-4.26$ (BHT Section 9.7). It lies between the frail slope, $-1.5$, and the robust slope, $-9$. Option (a) plugs the share of frail types in place of the probability of sickness.
+
+MC: In the market of the previous question the loss from sickness is \$40,000, and an insurer offers full coverage to everyone at the premium that breaks even on the whole population. What is its expected profit on each robust customer?
+(a) \$0
+(b) \$7,600
+(c) \$3,600
+(d) −\$8,400
+ANSWER: c
+WHY: The premium is $0.19\times40{,}000=\$7{,}600$ and a robust customer's expected payout is $0.1\times40{,}000=\$4{,}000$, a profit of \$3,600 (BHT Sections 9.7 and 9.9). Option (d) is the result on a frail customer, $7{,}600-16{,}000$; zero, option (a), holds only on average over the whole pool. The gap between (c) and (d) is the cross-subsidy a cream-skimming rival can exploit.
+
+MC: A customer with $U(I)=\sqrt I$ has \$40,000 if healthy and \$10,000 if sick, each with probability 0.5. What is the highest premium for full coverage at which the contract is still in the feasible contract wedge?
+(a) \$15,000
+(b) \$17,500
+(c) \$22,500
+(d) \$25,000
+ANSWER: b
+WHY: Uninsured, her expected utility is $0.5\times200+0.5\times100=150$, the utility of a sure \$22,500; with full coverage at premium $r$ she has $40{,}000-r$ for sure, which she accepts if $40{,}000-r\ge22{,}500$, that is $r\le\$17{,}500$ (BHT Section 9.5). The insurer earns a profit of up to \$2,500 above the fair premium of \$15,000, option (a). Option (c) confuses the sure income with the premium.
+
+MC: For the customer of the previous question ($U(I)=\sqrt I$, $p=0.5$, endowment (\$40,000, \$10,000)), what is the slope of her indifference curve at the endowment point?
+(a) $-1$
+(b) $-2$
+(c) $-0.25$
+(d) $-0.5$
+ANSWER: d
+WHY: The slope is $-\tfrac{(1-p)U'(I_H)}{pU'(I_S)}=-\tfrac{0.5}{0.5}\sqrt{10{,}000/40{,}000}=-0.5$, since $U'(I)=1/(2\sqrt I)$ (BHT Section 9.2). It is flatter than the zero-profit line, slope $-1$ (option (a)), so moving along that line toward full insurance raises her utility. Option (c) forgets the square root, and (b) inverts the ratio.
+
+MC: Endowment (\$40,000, \$10,000) and $U(I)=\sqrt I$ for everyone; frail customers fall sick with probability 0.5 and buy full fair insurance $\Omega_1$, worth \$25,000 in each state. Robust customers fall sick with probability 0.2. Which contract on the robust zero-profit line can be offered next to $\Omega_1$ without the frail switching to it?
+(a) Payout \$5,000 for a premium of \$1,000
+(b) Payout \$10,000 for a premium of \$2,000
+(c) Payout \$20,000 for a premium of \$4,000
+(d) Payout \$30,000 for a premium of \$6,000
+ANSWER: a
+WHY: $\Omega_1$ gives the frail utility $\sqrt{25{,}000}\approx158.1$. Contract (a) leaves them with \$39,000 or \$14,000 and utility $0.5\times197.5+0.5\times118.3\approx157.9<158.1$, so they stay; contract (b) gives \$38,000 or \$18,000 and utility $\approx164.5$, so they would switch, and (c) and (d) are even more attractive to them (BHT Section 9.10). Coverage for the robust must be rationed because a contract priced at the robust rate is a bargain for the frail.
+
+MC: Why does the market offer no contract in region R1 of BHT Figure 9.8, where income is higher when sick than when healthy?
+(a) Such contracts always lose money for the insurer
+(b) A risk-averse customer gains nothing from income that varies across states, so a full contract at a similar price dominates them
+(c) The customer always prefers her endowment to any contract in R1
+(d) Such contracts are illegal under the definition of insurance used in the model
+ANSWER: b
+WHY: An overfull contract makes income uncertain again, in the opposite direction, so a risk-averse customer prefers a fair full contract to it (BHT Section 9.5). Option (a) is wrong because a contract in R1 can lie southwest of the zero-profit line; option (c) is wrong because a contract slightly above the 45° line near the fair full one is still better for her than the endowment. The model rules R1 out by preference, not by law.
+
+MC: With one risk type and symmetric information, an insurer offers contract α in the interior of the feasible wedge. Which condition of BHT's Definition 9.1 does α fail?
+(a) Customers choose α over the endowment
+(b) α earns at least zero profit
+(c) No rival can offer a contract that attracts customers and earns at least zero profit
+(d) It fails none, so it is an equilibrium
+ANSWER: c
+WHY: Customers buy α and the insurer earns a positive profit, so conditions 1 and 2 hold; but a rival can offer a contract between the customer's indifference curve through α and the zero-profit line, which she prefers and which still earns a profit (BHT Section 9.6, Figure 9.9). Competition pushes contracts to the zero-profit line and to full coverage. Option (d) ignores entry.
+
+MC: Robust and frail customers have the same income in each state and the same utility function. Why do they have different indifference curves in the $I_H$–$I_S$ space?
+(a) They weight the two states by different probabilities, and the robust weight healthy-state income more heavily
+(b) Their marginal utilities of income differ at the same income
+(c) The frail are more risk-averse than the robust
+(d) Their endowment points differ, so their curves start from different places
+ANSWER: a
+WHY: Expected utility weights $U(I_H)$ and $U(I_S)$ by $1-p$ and $p$, so with the same $U$ the robust, with lower $p$, care more about healthy-state income and have steeper indifference curves (BHT Section 9.8). Options (b) and (c) contradict the assumption of a common utility function, and (d) the assumption of a common endowment. This difference in weights is what makes the single-crossing property hold.
+
+MC: Through a pooling contract α, the robust indifference curve is steeper than the frail one. Where can a rival place a contract that only the robust prefer to α?
+(a) Above both curves, with more coverage than α
+(b) Below both curves, with less coverage than α
+(c) Between the curves on the side of α with more coverage: above the frail curve and below the robust curve
+(d) Between the curves on the side of α with less coverage: above the robust curve and below the frail curve
+ANSWER: d
+WHY: To the right of α (less coverage, lower premium) the steeper robust curve lies below the frail curve, so a point between them is above the robust curve and below the frail one: the robust gain, the frail lose (BHT Section 9.9, Figure 9.16). Such a contract also lies southwest of the robust zero-profit line near α, so it profits. Option (a) attracts both types and option (c) attracts only the frail.
+
+MC: Why must any pooling equilibrium lie on the population zero-profit line?
+(a) Because it is the only line on which both types are fully insured
+(b) Northeast of it the pooling insurer loses money; southwest of it a rival can offer a slightly better pooled contract and still profit
+(c) Because the robust refuse any contract off that line
+(d) Because the frail would otherwise reveal their type
+ANSWER: b
+WHY: When both types buy a contract, the insurer's expected profit is zero exactly on the population zero-profit line; to its northeast the contract violates the second condition of Definition 9.1, to its southwest the third (BHT Section 9.9). Option (a) confuses the zero-profit line with the 45° line. Even on the line, pooling then fails because of cream-skimming.
+
+MC: In a separating equilibrium, the frail stay at $\Omega_1$ although $\Omega_3$ charges a lower price per dollar of coverage. Why?
+(a) Insurers refuse to sell $\Omega_3$ to anyone who looks frail
+(b) $\Omega_3$ makes a loss on the frail, so it is withdrawn when they apply
+(c) $\Omega_3$ covers only a small part of the loss, and full coverage at a higher price is worth at least as much to the frail
+(d) The frail cannot afford the premium of $\Omega_3$
+ANSWER: c
+WHY: $\Omega_3$ is placed on the frail indifference curve through $\Omega_1$: its low price is exactly offset, for the frail, by its small quantity of coverage (BHT Section 9.10, Figure 9.17). The frail are likely to fall sick and value full coverage highly. Option (a) contradicts the assumption that insurers cannot tell the types apart, which is the whole reason for the screening design.
+
+MC: In BHT Figure 9.17, an entrant offers a contract in region R2, which both types prefer to their contracts in the separating pair. What happens?
+(a) The entrant makes a profit, so the separating pair breaks down
+(b) The entrant attracts only the robust and makes a profit
+(c) The entrant attracts only the frail and loses money
+(d) The entrant attracts both types and loses money, because R2 lies northeast of the population zero-profit line
+ANSWER: d
+WHY: Both types switch, so the entrant's customers are the whole population and its profit is judged against the population zero-profit line; all of R2 lies to its northeast, so the losses on the frail outweigh the profits on the robust (BHT Section 9.10). Only when the robust are numerous enough does a region like R4, southwest of that line, appear. Option (a) describes that other case.
+
+MC: A government requires everyone to buy the contract where the full-insurance line meets the population zero-profit line. Compared with their own fair price, what do the two types get?
+(a) Full insurance for both; the frail pay less than their fair premium and the robust pay more
+(b) Full insurance for both, each at their own fair premium
+(c) Full insurance for the frail and partial insurance for the robust
+(d) Full insurance for both; the robust pay less than their fair premium and the frail pay more
+ANSWER: a
+WHY: The contract is full, and its premium is $p_{avg}$ times the loss, between the two types' fair premiums: a discount for the frail and an actuarially unfair price for the robust (BHT Section 9.11). Option (b) is the outcome with symmetric information, and (c) the separating equilibrium. The mandate works by forbidding the robust to leave the pool.
+
+MC: Why can a lifetime insurance contract signed at age 18 come under strain thirty years later?
+(a) The insurer cannot raise the premium of customers who turned out healthy
+(b) Once types become known, customers who turned out healthy would like to leave a pool that charges them for others' costs, and the pool holds only if courts enforce the contract
+(c) Young customers know more about their future health than insurers do
+(d) Premiums fall over time and no longer cover costs
+ANSWER: b
+WHY: The contract pools risks before types are known, but once health differences appear the healthy pay premiums set for the whole pool and want to switch, while the insurer would like to drop the sick (BHT Section 9.11). Only the commitment holds the pool together, and courts may not enforce it. Option (c) reverses the assumption that makes lifetime contracts possible, and (d) describes the guaranteed renewable design.
+
+MC: Under a Cochrane contract, a customer is diagnosed with a chronic condition that will raise her fair premium from \$2,000 to \$6,000 a year for the next five years. Ignoring interest, what lump sum does her premium insurance pay?
+(a) \$6,000
+(b) \$30,000
+(c) \$4,000
+(d) \$20,000
+ANSWER: d
+WHY: Premium insurance pays the extra premiums she will face, $(6{,}000-2{,}000)\times5=\$20{,}000$, so she can pay fair premiums at any insurer (BHT Section 9.11). Option (b) pays all future premiums rather than the increase, and (c) covers only one year. Because she carries the money with her, insurers can charge fair premiums each year and customers can switch.
+
+MC: Robust customers fall sick with probability 0.1 and frail customers with probability 0.4. For which share of robust types does the population zero-profit line have slope $-4$?
+(a) $2/3$
+(b) $1/3$
+(c) $1/2$
+(d) $4/5$
+ANSWER: a
+WHY: A slope of $-4$ means $(1-p_{avg})/p_{avg}=4$, so $p_{avg}=0.2$; then $0.1\,\theta+0.4\,(1-\theta)=0.2$ gives $\theta=2/3$ (BHT Section 9.7). Option (b) is the share of frail types. The more robust types, the closer the population line gets to the robust line, of slope $-9$; this rotation is what can destroy the separating equilibrium.

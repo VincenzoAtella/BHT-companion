@@ -1,0 +1,202 @@
+# App-only questions for BHT Chapter 22 (Obesity). 10 TF, 20 MC.
+# Numbers checked in Python on 2026-10-09.
+
+TF: Evidence that body weight is strongly heritable, such as the BMI correlations among Korean adoptees in Sacerdote's study, implies that genetic change can account for a large part of the rise in obesity since the 1970s.
+ANSWER: False
+WHY: Heritability explains why some people are heavier than others at a point in time, not why everyone got heavier: the gene pool cannot change much in a few decades (BHT Section 22.2). Assortative mating may skew it a little, but far too slowly to match the trend. A trend needs a cause that itself changed over the period, such as prices.
+
+TF: BHT call the externality created by pooled health insurance "artificial" because one member's weight affects the others only through the insurance contract, not through any direct effect on their health.
+ANSWER: True
+WHY: Without the pool, Homer's donuts would cost Carl and Lenny nothing; once they share the medical bills, his weight raises their premiums or taxes (BHT Section 22.4). The link is created by the contract, unlike the spread of tuberculosis. BHT stress that this externality can still reduce social welfare like any other, if it changes behavior.
+
+TF: In the welfare-economics framework of BHT, the fact that obesity affects a large share of the population is enough to classify it as a public health crisis.
+ANSWER: False
+WHY: For the economist the test is whether one person's obesity imposes costs on others, not how many people are obese (BHT Section 22.4). Back pain is widespread but borne privately, so it does not justify intervention on these grounds. Prevalence is the criterion of the public health tradition, which BHT contrast with the welfarist one.
+
+TF: In the estimates of Fontaine and coauthors, a given BMI costs more years of life to a 20-year-old than to a 60-year-old, partly because extra weight can protect older people against frailty.
+ANSWER: True
+WHY: The young have more remaining years that obesity can take away, and in old age some extra weight can have a small protective effect against frailty (BHT Section 22.3, Figure 22.5). Both reasons make the loss of life years from obesity shrink with age.
+
+TF: The RAND finding that more generous coverage did not raise weight also shows that moving people from no insurance to some insurance would not raise their weight.
+ANSWER: False
+WHY: The RAND experiment compared plans that differed in generosity among insured people; it says nothing directly about the move from being uninsured to being insured (BHT Section 22.4). Moral hazard at that margin may be of a different size, and the non-experimental studies of it disagree.
+
+TF: Among the New York City fast-food customers who said they used the newly posted calorie counts, average lunchtime calories fell by more than a tenth.
+ANSWER: True
+WHY: That group bought 863 calories before and 765 after, a fall of 98 calories or about 11% (BHT Section 22.6, Dumanovsky and coauthors). They were only about 15% of respondents, which is why the average purchase across all customers did not fall significantly.
+
+TF: When food prices rose sharply during the energy crisis of the mid-1970s, US average body weight kept growing at its usual pace, which BHT count as evidence against the food-price explanation.
+ANSWER: False
+WHY: BHT report the opposite: the growth in average weight briefly stopped when food became dearer (BHT Section 22.2, Figure 22.4). This short reversal of the price trend, with weight responding as the law of demand predicts, is one of the facts they use to support the food-price explanation.
+
+TF: In Carrell and coauthors' study of the US Air Force Academy, the cadets whose fitness suffered most from being assigned unfit dorm mates were the least fit cadets.
+ANSWER: True
+WHY: The study finds that the least-fit peers do the most harm and that the least-fit cadets are the most affected by them (BHT Section 22.5). Random assignment to dorms removes the selection of friends that clouds observational network studies.
+
+TF: In the Framingham network data, when someone who names the ego as a friend becomes obese, without the ego naming that person back, the ego's risk of becoming obese rises significantly.
+ANSWER: False
+WHY: That alter-perceived tie has no significant effect; the significant effect runs the other way, from an alter whom the ego names as a friend (BHT Section 22.5). In Christakis and Fowler's data, people are influenced by those they regard as friends, not by those who regard them as friends.
+
+TF: Costa and Steckel's historical data show that average BMI of US men has been rising since the Civil War era, and that it rose more among older men than among 19-year-olds.
+ANSWER: True
+WHY: For 6-foot-tall men, average BMI at 19 rose from just under 22 in 1864 to 23.5 in 1991, while at 57 it rose from just under 23 in 1900 to nearly 27 (BHT Section 22.1, Figure 22.2). The rise in weight predates fast food and the postwar period by about a century.
+
+MC: A man is 6 feet tall and weighs 220 pounds. Using the BMI formula of BHT Definition 22.1, how is he classified?
+(a) Obese, with a BMI of about 32
+(b) Normal weight, with a BMI of about 24
+(c) Overweight, with a BMI of about 30 but just below it
+(d) Obese, with a BMI of about 36
+ANSWER: c
+WHY: BMI $=703\times220/72^2\approx29.8$, or $4.9\times220/6^2\approx29.9$ with BHT's rounded factor, so he is overweight but not obese (BHT Section 22.1). Options (a) and (d) would describe a man of the same weight about 5 feet 9 and 5 feet 6 tall, and (b) one about 6 feet 8. The example shows how close to the cutoff a heavy but tall man can stay.
+
+MC: Above what weight is a person 5 feet 6 inches tall classified as obese?
+(a) About 186 pounds
+(b) About 155 pounds
+(c) About 198 pounds
+(d) About 165 pounds
+ANSWER: a
+WHY: Obesity starts at BMI 30, so the threshold is $30\times66^2/703\approx186$ pounds (BHT Section 22.1, Definition 22.1). Option (b) is the threshold for BMI 25, the start of overweight. The cutoff weight grows with the square of height, so taller people can carry many more pounds before crossing it.
+
+MC: Sacerdote finds a BMI correlation of 0.269 between biological siblings and of 0.115 between adoptive siblings. Which conclusion is best supported?
+(a) Shared household environment matters more than genes for adult BMI
+(b) Genes explain the rise in obesity over the past decades
+(c) The two correlations should be equal if families matter at all
+(d) Genes play a substantial role in differences in BMI across people
+ANSWER: d
+WHY: Biological siblings share genes and are more than twice as correlated as adoptive siblings, who share only a household, so genes matter for who is heavier than whom (BHT Section 22.2). Option (b) is the tempting mistake: a cross-sectional correlation says nothing about why the whole population got heavier over a period too short for the genome to change.
+
+MC: Why do BHT find the food-industry explanation (fast food and large portions) insufficient for the rise in body weight?
+(a) Living near fast-food restaurants has no measurable effect on weight
+(b) Body weight was already rising long before fast food spread after World War II
+(c) Fast-food firms have no incentive to sell calorie-dense food
+(d) Economic freedom is negatively correlated with health across countries
+ANSWER: b
+WHY: Average weight has been rising since at least the mid-19th century, so a postwar industry cannot be the main cause (BHT Section 22.2, Figure 22.2). Option (a) is wrong because BHT cite evidence that proximity to fast food does raise weight, especially for children. Option (d) reverses BHT's point: economic freedom is positively correlated with health.
+
+MC: Which of the following is \emph{not} one of the facts that BHT say a theory of rising obesity must explain?
+(a) Obesity is higher among people with more education
+(b) Average body weight has been rising for about 150 years
+(c) Body weight has risen in every developed country
+(d) Body weight has risen for rich and poor alike
+ANSWER: a
+WHY: The three facts are the long rise, its spread across developed countries, and its parallel rise across income and education groups (BHT Section 22.2). Option (a) is false as a fact: in the US college graduates are less likely to be obese than those without a high-school diploma, although both groups grew heavier (BHT Section 22.1).
+
+MC: Daily calorie intake in Cuba fell from 2,899 in 1989 to 1,863 in 2000. By what percentage did it fall?
+(a) About 26%
+(b) About 56%
+(c) About 36%
+(d) About 46%
+ANSWER: c
+WHY: The fall is $1{,}036/2{,}899\approx35.7\%$ (BHT chapter introduction). Option (b) divides the fall by the 2000 level, $1{,}036/1{,}863\approx56\%$, which measures how much higher intake was before, not how much it fell. The episode, with more walking and lower mortality, illustrates that calorie restriction short of starvation can improve health.
+
+MC: In BHT's account, how has technological change in the workplace contributed to rising body weight?
+(a) It has raised the price of food relative to other goods
+(b) It has made exercise at the gym cheaper than physical work
+(c) It has increased the calories that office workers burn each day
+(d) It has made physical activity a by-product of work less often, so exercise now costs extra time away from work
+ANSWER: d
+WHY: When work was manual, calories were burned as part of earning a living; with sedentary jobs, being active means giving up time for it, so its price has risen (BHT Section 22.2). Leisure-time exercise has not risen enough to make up for the lost activity at work. Option (a) has the sign wrong: technology in agriculture has made food cheaper.
+
+MC: In a pooled plan, 70% of members are not obese and have expected medical costs of \$4,000 a year; the other 30% are obese and spend 36% more, as in Sturm's estimate. Everyone pays the same premium equal to average cost. How much does each non-obese member pay above his own expected costs?
+(a) \$1,008
+(b) \$432
+(c) \$1,440
+(d) \$302
+ANSWER: b
+WHY: Obese members cost $1.36\times4{,}000=5{,}440$ dollars, so the premium is $0.7\times4{,}000+0.3\times5{,}440=4{,}432$ dollars, \$432 above the cost of a non-obese member (BHT Sections 22.3–22.4). Option (a) is the gain per obese member, and (d) the transfer per member of the whole pool; the totals match, $0.7\times432=0.3\times1{,}008$, so pooling alone redistributes without destroying value.
+
+MC: Each extra donut Homer eats raises the medical bills of his insurance pool by \$1, and the bills are split equally among the 1,000 members. How much of that \$1 does Homer bear?
+(a) \$1
+(b) \$0.50
+(c) \$0.01
+(d) \$0.001
+ANSWER: d
+WHY: With equal shares he bears $1/1{,}000$ of a dollar, a tenth of a cent, and the other 999 members bear the rest (BHT Section 22.4). Option (c) would hold in a pool of 100. The larger the pool, the closer the private cost of an extra donut's medical consequences gets to zero.
+
+MC: According to BHT, under which condition does pooled health insurance turn obesity into a source of social loss?
+(a) When members respond to the lower private cost of weight gain by eating more or exercising less
+(b) When obese members have higher expected medical costs than thin members
+(c) When the pool is large enough that each member's premium barely depends on his own costs
+(d) When thin members object to subsidizing obese members
+ANSWER: a
+WHY: Social loss requires moral hazard: a change in behavior caused by the price distortion (BHT Section 22.4, Figure 22.6). Options (b) and (c) describe a transfer, which can happen even if nobody changes behavior; then the obese gain exactly what the others lose. Option (d) is about how members feel, not about efficiency.
+
+MC: Each BMI point costs \$200 a year in medical care, but pooled insurance makes a person pay only 10% of it. Facing the lower price, she ends up 1.5 BMI points heavier than she would at the true price, along a linear demand curve. What is the yearly social loss?
+(a) \$300
+(b) \$270
+(c) \$135
+(d) \$15
+ANSWER: c
+WHY: The loss is the triangle between the true price and demand: $\tfrac12\times(200-20)\times1.5=135$ dollars (BHT Section 22.4, Figure 22.6). Option (b) forgets the factor one half, treating every extra BMI point as if it were worth only the \$20 she pays. Option (a) counts the full medical cost of the extra points, as if they were worth nothing to her.
+
+MC: Under the welfare-economics rubric, why does a tuberculosis outbreak justify public action while a rise in back pain does not?
+(a) Tuberculosis is more common than back pain
+(b) A person with tuberculosis imposes costs on others, while a person with back pain bears the costs alone
+(c) Back pain is cheaper to treat than tuberculosis
+(d) Tuberculosis patients make worse decisions about their own health
+ANSWER: b
+WHY: The test is whether one person's condition harms others; contagion is a true externality, back pain is not (BHT Section 22.4). A subsidy for back-pain treatment would be inefficient, since a patient who values the treatment buys it anyway. Option (a) uses prevalence, the public health criterion that BHT contrast with the economic one.
+
+MC: Suppose a person's baseline risk of becoming obese over a period is 10%. Using Christakis and Fowler's estimates, what is the risk if a person the ego names as a friend becomes obese, and what if that friendship is mutual?
+(a) 15.7% and 27.1%
+(b) 67% and 181%
+(c) 10.6% and 11.7%
+(d) 5.7% and 17.1%
+ANSWER: a
+WHY: The estimates are relative increases of 57% and 171%, so the risk becomes $0.10\times1.57=15.7\%$ and $0.10\times2.71=27.1\%$ (BHT Section 22.5). Option (b) adds 57 and 171 percentage points to the baseline, and (d) reports only the increase in risk, not the new risk. These are associations; BHT note that shared environments or the choice of friends could produce them without contagion.
+
+MC: What makes the Air Force Academy study of Carrell and coauthors more convincing about causality than the Framingham network study, and what limits its reach?
+(a) It follows more people for longer; but it measures only BMI
+(b) It uses data on spouses and siblings; but cadets are older than most people
+(c) It measures weight more precisely; but it does not test fitness
+(d) Dorm mates are assigned at random and fitness is measured at entry; but the setting and its very fit population are unusual
+ANSWER: d
+WHY: Random assignment rules out the selection of like-minded friends, and entry scores give a measure before peers could have any influence (BHT Section 22.5). The limits are that cadets spend nearly all their time with assigned peers and almost none is obese, so the result does not carry over directly to obesity among freely chosen friends. The study measures fitness, not BMI, which rules out (a) and (c).
+
+MC: In Burton and coauthors' survey, respondents guessed 704 calories for a fettuccine alfredo that contained 1,500. By what share did they underestimate it?
+(a) About 47%
+(b) About 53%
+(c) About 113%
+(d) About 29%
+ANSWER: b
+WHY: The shortfall is $(1{,}500-704)/1{,}500\approx53\%$ of the true calories (BHT Section 22.6). Option (a) is the guess as a share of the truth, and (c) the error relative to the guess. For low-calorie dishes the guesses were close, so the information problem is worst exactly where calories are highest.
+
+MC: After New York City required calorie posting, the 15% of customers who used the information cut lunchtime calories from 863 to 765. If other customers did not change their purchases, by about how much did average lunchtime calories fall across all customers?
+(a) About 98 calories
+(b) About 83 calories
+(c) About 15 calories
+(d) Not at all, since most customers ignored the information
+ANSWER: c
+WHY: The users cut 98 calories each, so the average across all customers falls by $0.15\times98\approx15$ calories (BHT Section 22.6). Option (a) is the change among users only, and (b) wrongly weights it by the 85% who did not use the information. Option (d) forgets that the users' cut still moves the overall average a little. A change this small is hard to detect in the overall average, which matches the finding of no significant decline.
+
+MC: Banegas and coauthors attribute at least 175,000 deaths a year in the European Union to obesity, 70% of them from cardiovascular disease. About how many obesity-attributable deaths a year are cardiovascular?
+(a) 122,500
+(b) 35,000
+(c) 52,500
+(d) 2,275,000
+ANSWER: a
+WHY: $0.7\times175{,}000=122{,}500$ (BHT Section 22.3). Option (b) is the 20% share from cancer, and (c) the 30% from causes other than cardiovascular disease. Option (d) is the order of magnitude of all EU deaths implied by the statement that at least one in thirteen is caused by excess weight.
+
+MC: Chou and coauthors estimate that eliminating fast-food television advertising would reduce obesity among children aged 3–11 by 18%. If 15% of these children are obese, what prevalence does the estimate imply?
+(a) 2.7%
+(b) 0%
+(c) 13.2%
+(d) 12.3%
+ANSWER: d
+WHY: An 18% reduction is relative, so prevalence falls by $0.18\times15=2.7$ points, to $0.82\times15\%=12.3\%$ (BHT Section 22.6). Option (a) is the size of the fall, not the new prevalence; (b) reads 18% as 18 percentage points, which would push prevalence below zero; and (c) subtracts 1.8 points, misplacing the decimal. Other studies, BHT note, find that restrictions at school do not reduce weight, perhaps because children eat more elsewhere.
+
+MC: Japan raised health insurance premiums for people with waistlines above a threshold. If, as the RAND results suggest, coverage does not affect weight, what does such a policy mainly do?
+(a) It removes a large social loss from moral hazard
+(b) It shifts money from heavier to thinner people without changing total welfare
+(c) It raises total welfare by making the obese internalize the costs of their weight
+(d) It makes heavier people better off by encouraging them to lose weight
+ANSWER: b
+WHY: Without moral hazard there is no social loss to remove, so charging the heavy more only moves money from them to the rest of the pool (BHT Section 22.7). Since the obese tend to be poorer, the transfer may be regressive. Option (c) would hold only if weight responded to the price of coverage.
+
+MC: Which unintended effect of a tax on burgers do BHT highlight?
+(a) It raises demand for beef by signaling quality
+(b) It shifts obesity from adults to children
+(c) It may reduce iron intake among poor children, raising the risk of anemia
+(d) It lowers the price of other fast foods
+ANSWER: c
+WHY: Beef is a cheap source of iron for many poor children, so making it dearer can cut their iron intake, with harmful effects on concentration and health (BHT Section 22.7, Lakdawalla and coauthors). The example shows that a food tax aimed at one problem can worsen another, since nutrition is tied to income.
