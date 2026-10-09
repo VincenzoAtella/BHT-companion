@@ -1,6 +1,6 @@
-# App-only questions
+# Question banks
 
-The book's own true-or-false and multiple-choice exercises (Parts A and B) are read from the chapters. This folder adds questions that exist only in the app, so that every chapter has at least 10 true-or-false and 20 multiple-choice questions. They are locked with the same chapter codes as the book's solutions.
+All questions are original and written for the course; none is taken from the textbook. One file per syllabus chapter, named by its key in `content.py` (for example `insurance.txt` for BHT Chapter 7). Each chapter should have at least 10 true-or-false and 20 multiple-choice questions. They are locked with per-chapter unlock codes.
 
 
 Blocks are separated by a blank line. Lines starting with `#` are comments. Math in `$...$`; only `\emph{...}` and `\textbf{...}` as commands; dollar amounts as `\$4,000`.
