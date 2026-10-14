@@ -250,3 +250,20 @@ shutil.copy(os.path.join(SRC, 'manifest.webmanifest'), os.path.join(PWA, 'manife
 with open(os.path.join(PWA, 'sw.js'), 'w', encoding='utf-8') as f:
     f.write(read('sw.js').replace('__VERSION__', version))
 print(f'Wrote {os.path.relpath(PWA, ROOT)}/ (installable web app, version {version}); publish the folder on any https address.')
+
+# 6. guides -------------------------------------------------------------------
+# The student and instructor guides show screenshots of the app. When the interface has changed, retake
+# them and recompile the guides (needs Playwright and latexmk); otherwise warn. --no-guide skips this.
+GUIDE = os.path.join(ROOT, 'guide', 'update_guide.py')
+if os.path.exists(GUIDE) and '--no-guide' not in sys.argv and not open_mode:
+    chk = subprocess.run([sys.executable, GUIDE, '--check'], capture_output=True, text=True)
+    if chk.returncode == 0:
+        print(chk.stdout.strip())
+    else:
+        can = shutil.which('latexmk') and subprocess.run([sys.executable, '-c', 'import playwright'], capture_output=True).returncode == 0
+        if can and not os.environ.get('GITHUB_ACTIONS'):
+            print(chk.stdout.strip() + ' Updating them now...')
+            r = subprocess.run([sys.executable, GUIDE], capture_output=True, text=True)
+            print((r.stdout or r.stderr).strip())
+        else:
+            print(('::warning::' if os.environ.get('GITHUB_ACTIONS') else 'WARNING: ') + chk.stdout.strip())
