@@ -404,7 +404,7 @@ function practiceList(shown) {
     + groups.map(g => { const n0 = g.qs[0].n.replace(/\(.*$/, ''); return `<div class="numprob"><p class="numhead">Problem ${n0}</p><div class="numsetup">${setupOf(g.qs[0])}</div>${g.qs.map(q => qCard(q)).join('')}</div>`; }).join('');
 }
 function numInputHTML(q, idp, val) {
-  return `<div class="numrow"><label class="sr" for="${idp}">Your answer</label><input id="${idp}" class="numin" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Your answer" value="${val ?? ''}">${q.unit ? `<span class="unit">${esc(q.unit)}</span>` : ''}<span class="fine">${q.dec ? `${plural(q.dec, 'decimal')}` : 'a whole number'}</span></div>`;
+  return `<div class="numrow"><label class="sr" for="${idp}">Your answer</label><input id="${idp}" class="ansin" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Your answer" value="${val ?? ''}">${q.unit ? `<span class="unit">${esc(q.unit)}</span>` : ''}<span class="fine">${q.dec ? `${plural(q.dec, 'decimal')}` : 'a whole number'}</span></div>`;
 }
 function qCard(q, retry, showCh) {
   const a = ST.answers[q.id], done = a && !retry;
@@ -438,7 +438,7 @@ function bindCards(root) {
     }
     $$('.mcopts:not(.static) .mco', card).forEach(b => b.onclick = () => commit(q, +b.dataset.a, '', card));
     const nf = $('.numform', card);
-    if (nf) nf.onsubmit = e => { e.preventDefault(); const x = parseNum($('.numin', card).value); if (x === null || isNaN(x)) { $('.nummsg', card).textContent = 'Type a number, for example 0.375 or -12.5 (no thousands separators).'; return; } commit(q, x, '', card); };
+    if (nf) nf.onsubmit = e => { e.preventDefault(); const x = parseNum($('.ansin', card).value); if (x === null || isNaN(x)) { $('.nummsg', card).textContent = 'Type a number, for example 0.375 or -12.5 (no thousands separators).'; return; } commit(q, x, '', card); };
     $$('[data-rate]', card).forEach(b => b.onclick = () => { ST.answers[q.id].rating = b.dataset.rate; save(); $$('[data-rate]', card).forEach(x => x.setAttribute('aria-pressed', x === b)); renderNav(); });
     const r = $('[data-retry]', card); if (r) r.onclick = () => { card.outerHTML = qCard(q, true, card.dataset.showch); const nc = $('#qc-' + q.id); bindCards(nc.parentNode); typeset(nc); };
   });

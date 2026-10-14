@@ -399,7 +399,7 @@ mjx-container[jax="SVG"] { direction: ltr; }
 .numprob > .numsetup { margin-bottom: 14px; }
 .numform { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 8px; }
 .numrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.numin { width: 11em; text-align: left; font: inherit; font-variant-numeric: tabular-nums; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.ansin { width: 11em; text-align: left; font: inherit; font-variant-numeric: tabular-nums; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
 .unit { font-weight: 600; }
 
 /* ---------- predict first, at the top of an example, one prediction at a time ---------- */
