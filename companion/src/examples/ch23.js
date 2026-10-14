@@ -202,3 +202,48 @@ EX.push({
     { q: 'Slow aging further than scenario C: b from 0.08 to 0.06. The share of life spent with disability…', change: { b: 0.06 }, options: ['rises', 'falls', 'stays the same'], judge: (b, a) => a.share > b.share + 0.001 ? 0 : a.share < b.share - 0.001 ? 1 : 2, why: (b, a) => `It rises slightly, from ${pct(b.share, 1)} to ${pct(a.share, 1)}, although life lengthens from ${nf(b.death, 1)} to ${nf(a.death, 1)} years. A flatter curve stretches the period of disability (now ${nf(a.yrs, 1)} years) a little more than in proportion to life.` }
   ]
 });
+
+
+// ===== Added 14 October 2026: three further examples of Chapters A1 and A2 =====
+
+M.b23_soma = function ({ f, mu }) {
+  const k = f * (1 - mu);
+  const x = k > 1 ? (k - 1) / (2 * k) : 0;
+  const W = z => (1 - z) * (1 + k * z);
+  return { k, x, W, Wx: W(x), muBar: 1 - 1 / f };
+};
+
+EX.push({
+  id: 'b23-soma', ghost: 'Dashed gray: μ = 0.2, the chapter’s first case', ch: 23, title: 'The disposable soma: how much to repair',
+  ref: 'Addendum Section 1.9.1, Eqs. (1.14)–(1.15), Figure 1.6',
+  anchors: [],
+  intro: 'An organism splits its resources between reproduction and repair of the body. Repairing a share x of resources lowers current reproduction by (1 − x) but raises future reproduction by 1 + kx, where k = f(1 − μ): f is the yield of repair and μ is the probability of dying of external causes (predators, accidents, infections) before the future arrives. The chapter uses f = 3.9.',
+  eq: String.raw`W(x)=(1-x)(1+kx),\quad k=f(1-\mu),\qquad x^*=\frac{k-1}{2k}\ \text{if } k>1,\ \text{else } 0`,
+  params: [
+    { id: 'f', label: 'Yield of repair f', min: 1, max: 8, step: 0.1, book: 3.9, d: 1 },
+    { id: 'mu', label: 'External mortality μ', min: 0, max: 0.95, step: 0.01, book: 0.2, d: 2 }
+  ],
+  presets: [{ label: 'μ = 0.4 (problem 28)', values: { mu: 0.4 } }, { label: 'μ = 0.5', values: { mu: 0.5 } }, { label: 'μ = 0.75', values: { mu: 0.75 } }],
+  compute: S => M.b23_soma(S),
+  outputs: (S, R, B) => [
+    { label: 'Optimal repair share x*', v: nf(R.x, 2), b: nf(B.x, 2), key: true },
+    { label: 'Return on repair k', v: nf(R.k, 2), b: nf(B.k, 2) },
+    { label: 'Fitness at the optimum W(x*)', v: nf(R.Wx, 3), b: nf(B.Wx, 3) },
+    { label: 'External mortality above which repair stops', v: nf(R.muBar, 2), b: nf(B.muBar, 2) }
+  ],
+  verdict: (S, R) => R.x > 0 ? { tone: 'ok', text: `The organism repairs ${pct(R.x, 0)} of its resources. Above μ = ${nf(R.muBar, 2)} it would stop repairing altogether.` } : { tone: 'warn', text: `With μ = ${nf(S.mu, 2)} the future is too unlikely: k = ${nf(R.k, 2)} ≤ 1 and no repair pays. The body is disposable.` },
+  chart(el, S, R, B) {
+    const hi = Math.max(1.05, R.Wx * 1.15, B.Wx * 1.15);
+    const P = Plot(el, { x0: 0, x1: 1, y0: 0, y1: hi, xlabel: 'Share of resources spent on repair x', ylabel: 'Fitness W(x)', aria: 'Fitness as a function of the share spent on repair' });
+    P.fn(B.W, 'ghost');
+    P.fn(R.W, 's-pri thick');
+    P.vline(R.x, 's-ink dot', 'x*');
+    P.pt(R.x, R.Wx, 'p-pri', 'x* = ' + nf(R.x, 2), 8, -10);
+    P.draw();
+  },
+  notice: 'This is a Grossman-style investment decision made by natural selection: repair is investment in the body, and a high external mortality shortens the horizon over which it pays, just as a short horizon lowers the value of prevention.',
+  challenges: [
+    { q: 'External mortality rises to 0.8. Optimal repair…', change: { mu: 0.8 }, options: ['rises, to fight the danger', 'falls to zero', 'does not change'], judge: (b, a) => a.x === 0 ? 1 : a.x > b.x ? 0 : 2, why: (b, a) => `k = ${nf(a.k, 2)} ≤ 1, so x* = 0. When the organism is likely to die of external causes anyway, maintaining the body for the future does not pay.` },
+    { q: 'External mortality rises from 0.2 to 0.5. Optimal repair…', change: { mu: 0.5 }, options: ['rises', 'falls', 'does not change'], judge: (b, a) => a.x > b.x ? 0 : a.x < b.x ? 1 : 2, why: (b, a) => `${nf(b.x, 2)} → ${nf(a.x, 2)}. A shorter expected future lowers the return on repair, so species with many predators age faster.` }
+  ]
+});

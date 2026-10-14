@@ -1,0 +1,67 @@
+# Builds the BHT Study Companion and publishes it in the "app-latest" release
+# of this repository.
+#
+# COMPANION_UNLOCK_SECRET (repository secret) must be the same secret used
+# for earlier builds, so that the unlock codes already sent to students keep
+# working. The unlock-codes sheet is never published.
+#
+# Runs on every push that touches the app, and by hand from the Actions tab.
+name: BHT Study Companion
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'companion/**'
+      - '.github/workflows/companion.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: companion
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python dependencies (solution encryption)
+        run: pip install cryptography
+      - name: Node dependencies (MathJax and fonts)
+        working-directory: companion
+        run: npm ci --no-audit --no-fund
+      - name: Check the unlock secret
+        env:
+          COMPANION_UNLOCK_SECRET: ${{ secrets.COMPANION_UNLOCK_SECRET }}
+        run: |
+          if [ -z "$COMPANION_UNLOCK_SECRET" ]; then
+            echo "::error::COMPANION_UNLOCK_SECRET is not set: the build would lock the solutions with codes nobody has."
+            exit 1
+          fi
+      - name: Build the app
+        env:
+          COMPANION_UNLOCK_SECRET: ${{ secrets.COMPANION_UNLOCK_SECRET }}
+        run: |
+          python3 companion/build.py
+          rm -f companion/build/unlock-codes.md
+          (cd companion/dist && zip -qr BHT-Study-Companion-web.zip pwa)
+      - name: Update the app-latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          NOTE="BHT Study Companion built automatically on $(date -u +'%Y-%m-%d %H:%M') UTC from commit ${GITHUB_SHA::7}. BHT-Study-Companion.html is the single file: open it with a double-click, it works offline in any browser. BHT-Study-Companion-web.zip is the installable web app: publish its folder on an https address."
+          if gh release view app-latest >/dev/null 2>&1; then
+            gh release edit app-latest --notes "$NOTE"
+          else
+            gh release create app-latest --title "Latest version (BHT Study Companion)" --notes "$NOTE" --target "$GITHUB_SHA"
+          fi
+          gh release upload app-latest companion/dist/BHT-Study-Companion.html companion/dist/BHT-Study-Companion-web.zip --clobber

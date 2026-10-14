@@ -1,10 +1,18 @@
-node_modules/
-build/
-dist/
-__pycache__/
+# Unlock secret: never in the repository (CI reads it from the COMPANION_UNLOCK_SECRET secret)
 .unlock-secret
+companion/.unlock-secret
+
+# Build outputs and dependencies
+node_modules/
+companion/build/
+companion/dist/
+__pycache__/
+
+# LaTeX build outputs (student guide)
 guide/*.aux
 guide/*.log
 guide/*.fls
 guide/*.fdb_latexmk
 guide/*.out
+guide/*.toc
+guide/*.synctex.gz

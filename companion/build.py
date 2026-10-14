@@ -160,12 +160,12 @@ if open_mode:
     Qpub, lock_data = Q, {'enabled': False}
     print('Solutions: always visible (--open).')
 else:
-    in_ci = bool(os.environ.get('GITHUB_ACTIONS'))
-    master, where = lock.master_secret(create=not in_ci)
+    # The secret comes from COMPANION_UNLOCK_SECRET or companion/.unlock-secret. A new secret means new
+    # unlock codes, so it is created only on request (--new-secret), never by accident in a fresh clone.
+    master, where = lock.master_secret(create='--new-secret' in sys.argv)
     if not master:
-        import secrets as _s
-        master, where = _s.token_urlsafe(32), None
-        print('::warning::COMPANION_UNLOCK_SECRET is not set: this build locks the solutions with a throwaway secret, so no code can open them.')
+        sys.exit('No unlock secret: set COMPANION_UNLOCK_SECRET (or put it in companion/.unlock-secret) to keep the '
+                 'codes already given to students, or run with --new-secret to start a new set of codes.')
     Qpub, lock_data, codes, all_code = lock.lock(Q, master)
     if where:
         print(f'Solutions: locked by chapter (secret from {where.replace(ROOT + os.sep, "")}).')

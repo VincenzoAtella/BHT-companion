@@ -243,3 +243,87 @@ EX.push({
       why: (b, a) => `It falls from ${nf(b.bonus, 2)} to ${nf(a.bonus, 2)} years. The bonus is about ln[1 + σ₁σ₂/(1 − σ₁ − σ₂)]/b: complementarity is strong only when both causes are large, so it matters most for the major diseases of aging.` }
   ]
 });
+
+M.b24_annv = function (ck, b, r) { let s = 0; for (let t = 0; t < 80; t++) s += Math.pow(1 + r, -t) * Math.exp(-(ck / b) * (Math.exp(b * t) - 1)); return s; };
+M.b24_ann = function ({ cL, cS, sL, b = 0.09, r }) {
+  const aL = M.b24_annv(cL, b, r), aS = M.b24_annv(cS, b, r);
+  const price = sL * aL + (1 - sL) * aS;
+  const line = s => s * aL + (1 - s) * aS;
+  return { aL, aS, price, line, gainL: 1 - price / aL, lossS: price / aS - 1, stay: price <= aS };
+};
+
+EX.push({
+  id: 'b24-annuity', ghost: '', ch: 24, title: 'Genetic information and the annuity market',
+  ref: 'Addendum Section 2.14.1, Figure 2.8, technical box item 6; BHT Chapters 8-10 on adverse selection',
+  anchors: [],
+  intro: 'An annuity pays one euro at the start of each year of life from age 65. Long-lived and short-lived buyers face Gompertz hazards c_L e^{bt} and c_S e^{bt}, t years past 65, with b = 0.09. With c_L = 0.008, c_S = 0.015 and r = 3 percent the annuity is worth 16.59 and 13.77 euros. If insurers cannot tell the types apart, they charge the average value for the mix of buyers.',
+  eq: String.raw`a_k=\sum_{t\ge0}(1+r)^{-t}\exp\!\Big[-\frac{c_k}{b}\big(e^{bt}-1\big)\Big],\qquad p=s_L a_L+(1-s_L)a_S`,
+  params: [
+    { id: 'cL', label: 'Hazard at 65, long-lived c_L', min: 0.003, max: 0.02, step: 0.0005, book: 0.008, d: 4 },
+    { id: 'cS', label: 'Hazard at 65, short-lived c_S', min: 0.005, max: 0.04, step: 0.0005, book: 0.015, d: 4 },
+    { id: 'sL', label: 'Share of long-lived buyers', min: 0, max: 1, step: 0.01, book: 0.5, d: 2 },
+    { id: 'r', label: 'Interest rate r', min: 0, max: 0.06, step: 0.0025, book: 0.03, d: 4 }
+  ],
+  presets: [{ label: '70% long-lived (problem 29)', values: { sL: 0.7 } }, { label: 'Short-lived buyers leave', values: { sL: 1 } }],
+  compute: S => M.b24_ann(S),
+  outputs: (S, R, B) => [
+    { label: 'Pooled price (euros)', v: nf(R.price, 2), b: nf(B.price, 2), key: true },
+    { label: 'Value to a long-lived buyer', v: nf(R.aL, 2), b: nf(B.aL, 2) },
+    { label: 'Value to a short-lived buyer', v: nf(R.aS, 2), b: nf(B.aS, 2) },
+    { label: 'Long-lived pay less than the value by', v: pct(R.gainL, 1), b: pct(B.gainL, 1) },
+    { label: 'Short-lived pay more than the value by', v: pct(R.lossS, 1), b: pct(B.lossS, 1), key: true }
+  ],
+  verdict: (S, R) => S.sL >= 0.999 ? { tone: 'warn', text: `Only long-lived buyers remain and the price is ${nf(R.price, 2)}: the market has unraveled to one type.` } : R.lossS > 0.005 ? { tone: 'warn', text: `A short-lived buyer who knows her type pays ${nf(R.price, 2)} for something worth ${nf(R.aS, 2)} to her. If she cares only about expected value she leaves, and the price rises toward ${nf(R.aL, 2)}.` } : { tone: 'neutral', text: 'The types are almost identical, so pooling costs little.' },
+  chart(el, S, R) {
+    const lo = Math.min(R.aS, R.aL) * 0.9, hi = Math.max(R.aS, R.aL) * 1.06;
+    const P = Plot(el, { x0: 0, x1: 1, y0: lo, y1: hi, xlabel: 'Share of long-lived buyers in the pool', ylabel: 'Value (euros)', aria: 'Pooled annuity price by share of long-lived buyers' });
+    P.hline(R.aL, 's-pri dash', 'long-lived value ' + nf(R.aL, 2), 'start');
+    P.hline(R.aS, 's-sec dash', 'short-lived value ' + nf(R.aS, 2), 'end');
+    P.fn(R.line, 's-ink thick');
+    P.pt(S.sL, R.price, 'p-pri', 'price ' + nf(R.price, 2), 8, 16);
+    P.draw();
+  },
+  notice: 'The pooled price lies between the two values, so one type always subsidizes the other. When buyers learn their type from a genetic test and insurers cannot use it, the subsidized type stays and the subsidizing type leaves: the logic of adverse selection.',
+  challenges: [
+    { q: 'If 70 percent of buyers are long-lived, the pooled price is about…', change: { sL: 0.7 }, options: ['15.18', '15.74', '16.59'], judge: (b, a) => Math.abs(a.price - 15.74) < 0.02 ? 1 : 0, why: (b, a) => `${nf(a.price, 2)} = 0.7 × ${nf(a.aL, 2)} + 0.3 × ${nf(a.aS, 2)}. Short-lived buyers now pay ${pct(a.lossS, 1)} more than the annuity is worth to them, against ${pct(b.lossS, 1)} with equal shares.` },
+    { q: 'Raise the interest rate to 5 percent. The difference between the two values…', change: { r: 0.05 }, options: ['grows', 'shrinks', 'does not change'], judge: (b, a) => (a.aL - a.aS) > (b.aL - b.aS) ? 0 : (a.aL - a.aS) < (b.aL - b.aS) ? 1 : 2, why: (b, a) => `${nf(b.aL - b.aS, 2)} → ${nf(a.aL - a.aS, 2)} euros. The two types differ mainly in the late years, which a higher interest rate discounts more heavily, so information about longevity matters less.` }
+  ]
+});
+
+M.b24_pat = function ({ r, L, term }) {
+  const V = l => l >= term ? 0 : (r > 0 ? (Math.exp(-r * l) - Math.exp(-r * term)) / r : term - l);
+  return { V, VL: V(L), V0: V(0), share: V(L) / V(0) };
+};
+
+EX.push({
+  id: 'b24-patent', ghost: '', ch: 24, title: 'Why patents discourage drugs against aging',
+  ref: 'Addendum Section 2.14.2, technical box item 7',
+  anchors: [],
+  intro: 'A patent protects sales for a fixed term from the date of filing, 20 years. A drug that needs L years of development, for example to show an effect on aging rather than on a short-term outcome, loses those years of protection. Profits Π a year are discounted at rate r.',
+  eq: String.raw`\frac{V}{\Pi}=\int_L^{20}e^{-rt}\,dt=\frac{e^{-rL}-e^{-20r}}{r}`,
+  params: [
+    { id: 'r', label: 'Discount rate r', min: 0, max: 0.15, step: 0.005, book: 0.08, d: 3 },
+    { id: 'L', label: 'Years of development L', min: 0, max: 19, step: 1, book: 4, d: 0 },
+    { id: 'term', label: 'Patent term (years from filing)', min: 10, max: 30, step: 1, book: 20, d: 0 }
+  ],
+  presets: [{ label: 'Eight years (problem 30)', values: { L: 8 } }, { label: 'Twelve years', values: { L: 12 } }],
+  compute: S => M.b24_pat(S),
+  outputs: (S, R, B) => [
+    { label: 'Present value of protected profits V/Π', v: nf(R.VL, 2), b: nf(B.VL, 2), key: true },
+    { label: 'Value with no development time', v: nf(R.V0, 2), b: nf(B.V0, 2) },
+    { label: 'Share of that value kept', v: pct(R.share, 0), b: pct(B.share, 0) }
+  ],
+  verdict: (S, R) => R.share < 0.4 ? { tone: 'warn', text: `Development of ${nf(S.L, 0)} years keeps only ${pct(R.share, 0)} of the value of the patent: drugs whose benefit takes long to show are hard to finance.` } : { tone: 'neutral', text: `Development of ${nf(S.L, 0)} years keeps ${pct(R.share, 0)} of the value of the patent.` },
+  chart(el, S, R, B) {
+    const P = Plot(el, { x0: 0, x1: S.term, y0: 0, y1: Math.max(R.V0, B.V0) * 1.1, xlabel: 'Years of development L', ylabel: 'V/Π', aria: 'Present value of protected profits by years of development' });
+    P.fn(R.V, 's-pri thick', 0, S.term, 120);
+    P.vline(S.L, 's-ink dot', 'L');
+    P.pt(S.L, R.VL, 'p-pri', nf(R.VL, 2), 8, -10);
+    P.draw();
+  },
+  notice: 'Each year of development removes a year of protected sales at the end of the term and delays the remaining ones. A trial that must show an effect on aging, which takes decades, is the extreme case.',
+  challenges: [
+    { q: 'Development takes eight years instead of four. The value of the patent…', change: { L: 8 }, options: ['falls by about 10 percent', 'falls by about 40 percent', 'halves or more'], judge: (b, a) => { const f = 1 - a.VL / b.VL; return f < 0.2 ? 0 : f < 0.48 ? 1 : 2; }, why: (b, a) => `${nf(b.VL, 2)}Π → ${nf(a.VL, 2)}Π, a fall of ${pct(1 - a.VL / b.VL, 0)}.` },
+    { q: 'With a discount rate of zero, eight years of development cost…', change: { r: 0, L: 8 }, options: ['nothing', 'eight years of sales out of twenty', 'all of the value'], judge: (b, a) => Math.abs(a.VL - 12) < 1e-9 ? 1 : 0, why: (b, a) => `V = ${nf(a.VL, 0)}Π instead of 20Π: without discounting, the loss is just the lost years of protection. Discounting adds the cost of waiting.` }
+  ]
+});
