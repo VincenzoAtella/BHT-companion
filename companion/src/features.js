@@ -93,7 +93,7 @@ function bindCodeForm(after) {
       const keys = await tryCode(v);
       if (!keys.length) { msg.textContent = 'This code does not open any chapter. Check it against the message from your instructor; letters and digits only, the dash is optional.'; return; }
       const ns = [...new Set(QUESTIONS.filter(q => keys.includes(q.key)).map(q => q.ch))].sort((a, b) => a - b);
-      toast(`Solutions unlocked for ${ns.length > 1 ? 'chapters ' + ns.join(', ') : 'chapter ' + ns[0]}.`);
+      toast(`Solutions unlocked for ${ns.length > 1 ? 'chapters ' + ns.map(chLab).join(', ') : 'chapter ' + chLab(ns[0])}.`);
       renderNav(); after();
     } catch (err) { msg.textContent = 'This browser cannot check codes. Open the app in a recent version of Chrome, Edge, Firefox or Safari.'; }
   };
@@ -215,7 +215,7 @@ function renderSettings() {
         ${LOCKED ? `<section class="setcard wide" id="unlock"><h2>Solutions</h2>
           <p>Solutions are released chapter by chapter. When your instructor sends you a code, enter it once, here or at the top of a chapter’s Questions page. A chapter code opens every solution of that chapter; a course code opens all chapters.</p>
           ${codeFormHTML()}
-          <p class="fine">${unlockedChs.length ? `Unlocked: ${plural(unlockedChs.length, 'chapter')} of ${chs.length} (${unlockedChs.map(c => c.n).join(', ')}).` : `All ${chs.length} chapters are locked.`}</p>
+          <p class="fine">${unlockedChs.length ? `Unlocked: ${plural(unlockedChs.length, 'chapter')} of ${chs.length} (${unlockedChs.map(c => chLab(c.n)).join(', ')}).` : `All ${chs.length} chapters are locked.`}</p>
         </section>` : ''}
         <section class="setcard wide"><h2>Install</h2>${installHTML()}</section>
         <section class="setcard wide"><h2>Your data</h2>
