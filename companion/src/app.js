@@ -21,7 +21,7 @@ const QBY = Object.fromEntries(QUESTIONS.map(q => [q.id, q]));
 const READY = CHAPTERS.filter(c => c.ready);
 const CH = n => CHAPTERS.find(c => c.n === n) || { n, t: 'Chapter ' + n, part: 0, partTitle: '' };
 const chTitle = n => CH(n).t;
-const chLab = n => CH(n).lab || n;   // chapters outside BHT (the course addendum) show a label such as A1
+const chLab = n => CH(n).lab || n;   // chapters written for the course, outside BHT, show a label such as A1
 const shortT = c => { const [a, b] = c.t.split(':'); return b && CHAPTERS.some(d => d !== c && (d.t.split(':')[0] === a || d.t.startsWith(a + ' '))) ? b.trim().replace(/^the /, '').replace(/^./, x => x.toUpperCase()) : a; };   // when two chapters share the part before the colon, show the part after it
 const fmtDate = t => new Date(t).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 const mmss = s => { s = Math.max(0, Math.round(s)); const m = Math.floor(s / 60); return `${m}:${String(s % 60).padStart(2, '0')}`; };
@@ -40,7 +40,7 @@ const PARTS = (() => {
   return [...m.values()].map((p, i) => ({ ...p, hue: 'h' + (i % 4) }));
 })();
 const partOf = n => PARTS.find(p => p.chs.some(c => c.n === n)) || PARTS[0];
-const partLabel = p => p.k === 8 ? 'Addendum' : p.k ? `Part ${ROMAN[p.k] || p.k}` : 'Opening chapter';
+const partLabel = p => p.k === 8 ? 'Part A' : p.k ? `Part ${ROMAN[p.k] || p.k}` : 'Opening chapter';
 const partName = p => p.k ? p.title.split(':')[0] : 'Why health economics?';
 const partSub = p => p.k ? (p.title.split(':')[1] || '').trim() : 'BHT Chapter 1: what makes health and health care different from other goods, and the questions the course takes up.';
 const acc = hue => `style="--acc:var(--${hue});--acc-soft:var(--${hue}-soft)"`;
@@ -179,12 +179,13 @@ function band(n, active, h1) {
     </div>
     <nav class="tabs" aria-label="Chapter ${chLab(n)}">
       <a href="#ch-${n}"${active === 'ov' ? ' class="active" aria-current="page"' : ''}>Overview</a>
-      ${exs.map(e => `<a href="#${e.id}" data-tab="${e.id}"${active === e.id ? ' class="active" aria-current="page"' : ''}>${esc(e.title)}<span class="tabdone" ${ST.seen[e.id] === 2 ? '' : 'hidden'} title="Explored">✓</span></a>`).join('')}
+      ${exs.map(e => `<a href="#${e.id}" data-tab="${e.id}"${active === e.id ? ' class="active" aria-current="page"' : ''}>${esc(e.title)}<span class="tabpf${pfDone(e) === e.challenges.length ? ' all' : ''}" title="Predictions answered">${pfDone(e)}/${e.challenges.length}</span><span class="tabdone" ${ST.seen[e.id] === 2 ? '' : 'hidden'} title="Explored">✓</span></a>`).join('')}
       ${c.ready ? `<a href="#q-${n}"${active === 'q' ? ' class="active" aria-current="page"' : ''}>Questions <span class="cnt">${st.answered}/${st.total}</span></a>` : ''}
     </nav>
   </header>`;
 }
-function renderTabsState() { $$('.tabs [data-tab]').forEach(a => { const d = $('.tabdone', a); if (d) d.hidden = ST.seen[a.dataset.tab] !== 2; }); }
+const pfDone = e => e.challenges.filter((_, i) => ST.checks[e.id + ':' + i] !== undefined).length;
+function renderTabsState() { $$('.tabs [data-tab]').forEach(a => { const d = $('.tabdone', a); if (d) d.hidden = ST.seen[a.dataset.tab] !== 2; const e = EX.find(x => x.id === a.dataset.tab), f = $('.tabpf', a); if (e && f) { f.textContent = `${pfDone(e)}/${e.challenges.length}`; f.classList.toggle('all', pfDone(e) === e.challenges.length); } }); }
 
 function renderChapter(n) {
   current = null; curCh = n;
@@ -232,9 +233,10 @@ function openExample(id) {
   $('#main').innerHTML = band(ex.ch, ex.id, false) + `
     <article class="ex" ${accCh(ex.ch)}>
       <header class="exhead">
-        <div class="exhead-t"><h1>${esc(ex.title)}</h1><p class="lede">${esc(ex.intro)}</p><p class="ref">${/^Addendum/.test(ex.ref) ? 'In the course addendum' : 'In the textbook'}: ${esc(ex.ref.replace(/^Addendum /, ''))} · <a href="#feedback?ex=${ex.id}">Report a problem with this example</a></p></div>
+        <div class="exhead-t"><h1>${esc(ex.title)}</h1><p class="lede">${esc(ex.intro)}</p><p class="ref">${/^Chapter A\d/.test(ex.ref) ? 'In the course materials' : 'In the textbook'}: ${esc(ex.ref)} · <a href="#feedback?ex=${ex.id}">Report a problem with this example</a></p></div>
         <div class="eq">\\[${esc(eqLines(ex.eq))}\\]</div>
       </header>
+      <section class="checks" id="predict" aria-labelledby="pfh"><div class="pfhead"><h2 id="pfh">Predict first</h2><span class="pill" id="pfcount"></span></div><p class="sub">Before you touch the figure, commit to an answer: the app then sets the parameters and shows what the model says.</p><div id="challenges"></div></section>
       <div class="status" id="status" role="status"></div>
       <div class="work">
         <aside class="controls" aria-label="Assumptions and parameters">
@@ -250,7 +252,6 @@ function openExample(id) {
           <p class="notice">${esc(ex.notice)}</p>
         </section>
       </div>
-      <section class="checks"><h2>Predict first</h2><p class="sub">Commit to an answer before you move anything. The app then sets the parameters and shows what the model says. Your first answer is recorded in your report, separately from readiness.</p><div id="challenges"></div></section>
       ${examplePager(ex)}
     </article>`;
   buildControls(ex); buildChallenges(ex); update();
@@ -330,24 +331,33 @@ function eqLines(tex) {
   parts.push(tex.slice(start));
   return parts.length < 2 ? tex : '\\begin{gathered}' + parts.map(x => x.trim().replace(/,$/, '')).join('\\\\[4pt]') + '\\end{gathered}';
 }
-function buildChallenges(ex) {
-  $('#challenges').innerHTML = ex.challenges.map((c, i) => {
-    const prev = ST.checks[ex.id + ':' + i];
-    return `<div class="check" id="ck-${i}"><div class="cq"><span class="cnum">${i + 1}</span><p>${esc(c.q)}</p>${prev === undefined ? '' : `<span class="pill ${prev ? 'ok' : 'bad'}">${prev ? 'Passed' : 'Missed'}</span>`}</div>
-      <div class="opts">${c.options.map((o, k) => `<button class="opt" data-c="${i}" data-k="${k}">${esc(o)}</button>`).join('')}</div><div class="feedback" hidden></div></div>`;
-  }).join('');
+function buildChallenges(ex, pos) {
+  // one prediction at a time, at the top of the example: the first one not yet answered
+  const n = ex.challenges.length, st = i => ST.checks[ex.id + ':' + i];
+  if (pos === undefined) { pos = ex.challenges.findIndex((_, i) => st(i) === undefined); if (pos < 0) pos = 0; }
+  const done = ex.challenges.filter((_, i) => st(i) !== undefined).length, c = ex.challenges[pos], prev = st(pos);
+  const cnt = $('#pfcount'); if (cnt) { cnt.textContent = `${done} of ${n} answered`; cnt.className = 'pill ' + (done === n ? 'ok' : 'warn'); }
+  $('#challenges').innerHTML = `<div class="ckstep"><span>Prediction ${pos + 1} of ${n}</span><span class="ckdots">${ex.challenges.map((_, i) => `<button class="ckdot${i === pos ? ' cur' : ''}${st(i) === true ? ' ok' : st(i) === false ? ' bad' : ''}" data-ckgo="${i}" aria-label="Prediction ${i + 1}${st(i) === undefined ? '' : st(i) ? ', passed' : ', missed'}"></button>`).join('')}</span></div>
+    <div class="check" id="ck-${pos}"><div class="cq"><span class="cnum">${pos + 1}</span><p>${esc(c.q)}</p>${prev === undefined ? '' : `<span class="pill ${prev ? 'ok' : 'bad'}">${prev ? 'Passed' : 'Missed'}</span>`}</div>
+      <div class="opts">${c.options.map((o, k) => `<button class="opt" data-c="${pos}" data-k="${k}">${esc(o)}</button>`).join('')}</div><div class="feedback" hidden></div></div>`;
   $$('#challenges .opt').forEach(b => b.onclick = () => answerCheck(ex, +b.dataset.c, +b.dataset.k));
+  $$('#challenges [data-ckgo]').forEach(b => b.onclick = () => buildChallenges(ex, +b.dataset.ckgo));
 }
 function answerCheck(ex, i, k) {
   const c = ex.challenges[i], key = ex.id + ':' + i, base = { ...bookState(ex), ...(c.base || {}) };
   const before = ex.compute(base), after = ex.compute({ ...base, ...c.change }), right = c.judge(before, after);
   if (ST.checks[key] === undefined) { ST.checks[key] = right === k; save(); }
-  markSeen(ex.id, 2);
+  markSeen(ex.id, 2); renderTabsState();
   const box = $('#ck-' + i);
   $$('.opt', box).forEach((b, j) => { b.disabled = true; b.classList.toggle('right', j === right); b.classList.toggle('wrong', j === k && k !== right); });
   const fb = $('.feedback', box); fb.hidden = false;
   fb.innerHTML = `<p><b>${k === right ? 'Correct.' : 'Not quite. The model says: ' + esc(c.options[right]) + '.'}</b> ${esc(c.why(before, after))}</p><p class="applied">The figure now shows this case. <button class="link" data-show>Show it</button> <button class="link" data-retry>Try again</button></p>`;
-  $('[data-retry]', fb).onclick = () => buildChallenges(ex);
+  $('[data-retry]', fb).onclick = () => buildChallenges(ex, i);
+  const nx = ex.challenges.findIndex((_, j) => j > i && ST.checks[ex.id + ':' + j] === undefined), nn = nx >= 0 ? nx : (i + 1 < ex.challenges.length ? i + 1 : -1);
+  fb.insertAdjacentHTML('beforeend', nn >= 0 ? `<p class="cknext"><button class="btn" data-cknext>Next prediction</button></p>` : `<p class="cknext fine">${ex.challenges.every((_, j) => ST.checks[ex.id + ':' + j] !== undefined) ? 'All predictions answered. Now explore the model freely: change one assumption at a time and read the figure.' : ''}</p>`);
+  const nb = $('[data-cknext]', fb); if (nb) nb.onclick = () => buildChallenges(ex, nn);
+  const cnt = $('#pfcount'), done = ex.challenges.filter((_, j) => ST.checks[ex.id + ':' + j] !== undefined).length;
+  if (cnt) { cnt.textContent = `${done} of ${ex.challenges.length} answered`; cnt.className = 'pill ' + (done === ex.challenges.length ? 'ok' : 'warn'); }
   $('[data-show]', fb).onclick = () => $('.figure').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   S = { ...base, ...c.change }; syncControls(); update(); renderNav();
 }

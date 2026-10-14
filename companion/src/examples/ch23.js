@@ -1,4 +1,4 @@
-// ===== Addendum Chapter 1 (app chapter 23, label A1): How health evolves, biology inside the Grossman model =====
+// ===== Course chapter A1 (app chapter 23): How health evolves, biology inside the Grossman model =====
 // solvers for this chapter: M.b23_<name>
 
 M.b23_nf = (x, d) => nf(x, d).replace(/^-/, '−');
@@ -26,7 +26,7 @@ M.b23_prevention = function ({ t, s, d, r, gap }) {
 
 EX.push({
   id: 'b23-prevention', ch: 23, title: 'The same prevention program at different ages',
-  ref: 'Addendum Sections 1.1 and 1.8, Eq. (1.13), Table 1.2, Figure 1.5',
+  ref: 'Chapter A1, Sections 1.1 and 1.8, Eq. (1.13), Table 1.2, Figure 1.5',
   anchors: [[23, '+698 +1,623'], [23, 'that is if θ > 0.65'], [23, 'below about 48']],
   intro: 'A prevention program costs C = 3,000 euros at the age of delivery t and yields θ_t × 200 euros a year from the next year until age 80, discounted at r = 3 percent. Productivity falls by 2 percentage points a year after age 30, θ_t = 1 − 0.02 (t − 30). These are the chapter’s numbers, and the baseline is age 40, the age of Emma and Grace. You can add a depreciation of the health gain, as in the last column of Table 1.2, and let θ follow biological rather than chronological age.',
   eq: String.raw`\mathrm{NPV}(t)=-C+\theta_t\,v\sum_{k=1}^{80-t}\frac{(1-d)^{k-1}}{(1+r)^{k}},\qquad \theta_t=1-s\,(t+\text{gap}-30),\qquad d=0:\ \sum=F(80-t)=\frac{1-(1+r)^{-(80-t)}}{r}`,
@@ -90,7 +90,7 @@ M.b23_herit = function ({ VG, beta, VX, Xbar }) {
 
 EX.push({
   id: 'b23-heritability', ch: 23, title: 'Heritability: a share of variance, not an effect',
-  ref: 'Addendum Section 1.7, Eqs. (1.6)-(1.7), Figure 1.4',
+  ref: 'Chapter A1, Section 1.7, Eqs. (1.6)-(1.7), Figure 1.4',
   anchors: [[23, 'is 40/(40 + 60) = 0.40'], [23, 'heritability is 40/55 ≈ 0.73']],
   intro: 'Systolic blood pressure is P = 120 + G + βX, where X is salt intake in grams a day above 5 grams. Genes and salt are independent and genetic effects are additive, so heritability is h² = Var(G)/[Var(G) + β²Var(X)]. The baseline is country A of the chapter’s worked example: Var(G) = 40, β = 2 mmHg per gram, average intake 5 and Var(X) = 15. Compare what heritability says with what a salt policy would do to the average.',
   eq: String.raw`P=\mu+G+E,\quad E=\beta(X-\bar X),\qquad \mathrm{Var}(P)=\mathrm{Var}(G)+\beta^2\mathrm{Var}(X),\qquad h^2=\frac{\mathrm{Var}(G)}{\mathrm{Var}(G)+\beta^2\mathrm{Var}(X)}`,
@@ -148,7 +148,7 @@ M.b23_gompertz = function ({ g0, b, LD, LM }) {
 
 EX.push({
   id: 'b23-gompertz', ch: 23, title: 'Gompertz depreciation and years of disability',
-  ref: 'Addendum Section 1.9.3, Eqs. (1.16)-(1.18), Table 1.3, Figure 1.7',
+  ref: 'Chapter A1, Section 1.9.3, Eqs. (1.16)-(1.18), Table 1.3, Figure 1.7',
   anchors: [[23, 'disability begins at 72.1 and death occurs at 83.6']],
   intro: 'With no new investment, health declines at the Gompertz rate γ(a) = γ0 e^(ba). Disability begins when the cumulative loss ln(H0/Ha) reaches L_D and death occurs when it reaches L_M. The baseline is scenario A of Table 1.3: γ0 = 0.0005, b = 0.08, L_D = 2, L_M = 5. The presets are the chapter’s four technologies: each acts on a different part of the model.',
   eq: String.raw`\gamma(a)=\gamma_0e^{ba},\qquad \ln\frac{H_0}{H_a}=\frac{\gamma_0}{b}\left(e^{ba}-1\right),\qquad a(L)=\frac1b\ln\!\left(1+\frac{bL}{\gamma_0}\right)`,
@@ -215,7 +215,7 @@ M.b23_soma = function ({ f, mu }) {
 
 EX.push({
   id: 'b23-soma', ghost: 'Dashed gray: μ = 0.2, the chapter’s first case', ch: 23, title: 'The disposable soma: how much to repair',
-  ref: 'Addendum Section 1.9.1, Eqs. (1.14)–(1.15), Figure 1.6',
+  ref: 'Chapter A1, Section 1.9.1, Eqs. (1.14)–(1.15), Figure 1.6',
   anchors: [],
   intro: 'An organism splits its resources between reproduction and repair of the body. Repairing a share x of resources lowers current reproduction by (1 − x) but raises future reproduction by 1 + kx, where k = f(1 − μ): f is the yield of repair and μ is the probability of dying of external causes (predators, accidents, infections) before the future arrives. The chapter uses f = 3.9.',
   eq: String.raw`W(x)=(1-x)(1+kx),\quad k=f(1-\mu),\qquad x^*=\frac{k-1}{2k}\ \text{if } k>1,\ \text{else } 0`,

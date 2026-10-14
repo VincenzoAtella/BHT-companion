@@ -1,4 +1,4 @@
-// ===== Addendum Chapter 2 (A2): Why the socioeconomic gradient persists =====
+// ===== Course chapter A2 (app chapter 24): Why the socioeconomic gradient persists =====
 // solvers for this chapter: M.b24_<name>
 
 M.b24_nf = (x, d) => nf(x, d).replace(/^-/, '−');
@@ -21,7 +21,7 @@ M.b24_paths = function ({ pi, psi, aObs, pol, aInt, a0 = 0.8, g0 = 0.02 }) {
 
 EX.push({
   id: 'b24-levelslope', ch: 24, title: 'Level shift or divergence',
-  ref: 'Addendum Section 2.4, Equation (2.1), Figure 2.2',
+  ref: 'Chapter A2, Section 2.4, Equation (2.1), Figure 2.2',
   anchors: [[24, 'Both produce a gap of 0.40 at age 60']],
   intro: 'A biological state A, in standard deviations, rises linearly with age. Disadvantage S can raise its level at age 40 by π (a level shift, the thrifty phenotype story) or its speed by ψ a year (divergence, the allostatic load story). The baseline is panel (a) of Figure 2.2: π = 0.40, ψ = 0, with the advantaged group starting at 0.8 and aging by 0.02 a year; the preset gives panel (b). Choose the age at which a cross-section takes its snapshot, and switch on an adult intervention that removes the difference in slopes.',
   eq: String.raw`A_{i\tau}=a_0+\pi S_i+(g_0+\psi S_i)\,\tau+\varepsilon_{i\tau},\qquad E[A\mid S{=}1,\tau]-E[A\mid S{=}0,\tau]=\pi+\psi\,\tau`,
@@ -100,7 +100,7 @@ M.b24_rel = function ({ lam, n, beta, role }) {
 
 EX.push({
   id: 'b24-reliability', ch: 24, title: 'Noisy biomarkers and repeated readings',
-  ref: 'Addendum Section 2.6, Equations (2.2)-(2.3)',
+  ref: 'Chapter A2, Section 2.6, Equations (2.2)-(2.3)',
   anchors: [[24, 'is 0.15/0.3 = 0.50'], [24, '3/3.7 ≈ 0.81']],
   intro: 'A single reading of a biomarker mixes the person’s long-run level with day-to-day noise; the reliability λ is the share of the variance that lies between people. The baseline follows the worked example of Section 2.6.2: λ = 0.3 and a true coefficient of 0.50 on the long-run level, so a regression on one reading gives 0.15. Average more readings, and switch the biomarker from explanatory to dependent variable to see that the same noise does very different things.',
   eq: String.raw`\lambda=\frac{\sigma_b^2}{\sigma_b^2+\sigma_w^2},\qquad \lambda_n=\frac{n\lambda}{1+(n-1)\lambda},\qquad \operatorname{plim}\hat\beta_A=\lambda_n\,\beta_A`,
@@ -181,7 +181,7 @@ M.b24_risks = function ({ s1, s2, e, k, b = 0.09 }) {
 
 EX.push({
   id: 'b24-competing', ch: 24, title: 'Competing risks: why eliminating two diseases is worth more than the sum',
-  ref: 'Addendum Section 2.13.1, Figure 2.7, technical box item 5',
+  ref: 'Chapter A2, Section 2.13.1, Figure 2.7, technical box item 5',
   anchors: [[24, 'Eliminating cancer adds 3.95 years'], [24, 'Eliminating both adds 11.65 years'], [24, 'by 10 percent adds 7.88 years']],
   intro: 'The hazard of death rises exponentially with age, h(a) = m c e^{ba}, and each cause holds a fixed share of it. The baseline is the worked example of Section 2.13.1: b = 0.09 and c = 2.99 × 10⁻⁵ give a life expectancy at birth of 82.6 years; cancer holds 30 percent and cardiovascular disease 35 percent of the hazard; slowing aging lowers b by 10 percent. Change the shares, remove only part of each cause, or slow aging more.',
   eq: String.raw`h(a)=m\,c\,e^{ba},\qquad e_0=\int_0^\infty \exp\!\Big[-\tfrac{mc}{b}\big(e^{ba}-1\big)\Big]da,\qquad \Delta e_0\approx\frac{\ln(1/m)}{b}`,
@@ -254,7 +254,7 @@ M.b24_ann = function ({ cL, cS, sL, b = 0.09, r }) {
 
 EX.push({
   id: 'b24-annuity', ghost: '', ch: 24, title: 'Genetic information and the annuity market',
-  ref: 'Addendum Section 2.14.1, Figure 2.8, technical box item 6; BHT Chapters 8-10 on adverse selection',
+  ref: 'Chapter A2, Section 2.14.1, Figure 2.8, technical box item 6; BHT Chapters 8-10 on adverse selection',
   anchors: [],
   intro: 'An annuity pays one euro at the start of each year of life from age 65. Long-lived and short-lived buyers face Gompertz hazards c_L e^{bt} and c_S e^{bt}, t years past 65, with b = 0.09. With c_L = 0.008, c_S = 0.015 and r = 3 percent the annuity is worth 16.59 and 13.77 euros. If insurers cannot tell the types apart, they charge the average value for the mix of buyers.',
   eq: String.raw`a_k=\sum_{t\ge0}(1+r)^{-t}\exp\!\Big[-\frac{c_k}{b}\big(e^{bt}-1\big)\Big],\qquad p=s_L a_L+(1-s_L)a_S`,
@@ -297,7 +297,7 @@ M.b24_pat = function ({ r, L, term }) {
 
 EX.push({
   id: 'b24-patent', ghost: '', ch: 24, title: 'Why patents discourage drugs against aging',
-  ref: 'Addendum Section 2.14.2, technical box item 7',
+  ref: 'Chapter A2, Section 2.14.2, technical box item 7',
   anchors: [],
   intro: 'A patent protects sales for a fixed term from the date of filing, 20 years. A drug that needs L years of development, for example to show an effect on aging rather than on a short-term outcome, loses those years of protection. Profits Π a year are discounted at rate r.',
   eq: String.raw`\frac{V}{\Pi}=\int_L^{20}e^{-rt}\,dt=\frac{e^{-rL}-e^{-20r}}{r}`,

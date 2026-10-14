@@ -1,6 +1,6 @@
-# Numerical problems (the analytical problems of the course addendum)
+# Numerical problems (analytical problems of chapters A1 and A2)
 
-One file per chapter, named by its key in `content.py` (`biology.txt` for Chapter A1, `sesgradient.txt` for A2). The problems are the analytical problems of the course addendum, restricted to the parts whose answer is a single number; the solutions come from the addendum's solutions file. In the app each numerical part is one question: the student types the number, and the app checks it at the stated number of decimals. Answers and solutions are locked with the chapter's code, like the other questions.
+One file per chapter, named by its key in `content.py` (`biology.txt` for Chapter A1, `sesgradient.txt` for A2). The problems are the analytical problems of the course chapters A1 and A2, restricted to the parts whose answer is a single number; the solutions come from the solutions file of those chapters. In the app each numerical part is one question: the student types the number, and the app checks it at the stated number of decimals. Answers and solutions are locked with the chapter's code, like the other questions.
 
 Lines starting with `#` are comments. Text uses the book's LaTeX conventions: math in `$...$` or `\[...\]`, `\ref{}`, `\eqref{}`, `\textcite{}`, `\emph{}`.
 

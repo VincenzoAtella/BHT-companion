@@ -401,3 +401,20 @@ mjx-container[jax="SVG"] { direction: ltr; }
 .numrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .numin { width: 11em; text-align: left; font: inherit; font-variant-numeric: tabular-nums; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
 .unit { font-weight: 600; }
+
+/* ---------- predict first, at the top of an example, one prediction at a time ---------- */
+.checks#predict { margin: 0 0 22px; }
+.pfhead { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pfhead h2 { margin: 0; }
+.ckstep { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 4px 0 10px; font-weight: 600; font-size: .9rem; color: var(--muted); }
+.ckdots { display: flex; gap: 6px; }
+.ckdot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--acc); background: transparent; padding: 0; cursor: pointer; }
+.ckdot.cur { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--acc); }
+.ckdot.ok { background: var(--ok, #2e7d32); border-color: var(--ok, #2e7d32); }
+.ckdot.bad { background: var(--bad, #c62828); border-color: var(--bad, #c62828); }
+.cknext { margin: 10px 0 0; }
+.tabpf { margin-left: 6px; font-size: .72rem; font-weight: 600; padding: 1px 6px; border-radius: 9px; background: var(--warn-bg); color: var(--warn); }
+.tabpf.all { background: var(--ok-bg); color: var(--ok); }
+#predict #challenges { display: block; }
+#predict .check { max-width: 760px; }
+#predict .sub { margin: 4px 0 6px; }

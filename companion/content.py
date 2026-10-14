@@ -15,7 +15,7 @@ BANK = os.path.join(HERE, 'questions')
 
 PARTS = ['Demand for health and health care', 'Supply of health care', 'Information economics',
          'Economics of health innovation', 'Health policy', 'Public health economics',
-         'Behavioral health economics', 'Biology and health economics: two chapters written for the course, on what biology adds to the Grossman model and to the socioeconomic gradient']
+         'Behavioral health economics', 'Biology and health economics: what biology adds to the Grossman model and to the socioeconomic gradient']
 # (BHT chapter number, key, title, BHT part number or 0): syllabus chapters only
 SYLLABUS = [
     (1, 'why', 'Why health economics?', 0),
@@ -33,7 +33,7 @@ SYLLABUS = [
     (18, 'american', 'The American model', 5),
     (20, 'externalities', 'The economics of health externalities', 6),
     (22, 'obesity', 'Obesity', 6),
-    # course addendum (the instructor's own chapters), shown as A1 and A2
+    # two chapters written for the course (not in BHT), shown as A1 and A2
     (23, 'biology', 'How health evolves: biology inside the Grossman model', 8),
     (24, 'sesgradient', 'Why the socioeconomic gradient persists', 8),
 ]
