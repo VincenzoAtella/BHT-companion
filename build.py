@@ -175,14 +175,20 @@ else:
                  'Every build made with the same secret accepts these codes. Keep this file private.', '',
                  f'**All chapters:** `{all_code}`', '', '| Chapter | Title | Code |', '|---|---|---|']
         for key, (n, c) in sorted(codes.items(), key=lambda kv: kv[1][0]):
-            lines.append(f'| {n} | {titles.get(n, key)} | `{c}` |')
+            lines.append(f"| {xq.LAB.get(n, n)} | {titles.get(n, key)} | `{c}` |")
         os.makedirs(os.path.join(HERE, 'build'), exist_ok=True)
         with open(os.path.join(HERE, 'build', 'unlock-codes.md'), 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines) + '\n')
         print('Unlock codes written to companion/build/unlock-codes.md (not tracked by git).')
+SETUPS = {}   # numerical parts share the setting of their problem: stored once
+for q in Qpub:
+    if q.get('type') == 'num':
+        pid = q['id'].rsplit('-c', 1)[0] + '-c' + re.match(r'\d+', q['n']).group(0)
+        SETUPS[pid] = q.pop('setup'); q['pid'] = pid
 build_info = {'date': datetime.date.today().strftime('%d %B %Y').lstrip('0')}
 questions_js = ('const QUESTIONS = ' + json.dumps(Qpub, ensure_ascii=False) + ';\n'
                 + 'const LOCK = ' + json.dumps(lock_data) + ';\n'
+                + 'const SETUPS = ' + json.dumps(SETUPS, ensure_ascii=False) + ';\n'
                 + 'const BUILD = ' + json.dumps(build_info) + ';\n')
 app_js = questions_js + model_js + '\n' + read('features.js') + '\n' + read('app.js')
 for name, text in (('MathJax', mathjax), ('app', app_js)):

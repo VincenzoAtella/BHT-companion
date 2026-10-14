@@ -1,0 +1,245 @@
+# Addendum Chapter 1 (biology): How health evolves, biology inside the Grossman model.
+# Blocks 1-13: the chapter's comprehension questions 1-13; blocks 14-21: its multiple-choice questions 14-21.
+# Answers and explanations from the addendum solutions. Numbers checked in Python on 2026-10-14.
+
+TF: In the Grossman model, the cost of holding one unit of health capital for one period is the interest rate $r$.
+ANSWER: False
+WHY: The cost is $r+\gamma_t$: the interest forgone plus the share of the unit that depreciates during the period (Section 1.2, equation 1.2). Forgetting depreciation would make health look as cheap to hold at 80 as at 30. It is the rise of $\gamma_t$ with age that makes health capital more expensive to hold for older people.
+
+TF: If the depreciation rate rises with age, the Grossman model predicts that the optimal stock of health falls with age.
+ANSWER: True
+WHY: The MEC curve slopes down. A higher $\gamma_t$ raises the cost line $r+\gamma_t$, which meets the MEC at a lower stock (Section 1.2, Figure 1.2). When depreciation is high enough, the optimal stock reaches $H_{min}$, which is how the model explains death.
+
+TF: In the extended model, the genome $G$ is a state variable that evolves over the life cycle.
+ANSWER: False
+WHY: The genome is a parameter, fixed at conception. The state variable with memory is the epigenetic state $Q_t$ (Section 1.3, Table 1.1). The genome carries no record of past exposures; the epigenome does.
+
+TF: If epigenetic marks never fade ($\kappa=0$), an exposure at any age leaves a permanent mark.
+ANSWER: False
+WHY: $\kappa$ governs whether marks fade, not whether they are written. A mark is written only when $\zeta_t>0$ (Section 1.5, equation 1.5). After a sensitive window has closed, $\zeta_t=0$ and the exposure writes nothing on that channel, whatever $\kappa$ is.
+
+TF: Dynamic complementarity means that investment early in life raises the productivity of investment later in life.
+ANSWER: True
+WHY: This is the definition of Cunha and Heckman (2007): $\partial^2 h/\partial I_1\partial I_2>0$ (Section 1.6). In the two-period example with $h=I_1^{1/2}I_2^{1/2}$, the marginal product of adult investment doubles, from 0.5 to 1.0, when $I_1$ rises from 1 to 4. Self-productivity is a different property: capital built at one stage raises capital at the next.
+
+TF: A heritability of 0.8 for blood pressure implies that no environmental policy can lower average blood pressure by more than 20 percent.
+ANSWER: False
+WHY: Heritability is a share of variance, an $R^2$, and says nothing about the average level (Section 1.7). In the first town of Section 1.7.2 heritability is close to 1 while a salt policy would lower everyone's blood pressure. Phenylketonuria is an extreme case: an entirely genetic condition that a diet prevents.
+
+TF: A policy that gives everyone the same environment can raise the heritability of a trait.
+ANSWER: True
+WHY: Giving everyone the same environment sets $\mathrm{Var}(X)=0$, so $h^2=\mathrm{Var}(G)/\mathrm{Var}(G)=1$ (Section 1.7, equation 1.7). In the salt example heritability rises from 0.40 to 1 after the policy, while average blood pressure falls by 10 mmHg. A rise in heritability can be the sign that an environmental policy worked.
+
+TF: Two countries in which salt has the same effect on blood pressure must have the same heritability of blood pressure.
+ANSWER: False
+WHY: By equation (1.7), $h^2$ depends on $\beta$ and on $\mathrm{Var}(X)$ (Section 1.7.4). Countries A and B of the worked example have the same $\beta=2$ and the same genetic variance, but diets vary more in A, so their heritabilities are 0.40 and 0.73. Heritability mixes a coefficient with a dispersion.
+
+TF: Comparing the two members of a pair of identical twins removes genetic differences from the comparison.
+ANSWER: True
+WHY: True, with a qualification. Identical twins share their genome, so the comparison removes $G$, like a fixed effect in panel data (Section 1.7.6). Twins may still differ for non-genetic reasons, such as birth weight or early illness, that also affect health.
+
+TF: Cost-effective preventive measures necessarily reduce total health spending.
+ANSWER: False
+WHY: Prevention usually postpones illness, which still costs money later (Section 1.8.4). Cohen et al. (2008) found that the vast majority of preventive measures do not save money. Cost-effective means that the health gained is bought at an acceptable price, not that spending falls.
+
+TF: In the first-order condition for prevention, higher depreciation rates at older ages lower the optimal amount of prevention, other things equal.
+ANSWER: True
+WHY: Higher $\gamma_j$ shrink the factors $(1-\gamma_j)$ in equation (1.12), so the marginal benefit of prevention falls (Section 1.8.2). With $g$ concave, restoring the equality requires a higher $g'(I_t)$, that is, less prevention. This is the prevention counterpart of the Grossman prediction that investment falls as $r+\gamma_t$ rises.
+
+TF: In the disposable soma model, an organism facing higher external mortality invests more in repair.
+ANSWER: False
+WHY: The optimal repair share is $x^*=(k-1)/(2k)$ with $k=f(1-\mu)$ (Section 1.9.1, equation 1.15). A higher $\mu$ lowers $k$ and therefore $x^*$: repair pays less when the organism is likely to die of external causes anyway. With $f=3.9$, $x^*$ falls from about 0.34 at $\mu=0.2$ to 0 at $\mu=0.75$.
+
+TF: Postponing aging by halving $\gamma_0$ in the Gompertz model shortens the years lived with disability.
+ANSWER: False
+WHY: Halving $\gamma_0$ shifts both threshold ages by about $\ln 2/b\approx8.7$ years, so the years of disability stay almost unchanged: 11.4 in both scenarios A and B (Section 1.9.3, Table 1.3). Only their share of life falls slightly, from 13.7 to 12.4 percent. Only scenario E shortens the period of disability.
+
+MC: With an interest rate of 3 percent and a depreciation rate of 10 percent, the cost of holding one unit of health capital for a year is
+(a) 0.03
+(b) 0.07
+(c) 0.10
+(d) 0.13
+ANSWER: d
+WHY: The cost of health capital is $r+\gamma_t=0.03+0.10=0.13$ (Section 1.2, equation 1.2). Option (a) forgets depreciation, (c) forgets interest, and (b) subtracts instead of adding.
+
+MC: In a town where everyone eats exactly the same diet, the heritability of blood pressure is
+(a) zero, because diet does not vary
+(b) close to one
+(c) equal to the effect of salt on blood pressure
+(d) undefined
+ANSWER: b
+WHY: Diet does not vary, so all remaining differences go with genes and heritability is close to 1 (Section 1.7.2, the first town). Option (a) confuses the variation of the environment with its effect; (c) confuses a variance share with a coefficient. Heritability is well defined as long as blood pressure varies, so (d) is wrong.
+
+MC: Holding the genetic variance fixed, which change raises the heritability of blood pressure?
+(a) Diets become more dispersed
+(b) The effect of each gram of salt rises, with the dispersion of diets unchanged
+(c) Everyone is given the same diet
+(d) Blood pressure is measured with more noise
+ANSWER: c
+WHY: Equal diets set $\mathrm{Var}(X)=0$, so $h^2=\mathrm{Var}(G)/[\mathrm{Var}(G)+\beta^2\mathrm{Var}(X)]$ rises to 1 (Section 1.7.4, equation 1.7). Options (a) and (b) raise $\beta^2\mathrm{Var}(X)$ and lower heritability. Option (d) adds noise to the measured phenotype, which enlarges the non-genetic variance and also lowers it.
+
+MC: The within-pair correlation of a trait is 0.70 for identical twins and 0.45 for fraternal twins. Falconer's formula gives a heritability of about
+(a) 0.25
+(b) 0.45
+(c) 0.50
+(d) 0.70
+ANSWER: c
+WHY: By equation (1.8), $h^2\approx2(r_{MZ}-r_{DZ})=2\times(0.70-0.45)=0.50$ (Section 1.7.6). Option (a) forgets the factor 2, because fraternal twins share on average half of the additive genetic part. Option (d) takes $r_{MZ}$ as heritability, which ignores shared environments; (b) is the fraternal correlation.
+
+MC: In the prevention example, the program delivered at age 40 has $\theta_{40}=0.8$, and $F(40)=23.11$. Its net present value is about
+(a) −698 euros
+(b) +698 euros
+(c) +1,623 euros
+(d) +3,698 euros
+ANSWER: b
+WHY: By equation (1.13), $\mathrm{NPV}=0.8\times200\times23.11-3{,}000\approx+698$ euros (Section 1.8.3, Table 1.2). Option (c) is the value without biology ($\theta=1$); (d) is the present value of benefits before subtracting the cost; (a) has the wrong sign.
+
+MC: Under a critical period that closed at age 2, the value at age 20 of stopping an exposure on that channel is
+(a) large and positive
+(b) small but positive
+(c) zero
+(d) negative
+ANSWER: c
+WHY: After the window, $\zeta_t=0$: exposures write no marks, so stopping them prevents nothing on this channel (Section 1.5.3). The damage from the window is sunk, and only a treatment that actively erases existing marks could help. Options (a) and (b) describe accumulation or partial reversibility, where late exposures still write marks.
+
+MC: In the disposable soma model with $f=3.9$, no repair is optimal when external mortality is at least about
+(a) 0.26
+(b) 0.50
+(c) 0.74
+(d) 0.90
+ANSWER: c
+WHY: No repair is optimal when $k=f(1-\mu)\le1$, that is $\mu\ge1-1/3.9\approx0.74$ (Section 1.9.1, equation 1.15). Option (a) is $1/3.9$, the survival probability at the threshold rather than the mortality. At $\mu=0.5$ repair is still worth about a quarter of resources.
+
+MC: Which scenario of the Gompertz model is the only one that shortens the years lived with disability?
+(a) B, aging postponed
+(b) C, aging slowed
+(c) D, rescue medicine
+(d) E, function preserved
+ANSWER: d
+WHY: Only E delays disability without moving death, cutting the years of disability from 11.4 to 8.6 (Section 1.9.3, Table 1.3). B leaves the years almost unchanged, because it shifts both thresholds by the same amount. C and D lengthen them, to 13.1 and 13.7 years.
+
+# App questions written for the companion
+
+TF: The migrant evidence of Section 1.4 shows that breast cancer risk among Asian-American women rose with the years spent in the West, a change too fast to come from the genome.
+ANSWER: True
+WHY: Ziegler et al. (1993) found that women born in the West had a risk about 60 percent higher than women born in Asia, and that among migrants the risk rose with years spent in the West (Section 1.4). The genes of these families did not change in a few decades, but their environment did. This is why the chapter treats exposures $X_t$ as a major input into health.
+
+TF: In the leaky tub example with an interest rate of 3 percent, a rise in depreciation from 5 to 10 percent raises the cost of health capital by more than 60 percent.
+ANSWER: True
+WHY: The cost rises from $0.03+0.05=0.08$ to $0.03+0.10=0.13$, an increase of $0.05/0.08=62.5$ percent (Section 1.2.3). Depreciation doubles, but the cost does not, because the interest part stays the same. Nothing about medicine has changed: health has become more expensive to hold because the tub leaks faster.
+
+TF: A government that counts the benefits of prevention only over an electoral cycle undervalues prevention, and the bias is smallest for early childhood programs because their payoff is the largest.
+ANSWER: False
+WHY: The first part is right, but the bias is largest, not smallest, for early childhood programs (Section 1.8.4). Their payoff is the largest but also the slowest, so a short horizon or heavy discounting cuts off most of it. A large payoff far in the future is exactly what a short-sighted planner undervalues most.
+
+MC: A person holds a health stock of 200 units. Depreciation is 4 percent a year and the interest rate is 3 percent. How much health must she add each year to keep the stock constant?
+(a) 8 units
+(b) 14 units
+(c) 6 units
+(d) 192 units
+ANSWER: a
+WHY: Each year the tub loses $\gamma H=0.04\times200=8$ units, so 8 units of gross investment keep the level constant (Section 1.2, the leaky tub). Option (b) multiplies the stock by $r+\gamma=0.07$: that is the yearly cost of holding the stock, not the physical loss. Option (c) uses the interest rate, and (d) is the stock left after a year without investment.
+
+MC: In equation (1.5), suppose a person is exposed every year and each exposure writes a mark of 0.1, but marks fade at $\kappa=0.1$. In the long run the epigenetic state $Q_t$
+(a) settles at 0.1
+(b) grows without bound, as under accumulation
+(c) settles at 0.9
+(d) settles at 1.0
+ANSWER: d
+WHY: A steady state requires $Q=(1-\kappa)Q+\zeta e$, that is $Q=\zeta e/\kappa=0.1/0.1=1$ (Section 1.5.2). Erasure grows with the stock, so it eventually offsets the yearly additions. Option (b) is the accumulation regime, which needs $\kappa=0$; (a) is one year's mark and (c) is $1-\kappa$.
+
+MC: Under partial reversibility with $\kappa=0.1$, a single exposure writes a mark of size 1. How much of the mark remains ten years after it was written?
+(a) 0, because 10 percent fades each year for ten years
+(b) about 0.65
+(c) about 0.35
+(d) 0.90
+ANSWER: c
+WHY: Each year a share $1-\kappa=0.9$ of the mark survives, so after $n$ years $0.9^n$ remains: $0.9^{10}\approx0.35$ (Section 1.5.2, Figure 1.3). Option (a) treats the decay as linear, removing 0.1 of the original mark each year, while the model erases a share of what is left. Option (b) is the share that has faded, and (d) is what remains after one year.
+
+MC: Suppose biological age governs productivity, $\theta=1-0.02\,(\text{biological age}-30)$. Grace is 40 years old but has the biology of a 50-year-old. With $C=3{,}000$ euros, $v=200$ euros a year until age 80, $r=0.03$ and $F(40)=23.11$, the NPV of the program for Grace is about
+(a) +698 euros
+(b) −227 euros
+(c) −648 euros
+(d) +2,146 euros
+ANSWER: b
+WHY: Grace has $\theta=0.6$ but still 40 years of benefit, so $\mathrm{NPV}=0.6\times200\times23.11-3{,}000\approx-227$ euros (Section 1.8.3, equation 1.13). Option (a) uses her chronological age ($\theta=0.8$). Option (c) also uses the 30-year horizon of a 50-year-old, but the horizon depends on chronological age; (d) is the value at age 30.
+
+MC: Let $P=\mu+G+\beta X$ with $\mathrm{Var}(G)=40$, $\beta=2$, $\mathrm{Var}(X)=10$, and genes independent of salt intake with no interaction. Heritability is
+(a) 0.20
+(b) 0.67
+(c) 0.80
+(d) 0.50
+ANSWER: d
+WHY: The environmental variance is $\beta^2\mathrm{Var}(X)=4\times10=40$, so $h^2=40/(40+40)=0.50$ (Section 1.7.4, equation 1.7). Option (c) forgets to multiply by $\beta^2$ ($40/50$), and (b) multiplies by $\beta$ instead of $\beta^2$ ($40/60$). Option (a) is one minus the wrong value 0.80.
+
+MC: In the disposable soma model, let $f=3$ and external mortality $\mu=0.5$. The optimal repair share is about
+(a) 0.17
+(b) 0.25
+(c) 0.33
+(d) 0
+ANSWER: a
+WHY: Here $k=f(1-\mu)=1.5>1$, so $x^*=(k-1)/(2k)=0.5/3\approx0.17$ (Section 1.9.1, equation 1.15). Option (c) forgets the 2 in the denominator, and (b) divides by 2 instead of $2k$. Option (d) would hold only if $k\le1$, that is if $\mu\ge1-1/3=0.67$.
+
+MC: In the Gompertz model with $b=0.10$ and thresholds far above $\gamma_0/b$, halving $\gamma_0$ delays both the onset of disability and death by about
+(a) 5.0 years
+(b) 10.0 years
+(c) 6.9 years
+(d) 3.5 years
+ANSWER: c
+WHY: By equation (1.18), when $bL/\gamma_0$ is large, $a(L)\approx(1/b)\ln(bL/\gamma_0)$, so halving $\gamma_0$ adds $\ln2/b=0.693/0.1\approx6.9$ years to each threshold age (Section 1.9.3 and technical box item 7). Option (a) uses $0.5/b$ instead of $\ln2/b$, and (b) is $1/b$. With the baseline $b=0.08$ the same formula gives the 8.7 years of scenario B.
+
+MC: In Table 1.1, a drug that acts on the rate of aging, $D_t$, enters the model as
+(a) a parameter fixed at conception
+(b) an input that shifts depreciation $\gamma_t$
+(c) a state variable with memory
+(d) the productivity of prevention $\theta_t$
+ANSWER: b
+WHY: In equation (1.3), $\gamma_t=\gamma(a_t;G,X_t,D_t)$: the drug changes how fast the tub leaks (Section 1.3, Table 1.1). Option (a) describes the genome $G$ and (c) the epigenetic state $Q_t$. Option (d) is a different function of age, the response to prevention delivered at age $t$.
+
+MC: Type 2 diabetes has become far more common within two or three generations. Why does the chapter read this speed as evidence that the change comes mainly from the environment?
+(a) Allele frequencies in a population change over many generations, not over decades
+(b) New mutations change the genome of each generation enough to raise risk
+(c) The heritability of type 2 diabetes is known to be zero
+(d) It shows that the environment is the largest input into health in every setting
+ANSWER: a
+WHY: The genetic make-up of a population cannot change that fast, so a change this fast must come mainly from the environment (Section 1.4). Option (d) overstates the evidence: the chapter says that showing the environment to be the largest input in every setting would require measuring all inputs on a common scale. Options (b) and (c) are not claims the chapter makes.
+
+MC: Heijmans et al. (2008) compared people exposed to the Dutch Hunger Winter with their same-sex siblings. Which finding shows that the timing of exposure matters?
+(a) The exposed had about 5 percent less methylation at IGF2 about six decades later
+(b) Methylation differed between siblings whatever the stage of pregnancy at exposure
+(c) The difference in methylation had disappeared by adulthood
+(d) People exposed around conception had less methylation at IGF2, while those exposed late in pregnancy showed no difference
+ANSWER: d
+WHY: The contrast between exposure around conception and exposure late in pregnancy shows a sensitive window (Section 1.5.1). Option (a) is true but shows only that a short early exposure can leave a lifelong mark, not that timing matters. Options (b) and (c) contradict the study.
+
+MC: Which statement matches the findings of Atella et al. (2024) on prenatal exposure to Nazi raids in Italy, as reported in Section 1.5?
+(a) The earnings penalty was about 5.5 percent at age 30 and narrowed to about 2 percent at age 60
+(b) Exposure in the first two years of life had larger effects than exposure before birth
+(c) The earnings penalty grew from about 2 percent at age 30 to about 5.5 percent at age 60, while exposure in the first two years of life had small and insignificant effects
+(d) Exposed men earned less, but education and unemployment spells were unaffected
+ANSWER: c
+WHY: The penalty widened over the working life and was traced to lower education, different jobs and more unemployment spells (Section 1.5.1). Exposure in the first two years of life had small and statistically insignificant effects, so the sensitive window was before birth. Option (a) reverses the ages, (b) reverses the timing result, and (d) contradicts the channels the authors found.
+
+MC: What does Section 1.6 conclude from the reanalyses of the Perry Preschool Program?
+(a) The social rate of return of 7 to 10 percent can be used to budget a national program
+(b) Early investment can pay off, but the estimate does not give a coefficient to plug into a national budget
+(c) Since assignment was not random, the program says nothing about early investment
+(d) The reanalyses found returns higher than earlier estimates
+ANSWER: b
+WHY: The evidence supports the direction of the effect, but it comes from one small experiment with 123 children in the 1960s, so the number travels badly (Section 1.6). Option (a) is exactly the use the chapter warns against. Option (c) is wrong because assignment was random, with some compromises; (d) is wrong because the reanalyses put the return lower than earlier estimates.
+
+MC: In a wage regression on a sample in which almost everyone has the same years of schooling, schooling has a large estimated coefficient. What should you expect?
+(a) Schooling explains little of the variation in wages, despite its large effect, because it varies little in the sample
+(b) Schooling explains most of the variation in wages, because its coefficient is large
+(c) The coefficient must be close to zero, because schooling varies little
+(d) Schooling has no causal effect, because it explains little variation
+ANSWER: a
+WHY: A variable can have a large effect and explain little variation, because it varies little in the sample (Section 1.7.3). This is the logic of the first town, where diet has a large effect but explains none of the differences. Options (b) and (d) confuse an $R^2$ with a coefficient, in opposite directions, and (c) confuses the size of an effect with the dispersion of the variable.
+
+MC: On what property of the genome does Mendelian randomization rest, and what does the chapter name as its main weakness?
+(a) Heritability is high for most traits; its weakness is that heritability varies across countries
+(b) Identical twins share their genome; its weakness is that twins differ in birth weight
+(c) The genome is fixed at conception; its weakness is that genes cannot be measured precisely
+(d) Which of a parent's two copies of a gene is passed on is a matter of chance; its weakness is the link between genes and environments
+ANSWER: d
+WHY: The random transmission of gene copies lets genetic variants act as natural experiments (Section 1.7.7). Its weakness is that parents pass on both their genes and their environments, creating a correlation between $G$ and $E$. Option (b) describes twin comparisons, a different tool for removing genetic endowments.

@@ -15,7 +15,7 @@ BANK = os.path.join(HERE, 'questions')
 
 PARTS = ['Demand for health and health care', 'Supply of health care', 'Information economics',
          'Economics of health innovation', 'Health policy', 'Public health economics',
-         'Behavioral health economics']
+         'Behavioral health economics', 'Biology and health economics: two chapters written for the course, on what biology adds to the Grossman model and to the socioeconomic gradient']
 # (BHT chapter number, key, title, BHT part number or 0): syllabus chapters only
 SYLLABUS = [
     (1, 'why', 'Why health economics?', 0),
@@ -33,7 +33,11 @@ SYLLABUS = [
     (18, 'american', 'The American model', 5),
     (20, 'externalities', 'The economics of health externalities', 6),
     (22, 'obesity', 'Obesity', 6),
+    # course addendum (the instructor's own chapters), shown as A1 and A2
+    (23, 'biology', 'How health evolves: biology inside the Grossman model', 8),
+    (24, 'sesgradient', 'Why the socioeconomic gradient persists', 8),
 ]
+LAB = {23: 'A1', 24: 'A2'}   # display label of chapters that are not BHT chapters
 KEY = {n: k for n, k, _, _ in SYLLABUS}
 # Anchors of the examples are checked against local text extracts of the chapters, when available
 # (BHT_TEXT=<folder with bhtNN.txt>); the extracts are not part of the repository.
@@ -65,7 +69,7 @@ def conv(t):
     return t
 
 def chapters():
-    return [dict(n=n, t=t, ready=os.path.exists(os.path.join(BANK, k + '.txt')), part=p,
+    return [dict(n=n, lab=LAB.get(n, str(n)), t=t, ready=os.path.exists(os.path.join(BANK, k + '.txt')), part=p,
                  partTitle=PARTS[p - 1] if p else '') for n, k, t, p in SYLLABUS]
 
 def bank(key, ch, n0):
@@ -94,10 +98,42 @@ def bank(key, ch, n0):
         out.append(q)
     return out
 
+NUM = os.path.join(HERE, 'numeric')
+def _numfmt(x, dec):
+    v = round(float(x), dec)
+    if v == 0: v = 0.0
+    return f'{v:.{dec}f}'
+def numeric(key, ch):
+    """Numerical problems in numeric/<key>.txt (format in numeric/README.md): one question per numerical part,
+    id <key>-c<problem><part>."""
+    f = os.path.join(NUM, key + '.txt')
+    if not os.path.exists(f): return []
+    txt = re.sub(r'(?m)^#.*\n?', '', open(f, encoding='utf-8').read())
+    out = []
+    for blk in [b for b in re.split(r'(?m)^(?=PROBLEM:)', txt) if b.strip()]:
+        pm = re.match(r'PROBLEM:\s*(\S+)\s*\n', blk)
+        if not pm: raise SystemExit(f'{os.path.basename(f)}: block without PROBLEM:\n{blk[:120]}')
+        pid = pm.group(1); where = f'{os.path.basename(f)}, problem {pid}'
+        tm = re.search(r'(?ms)^TEXT:\s*(.*?)(?=^PART:)', blk)
+        if not tm: raise SystemExit(f'{where}: TEXT: then at least one PART: needed')
+        text = conv(tm.group(1))
+        for pb in re.split(r'(?m)^(?=PART:)', blk)[1:]:
+            F = dict((m.group(1), m.group(2).strip()) for m in re.finditer(r'(?ms)^(PART|ASK|ANSWER|DEC|UNIT|SOLUTION):\s*(.*?)(?=^(?:PART|ASK|ANSWER|DEC|UNIT|SOLUTION):|\Z)', pb))
+            lab = F.get('PART', '').strip('() ')
+            for k in ('ASK', 'ANSWER', 'DEC', 'SOLUTION'):
+                if not F.get(k): raise SystemExit(f'{where}({lab}): {k}: missing')
+            try: ans = float(F['ANSWER'].replace(',', '')); dec = int(F['DEC'])
+            except ValueError: raise SystemExit(f'{where}({lab}): ANSWER must be a number and DEC an integer')
+            out.append(dict(id=f'{key}-c{pid.lower()}{lab}', key=key, ch=ch, n=f'{pid}({lab})', type='num', src='book',
+                            setup=text, stem=conv(F['ASK']), answer=ans, dec=dec, unit=F.get('UNIT', ''),
+                            fmt=_numfmt(ans, dec), expl=conv(F['SOLUTION'])))
+    return out
+
 def questions():
     Q = []
     for n, k, _, _ in SYLLABUS:
         Q.extend(bank(k, n, 0))
+        Q.extend(numeric(k, n))
     return Q
 
 if __name__ == '__main__':

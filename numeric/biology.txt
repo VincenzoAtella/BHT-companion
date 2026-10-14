@@ -1,0 +1,93 @@
+# Addendum Chapter 1 (biology): numerical parts of the analytical problems 22-29.
+# Solutions from the addendum solutions, completed with intermediate steps and recomputed with python3 on 2026-10-14.
+
+PROBLEM: 22
+TEXT: \emph{The cost of health capital.} In the Grossman model, the cost of holding one unit of health capital for one period is $r+\gamma_t$: the interest forgone plus the share of the unit that depreciates during the period (Section 1.2, equation 1.2). The interest rate is 4 percent. Depreciation is 3 percent at age 30 and 9 percent at age 70.
+PART: a1
+ASK: Compute the cost of health capital at age 30.
+ANSWER: 0.07
+DEC: 2
+SOLUTION: At age 30 the cost is $r+\gamma_{30}=0.04+0.03=0.07$: holding one unit of health for a year costs 7 cents per euro of value.
+PART: a2
+ASK: Compute the cost of health capital at age 70.
+ANSWER: 0.13
+DEC: 2
+SOLUTION: At age 70 the cost is $r+\gamma_{70}=0.04+0.09=0.13$, almost twice the cost at 30. In Figure 1.2 the cost line moves up, so it meets the downward-sloping MEC curve at a lower stock. Holding health has become more expensive because a larger share of each unit leaks away every year, so the optimal stock falls.
+
+PROBLEM: 23
+TEXT: \emph{Heritability.} Heritability is the share of the variance of a trait that goes with genetic differences, $h^2=\mathrm{Var}(G)/[\mathrm{Var}(G)+\mathrm{Var}(E)]$, when genes and environments are independent and do not interact (Section 1.7, equation 1.7). In a population the genetic variance of blood pressure is 30 and the environmental variance is 70.
+PART: a
+ASK: Compute heritability.
+ANSWER: 0.30
+DEC: 2
+SOLUTION: $h^2=30/(30+70)=0.30$. Thirty percent of the differences in blood pressure in this population go along with differences in genes.
+PART: b
+ASK: A salt reduction policy halves the environmental variance and lowers average blood pressure. Compute the new heritability.
+ANSWER: 0.4615
+DEC: 2
+SOLUTION: The environmental variance becomes $70/2=35$, so heritability is $30/(30+35)=30/65\approx0.46$. Heritability rose because the environmental variance fell, which is exactly what a successful environmental policy does. A higher heritability is evidence that the policy worked, not that it failed, and it says nothing about the level of blood pressure, which fell.
+
+PROBLEM: 24
+TEXT: \emph{Twins.} Identical twins share all their genes and fraternal twins on average half of the additive genetic part. If both kinds of pairs share their environments to the same extent, Falconer's formula gives $h^2\approx2(r_{MZ}-r_{DZ})$, where $r_{MZ}$ and $r_{DZ}$ are the correlations of the trait within identical and within fraternal pairs (Section 1.7.6, equation 1.8). In a sample of twins, the correlation of systolic blood pressure is 0.62 within identical pairs and 0.38 within fraternal pairs.
+PART: a
+ASK: Use Falconer's formula to estimate heritability.
+ANSWER: 0.48
+DEC: 2
+SOLUTION: $h^2\approx2\times(0.62-0.38)=2\times0.24=0.48$. The factor 2 appears because identical twins share twice the additive genetic part that fraternal twins share. If identical twins share their environments more closely than fraternal twins, the estimate is too high: the formula attributes all of their extra resemblance to genes, including the part that is environmental.
+
+PROBLEM: 25
+TEXT: \emph{Epigenetic memory.} The epigenetic state evolves as $Q_{t+1}=(1-\kappa)\,Q_t+\zeta_t e_t$, where $\kappa$ is the share of existing marks erased each period and $\zeta_t e_t$ the new marks written by an exposure of intensity $e_t$ (Section 1.5, equation 1.5). Let $\kappa=0.2$. Suppose the state is $Q_0=1$ at age 0 and there is no further exposure.
+PART: a
+ASK: What is $Q_5$?
+ANSWER: 0.32768
+DEC: 2
+SOLUTION: With no new exposure, each year a share $1-\kappa=0.8$ of the state survives, so $Q_t=0.8^t Q_0$. Then $Q_5=0.8^5=0.32768\approx0.33$.
+PART: b
+ASK: At what age does the state first fall below one half?
+ANSWER: 4
+DEC: 0
+SOLUTION: The path is $Q_1=0.8$, $Q_2=0.64$, $Q_3=0.512$, $Q_4\approx0.41$. The state is still above one half at age 3 and first falls below it at age 4. Solving $0.8^t=0.5$ with $t$ treated as continuous gives $t=\ln0.5/\ln0.8\approx3.1$ years.
+
+PROBLEM: 26
+TEXT: \emph{Prevention.} A prevention program costs $C=3{,}000$ euros, paid at the age of delivery $t$. It yields a benefit of $v=200$ euros a year, multiplied by the productivity $\theta_t=1-0.02\,(t-30)$, from the following year until age 80. The interest rate is $r=0.03$, survival is certain until 80 and the health gained does not depreciate. The net present value is $\mathrm{NPV}(t)=-C+\theta_t\,v\,F(80-t)$, where $F(n)=[1-(1+r)^{-n}]/r$ is the present value of one euro a year for $n$ years (Section 1.8.3, equation 1.13).
+PART: a
+ASK: Compute the NPV of the program at age 35, in thousands of euros.
+ANSWER: 1.4134
+DEC: 2
+UNIT: thousand euros
+SOLUTION: At 35, $\theta_{35}=1-0.02\times5=0.9$ and the benefit lasts $80-35=45$ years. $F(45)=(1-1.03^{-45})/0.03\approx24.52$. The present value of benefits is $0.9\times200\times24.52\approx4{,}413$ euros, so the NPV is about $4{,}413-3{,}000\approx+1{,}413$ euros, or 1.41 thousand euros. It lies between the values at 30 (+2,146) and at 40 (+698).
+PART: b
+ASK: What value of $\theta_{50}$ would make the program break even at age 50?
+ANSWER: 0.7653
+DEC: 2
+SOLUTION: At 50 the benefit lasts 30 years and $F(30)=(1-1.03^{-30})/0.03\approx19.60$, so the present value of benefits with $\theta=1$ is $200\times19.60=3{,}920$ euros. Break-even requires $\theta_{50}\times3{,}920=3{,}000$, so $\theta_{50}=3{,}000/3{,}920\approx0.77$. The assumed $\theta_{50}=0.6$ is well below this, which is why the NPV at 50 is negative. Adding survival and depreciation would lower every NPV, more at older ages, and move the break-even age earlier.
+
+PROBLEM: 27
+TEXT: \emph{Complementarity.} Let adult health depend on investment in childhood, $I_1$, and in adulthood, $I_2$, according to $h=I_1^{1/2}I_2^{1/2}$ (Section 1.6). The marginal product of adult investment is $\partial h/\partial I_2=\tfrac12(I_1/I_2)^{1/2}$.
+PART: a
+ASK: Compute the marginal product of adult investment for $I_1=9$ and $I_2=1$.
+ANSWER: 1.5
+DEC: 2
+SOLUTION: $\partial h/\partial I_2=\tfrac12(9/1)^{1/2}=\tfrac12\times3=1.5$, three times the value of 0.5 with $I_1=1$. An adult program has its highest yield among those who received good early investment. A program targeted on yield would favor the already advantaged; a program targeted on need would accept a lower yield.
+
+PROBLEM: 28
+TEXT: \emph{The disposable soma.} An organism spends a share $x$ of its resources on repair and the rest on reproduction. Its expected reproduction is $W(x)=(1-x)(1+kx)$ with $k=f(1-\mu)$, where $\mu$ is external mortality and $f>1$ the reproductive capacity of a mature organism. The optimal repair share is $x^*=(k-1)/(2k)$ if $k>1$ and $x^*=0$ otherwise (Section 1.9.1, equations 1.14 and 1.15). Let $f=3.9$.
+PART: a1
+ASK: Compute the optimal repair share when $\mu=0.4$.
+ANSWER: 0.2863
+DEC: 2
+SOLUTION: $k=3.9\times(1-0.4)=3.9\times0.6=2.34>1$, so $x^*=(2.34-1)/(2\times2.34)=1.34/4.68\approx0.29$. This lies between the values at $\mu=0.2$ (0.34) and at $\mu=0.5$ (0.24): repair falls as the outside world becomes more dangerous.
+PART: a2
+ASK: Find the level of external mortality above which no repair is optimal.
+ANSWER: 0.7436
+DEC: 2
+SOLUTION: No repair is optimal when $k=f(1-\mu)\le1$, that is $1-\mu\le1/f$, or $\mu\ge1-1/3.9\approx1-0.256=0.74$.
+
+PROBLEM: 29
+TEXT: \emph{Gompertz depreciation.} Depreciation is $\gamma(a)=\gamma_0e^{ba}$. With no new investment, the cumulative loss of health reaches a threshold $L$ at age $a(L)=(1/b)\ln(1+bL/\gamma_0)$ (Section 1.9.3, equation 1.18). Disability begins when the loss reaches $L_D$ and death occurs when it reaches $L_M$. The baseline of Table 1.3 has $\gamma_0=0.0005$, $b=0.08$, $L_D=2$ and $L_M=5$, so that disability begins at 72.1 and death occurs at 83.6.
+PART: a
+ASK: With the baseline parameters, compute the age at which disability begins if the disability threshold is $L_D=3$.
+ANSWER: 77.198
+DEC: 1
+UNIT: years
+SOLUTION: $a=(1/0.08)\ln(1+0.08\times3/0.0005)=12.5\ln(1+480)=12.5\ln481\approx12.5\times6.176\approx77.2$. The change resembles scenario E: it moves the disability threshold, not the depreciation curve, so disability begins later while the date of death stays at 83.6. The years of disability fall from 11.4 to about $83.6-77.2\approx6.4$.

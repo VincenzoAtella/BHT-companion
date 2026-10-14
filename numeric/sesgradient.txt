@@ -1,0 +1,138 @@
+# Addendum Chapter 2 (sesgradient, app chapter A2): numerical parts of the analytical problems 23-31.
+# Solutions from the addendum solutions file, recomputed with python3 on 2026-10-14.
+# Problems 22 (mapping explanations) and part (b) of 23, 26 and 28 ask for explanations and are left out.
+
+PROBLEM: 23
+TEXT: \emph{Level or slope.} Equation (2.1) of Section 2.4 models a biological state as $A_{i\tau}=a_0+\pi S_i+(g_0+\psi S_i)\,\tau+\varepsilon_{i\tau}$, where $S_i=1$ for the disadvantaged group and $S_i=0$ for the advantaged group, and $\tau$ is the number of years since age 40. In a cohort measured at ages 40 and 60, the gap in a biomarker between disadvantaged and advantaged people is 0.20 at age 40 and 0.60 at age 60.
+PART: a1
+ASK: Compute the level shift $\pi$.
+ANSWER: 0.20
+DEC: 2
+SOLUTION: At age 40, $\tau=0$, so the gap between the two groups is $\pi$ alone: $\pi=0.20$. The difference was already there at the start of observation.
+PART: a2
+ASK: Compute the divergence parameter $\psi$ (per year).
+ANSWER: 0.02
+DEC: 3
+SOLUTION: At age 60, $\tau=20$, and the gap is $\pi+20\psi=0.60$. So $\psi=(0.60-0.20)/20=0.02$ a year. Both a level shift and a divergence are present; a researcher who observed only the gap at 60 would know only that $\pi+20\psi=0.60$, and any combination with that sum would fit her data.
+
+PROBLEM: 24
+TEXT: \emph{Reliability.} A biomarker has reliability $\lambda=\sigma_b^2/(\sigma_b^2+\sigma_w^2)=0.5$, where $\sigma_b^2$ is the variance between people and $\sigma_w^2$ the variance within a person from one reading to the next (Section 2.6). The noise is classical: unrelated to the true long-run level and to everything else.
+PART: a
+ASK: A regression of an outcome on one reading gives a coefficient of 0.2. What is the coefficient on the long-run level?
+ANSWER: 0.4
+DEC: 2
+SOLUTION: By equation (2.3), the coefficient on a single reading converges to $\lambda\beta_A$. So $\beta_A=0.2/0.5=0.4$. The single reading halves the relationship.
+PART: b
+ASK: How many independent readings must be averaged to reach a reliability of at least 0.8?
+ANSWER: 4
+DEC: 0
+SOLUTION: The reliability of the mean of $n$ independent readings is $n\lambda/[1+(n-1)\lambda]$. We need $0.5n/[1+0.5(n-1)]\ge0.8$, that is $0.5n\ge0.8+0.4(n-1)$, or $0.1n\ge0.4$, so $n\ge4$. Three readings give 0.75 and four give exactly 0.8.
+
+PROBLEM: 25
+TEXT: \emph{Attenuation.} Socioeconomic position is measured with reliability 0.6. The estimated gradient in a biomarker is 0.12 standard deviations. Assume classical error in the measure of socioeconomic position (Section 2.6.4 and item 2 of the technical box).
+PART: a
+ASK: What is the gradient with respect to true socioeconomic position (in standard deviations of the biomarker)?
+ANSWER: 0.20
+DEC: 2
+SOLUTION: Classical error in the explanatory variable shrinks its coefficient by the reliability: $\mathrm{plim}\,\hat\beta_S=0.6\,\beta_S$. So $\beta_S=0.12/0.6=0.20$ standard deviations.
+
+PROBLEM: 26
+TEXT: \emph{Mediation.} The unadjusted gradient in a biomarker is 0.30 and the gradient adjusted for health behaviors is 0.21 (Section 2.7 and item 3 of the technical box).
+PART: a
+ASK: Compute the proportion mediated (in percent).
+ANSWER: 30
+DEC: 0
+UNIT: percent
+SOLUTION: The proportion mediated is $(\hat\beta_u-\hat\beta_a)/\hat\beta_u=(0.30-0.21)/0.30=0.30$, that is 30 percent. First reading: 30 percent of the effect of disadvantage runs through behaviors. Second reading: behaviors partly proxy for unobserved early-life circumstances, so the unadjusted 0.30 was inflated by confounding. Collider bias can also move the adjusted coefficient in either direction. Measures of early-life circumstances, repeated measures showing whether behaviors change after socioeconomic position changes, or natural experiments that shift socioeconomic position without shifting early life can favor one reading over the other.
+
+PROBLEM: 27
+TEXT: \emph{Mendelian randomization.} A genetic variant $G$ has $\mathrm{Cov}(G,S)=0.02$ with years of schooling $S$ and $\mathrm{Cov}(G,A)=-0.001$ with a biomarker $A$ (Section 2.9.2, equation (2.4)).
+PART: a
+ASK: Compute the Wald estimate of the effect of one year of schooling on the biomarker (in standard deviations).
+ANSWER: -0.05
+DEC: 3
+SOLUTION: By equation (2.4), $\beta_{IV}=\mathrm{Cov}(G,A)/\mathrm{Cov}(G,S)=-0.001/0.02=-0.05$ standard deviations per year of schooling.
+PART: b1
+ASK: Suppose the variant also has a direct effect on the biomarker that contributes $-0.0004$ to $\mathrm{Cov}(G,A)$. What is the true effect of one year of schooling?
+ANSWER: -0.03
+DEC: 3
+SOLUTION: The part of $\mathrm{Cov}(G,A)$ that runs through schooling is $-0.001-(-0.0004)=-0.0006$. The true effect is $-0.0006/0.02=-0.03$ standard deviations per year.
+PART: b2
+ASK: With the direct effect of part (b1), what is the pleiotropic bias of the Wald estimate, that is, the Wald estimate minus the true effect?
+ANSWER: -0.02
+DEC: 3
+SOLUTION: The bias is $-0.05-(-0.03)=-0.02$, which equals $-0.0004/0.02$, the term $\eta\,\mathrm{Var}(G)/\mathrm{Cov}(G,S)$ of item 4 of the technical box. Pleiotropy biases the estimate away from zero: it overstates the protective effect of schooling by 0.02, about two thirds of its true size.
+
+PROBLEM: 28
+TEXT: \emph{Competing risks.} Cancer and cardiovascular disease account for 30 and 35 percent of the risk of death at every age. In the technical box (item 5), the hazard is $h(a)=m\,c\,e^{ba}$ with $b=0.09$; eliminating causes of death lowers $m$ from 1 to one minus their combined share, and multiplying the hazard by $m$ shifts the survival curve by approximately $\ln(1/m)/b$ years.
+PART: a
+ASK: What share of the remaining risk does cardiovascular disease account for once cancer is eliminated (in percent)?
+ANSWER: 50
+DEC: 0
+UNIT: percent
+SOLUTION: The remaining risk is $1-0.30=0.70$ of the original, so cardiovascular disease accounts for $0.35/0.70=0.50$, that is 50 percent, instead of 35 percent. People saved from cancer are exposed to cardiovascular disease instead, so eliminating it after cancer is worth more.
+PART: c1
+ASK: Using the approximation, compute the gain in life expectancy from eliminating cancer (in years).
+ANSWER: 3.96
+DEC: 2
+UNIT: years
+SOLUTION: Eliminating cancer sets $m=0.70$, so the gain is about $\ln(1/0.70)/0.09=0.3567/0.09\approx3.96$ years, close to the exact 3.95 years in the text.
+PART: c2
+ASK: Using the approximation, compute the gain from eliminating cardiovascular disease (in years).
+ANSWER: 4.79
+DEC: 2
+UNIT: years
+SOLUTION: Eliminating cardiovascular disease sets $m=0.65$, so the gain is about $\ln(1/0.65)/0.09=0.4308/0.09\approx4.79$ years, close to the exact 4.78 years.
+PART: c3
+ASK: Using the approximation, compute the gain from eliminating both causes (in years).
+ANSWER: 11.66
+DEC: 2
+UNIT: years
+SOLUTION: Eliminating both sets $m=0.35$, so the gain is about $\ln(1/0.35)/0.09=1.0498/0.09\approx11.66$ years, close to the exact 11.65 years. This is $11.66-3.96-4.79\approx2.9$ years more than the sum of the separate gains, because $\ln[1/(1-\sigma_1-\sigma_2)]>\ln[1/(1-\sigma_1)]+\ln[1/(1-\sigma_2)]$: the eliminations are complements.
+
+PROBLEM: 29
+TEXT: \emph{Annuities.} An annuity pays one euro at the start of each year of life from age 65 (Section 2.14.1, Figure 2.8). With Gompertz mortality and an interest rate of 3 percent, its expected present value is 16.59 euros for a long-lived buyer and 13.77 euros for a short-lived buyer. The insurer cannot tell the types apart and charges a single price that covers its costs. Suppose 70 percent of buyers are long-lived.
+PART: a1
+ASK: Compute the pooled price (in euros).
+ANSWER: 15.744
+DEC: 2
+UNIT: euros
+SOLUTION: The break-even price is the average value of the pool: $0.7\times16.59+0.3\times13.77=11.613+4.131\approx15.74$ euros.
+PART: a2
+ASK: By how many percent does the pooled price fall short of the value of the annuity to a long-lived buyer?
+ANSWER: 5.1
+DEC: 1
+UNIT: percent
+SOLUTION: $1-15.744/16.59\approx0.051$: long-lived buyers pay about 5.1 percent less than the annuity is worth to them, and gain relative to fair pricing.
+PART: a3
+ASK: By how many percent does the pooled price exceed the value of the annuity to a short-lived buyer?
+ANSWER: 14.3
+DEC: 1
+UNIT: percent
+SOLUTION: $15.744/13.77-1\approx0.143$: short-lived buyers pay about 14.3 percent more than the annuity is worth to them, and lose. With fewer short-lived buyers in the pool than in the text (where the overpayment is 10.2 percent), each one bears a larger loss.
+
+PROBLEM: 30
+TEXT: \emph{Patents.} A patent lasts 20 years from filing, and the firm files before development begins. With a constant annual profit $\Pi$ during protection, development time $L$ and interest rate $r$, the present value of protected profits is $V=\Pi\,(e^{-rL}-e^{-20r})/r$ (item 7 of the technical box). At $r=0.08$, $V\approx6.55\,\Pi$ for $L=4$ and $V\approx2.26\,\Pi$ for $L=12$.
+PART: a1
+ASK: With $r=0.08$, compute $V/\Pi$ for a drug that needs eight years of development.
+ANSWER: 4.067
+DEC: 2
+SOLUTION: $V=\Pi(e^{-0.64}-e^{-1.6})/0.08=\Pi(0.5273-0.2019)/0.08\approx4.07\,\Pi$.
+PART: a2
+ASK: As a share of the value with four years of development, what is the value with eight years (as a decimal)?
+ANSWER: 0.6207
+DEC: 2
+SOLUTION: $4.067/6.553\approx0.62$: four extra years of development cost about 38 percent of the value of protected profits.
+PART: a3
+ASK: How many times larger is the value with eight years of development than the value with twelve years?
+ANSWER: 1.798
+DEC: 1
+SOLUTION: $4.067/2.262\approx1.8$. Each extra year of development removes a year of sales that lies further in the future and is discounted more, so the absolute loss shrinks, but the proportional loss grows: 38 percent from four to eight years, 44 percent from eight to twelve.
+
+PROBLEM: 31
+TEXT: \emph{Equity.} A therapy that removes senescent cells reduces biological age by 0.30 standard deviations in those who take it (Section 2.15). Before treatment, the disadvantaged are 0.40 standard deviations older than the advantaged. After treatment the gap is $0.40+0.30\times(u_A-u_D)$, where $u_A$ and $u_D$ are uptake among the advantaged and the disadvantaged. Uptake among the advantaged is 60 percent.
+PART: a
+ASK: What uptake among the disadvantaged would reduce the gap to 0.30 standard deviations (as a decimal)?
+ANSWER: 0.9333
+DEC: 2
+SOLUTION: Solve $0.40+0.30\times(0.60-u_D)=0.30$: $0.60-u_D=-1/3$, so $u_D\approx0.93$. Uptake among the disadvantaged would have to exceed uptake among the advantaged by a wide margin, which is unlikely without targeted outreach, free provision or a policy that limits uptake among the advantaged. Unequal uptake can easily outweigh the benefits of a therapy for inequality.

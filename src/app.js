@@ -21,11 +21,14 @@ const QBY = Object.fromEntries(QUESTIONS.map(q => [q.id, q]));
 const READY = CHAPTERS.filter(c => c.ready);
 const CH = n => CHAPTERS.find(c => c.n === n) || { n, t: 'Chapter ' + n, part: 0, partTitle: '' };
 const chTitle = n => CH(n).t;
+const chLab = n => CH(n).lab || n;   // chapters outside BHT (the course addendum) show a label such as A1
 const shortT = c => { const [a, b] = c.t.split(':'); return b && CHAPTERS.some(d => d !== c && (d.t.split(':')[0] === a || d.t.startsWith(a + ' '))) ? b.trim().replace(/^the /, '').replace(/^./, x => x.toUpperCase()) : a; };   // when two chapters share the part before the colon, show the part after it
 const fmtDate = t => new Date(t).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 const mmss = s => { s = Math.max(0, Math.round(s)); const m = Math.floor(s / 60); return `${m}:${String(s % 60).padStart(2, '0')}`; };
 const letter = k => '(' + 'abcde'[k] + ')';
-const ansText = (q, a) => a === undefined || a === null ? 'no answer' : q.type === 'tf' ? (a ? 'True' : 'False') : letter(a) + ' ' + q.options[a];
+const ansText = (q, a) => a === undefined || a === null || (q.type === 'num' && !isFinite(a)) ? 'no answer' : q.type === 'tf' ? (a ? 'True' : 'False') : q.type === 'num' ? fmtNum(a, q.dec) + (q.unit ? ' ' + q.unit : '') : letter(a) + ' ' + q.options[a];
+const TYPEL = { tf: 'True or false', mc: 'Multiple choice', num: 'Numerical' };
+const setupOf = q => (q.pid && SETUPS[q.pid]) || '';
 const plural = (n, w, ws) => `${n} ${n === 1 ? w : (ws || w + 's')}`;
 const firstSentence = s => { const m = String(s).match(/^.*?[.?!](\s|$)/); return m ? m[0].trim() : s; };
 
@@ -37,7 +40,7 @@ const PARTS = (() => {
   return [...m.values()].map((p, i) => ({ ...p, hue: 'h' + (i % 4) }));
 })();
 const partOf = n => PARTS.find(p => p.chs.some(c => c.n === n)) || PARTS[0];
-const partLabel = p => p.k ? `Part ${ROMAN[p.k] || p.k}` : 'Opening chapter';
+const partLabel = p => p.k === 8 ? 'Addendum' : p.k ? `Part ${ROMAN[p.k] || p.k}` : 'Opening chapter';
 const partName = p => p.k ? p.title.split(':')[0] : 'Why health economics?';
 const partSub = p => p.k ? (p.title.split(':')[1] || '').trim() : 'BHT Chapter 1: what makes health and health care different from other goods, and the questions the course takes up.';
 const acc = hue => `style="--acc:var(--${hue});--acc-soft:var(--${hue}-soft)"`;
@@ -60,11 +63,11 @@ function markSeen(id, lvl) { if ((ST.seen[id] || 0) < lvl) { ST.seen[id] = lvl; 
 // ---------- scoring ----------
 function chapterStats(n) {
   const qs = QUESTIONS.filter(q => q.ch === n);
-  const st = { total: qs.length, tfN: qs.filter(q => q.type === 'tf').length, answered: 0, correct: 0, tf: [0, 0], mc: [0, 0], rated: 0, ratingPts: 0, examSeen: 0, examCorrect: 0 };
+  const st = { total: qs.length, tfN: qs.filter(q => q.type === 'tf').length, answered: 0, correct: 0, tf: [0, 0], mc: [0, 0], num: [0, 0], rated: 0, ratingPts: 0, examSeen: 0, examCorrect: 0 };
   qs.forEach(q => {
     const a = ST.answers[q.id]; if (!a) return;
     st.answered++; if (a.first.correct) st.correct++;
-    const t = q.type === 'tf' ? st.tf : st.mc; t[1]++; if (a.first.correct) t[0]++;
+    const t = st[q.type] || st.mc; t[1]++; if (a.first.correct) t[0]++;
     if (q.type === 'tf' && a.rating) { st.rated++; st.ratingPts += a.rating === 'yes' ? 1 : a.rating === 'partly' ? 0.5 : 0; }
   });
   ST.exams.forEach(ex => ex.items.forEach(it => { const q = QBY[it.qid]; if (q && q.ch === n) { st.examSeen++; if (it.correct) st.examCorrect++; if (q.type === 'tf' && it.rating) { st.rated++; st.ratingPts += it.rating === 'yes' ? 1 : it.rating === 'partly' ? 0.5 : 0; } } }));
@@ -110,25 +113,25 @@ function renderNav() {
     const ready = p.chs.filter(c => c.ready), soon = p.chs.length - ready.length;
     return `<section class="rpart" ${acc(p.hue)}>
       <p class="rpart-t"><span class="rpart-l">${partLabel(p)}</span> ${esc(partName(p))}</p>
-      ${ready.length ? `<ul>${ready.map(c => { const st = chapterStats(c.n); return `<li><a class="rch${curCh === c.n ? ' active' : ''}" href="#ch-${c.n}" title="${esc(c.t)}"><span class="rnum">${c.n}</span><span class="rtitle">${esc(shortT(c))}</span><span class="lvl ${st.level[0]}" title="${esc(st.level[1])}"></span><span class="rbar"><i style="width:${Math.round(100 * st.progress)}%"></i></span></a></li>`; }).join('')}</ul>` : ''}
+      ${ready.length ? `<ul>${ready.map(c => { const st = chapterStats(c.n); return `<li><a class="rch${curCh === c.n ? ' active' : ''}" href="#ch-${c.n}" title="${esc(c.t)}"><span class="rnum">${chLab(c.n)}</span><span class="rtitle">${esc(shortT(c))}</span><span class="lvl ${st.level[0]}" title="${esc(st.level[1])}"></span><span class="rbar"><i style="width:${Math.round(100 * st.progress)}%"></i></span></a></li>`; }).join('')}</ul>` : ''}
       ${soon ? `<p class="rsoon">${ready.length ? plural(soon, 'more chapter') : plural(soon, 'chapter')} in preparation</p>` : ''}
     </section>`;
   }).join('');
   $$('.toplink').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + route || (route.startsWith('exam') && a.getAttribute('href') === '#exam') || (!route && a.getAttribute('href') === '#')));
   const rc = $('#revcount'); if (rc) { const n = dueList().length; rc.textContent = n; rc.hidden = !n; }
   const sel = $('#mobsel');
-  sel.innerHTML = `<option value="">Go to…</option><option value="home">Map of the course</option><option value="exam">Mock exam</option><option value="report">My report</option><option value="feedback">Feedback</option>` + PARTS.filter(p => p.chs.some(c => c.ready)).map(p => `<optgroup label="${esc(partLabel(p) + '. ' + partName(p))}">${p.chs.filter(c => c.ready).map(c => `<option value="ch-${c.n}">${c.n}. ${esc(shortT(c))}</option>`).join('')}</optgroup>`).join('');
+  sel.innerHTML = `<option value="">Go to…</option><option value="home">Map of the course</option><option value="exam">Mock exam</option><option value="report">My report</option><option value="feedback">Feedback</option>` + PARTS.filter(p => p.chs.some(c => c.ready)).map(p => `<optgroup label="${esc(partLabel(p) + '. ' + partName(p))}">${p.chs.filter(c => c.ready).map(c => `<option value="ch-${c.n}">${chLab(c.n)}. ${esc(shortT(c))}</option>`).join('')}</optgroup>`).join('');
   sel.value = curCh ? 'ch-' + curCh : '';
   $('#namebox').textContent = ST.name ? ST.name : 'Add your name in My report';
 }
 
 // ---------- home: the map of the book ----------
 function tile(c) {
-  if (!c.ready) return `<div class="tile soon"><span class="tnum">${c.n}</span><span class="ttitle">${esc(shortT(c))}</span><span class="tmeta">In preparation</span></div>`;
+  if (!c.ready) return `<div class="tile soon"><span class="tnum">${chLab(c.n)}</span><span class="ttitle">${esc(shortT(c))}</span><span class="tmeta">In preparation</span></div>`;
   const st = chapterStats(c.n), exs = EX.filter(e => e.ch === c.n);
   const meta = [exs.length ? plural(exs.length, 'example') : '', plural(st.total, 'question')].filter(Boolean).join(', ');
   return `<a class="tile${exs.length ? ' has-ex' : ''}" href="#ch-${c.n}">
-    <span class="tnum">${c.n}</span>
+    <span class="tnum">${chLab(c.n)}</span>
     <span class="ttitle">${esc(shortT(c))}</span>
     ${exs.length ? `<span class="thumb" data-ex="${exs[0].id}" aria-hidden="true"></span>` : ''}
     <span class="tmeta">${meta}</span>
@@ -146,7 +149,7 @@ function renderHome() {
         <p class="lede">Run the course models, answer the exercises and see where you stand. Each part of the textbook has its own color; open a chapter on the map to find its examples and questions.</p>
         <div class="hero-act">
           ${dueList().length ? `<a class="btn" href="#review">Review ${plural(dueList().length, 'due question')}</a>` : ''}
-          ${last ? `<a class="btn" ${accCh(last.ch)} href="#${last.id}">Continue with ${esc(last.title)}</a>` : (() => { const f = CHAPTERS.find(c => c.ready) || CHAPTERS[0]; return `<a class="btn" ${accCh(f.n)} href="#ch-${f.n}">Start with Chapter ${f.n}</a>`; })()}
+          ${last ? `<a class="btn" ${accCh(last.ch)} href="#${last.id}">Continue with ${esc(last.title)}</a>` : (() => { const f = CHAPTERS.find(c => c.ready) || CHAPTERS[0]; return `<a class="btn" ${accCh(f.n)} href="#ch-${f.n}">Start with Chapter ${chLab(f.n)}</a>`; })()}
           <button class="btn ghostbtn" id="rnd">Open a random example</button>
           <a class="btn ghostbtn" href="#exam">Take a mock exam</a>
         </div>
@@ -171,10 +174,10 @@ function band(n, active, h1) {
   const T = h1 ? 'h1' : 'p';
   return `<header class="band" ${acc(p.hue)}>
     <div class="band-grid">
-      <span class="band-num" aria-hidden="true">${n}</span>
-      <div class="band-txt"><p class="band-part"><a href="#">${partLabel(p)}. ${esc(partName(p))}</a></p><${T} class="band-title">${h1 ? '' : `<span class="sr">Chapter ${n}. </span>`}${esc(c.t)}</${T}></div>
+      <span class="band-num" aria-hidden="true">${chLab(n)}</span>
+      <div class="band-txt"><p class="band-part"><a href="#">${partLabel(p)}. ${esc(partName(p))}</a></p><${T} class="band-title">${h1 ? '' : `<span class="sr">Chapter ${chLab(n)}. </span>`}${esc(c.t)}</${T}></div>
     </div>
-    <nav class="tabs" aria-label="Chapter ${n}">
+    <nav class="tabs" aria-label="Chapter ${chLab(n)}">
       <a href="#ch-${n}"${active === 'ov' ? ' class="active" aria-current="page"' : ''}>Overview</a>
       ${exs.map(e => `<a href="#${e.id}" data-tab="${e.id}"${active === e.id ? ' class="active" aria-current="page"' : ''}>${esc(e.title)}<span class="tabdone" ${ST.seen[e.id] === 2 ? '' : 'hidden'} title="Explored">✓</span></a>`).join('')}
       ${c.ready ? `<a href="#q-${n}"${active === 'q' ? ' class="active" aria-current="page"' : ''}>Questions <span class="cnt">${st.answered}/${st.total}</span></a>` : ''}
@@ -218,7 +221,7 @@ function renderChapter(n) {
 }
 function chapterPager(n) {
   const i = READY.findIndex(c => c.n === n), prev = READY[i - 1], next = READY[i + 1];
-  return `<nav class="pager">${prev ? `<a href="#ch-${prev.n}" class="pg prev" ${accCh(prev.n)}><span>Previous chapter</span>${prev.n}. ${esc(shortT(prev))}</a>` : '<span></span>'}${next ? `<a href="#ch-${next.n}" class="pg next" ${accCh(next.n)}><span>Next chapter</span>${next.n}. ${esc(shortT(next))}</a>` : '<span></span>'}</nav>`;
+  return `<nav class="pager">${prev ? `<a href="#ch-${prev.n}" class="pg prev" ${accCh(prev.n)}><span>Previous chapter</span>${chLab(prev.n)}. ${esc(shortT(prev))}</a>` : '<span></span>'}${next ? `<a href="#ch-${next.n}" class="pg next" ${accCh(next.n)}><span>Next chapter</span>${chLab(next.n)}. ${esc(shortT(next))}</a>` : '<span></span>'}</nav>`;
 }
 
 // ---------- explore (examples) ----------
@@ -229,7 +232,7 @@ function openExample(id) {
   $('#main').innerHTML = band(ex.ch, ex.id, false) + `
     <article class="ex" ${accCh(ex.ch)}>
       <header class="exhead">
-        <div class="exhead-t"><h1>${esc(ex.title)}</h1><p class="lede">${esc(ex.intro)}</p><p class="ref">In the textbook: ${esc(ex.ref)} · <a href="#feedback?ex=${ex.id}">Report a problem with this example</a></p></div>
+        <div class="exhead-t"><h1>${esc(ex.title)}</h1><p class="lede">${esc(ex.intro)}</p><p class="ref">${/^Addendum/.test(ex.ref) ? 'In the course addendum' : 'In the textbook'}: ${esc(ex.ref.replace(/^Addendum /, ''))} · <a href="#feedback?ex=${ex.id}">Report a problem with this example</a></p></div>
         <div class="eq">\\[${esc(eqLines(ex.eq))}\\]</div>
       </header>
       <div class="status" id="status" role="status"></div>
@@ -351,7 +354,7 @@ function answerCheck(ex, i, k) {
 function examplePager(ex) {
   const sib = EX.filter(e => e.ch === ex.ch), i = sib.indexOf(ex), prev = sib[i - 1], next = sib[i + 1];
   const nextCh = !next ? READY.find(c => c.n > ex.ch) : null;
-  return `<nav class="pager">${prev ? `<a href="#${prev.id}" class="pg prev"><span>Previous example</span>${esc(prev.title)}</a>` : `<a href="#ch-${ex.ch}" class="pg prev"><span>Back to</span>Chapter ${ex.ch} overview</a>`}${next ? `<a href="#${next.id}" class="pg next"><span>Next example</span>${esc(next.title)}</a>` : `<a href="#q-${ex.ch}" class="pg next"><span>Then</span>Chapter ${ex.ch} questions</a>`}</nav>`;
+  return `<nav class="pager">${prev ? `<a href="#${prev.id}" class="pg prev"><span>Previous example</span>${esc(prev.title)}</a>` : `<a href="#ch-${ex.ch}" class="pg prev"><span>Back to</span>Chapter ${chLab(ex.ch)} overview</a>`}${next ? `<a href="#${next.id}" class="pg next"><span>Next example</span>${esc(next.title)}</a>` : `<a href="#q-${ex.ch}" class="pg next"><span>Then</span>Chapter ${chLab(ex.ch)} questions</a>`}</nav>`;
 }
 
 // ---------- practice ----------
@@ -363,17 +366,18 @@ function renderPractice(n) {
   $('#main').innerHTML = band(n, 'q', false) + `
     <section class="practice" ${accCh(n)}>
       <h1>Questions</h1>
-      <p class="lede">Parts A and B of the chapter’s exercises. For true or false, write your justification first, in two or three sentences, as the exam asks; then choose. Your first answer is the one that counts in your report.</p>
+      <p class="lede">${qs.some(q => q.type === 'num') ? 'The chapter’s exercises: true or false and multiple choice, then the numerical parts of its analytical problems. ' : 'True-or-false and multiple-choice questions on the chapter. '}For true or false, write your justification first, in two or three sentences, as the exam asks; then choose. For a numerical part, work it out on paper and type the number. Your first answer is the one that counts in your report.</p>
       ${LOCKED && !chapterUnlocked(n) ? `<div class="locknote"><p>The solutions for this chapter are locked. You will see whether each answer is right. When your instructor sends the code, enter it once here: it opens every solution of the chapter, including the questions you already answered.</p>${codeFormHTML()}</div>` : ''}
       <div class="statrow">
         <div class="stat"><b>${st.answered}/${st.total}</b><span>answered</span></div>
         <div class="stat"><b>${pctS(st.correct, st.answered)}</b><span>right first time</span></div>
         <div class="stat"><b>${pctS(st.tf[0], st.tf[1])}</b><span>true or false</span></div>
         <div class="stat"><b>${pctS(st.mc[0], st.mc[1])}</b><span>multiple choice</span></div>
+        ${qs.some(q => q.type === 'num') ? `<div class="stat"><b>${pctS(st.num[0], st.num[1])}</b><span>numerical</span></div>` : ''}
         <div class="stat"><span class="pill ${st.level[0]}">${st.level[1]}</span><span>chapter readiness</span></div>
       </div>
       <div class="seg filt" role="group" aria-label="Filter">${[['all', 'All'], ['open', 'Not answered'], ['missed', 'Missed']].map(([v, l]) => `<button data-f="${v}" aria-pressed="${qFilter === v}">${l}</button>`).join('')}</div>
-      <div id="qlist">${shown.length ? shown.map(q => qCard(q)).join('') : '<p class="fine">No questions match this filter.</p>'}</div>
+      <div id="qlist">${shown.length ? practiceList(shown) : '<p class="fine">No questions match this filter.</p>'}</div>
       ${chapterPager(n)}
     </section>`;
   $$('.filt button').forEach(b => b.onclick = () => { qFilter = b.dataset.f; renderPractice(n); });
@@ -381,10 +385,23 @@ function renderPractice(n) {
   bindCodeForm(() => renderPractice(n));
   typeset($('#qlist'));
 }
+function practiceList(shown) {
+  const ab = shown.filter(q => q.type !== 'num'), c = shown.filter(q => q.type === 'num');
+  if (!c.length) return ab.map(q => qCard(q)).join('');
+  const groups = []; c.forEach(q => { const g = groups[groups.length - 1]; if (g && g.pid === q.pid) g.qs.push(q); else groups.push({ pid: q.pid, qs: [q] }); });
+  return (ab.length ? `<h2 class="h2s qsec">True or false and multiple choice</h2>` + ab.map(q => qCard(q)).join('') : '')
+    + `<h2 class="h2s qsec">Numerical problems</h2><p class="fine">The parts of the chapter’s analytical problems whose answer is a number. Type the number with a point or a comma for decimals, without thousands separators; it is checked at the decimals shown, and one unit off in the last decimal is accepted. Parts that ask you to derive or explain stay in the chapter.</p>`
+    + groups.map(g => { const n0 = g.qs[0].n.replace(/\(.*$/, ''); return `<div class="numprob"><p class="numhead">Problem ${n0}</p><div class="numsetup">${setupOf(g.qs[0])}</div>${g.qs.map(q => qCard(q)).join('')}</div>`; }).join('');
+}
+function numInputHTML(q, idp, val) {
+  return `<div class="numrow"><label class="sr" for="${idp}">Your answer</label><input id="${idp}" class="numin" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Your answer" value="${val ?? ''}">${q.unit ? `<span class="unit">${esc(q.unit)}</span>` : ''}<span class="fine">${q.dec ? `${plural(q.dec, 'decimal')}` : 'a whole number'}</span></div>`;
+}
 function qCard(q, retry, showCh) {
   const a = ST.answers[q.id], done = a && !retry;
-  const head = `<div class="qhead"><span class="qtype ${q.type}">${q.type === 'tf' ? 'True or false' : 'Multiple choice'}</span><span class="qnum">${showCh ? `Chapter ${q.ch}, item ${q.n}` : `Item ${q.n}`}${q.src === 'app' ? ' · app question' : ''}</span><a class="qreport" href="#feedback?q=${q.id}" title="Report an error in this question">Report</a>${a ? `<span class="pill ${a.first.correct ? 'ok' : 'bad'}">${a.first.correct ? 'Right first time' : 'Missed first time'}</span>` : ''}</div><p class="stem">${q.stem}</p>`;
+  const head = `<div class="qhead"><span class="qtype ${q.type}">${TYPEL[q.type]}</span><span class="qnum">${q.type === 'num' ? (showCh ? `Chapter ${chLab(q.ch)}, problem ${q.n}` : `Part ${q.n.replace(/^.*\(|\)$/g, '')}`) : showCh ? `Chapter ${chLab(q.ch)}, item ${q.n}` : `Item ${q.n}`}${q.src === 'app' ? ' · app question' : ''}</span><a class="qreport" href="#feedback?q=${q.id}" title="Report an error in this question">Report</a>${a ? `<span class="pill ${a.first.correct ? 'ok' : 'bad'}">${a.first.correct ? 'Right first time' : 'Missed first time'}</span>` : ''}</div>${q.type === 'num' && showCh ? `<div class="numsetup">${setupOf(q)}</div>` : ''}<p class="stem">${q.stem}</p>`;
   if (!done) {
+    if (q.type === 'num') return `<div class="qcard" id="qc-${q.id}" data-q="${q.id}"${showCh ? ' data-showch="1"' : ''}>${head}
+      <form class="numform">${numInputHTML(q, 'n-' + q.id)}<button class="btn" type="submit">Check</button></form><p class="fine nummsg" role="status"></p></div>`;
     if (q.type === 'tf') return `<div class="qcard" id="qc-${q.id}" data-q="${q.id}"${showCh ? ' data-showch="1"' : ''}>${head}
       <label class="jl" for="j-${q.id}">Your justification</label>
       <textarea id="j-${q.id}" rows="3" placeholder="Two or three sentences: why is the statement true or false?"></textarea>
@@ -410,6 +427,8 @@ function bindCards(root) {
       $$('.tfb', card).forEach(b => b.onclick = () => commit(q, b.dataset.a === '1', ta.value.trim(), card));
     }
     $$('.mcopts:not(.static) .mco', card).forEach(b => b.onclick = () => commit(q, +b.dataset.a, '', card));
+    const nf = $('.numform', card);
+    if (nf) nf.onsubmit = e => { e.preventDefault(); const x = parseNum($('.numin', card).value); if (x === null || isNaN(x)) { $('.nummsg', card).textContent = 'Type a number, for example 0.375 or -12.5 (no thousands separators).'; return; } commit(q, x, '', card); };
     $$('[data-rate]', card).forEach(b => b.onclick = () => { ST.answers[q.id].rating = b.dataset.rate; save(); $$('[data-rate]', card).forEach(x => x.setAttribute('aria-pressed', x === b)); renderNav(); });
     const r = $('[data-retry]', card); if (r) r.onclick = () => { card.outerHTML = qCard(q, true, card.dataset.showch); const nc = $('#qc-' + q.id); bindCards(nc.parentNode); typeset(nc); };
   });
@@ -439,7 +458,7 @@ function renderExam() {
     <section class="exam" ${acc('hn')}>
       <form id="setup" class="setup">
         <div class="setparts">${PARTS.filter(p => p.chs.some(c => c.ready)).map(p => `<fieldset class="setpart" ${acc(p.hue)}><legend><label class="chk"><input type="checkbox" class="pall" data-part="${p.k}"> <b>${partLabel(p)}. ${esc(partName(p))}</b></label></legend>
-          ${p.chs.filter(c => c.ready).map(c => `<label class="chk"><input type="checkbox" name="ch" data-part="${p.k}" value="${c.n}"${isOn(c.n) ? ' checked' : ''}> <span class="cn">${c.n}</span> ${esc(shortT(c))}</label>`).join('')}</fieldset>`).join('')}</div>
+          ${p.chs.filter(c => c.ready).map(c => `<label class="chk"><input type="checkbox" name="ch" data-part="${p.k}" value="${c.n}"${isOn(c.n) ? ' checked' : ''}> <span class="cn">${chLab(c.n)}</span> ${esc(shortT(c))}</label>`).join('')}</fieldset>`).join('')}</div>
         <div class="setrow">
           <label>Questions <select id="nq">${[10, 20, 30, 50, 0].map(v => `<option value="${v}"${+ST.settings.examN === v ? ' selected' : ''}>${v || 'All available'}</option>`).join('')}</select></label>
           <label>Time limit <select id="tl">${[10, 20, 30, 45, 60, 90, 0].map(v => `<option value="${v}"${+ST.settings.examTime === v ? ' selected' : ''}>${v ? v + ' min' : 'No limit'}</option>`).join('')}</select></label>
@@ -448,7 +467,7 @@ function renderExam() {
         <div class="setgo"><button class="btn big" type="submit">Start the exam</button><span class="fine" id="avail"></span></div>
       </form>
       <h2 class="h2s">Past exams</h2>
-      ${hist.length ? `<div class="tblwrap"><table class="out"><thead><tr><th>Date</th><th>Chapters</th><th class="num">Score</th><th class="num">Time used</th><th></th></tr></thead><tbody>${hist.map(ex => `<tr><td>${fmtDate(ex.start)}</td><td>${ex.chapters.join(', ')}</td><td class="num">${ex.score}/${ex.items.length} (${pctS(ex.score, ex.items.length)})</td><td class="num">${mmss(ex.used)}${ex.limit ? ' / ' + ex.limit + ':00' : ''}</td><td><a href="#exam-${ex.id}">Review</a></td></tr>`).join('')}</tbody></table></div>` : '<p class="fine">No exams yet.</p>'}
+      ${hist.length ? `<div class="tblwrap"><table class="out"><thead><tr><th>Date</th><th>Chapters</th><th class="num">Score</th><th class="num">Time used</th><th></th></tr></thead><tbody>${hist.map(ex => `<tr><td>${fmtDate(ex.start)}</td><td>${ex.chapters.map(chLab).join(', ')}</td><td class="num">${ex.score}/${ex.items.length} (${pctS(ex.score, ex.items.length)})</td><td class="num">${mmss(ex.used)}${ex.limit ? ' / ' + ex.limit + ':00' : ''}</td><td><a href="#exam-${ex.id}">Review</a></td></tr>`).join('')}</tbody></table></div>` : '<p class="fine">No exams yet.</p>'}
     </section>`;
   const sync = () => {
     $$('.pall').forEach(pa => { const boxes = $$(`input[name=ch][data-part="${pa.dataset.part}"]`), on = boxes.filter(b => b.checked).length; pa.checked = on === boxes.length; pa.indeterminate = on > 0 && on < boxes.length; });
@@ -479,14 +498,15 @@ function renderRunning() {
   $('#main').innerHTML = `
     <section class="exam running" ${accCh(q.ch)}>
       <div class="exbar">
-        <div><p class="sub">Mock exam on ${R.chapters.length > 6 ? plural(R.chapters.length, 'chapter') : 'chapter' + (R.chapters.length > 1 ? 's ' : ' ') + R.chapters.join(', ')}</p><b>Question ${R.pos + 1} of ${R.items.length}</b></div>
+        <div><p class="sub">Mock exam on ${R.chapters.length > 6 ? plural(R.chapters.length, 'chapter') : 'chapter' + (R.chapters.length > 1 ? 's ' : ' ') + R.chapters.map(chLab).join(', ')}</p><b>Question ${R.pos + 1} of ${R.items.length}</b></div>
         <div class="timer" id="timer" aria-live="off"></div>
       </div>
       <div class="navgrid" aria-label="Questions">${R.items.map((x, i) => `<button class="ng${i === R.pos ? ' cur' : ''}${x.choice !== null ? ' done' : ''}${x.flag ? ' flag' : ''}" data-i="${i}" aria-label="Question ${i + 1}">${i + 1}</button>`).join('')}</div>
       <div class="qcard" id="exq">
-        <div class="qhead"><span class="qtype ${q.type}">${q.type === 'tf' ? 'True or false' : 'Multiple choice'}</span><span class="qnum">Chapter ${q.ch}</span></div>
+        <div class="qhead"><span class="qtype ${q.type}">${TYPEL[q.type]}</span><span class="qnum">Chapter ${chLab(q.ch)}</span></div>
+        ${q.type === 'num' ? `<div class="numsetup">${setupOf(q)}</div>` : ''}
         <p class="stem">${q.stem}</p>
-        ${q.type === 'tf' ? `
+        ${q.type === 'num' ? numInputHTML(q, 'exn', it.choice === null || it.choice === undefined ? '' : it.raw ?? it.choice) + '<p class="fine" id="exnmsg"></p>' : q.type === 'tf' ? `
           ${R.reqJust ? `<label class="jl" for="exj">Your justification</label><textarea id="exj" rows="3" placeholder="Why is the statement true or false?">${esc(it.just)}</textarea><span class="wc" id="exwc"></span>` : ''}
           <div class="opts"><button class="opt sel" data-a="1" aria-pressed="${it.choice === true}">True</button><button class="opt sel" data-a="0" aria-pressed="${it.choice === false}">False</button></div>`
       : `<div class="mcopts">${q.options.map((o, k) => `<button class="mco sel" data-a="${k}" aria-pressed="${it.choice === k}"><span class="ml">${letter(k)}</span><span>${o}</span></button>`).join('')}</div>`}
@@ -504,6 +524,8 @@ function renderRunning() {
   const ta = $('#exj');
   const syncTF = () => { if (!ta) return; const w = words(ta.value); $('#exwc').textContent = `${plural(w, 'word')}, at least ${minW}`; $('#exwc').classList.toggle('okw', w >= minW); $$('.sel').forEach(b => b.disabled = w < minW); };
   if (ta) { ta.oninput = () => { it.just = ta.value; save(); syncTF(); }; syncTF(); }
+  const ni = $('#exn');
+  if (ni) ni.oninput = () => { const x = parseNum(ni.value); it.raw = ni.value; it.choice = x === null || isNaN(x) ? null : x; save(); $('#exnmsg').textContent = x !== null && isNaN(x) ? 'Not a number yet: no thousands separators.' : ''; $$('.ng')[R.pos].classList.toggle('done', it.choice !== null); };
   $$('.sel').forEach(b => b.onclick = () => {
     it.choice = q.type === 'tf' ? b.dataset.a === '1' : +b.dataset.a; if (ta) it.just = ta.value;
     save(); $$('.sel').forEach(x => x.setAttribute('aria-pressed', x === b)); $$('.ng')[R.pos].classList.add('done');
@@ -543,7 +565,7 @@ function renderExamReview(id) {
   const ex = ST.exams.find(e => e.id === id); if (!ex) { location.hash = 'exam'; return; }
   const by = {}; ex.items.forEach(it => { const q = QBY[it.qid]; if (!q) return; by[q.ch] = by[q.ch] || [0, 0]; by[q.ch][1]++; if (it.correct) by[q.ch][0]++; });
   const items = ex.items.filter(i => QBY[i.qid]);
-  const tf = items.filter(i => QBY[i.qid].type === 'tf'), mc = items.filter(i => QBY[i.qid].type === 'mc');
+  const tf = items.filter(i => QBY[i.qid].type === 'tf'), mc = items.filter(i => QBY[i.qid].type === 'mc'), nm = items.filter(i => QBY[i.qid].type === 'num');
   const pc = ex.score / ex.items.length;
   $('#main').innerHTML = plainHead('Exam results', `Taken ${fmtDate(ex.start)}${ex.timeout ? ', submitted when time ran out' : ''}.`) + `
     <section class="exam review" ${acc('hn')}>
@@ -552,13 +574,15 @@ function renderExamReview(id) {
         <div class="stat"><b>${Math.round(100 * pc)}%</b><span><span class="pill ${pc >= 0.8 ? 'ok' : pc >= 0.6 ? 'warn' : 'bad'}">${pc >= 0.8 ? 'Strong' : pc >= 0.6 ? 'Adequate' : 'Weak'}</span></span></div>
         <div class="stat"><b>${pctS(tf.filter(i => i.correct).length, tf.length)}</b><span>true or false</span></div>
         <div class="stat"><b>${pctS(mc.filter(i => i.correct).length, mc.length)}</b><span>multiple choice</span></div>
+        ${nm.length ? `<div class="stat"><b>${pctS(nm.filter(i => i.correct).length, nm.length)}</b><span>numerical</span></div>` : ''}
         <div class="stat"><b>${mmss(ex.used)}</b><span>time used${ex.limit ? ' of ' + ex.limit + ' min' : ''}</span></div>
       </div>
-      <div class="tblwrap"><table class="out"><thead><tr><th>Chapter</th><th class="num">Correct</th><th class="num">Share</th></tr></thead><tbody>${Object.keys(by).sort((a, b) => a - b).map(k => `<tr><td><span class="cn" ${accCh(+k)}>${k}</span> ${esc(chTitle(+k))}</td><td class="num">${by[k][0]}/${by[k][1]}</td><td class="num">${pctS(by[k][0], by[k][1])}</td></tr>`).join('')}</tbody></table></div>
+      <div class="tblwrap"><table class="out"><thead><tr><th>Chapter</th><th class="num">Correct</th><th class="num">Share</th></tr></thead><tbody>${Object.keys(by).sort((a, b) => a - b).map(k => `<tr><td><span class="cn" ${accCh(+k)}>${chLab(+k)}</span> ${esc(chTitle(+k))}</td><td class="num">${by[k][0]}/${by[k][1]}</td><td class="num">${pctS(by[k][0], by[k][1])}</td></tr>`).join('')}</tbody></table></div>
       <h2 class="h2s">Question by question</h2>
       <p class="fine">For each true-or-false item, compare your justification with the solution and rate it. The ratings feed your report.</p>
       <div id="revlist">${ex.items.map((it, i) => { const q = QBY[it.qid]; if (!q) return ''; return `<div class="qcard answered" data-i="${i}" ${accCh(q.ch)}>
-        <div class="qhead"><span class="qtype ${q.type}">${i + 1}. ${q.type === 'tf' ? 'True or false' : 'Multiple choice'}</span><span class="qnum">Chapter ${q.ch}, item ${q.n}</span>${it.flag ? '<span class="pill warn">Flagged</span>' : ''}</div>
+        <div class="qhead"><span class="qtype ${q.type}">${i + 1}. ${TYPEL[q.type]}</span><span class="qnum">Chapter ${chLab(q.ch)}, ${q.type === 'num' ? 'problem' : 'item'} ${q.n}</span>${it.flag ? '<span class="pill warn">Flagged</span>' : ''}</div>
+        ${q.type === 'num' ? `<div class="numsetup">${setupOf(q)}</div>` : ''}
         <p class="stem">${q.stem}</p>
         ${q.type === 'mc' ? mcStatic(q, it.choice, it.correct, solOf(q)) : ''}
         ${verdictHTML(q, it.choice, it.correct, solOf(q))}
@@ -600,13 +624,13 @@ function renderReport() {
         <div class="stat"><b>${ST.exams.length ? Math.round(100 * last.score / last.items.length) + '%' : '–'}</b><span>last mock exam${ST.exams.length > 1 ? `, best ${Math.round(100 * best)}%` : ''}</span></div>
       </div>
       <h2 class="h2s">Readiness by chapter</h2>
-      <div class="tblwrap"><table class="out rtable"><thead><tr><th>Chapter</th><th class="num">Practiced</th><th class="num">T/F</th><th class="num">MC</th><th class="num">Justif.</th><th class="num">Exam items</th><th class="num">Predictions</th><th>Readiness</th></tr></thead>
-      <tbody>${PARTS.filter(p => p.chs.some(c => c.ready)).map(p => `<tr class="partrow" ${acc(p.hue)}><td colspan="8">${partLabel(p)}. ${esc(partName(p))}</td></tr>` + p.chs.filter(c => c.ready).map(c => { const st = chapterStats(c.n); return `<tr><td><span class="cn" ${acc(p.hue)}>${c.n}</span> ${esc(shortT(c))}</td><td class="num">${st.answered}/${st.total}</td><td class="num">${pctS(st.tf[0], st.tf[1])}</td><td class="num">${pctS(st.mc[0], st.mc[1])}</td><td class="num">${st.rated ? Math.round(100 * st.ratingPts / st.rated) + '%' : '–'}</td><td class="num">${st.examSeen ? st.examCorrect + '/' + st.examSeen : '–'}</td><td class="num">${st.checksTot ? st.checks + '/' + st.checksTot : '–'}</td><td><span class="pill ${st.level[0]}">${st.level[1]}</span></td></tr>`; }).join('')).join('')}</tbody></table></div>
+      <div class="tblwrap"><table class="out rtable"><thead><tr><th>Chapter</th><th class="num">Practiced</th><th class="num">T/F</th><th class="num">MC</th><th class="num">Num.</th><th class="num">Justif.</th><th class="num">Exam items</th><th class="num">Predictions</th><th>Readiness</th></tr></thead>
+      <tbody>${PARTS.filter(p => p.chs.some(c => c.ready)).map(p => `<tr class="partrow" ${acc(p.hue)}><td colspan="9">${partLabel(p)}. ${esc(partName(p))}</td></tr>` + p.chs.filter(c => c.ready).map(c => { const st = chapterStats(c.n); return `<tr><td><span class="cn" ${acc(p.hue)}>${chLab(c.n)}</span> ${esc(shortT(c))}</td><td class="num">${st.answered}/${st.total}</td><td class="num">${pctS(st.tf[0], st.tf[1])}</td><td class="num">${pctS(st.mc[0], st.mc[1])}</td><td class="num">${pctS(st.num[0], st.num[1])}</td><td class="num">${st.rated ? Math.round(100 * st.ratingPts / st.rated) + '%' : '–'}</td><td class="num">${st.examSeen ? st.examCorrect + '/' + st.examSeen : '–'}</td><td class="num">${st.checksTot ? st.checks + '/' + st.checksTot : '–'}</td><td><span class="pill ${st.level[0]}">${st.level[1]}</span></td></tr>`; }).join('')).join('')}</tbody></table></div>
       <details class="method"><summary>How readiness is computed</summary><p>For each chapter the report pools two kinds of evidence: your first answer to each practice question and every mock-exam answer. Readiness is the share answered correctly. It reads <b>Ready</b> at 80 percent or more, <b>Review</b> from 60 to 79 percent, and <b>Not yet</b> below 60 percent. If you have seen fewer than half of the chapter’s questions, it reads <b>Not enough evidence</b>. Justification ratings are your own comparison with the solutions, and the Predictions column counts your first answers to the predict-first questions on the chapter’s examples. Both are reported but do not enter readiness: a prediction tests intuition about a model, and a wrong one is part of learning it.</p></details>
       <h2 class="h2s">What to revisit</h2>
-      ${revisit.length ? `<p class="fine">${plural(revisit.length, 'item')} you missed and have not since answered correctly.</p>${READY.map(c => { const r = revisit.filter(q => q.ch === c.n); return r.length ? `<h3 class="h3s" ${accCh(c.n)}><span class="cn">${c.n}</span> ${esc(c.t)}</h3>${r.map(q => `<div class="revitem"><p class="stem"><span class="qnum">Item ${q.n}, ${q.type === 'tf' ? 'true or false' : 'multiple choice'}.</span> ${q.stem}</p>${solOf(q) ? `<p class="ans"><b>Answer: ${ansText(q, solOf(q).a)}.</b> ${solOf(q).e}</p>` : `<p class="ans locked">The solution for this chapter is still locked.</p>`}</div>`).join('')}` : ''; }).join('')}` : '<p class="fine">Nothing to revisit yet.</p>'}
+      ${revisit.length ? `<p class="fine">${plural(revisit.length, 'item')} you missed and have not since answered correctly.</p>${READY.map(c => { const r = revisit.filter(q => q.ch === c.n); return r.length ? `<h3 class="h3s" ${accCh(c.n)}><span class="cn">${chLab(c.n)}</span> ${esc(c.t)}</h3>${r.map(q => `<div class="revitem"><p class="stem"><span class="qnum">${q.type === 'num' ? `Problem ${q.n}, numerical` : `Item ${q.n}, ${q.type === 'tf' ? 'true or false' : 'multiple choice'}`}.</span> ${q.stem}</p>${solOf(q) ? `<p class="ans"><b>Answer: ${ansText(q, solOf(q).a)}.</b> ${solOf(q).e}</p>` : `<p class="ans locked">The solution for this chapter is still locked.</p>`}</div>`).join('')}` : ''; }).join('')}` : '<p class="fine">Nothing to revisit yet.</p>'}
       <h2 class="h2s">Mock exams</h2>
-      ${ST.exams.length ? `<div class="tblwrap"><table class="out"><thead><tr><th>Date</th><th>Chapters</th><th class="num">Score</th><th class="num">Time used</th></tr></thead><tbody>${ST.exams.slice().reverse().map(ex => `<tr><td>${fmtDate(ex.start)}</td><td>${ex.chapters.join(', ')}</td><td class="num">${ex.score}/${ex.items.length} (${pctS(ex.score, ex.items.length)})</td><td class="num">${mmss(ex.used)}${ex.limit ? ' / ' + ex.limit + ':00' : ''}</td></tr>`).join('')}</tbody></table></div>` : '<p class="fine">No mock exams yet.</p>'}
+      ${ST.exams.length ? `<div class="tblwrap"><table class="out"><thead><tr><th>Date</th><th>Chapters</th><th class="num">Score</th><th class="num">Time used</th></tr></thead><tbody>${ST.exams.slice().reverse().map(ex => `<tr><td>${fmtDate(ex.start)}</td><td>${ex.chapters.map(chLab).join(', ')}</td><td class="num">${ex.score}/${ex.items.length} (${pctS(ex.score, ex.items.length)})</td><td class="num">${mmss(ex.used)}${ex.limit ? ' / ' + ex.limit + ':00' : ''}</td></tr>`).join('')}</tbody></table></div>` : '<p class="fine">No mock exams yet.</p>'}
       <p class="fine noprint">To save or move your progress, or to erase it, open <a href="#settings">Settings</a>.</p>
     </section>`;
   $('#sname').oninput = e => { ST.name = e.target.value; $('.printname').textContent = ST.name || '-'; save(); renderNav(); };

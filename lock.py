@@ -50,8 +50,12 @@ def seal(obj, unlock_code):
     ct = AESGCM(key).encrypt(iv, json.dumps(obj, ensure_ascii=False).encode(), None)
     return {'s': _b64(salt), 'iv': _b64(iv), 'ct': _b64(ct)}
 
-def answer_tag(pepper, qid, answer):
-    a = ('T' if answer else 'F') if isinstance(answer, bool) else 'abcde'[answer]
+def answer_tag(pepper, qid, answer, dec=None):
+    if dec is not None:   # numerical answer: the value rounded to dec decimals
+        v = round(float(answer), dec)
+        a = f'{(0.0 if v == 0 else v):.{dec}f}'
+    else:
+        a = ('T' if answer else 'F') if isinstance(answer, bool) else 'abcde'[answer]
     return hashlib.sha256(f'{pepper}|{qid}|{a}'.encode()).hexdigest()[:20]
 
 def lock(questions, master):
@@ -68,8 +72,8 @@ def lock(questions, master):
     all_code = code(master, 'all-chapters')
     all_box = seal({k: c for k, (_, c) in codes.items()}, all_code)
     for q in questions:
-        p = {k: v for k, v in q.items() if k not in ('answer', 'expl')}
-        p['tag'] = answer_tag(pepper, q['id'], q['answer'])
+        p = {k: v for k, v in q.items() if k not in ('answer', 'expl', 'fmt')}
+        p['tag'] = answer_tag(pepper, q['id'], q['answer'], q.get('dec') if q.get('type') == 'num' else None)
         public.append(p)
     data = {'enabled': True, 'iter': ITER, 'pepper': pepper, 'boxes': boxes, 'all': all_box}
     return public, data, codes, all_code

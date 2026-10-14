@@ -18,9 +18,24 @@ const LOCKED = typeof LOCK !== 'undefined' && !!LOCK.enabled;
 const SOL = {};
 function solOf(q) { if (!LOCKED) return { a: q.answer, e: q.expl }; return SOL[q.id] || null; }
 const chapterUnlocked = n => !LOCKED || QUESTIONS.filter(q => q.ch === n).every(q => SOL[q.id]);
-const ansCode = (q, c) => q.type === 'tf' ? (c ? 'T' : 'F') : 'abcde'[c];
+// numerical answers: right if, rounded to q.dec decimals, equal to the answer or one unit off in the last decimal
+function parseNum(raw) {
+  let t = String(raw ?? '').trim().replace(/\s|\u00a0|%|€|\$/g, '').replace(/[\u2212\u2013]/g, '-');
+  if (!t) return null;
+  if (t.includes(',') && t.includes('.')) t = t.replace(/,/g, '');
+  else if (t.includes(',')) t = t.replace(',', '.');
+  if (!/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(t)) return NaN;
+  return parseFloat(t);
+}
+const fmtNum = (x, dec) => { let s = (+x).toFixed(dec); if (/^-0\.?0*$/.test(s)) s = s.slice(1); return s; };
+const numCands = (x, dec) => { const u = Math.pow(10, -dec), r = Math.round(x / u); return [r, r - 1, r + 1].map(k => fmtNum(k * u, dec)); };
+const ansCode = (q, c) => q.type === 'tf' ? (c ? 'T' : 'F') : q.type === 'num' ? fmtNum(c, q.dec) : 'abcde'[c];
 function isRight(q, choice) {
-  if (choice === null || choice === undefined) return false;
+  if (choice === null || choice === undefined || (q.type === 'num' && !isFinite(choice))) return false;
+  if (q.type === 'num') {
+    if (!LOCKED) return Math.abs(Math.round(choice * Math.pow(10, q.dec)) - Math.round(q.answer * Math.pow(10, q.dec))) <= 1;
+    return numCands(choice, q.dec).some(a => sha256(`${LOCK.pepper}|${q.id}|${a}`).slice(0, 20) === q.tag);
+  }
   if (!LOCKED) return choice === q.answer;
   return sha256(`${LOCK.pepper}|${q.id}|${ansCode(q, choice)}`).slice(0, 20) === q.tag;
 }
@@ -31,12 +46,12 @@ function mcStatic(q, choice, correct, sl) {
   }).join('')}</div>`;
 }
 function verdictHTML(q, choice, correct, sl) {
-  const tail = correct ? '' : sl ? ` The answer is ${ansText(q, sl.a)}.` : (q.type === 'mc' && choice !== null && choice !== undefined ? ' Try again later; the correct option appears when the solutions are released.' : '');
+  const tail = correct ? (q.type === 'num' && sl ? ` The book’s answer is ${ansText(q, sl.a)}.` : '') : sl ? ` The answer is ${ansText(q, sl.a)}.` : (q.type !== 'tf' && choice !== null && choice !== undefined ? ` Try again later; the ${q.type === 'num' ? 'book’s answer' : 'correct option'} appears when the solutions are released.` : '');
   return `<div class="verdict ${correct ? 'ok' : 'bad'}"><span class="pill">${correct ? 'Correct' : 'Incorrect'}</span><span>You answered ${ansText(q, choice)}.${tail}</span></div>`;
 }
 function solHTML(q, sl) {
   if (sl) return `<div class="sol"><span class="jl">Solution</span><p>${sl.e}</p></div>`;
-  return `<div class="sol locked"><span class="jl">Solution</span><p>Locked until your instructor releases the solutions for Chapter ${q.ch}. You enter the code once: it opens every solution of the chapter. <a href="#q-${q.ch}">Enter it at the top of the Questions page</a> or in <a href="#settings">Settings</a>.</p></div>`;
+  return `<div class="sol locked"><span class="jl">Solution</span><p>Locked until your instructor releases the solutions for Chapter ${chLab(q.ch)}. You enter the code once: it opens every solution of the chapter. <a href="#q-${q.ch}">Enter it at the top of the Questions page</a> or in <a href="#settings">Settings</a>.</p></div>`;
 }
 const b64d = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const normCode = c => String(c).toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -246,8 +261,8 @@ function fbParams() {
   return o;
 }
 function fbContext(F) {
-  if (F.q && QBY[F.q]) { const q = QBY[F.q]; return { ch: q.ch, where: `Chapter ${q.ch}, ${q.src === 'app' ? 'app question' : 'item'} ${q.n} (${q.type === 'tf' ? 'true or false' : 'multiple choice'}; id ${q.id})`, quote: q.stem.replace(/<[^>]+>/g, '').replace(/\\\(|\\\)/g, '$').slice(0, 300) }; }
-  if (F.ex) { const e = EX.find(x => x.id === F.ex); if (e) return { ch: e.ch, where: `Chapter ${e.ch}, interactive example "${e.title}" (id ${e.id})`, quote: '' }; }
+  if (F.q && QBY[F.q]) { const q = QBY[F.q]; return { ch: q.ch, where: `Chapter ${chLab(q.ch)}, ${q.type === 'num' ? 'numerical problem' : q.src === 'app' ? 'app question' : 'item'} ${q.n} (${TYPEL[q.type].toLowerCase()}; id ${q.id})`, quote: q.stem.replace(/<[^>]+>/g, '').replace(/\\\(|\\\)/g, '$').slice(0, 300) }; }
+  if (F.ex) { const e = EX.find(x => x.id === F.ex); if (e) return { ch: e.ch, where: `Chapter ${chLab(e.ch)}, interactive example "${e.title}" (id ${e.id})`, quote: '' }; }
   return { ch: F.ch ? +F.ch : null, where: '', quote: '' };
 }
 function renderFeedback() {
@@ -266,7 +281,7 @@ function renderFeedback() {
       <div class="field" id="fbRateRow"><span class="flabel">Overall, the app is</span>
         <div class="seg" role="group" aria-label="Rating">${[['very', 'Very useful'], ['useful', 'Useful'], ['little', 'Of little use'], ['not', 'Not useful']].map(([v, l]) => `<button type="button" data-rate="${v}" aria-pressed="false">${l}</button>`).join('')}</div></div>
       <div class="field" id="fbChRow"><label class="flabel" for="fbCh">Chapter</label>
-        <select id="fbCh"><option value="">Not specific to a chapter</option>${chs.map(c => `<option value="${c.n}"${C.ch === c.n ? ' selected' : ''}>${c.n}. ${esc(c.t)}</option>`).join('')}</select></div>
+        <select id="fbCh"><option value="">Not specific to a chapter</option>${chs.map(c => `<option value="${c.n}"${C.ch === c.n ? ' selected' : ''}>${chLab(c.n)}. ${esc(c.t)}</option>`).join('')}</select></div>
       <div class="field" id="fbWhereRow"><label class="flabel" for="fbWhere">Where exactly</label>
         <input id="fbWhere" value="${esc(C.where)}" placeholder="Section, page, equation, item number…"></div>
       <div class="field"><label class="flabel" for="fbText" id="fbTextLabel">Your message</label>
@@ -290,10 +305,10 @@ function renderFeedback() {
   const compose = () => {
     const k = $('input[name=kind]:checked').value, kl = FB_KINDS.find(x => x[0] === k)[1];
     const ch = $('#fbCh').value, where = $('#fbWhere').value.trim(), text = $('#fbText').value.trim(), name = $('#fbName').value.trim();
-    const subject = `[BHT app] ${kl}${ch ? ` - Chapter ${ch}` : ''}`;
+    const subject = `[BHT app] ${kl}${ch ? ` - Chapter ${chLab(+ch)}` : ''}`;
     const lines = [`Type: ${kl}`];
     if (k === 'app' && rate) lines.push(`Overall the app is: ${$(`[data-rate="${rate}"]`).textContent}`);
-    if (ch) lines.push(`Chapter: ${ch}. ${(CHAPTERS.find(c => c.n === +ch) || {}).t || ''}`);
+    if (ch) lines.push(`Chapter: ${chLab(+ch)}. ${(CHAPTERS.find(c => c.n === +ch) || {}).t || ''}`);
     if (k !== 'app' && where) lines.push(`Where: ${where}`);
     if (k === 'question' && C.quote) lines.push(`Question text: ${C.quote}`);
     lines.push('', text || '(no message)', '', `From: ${name || 'a student'}`, `App version: ${BUILD.date}`, `Browser: ${navigator.userAgent}`);

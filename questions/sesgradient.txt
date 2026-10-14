@@ -1,0 +1,237 @@
+# Questions for addendum Chapter 2 (Why the socioeconomic gradient persists), app chapter A2.
+# Blocks 1-13: the chapter's comprehension questions; blocks 14-21: its multiple-choice questions
+# (answers from the addendum solutions). Numbers checked in Python on 2026-10-14.
+
+TF: Universal health coverage eliminates socioeconomic differences in life expectancy.
+ANSWER: False
+WHY: In Turin, under a national health service with universal coverage, male life expectancy at birth in 2002-2011 was 82.1 years in Cavoretto-Borgo Po and 77.8 years in Lucento-Vallette, a gap of 4.3 years (Section 2.1). Residents of both districts face the same rules of access, so the gap cannot come from the price of a visit. BHT reach the same conclusion: equal access to care does not remove disparities.
+
+TF: A cross-sectional study of 60-year-olds can distinguish a level shift from divergence if the sample is large enough.
+ANSWER: False
+WHY: A cross-section at age 60 identifies only the sum $\pi+20\psi$ in equation (2.1) (Section 2.4.2). A larger sample estimates this sum more precisely but cannot split it into a level and a slope. Repeated measurements on the same people are needed: the gap at 40 identifies $\pi$ and the change in the gap identifies $\psi$.
+
+TF: Classical measurement error in socioeconomic position biases the estimated gradient toward zero.
+ANSWER: True
+WHY: Socioeconomic position is the explanatory variable, so classical error inflates its variance but not its covariance with the biomarker, and the coefficient shrinks by its reliability (equation (2.3), Section 2.6.4 and item 2 of the technical box). On this account alone, published gradients understate the association with true socioeconomic position.
+
+TF: Classical measurement error in a biomarker used as the dependent variable biases the estimated gradient toward zero.
+ANSWER: False
+WHY: Noise in the dependent variable adds to the variance the model cannot explain, so it reduces precision but does not bias the coefficient (Section 2.6.4). The exception is when effect sizes are expressed in standard deviations of the measured biomarker: the noisy biomarker has a larger standard deviation, so the same true effect looks smaller in those units.
+
+TF: If five biomarkers measured on the same blood sample show the same gradient, they must reflect a single biological mechanism.
+ANSWER: False
+WHY: Biomarkers from the same blood sample share its composition, so their errors can be correlated: if the mix of immune cells differs between social groups, every biomarker computed from that blood may pick up the difference (Section 2.6.5). Agreement rules out an artifact of one assay, not the presence of several mechanisms.
+
+TF: The fall in the gradient after adjusting for health behaviors measures the share of the effect of disadvantage that runs through behaviors.
+ANSWER: False
+WHY: False as stated. When early-life circumstances are unobserved, the change in the coefficient mixes mediation, partial control of early-life confounding and collider bias, because behaviors are a common effect of socioeconomic position and early-life circumstances (Section 2.7.2). It measures mediation only under assumptions about the order of events and the absence of confounding of behaviors and the biomarker.
+
+TF: Health selection tends to make the observed gradient larger than the causal effect of socioeconomic position on health.
+ANSWER: True
+WHY: By the productive time hypothesis, poor health lowers the ability to work, and with it income and occupational status (Section 2.8). Part of the observed association then runs from health to position, which inflates the estimated effect of position on health. Measurement error in socioeconomic position pushes in the opposite direction, so the net bias is unknown.
+
+TF: In Mendelian randomization, pleiotropy violates the exclusion restriction.
+ANSWER: True
+WHY: Exclusion requires that the variant affect the biomarker only through the exposure (Section 2.9.2, Figure 2.4). A pleiotropic variant has a direct path to the biomarker, so the Wald ratio picks up $\eta\,\mathrm{Var}(G)/\mathrm{Cov}(G,S)$ in addition to $\beta$ (item 4 of the technical box).
+
+TF: Comparisons within families protect Mendelian randomization against population stratification and genetic nurture.
+ANSWER: True
+WHY: True, largely. Siblings share their parents, their ancestry and much of their environment, but receive different variants by chance, so within-family comparisons remove stratification and genetic nurture (Section 2.9.2). They do not remove pleiotropy, which is a failure of exclusion rather than of independence.
+
+TF: Eliminating cancer and cardiovascular disease together adds exactly the sum of the gains from eliminating each of them separately.
+ANSWER: False
+WHY: The gains are complementary: 3.95 and 4.78 years separately, but 11.65 years together, 2.9 years more than the sum (Section 2.13.1). Once cancer is gone, cardiovascular disease accounts for $0.35/0.70=50$ percent of the remaining hazard instead of 35 percent, so eliminating it is worth more.
+
+TF: If buyers know their genetic risk and insurers do not, an annuity market can unravel.
+ANSWER: True
+WHY: If insurers charge a pooled price, 15.18 euros in the example of Section 2.14.1, short-lived buyers pay more than the annuity is worth to them (13.77 euros) and leave. The pool becomes longer-lived and the price rises toward the long-lived value of 16.59 euros. This is adverse selection, and in its extreme form the market unravels.
+
+TF: Meta-analytic evidence shows a large and consistent socioeconomic gradient in telomere length.
+ANSWER: False
+WHY: The meta-analysis of 31 studies by Robertson et al. (2013) found only weak evidence (Section 2.3). The clearest association, with education, was about 0.06 standard deviations and fragile in sensitivity analyses; associations with current income, occupation and childhood circumstances were not statistically significant.
+
+TF: Other things equal, a longer development time reduces the present value of the profits that a patent protects.
+ANSWER: True
+WHY: Protection runs 20 years from filing, and firms file before trials begin, so every year spent in development is a year of protected sales lost (Section 2.14.2). In the technical box, $V=\Pi(e^{-rL}-e^{-20r})/r$ falls with $L$: at $r=0.08$ it is about $6.55\,\Pi$ for $L=4$ and $2.26\,\Pi$ for $L=12$.
+
+MC: In a cohort, the gap in a biomarker between disadvantaged and advantaged people is 0.10 at age 40 and 0.50 at age 60. In equation (2.1), the divergence parameter $\psi$ is
+(a) 0.01
+(b) 0.02
+(c) 0.025
+(d) 0.05
+ANSWER: b
+WHY: With repeated measurements, $\psi$ is the change in the gap divided by the years between readings: $(0.50-0.10)/20=0.02$ (Section 2.4.2 and item 1 of the technical box). Option (a) divides by 40, (c) uses the gap at 60 alone, and (d) ignores the initial gap and divides by 10.
+
+MC: Socioeconomic position is measured with reliability 0.5, and the estimated gradient is 0.10. Under classical error, the gradient with respect to true socioeconomic position is
+(a) 0.05
+(b) 0.10
+(c) 0.15
+(d) 0.20
+ANSWER: d
+WHY: Classical error in the explanatory variable shrinks the coefficient by the reliability, so the true gradient is $0.10/0.5=0.20$ (equation (2.3), Section 2.6.4). Option (a) multiplies by the reliability instead of dividing, and (b) ignores the attenuation.
+
+MC: The unadjusted gradient is 0.25 and the gradient adjusted for behaviors is 0.15. The proportion mediated is
+(a) 15 percent
+(b) 25 percent
+(c) 40 percent
+(d) 60 percent
+ANSWER: c
+WHY: The proportion mediated is $(\hat\beta_u-\hat\beta_a)/\hat\beta_u=(0.25-0.15)/0.25=0.40$ (Section 2.7.2, item 3 of the technical box). Option (d) is the share that remains after adjustment, and (a) reads the adjusted coefficient as a share. Whether 40 percent really runs through behaviors depends on the assumptions discussed in Section 2.7.2.
+
+MC: A genetic variant has $\mathrm{Cov}(G,S)=0.05$ with years of schooling and $\mathrm{Cov}(G,A)=-0.002$ with a biomarker. The Wald estimate of the effect of one year of schooling on the biomarker is
+(a) $-0.004$
+(b) $-0.04$
+(c) $-0.4$
+(d) $+0.04$
+ANSWER: b
+WHY: By equation (2.4), $\beta_{IV}=\mathrm{Cov}(G,A)/\mathrm{Cov}(G,S)=-0.002/0.05=-0.04$ (Section 2.9.2). Options (a) and (c) misplace the decimal point, and (d) gets the sign wrong: the covariance with the biomarker is negative, so more schooling lowers the biomarker.
+
+MC: Which design can separate a level shift from divergence?
+(a) A larger cross-section
+(b) Repeated measurements on the same people
+(c) More biomarkers from the same blood sample
+(d) Adjusting for health behaviors
+ANSWER: b
+WHY: Only repeated measurements identify the gap at the start and its change, that is $\pi$ and $\psi$ (Section 2.4.2, Table 2.3). Options (a) and (c) add data of the same kind, which still identify only $\pi+20\psi$. Option (d) changes the estimand but not the identification problem.
+
+MC: A cause of death that accounts for 40 percent of the hazard is eliminated. A second cause accounted for 30 percent of the original hazard. What share of the remaining hazard does it now account for?
+(a) 30 percent
+(b) 40 percent
+(c) 50 percent
+(d) 70 percent
+ANSWER: c
+WHY: The remaining hazard is 60 percent of the original, so the second cause now accounts for $0.30/(1-0.40)=0.50$ of it (Section 2.13.1). Option (a) forgets that the remaining hazard has shrunk. This rise in share is why eliminations are complements.
+
+MC: With an interest rate of 8 percent and a patent of 20 years, the present value of protected profits for a drug that reaches the market immediately ($L=0$) is about
+(a) $2.26\,\Pi$
+(b) $6.55\,\Pi$
+(c) $10\,\Pi$
+(d) $20\,\Pi$
+ANSWER: c
+WHY: With $L=0$ the formula of the technical box gives $V=\Pi(1-e^{-1.6})/0.08\approx9.98\,\Pi$ (Section 2.14.2). Option (d) ignores discounting; (b) and (a) are the values with four and twelve years of development.
+
+MC: In the annuity example, if all short-lived buyers leave the market, the price that covers the insurer's costs moves to
+(a) 13.77
+(b) 15.18
+(c) 16.59
+(d) 18.00
+ANSWER: c
+WHY: Only long-lived buyers remain, so the break-even price is their annuity value, 16.59 euros (Section 2.14.1, Figure 2.8). Option (b) is the pooled price with equal shares of the two types, (a) is the short-lived value, and (d) confuses the short-lived remaining life expectancy of 18.0 years with a price.
+
+# App questions written for the companion
+
+TF: Shenhar et al. (2026) estimate that, once deaths from external causes such as infections and accidents are accounted for, the heritability of lifespan is about 50 percent, well above the estimates of about 0.23-0.26 from Danish twins.
+ANSWER: True
+WHY: Section 2.11.1 reports twin heritabilities of about 0.26 for men and 0.23 for women (Herskind et al., 1996), about 16 percent from family trees and an upper bound below 7 percent from Ruby et al. (2018). Shenhar et al. (2026) move in the opposite direction, to about 50 percent, by separating deaths that have little to do with genes. The disagreement is partly about whether the object is lifespan as a whole or the rate of aging.
+
+TF: Because cellular senescence protects against cancer, a drug that removes senescent cells can only reduce disease.
+ANSWER: False
+WHY: Senescence stops damaged cells from dividing, which protects against cancer, but senescent cells also release inflammatory signals that feed degenerative disease (Section 2.11.3, Figure 2.6). An intervention on senescent cells therefore has effects on both sides of the ledger, and its net value depends on their balance.
+
+TF: Across the member states of the World Health Organization, the gap between life expectancy and healthy life expectancy grew between 2000 and 2019, which is the pattern that the rescue-medicine scenario of Chapter 1 predicts.
+ANSWER: True
+WHY: Section 2.12 reports an average gap of 9.6 years in 2019, larger than in 2000, with the largest gap, 12.4 years, in the United States (Garmany and Terzic, 2024). Rising years in poor health are an expansion of morbidity, as Gruenberg argued, and match the scenario in which medicine adds only years of disability.
+
+MC: In the dynamic model of item 1 of the technical box, $A_{i\tau}=\alpha_i+\phi A_{i,\tau-1}+\psi S_i+\varepsilon_{i\tau}$, let $\psi=0.02$ and $\phi=0.9$. A permanent difference in $S_i$ from 0 to 1 produces a gap that eventually settles at
+(a) 0.20
+(b) 0.02
+(c) 0.018
+(d) no finite value: it grows without bound
+ANSWER: a
+WHY: With $\phi<1$ the gap grows at first and settles at $\psi/(1-\phi)=0.02/0.1=0.20$ (item 1 of the technical box). Option (b) is only the gap after the first year, and (c) multiplies $\psi$ by $\phi$. Option (d) holds only when $\phi=1$, the case of equation (2.1).
+
+MC: A biomarker has reliability $\lambda=0.4$ for a single reading. What is the reliability of the mean of three independent readings?
+(a) 0.40
+(b) 0.80
+(c) 0.67
+(d) 1.20
+ANSWER: c
+WHY: The reliability of the mean of $n$ readings is $n\lambda/[1+(n-1)\lambda]=1.2/1.8\approx0.67$ (Section 2.6.2). Equivalently, with $\sigma_b^2=0.4$ and $\sigma_w^2=0.6$, the mean has reliability $0.4/(0.4+0.6/3)$. Option (b) computes $1-0.6/3$, forgetting that averaging also lowers the total variance; (d) forgets the denominator and is not even a share; (a) is the reliability of one reading.
+
+MC: In Turin in 2002-2011, the male life expectancy gap between Cavoretto-Borgo Po (82.1 years) and Lucento-Vallette (77.8 years) was about 4.3 years. Individual characteristics account for about 60 percent of the gap among men. How many years does that share represent?
+(a) 4.3 years
+(b) about 2.6 years
+(c) about 1.7 years
+(d) about 0.4 years
+ANSWER: b
+WHY: $0.60\times4.3\approx2.6$ years (Section 2.1). Option (c) is the remaining 40 percent, and (d) is roughly the share of the district, less than a tenth of the gap among men. The decomposition describes how the gap is distributed across people and places; because of selection and endogeneity it does not say which causes it.
+
+MC: The true gradient in a biological state is 0.30 standard deviations of the true state. The biomarker that measures it has reliability 0.64, and the gradient is reported in standard deviations of the measured biomarker. The reported effect size is
+(a) 0.30
+(b) 0.19
+(c) 0.47
+(d) 0.24
+ANSWER: d
+WHY: Noise inflates the measured standard deviation by $1/\sqrt{\lambda}$, so the reported effect is $0.30\times\sqrt{0.64}=0.24$ (Section 2.6.4, item 2 of the technical box). Option (b) multiplies by $\lambda$, which is the rule for error in an explanatory variable; (c) divides by $\lambda$; (a) ignores the change of units. The coefficient in the biomarker's own units is not biased.
+
+MC: In the study of 18 cohorts by Fiorito et al. (2019), adjusting for lifestyle reduced the gap in one epigenetic clock between low and high education from 0.84 to 0.60 years. The usual proportion mediated is about
+(a) 29 percent
+(b) 71 percent
+(c) 24 percent
+(d) 40 percent
+ANSWER: a
+WHY: $(0.84-0.60)/0.84\approx0.29$ (Section 2.7.1). Option (b) is the share that remains, (c) reads the drop of 0.24 years as a percentage, and (d) divides by the adjusted gap instead of the unadjusted one. As Section 2.7.2 explains, reading 29 percent as the share running through lifestyle requires assumptions about confounding and collider bias.
+
+MC: Using the approximation of item 5 of the technical box, with a Gompertz hazard slope $b=0.09$, about how many years of life expectancy are gained by eliminating a cause of death that accounts for 20 percent of the hazard at every age?
+(a) about 16.5 years
+(b) about 2.0 years
+(c) about 2.2 years
+(d) about 2.5 years
+ANSWER: d
+WHY: Multiplying the hazard by $m=0.8$ shifts the survival curve by about $\ln(1/m)/b=\ln(1.25)/0.09\approx2.5$ years (item 5 of the technical box). Option (c) uses $0.2/b$, (b) uses $\ln(1.2)/b$, confusing $1/(1-0.2)$ with $1+0.2$, and (a) takes 20 percent of the life expectancy of 82.6 years, as if deaths from that cause were not replaced by deaths from others.
+
+MC: A study assigns each person the modeled air pollution of her postal code and regresses a biomarker on it in a linear model. Compared with using true individual exposure, this kind of error
+(a) biases the coefficient toward zero by the reliability of the assigned value
+(b) biases the coefficient away from zero
+(c) makes the estimate less precise but does not bias it
+(d) has an unpredictable direction, because it depends on how people recall their exposure
+ANSWER: c
+WHY: Assigning a group average is Berkson error: the true exposure varies around the assigned value, and in a linear model this reduces precision without bias (Section 2.6.3). Option (a) describes classical error, so a correction for it would over-correct here. Option (d) describes differential error, such as recall after a diagnosis.
+
+MC: A study finds a gap in DunedinPACE between low and high socioeconomic groups in an Italian cohort. This gap shows that the groups age at different speeds only if
+(a) the gap is measured at several ages in a single cross-section
+(b) the relation between methylation and the measured pace of decline, estimated in the New Zealand cohort, also holds in the Italian population
+(c) the gap is expressed in standard deviations of the measure
+(d) the gap survives adjustment for health behaviors
+ANSWER: b
+WHY: DunedinPACE is a predicted rate: a combination of methylation levels that predicts the pace of decline measured four times in a New Zealand birth cohort (Section 2.4.3). A gap in it is a gap in a rate only if that relation transports to the population studied, and checking it requires the repeated measurements the shortcut was meant to avoid. Options (a), (c) and (d) do not address transportability.
+
+MC: A researcher wants to know whether disadvantage is still doing damage in adult life, rather than having set a difference long ago. Which kind of biomarker addresses this question most directly?
+(a) A stock, such as telomere length
+(b) A composition share, such as the immune cell profile
+(c) An index, such as an epigenetic clock trained on chronological age
+(d) A rate, such as DunedinPACE
+ANSWER: d
+WHY: A gap in a rate means that damage is still being done, while a gap in a stock may have been set long ago (Section 2.5, Table 2.2). An index answers how old a tissue looks relative to its training target, and a composition share describes what the blood is made of. The rate answers only if its prediction model transports to the population studied.
+
+MC: Cytomegalovirus infection alters an immune biomarker. Suppose disadvantage causes the infection, for example through crowded housing. Adjusting the gradient in the biomarker for infection then
+(a) removes part of the effect of disadvantage, because the infection is a mediator
+(b) removes confounding bias, so it is required
+(c) only improves precision
+(d) is a robustness check that leaves the estimand unchanged
+ANSWER: a
+WHY: If disadvantage causes the infection, the infection lies on the path from disadvantage to the biomarker, and adjusting for it removes that part of the effect (Section 2.7.3). Option (b) is the case in which infection and later disadvantage share a common cause, and (c) the case in which infection is unrelated to disadvantage. Option (d) is what the box in Section 2.7.3 warns against: conditioning on a mediator changes the question.
+
+MC: Parents whose genetic variants favor schooling also read more to their children. In a Mendelian randomization study that uses the child's own variant as an instrument for the child's schooling, this mechanism threatens
+(a) relevance
+(b) exclusion, through pleiotropy
+(c) independence
+(d) nothing, because variants are allocated at random at conception
+ANSWER: c
+WHY: This is genetic nurture: the child's variant is correlated with an environment created by the parents, so it is related to the confounders of schooling and the biomarker (Section 2.9.2). Exclusion, option (b), concerns a direct biological effect of the variant itself. Option (d) fails because randomness holds only given the parents' genes; within-family comparisons restore it.
+
+MC: Why has the proposed trial of metformin against aging, TAME, been organized outside the usual commercial model?
+(a) A validated surrogate endpoint for aging makes a commercial trial unnecessary
+(b) Metformin is a cheap generic drug, so no firm could recover the cost of a large trial on a drug it cannot sell exclusively
+(c) Metformin lacks support from human genetic evidence, which halves its chance of success
+(d) The trial's endpoint is a single disease, diabetes, which firms already serve
+ANSWER: b
+WHY: This is the appropriability obstacle of Section 2.14.2: the returns of an aging trial on a generic drug cannot be captured by the firm that pays for it. Option (a) is false, since no biomarker of aging has yet been validated as a surrogate endpoint. Option (d) misses the point of TAME, which targets aging and several diseases rather than diabetes.
+
+MC: A city wants to use a biological-age index as the main outcome in the evaluation of a new housing program. According to Section 2.15, what must be shown first?
+(a) Nothing more: the gradient in biological aging is real and reproducible
+(b) That the program lowers the index in a cross-section of residents
+(c) That a change in the biomarker predicts a change in health
+(d) That the index agrees with five other biomarkers from the same blood sample
+ANSWER: c
+WHY: Biomarkers can serve as intermediate outcomes in evaluations of upstream interventions only once a change in the biomarker has been shown to predict a change in health, which has not yet been shown for most biomarkers of aging (Section 2.15). Option (a) supports only the first rung, monitoring. Option (d) is weak evidence because biomarkers from one blood draw share its composition (Section 2.6.5).
